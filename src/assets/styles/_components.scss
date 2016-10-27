@@ -1,11 +1,18 @@
 @charset "UTF-8";
-.cubetwo-scene {
+.cubetwo-component {
+    width: 2 * $cube-size;
+    height: 2 * $cube-size;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.cubetwo-rotation-view {
     transition: transform 400ms;
     width: 2 * $cube-size;
     height: 2 * $cube-size;
     max-width: 100%;
     perspective: 3000px;
-    margin: 0 auto;
     position: relative;
     transform-style: preserve-3d;
     transform: rotateX(-20deg) rotateY(-20deg) rotateZ(0deg);
@@ -28,251 +35,251 @@
         animation: spin-animation 20s linear infinite;
     }
     &.left-setup {
-        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-1"] [data-type="cubetwo-display"] {
             transform-origin: 0 100% #{$cube-size * -.5};
         }
-        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-5"] [data-type="cubetwo-display"] {
             transform-origin: 0 100% #{$cube-size * .5};
         }
-        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-7"] [data-type="cubetwo-display"] {
             transform-origin: 0 0 #{$cube-size * .5};
         }
-        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-3"] [data-type="cubetwo-display"] {
             transform-origin: 0 0 #{$cube-size * -.5};
         }
     }
     &.x-left {
-        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-1"] [data-type="cubetwo-display"] {
             transform: rotateX(90deg);
         }
-        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-5"] [data-type="cubetwo-display"] {
             transform: rotateX(90deg);
         }
-        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-7"] [data-type="cubetwo-display"] {
             transform: rotateX(90deg);
         }
-        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-3"] [data-type="cubetwo-display"] {
             transform: rotateX(90deg);
         }
     }
     &.x2-left {
-        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-1"] [data-type="cubetwo-display"] {
             transform: rotateX(180deg);
         }
-        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-5"] [data-type="cubetwo-display"] {
             transform: rotateX(180deg);
         }
-        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-7"] [data-type="cubetwo-display"] {
             transform: rotateX(180deg);
         }
-        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-3"] [data-type="cubetwo-display"] {
             transform: rotateX(180deg);
         }
     }
     &.X-left {
-        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-1"] [data-type="cubetwo-display"] {
             transform: rotateX(-90deg);
         }
-        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-5"] [data-type="cubetwo-display"] {
             transform: rotateX(-90deg);
         }
-        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-7"] [data-type="cubetwo-display"] {
             transform: rotateX(-90deg);
         }
-        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-3"] [data-type="cubetwo-display"] {
             transform: rotateX(-90deg);
         }
     }
     &.X2-left {
-        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-1"] [data-type="cubetwo-display"] {
             transform: rotateX(-180deg);
         }
-        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-5"] [data-type="cubetwo-display"] {
             transform: rotateX(-180deg);
         }
-        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-7"] [data-type="cubetwo-display"] {
             transform: rotateX(-180deg);
         }
-        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-3"] [data-type="cubetwo-display"] {
             transform: rotateX(-180deg);
         }
     }
     &.x-right {
-        [id="cubetwo-component-2"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-2"] [data-type="cubetwo-display"] {
             transform-origin: 0 100% #{$cube-size * -.5};
             transform: rotateX(90deg);
         }
-        [id="cubetwo-component-6"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-6"] [data-type="cubetwo-display"] {
             transform-origin: 0 100% #{$cube-size * .5};
             transform: rotateX(90deg);
         }
-        [id="cubetwo-component-8"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-8"] [data-type="cubetwo-display"] {
             transform-origin: 0 0 #{$cube-size * .5};
             transform: rotateX(90deg);
         }
-        [id="cubetwo-component-4"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-4"] [data-type="cubetwo-display"] {
             transform-origin: 0 0 #{$cube-size * -.5};
             transform: rotateX(90deg);
         }
     }
     &.X-right {
-        [id="cubetwo-component-2"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-2"] [data-type="cubetwo-display"] {
             transform-origin: 0 100% #{$cube-size * -.5};
             transform: rotateX(-90deg);
         }
-        [id="cubetwo-component-6"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-6"] [data-type="cubetwo-display"] {
             transform-origin: 0 100% #{$cube-size * .5};
             transform: rotateX(-90deg);
         }
-        [id="cubetwo-component-8"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-8"] [data-type="cubetwo-display"] {
             transform-origin: 0 0 #{$cube-size * .5};
             transform: rotateX(-90deg);
         }
-        [id="cubetwo-component-4"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-4"] [data-type="cubetwo-display"] {
             transform-origin: 0 0 #{$cube-size * -.5};
             transform: rotateX(-90deg);
         }
     }
     &.y-up {
-        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-1"] [data-type="cubetwo-display"] {
             transform-origin: 100% 0% #{$cube-size * -.5};
             transform: rotateY(90deg);
         }
-        [id="cubetwo-component-2"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-2"] [data-type="cubetwo-display"] {
             transform-origin: 0% 0% #{$cube-size * -.5};
             transform: rotateY(90deg);
         }
-        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-5"] [data-type="cubetwo-display"] {
             transform-origin: 100% 0% #{$cube-size * .5};
             transform: rotateY(90deg);
         }
-        [id="cubetwo-component-6"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-6"] [data-type="cubetwo-display"] {
             transform-origin: 0% 0% #{$cube-size * .5};
             transform: rotateY(90deg);
         }
     }
     &.Y-up {
-        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-1"] [data-type="cubetwo-display"] {
             transform-origin: 100% 0% #{$cube-size * -.5};
             transform: rotateY(-90deg);
         }
-        [id="cubetwo-component-2"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-2"] [data-type="cubetwo-display"] {
             transform-origin: 0% 0% #{$cube-size * -.5};
             transform: rotateY(-90deg);
         }
-        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-5"] [data-type="cubetwo-display"] {
             transform-origin: 100% 0% #{$cube-size * .5};
             transform: rotateY(-90deg);
         }
-        [id="cubetwo-component-6"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-6"] [data-type="cubetwo-display"] {
             transform-origin: 0% 0% #{$cube-size * .5};
             transform: rotateY(-90deg);
         }
     }
     &.y-down {
-        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-3"] [data-type="cubetwo-display"] {
             transform-origin: 100% 0% #{$cube-size * -.5};
             transform: rotateY(90deg);
         }
-        [id="cubetwo-component-4"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-4"] [data-type="cubetwo-display"] {
             transform-origin: 0% 0% #{$cube-size * -.5};
             transform: rotateY(90deg);
         }
-        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-7"] [data-type="cubetwo-display"] {
             transform-origin: 100% 0% #{$cube-size * .5};
             transform: rotateY(90deg);
         }
-        [id="cubetwo-component-8"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-8"] [data-type="cubetwo-display"] {
             transform-origin: 0% 0% #{$cube-size * .5};
             transform: rotateY(90deg);
         }
     }
     &.Y-down {
-        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-3"] [data-type="cubetwo-display"] {
             transform-origin: 100% 0% #{$cube-size * -.5};
             transform: rotateY(-90deg);
         }
-        [id="cubetwo-component-4"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-4"] [data-type="cubetwo-display"] {
             transform-origin: 0% 0% #{$cube-size * -.5};
             transform: rotateY(-90deg);
         }
-        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-7"] [data-type="cubetwo-display"] {
             transform-origin: 100% 0% #{$cube-size * .5};
             transform: rotateY(-90deg);
         }
-        [id="cubetwo-component-8"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-8"] [data-type="cubetwo-display"] {
             transform-origin: 0% 0% #{$cube-size * .5};
             transform: rotateY(-90deg);
         }
     }
     &.z-front {
-        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-1"] [data-type="cubetwo-display"] {
             transform-origin: 100% 100% #{$cube-size * .5};
             transform: rotateZ(90deg);
         }
-        [id="cubetwo-component-2"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-2"] [data-type="cubetwo-display"] {
             transform-origin: 0% 100% #{$cube-size * .5};
             transform: rotateZ(90deg);
         }
-        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-3"] [data-type="cubetwo-display"] {
             transform-origin: 100% 0% #{$cube-size * .5};
             transform: rotateZ(90deg);
         }
-        [id="cubetwo-component-4"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-4"] [data-type="cubetwo-display"] {
             transform-origin: 0% 0% #{$cube-size * .5};
             transform: rotateZ(90deg);
         }
     }
     &.Z-front {
-        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-1"] [data-type="cubetwo-display"] {
             transform-origin: 100% 100% #{$cube-size * .5};
             transform: rotateZ(-90deg);
         }
-        [id="cubetwo-component-2"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-2"] [data-type="cubetwo-display"] {
             transform-origin: 0% 100% #{$cube-size * .5};
             transform: rotateZ(-90deg);
         }
-        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-3"] [data-type="cubetwo-display"] {
             transform-origin: 100% 0% #{$cube-size * .5};
             transform: rotateZ(-90deg);
         }
-        [id="cubetwo-component-4"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-4"] [data-type="cubetwo-display"] {
             transform-origin: 0% 0% #{$cube-size * .5};
             transform: rotateZ(-90deg);
         }
     }
     &.z-back {
-        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-5"] [data-type="cubetwo-display"] {
             transform-origin: 100% 100% #{$cube-size * .5};
             transform: rotateZ(90deg);
         }
-        [id="cubetwo-component-6"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-6"] [data-type="cubetwo-display"] {
             transform-origin: 0% 100% #{$cube-size * .5};
             transform: rotateZ(90deg);
         }
-        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-7"] [data-type="cubetwo-display"] {
             transform-origin: 100% 0% #{$cube-size * .5};
             transform: rotateZ(90deg);
         }
-        [id="cubetwo-component-8"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-8"] [data-type="cubetwo-display"] {
             transform-origin: 0% 0% #{$cube-size * .5};
             transform: rotateZ(90deg);
         }
     }
     &.Z-back {
-        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-5"] [data-type="cubetwo-display"] {
             transform-origin: 100% 100% #{$cube-size * .5};
             transform: rotateZ(-90deg);
         }
-        [id="cubetwo-component-6"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-6"] [data-type="cubetwo-display"] {
             transform-origin: 0% 100% #{$cube-size * .5};
             transform: rotateZ(-90deg);
         }
-        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-7"] [data-type="cubetwo-display"] {
             transform-origin: 100% 0% #{$cube-size * .5};
             transform: rotateZ(-90deg);
         }
-        [id="cubetwo-component-8"] [data-type="cubetwo-display"] {
+        [id="cubetwo-cube-8"] [data-type="cubetwo-display"] {
             transform-origin: 0% 0% #{$cube-size * .5};
             transform: rotateZ(-90deg);
         }
@@ -527,7 +534,7 @@
     }
 }
 
-[data-type="cubetwo"]:not([id="cubetwo-component-1"]) {
+[data-type="cubetwo"]:not([id="cubetwo-cube-1"]) {
     [data-type="cubetwo-display"]>div>div {
         //background: rgba(red, .5) !important;
     }

@@ -40,8 +40,8 @@ function initCallback(eventName, payload) {
 }
 
 const bodyWrapperEl = qs('.body-wrapper');
-const cubetwoSceneEl = qs('.cubetwo-scene');
-
+const cubeComponentEl = byId('cubetwo-component-9');
+const cubetwoRotationViewEl = qs('.cubetwo-rotation-view', cubeComponentEl);
 
 function checkForComplete() {
     // let keys = Object.keys(states),
@@ -241,16 +241,16 @@ window.cubetwo = cubetwo;
 
 const btncubetwoRotateView = byId('btn-cube-two-rotate-view');
 btncubetwoRotateView.addEventListener('click', (ev) => {
-    if (cubetwoSceneEl.classList.contains('left-side')) {
-        cubetwoSceneEl.classList.remove('left-side');
-        cubetwoSceneEl.classList.add('down-side');
-    } else if (cubetwoSceneEl.classList.contains('down-side')) {
-        cubetwoSceneEl.classList.remove('down-side');
-        cubetwoSceneEl.classList.add('left-down-side');
-    } else if (cubetwoSceneEl.classList.contains('left-down-side')) {
-        cubetwoSceneEl.classList.remove('left-down-side');
+    if (cubetwoRotationViewEl.classList.contains('left-side')) {
+        cubetwoRotationViewEl.classList.remove('left-side');
+        cubetwoRotationViewEl.classList.add('down-side');
+    } else if (cubetwoRotationViewEl.classList.contains('down-side')) {
+        cubetwoRotationViewEl.classList.remove('down-side');
+        cubetwoRotationViewEl.classList.add('left-down-side');
+    } else if (cubetwoRotationViewEl.classList.contains('left-down-side')) {
+        cubetwoRotationViewEl.classList.remove('left-down-side');
     } else {
-        cubetwoSceneEl.classList.add('left-side');
+        cubetwoRotationViewEl.classList.add('left-side');
     }
 });
 
