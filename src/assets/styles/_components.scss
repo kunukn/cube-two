@@ -35,30 +35,30 @@
         animation: spin-animation 20s linear infinite;
     }
     &.left-setup {
-        [id="cubetwo-cube-1"] [data-type="cubetwo-display"] {
+        .cubetwo-cube-1 [data-type="cubetwo-display"] {
             transform-origin: 0 100% #{$cube-size * -.5};
         }
-        [id="cubetwo-cube-5"] [data-type="cubetwo-display"] {
+        .cubetwo-cube-5 [data-type="cubetwo-display"] {
             transform-origin: 0 100% #{$cube-size * .5};
         }
-        [id="cubetwo-cube-7"] [data-type="cubetwo-display"] {
+        .cubetwo-cube-7 [data-type="cubetwo-display"] {
             transform-origin: 0 0 #{$cube-size * .5};
         }
-        [id="cubetwo-cube-3"] [data-type="cubetwo-display"] {
+        .cubetwo-cube-3 [data-type="cubetwo-display"] {
             transform-origin: 0 0 #{$cube-size * -.5};
         }
     }
     &.x-left {
-        [id="cubetwo-cube-1"] [data-type="cubetwo-display"] {
+        .cubetwo-cube-1 [data-type="cubetwo-display"] {
             transform: rotateX(90deg);
         }
-        [id="cubetwo-cube-5"] [data-type="cubetwo-display"] {
+        .cubetwo-cube-5 [data-type="cubetwo-display"] {
             transform: rotateX(90deg);
         }
-        [id="cubetwo-cube-7"] [data-type="cubetwo-display"] {
+        .cubetwo-cube-7 [data-type="cubetwo-display"] {
             transform: rotateX(90deg);
         }
-        [id="cubetwo-cube-3"] [data-type="cubetwo-display"] {
+        .cubetwo-cube-3 [data-type="cubetwo-display"] {
             transform: rotateX(90deg);
         }
     }
@@ -141,19 +141,19 @@
         }
     }
     &.y-up {
-        [id="cubetwo-cube-1"] [data-type="cubetwo-display"] {
+        .cubetwo-cube-1 [data-type="cubetwo-display"] {
             transform-origin: 100% 0% #{$cube-size * -.5};
             transform: rotateY(90deg);
         }
-        [id="cubetwo-cube-2"] [data-type="cubetwo-display"] {
+        .cubetwo-cube-2 [data-type="cubetwo-display"] {
             transform-origin: 0% 0% #{$cube-size * -.5};
             transform: rotateY(90deg);
         }
-        [id="cubetwo-cube-5"] [data-type="cubetwo-display"] {
+        .cubetwo-cube-5 [data-type="cubetwo-display"] {
             transform-origin: 100% 0% #{$cube-size * .5};
             transform: rotateY(90deg);
         }
-        [id="cubetwo-cube-6"] [data-type="cubetwo-display"] {
+        .cubetwo-cube-6 [data-type="cubetwo-display"] {
             transform-origin: 0% 0% #{$cube-size * .5};
             transform: rotateY(90deg);
         }

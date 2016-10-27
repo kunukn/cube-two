@@ -26,9 +26,23 @@ import dictCubeTransform from './dictionaries/dict-cube-transform';
 
 import { STATES, STATES_ARRAY, KEY, EVENT_NAMES } from './constants';
 
+const CUBE_COUNT = 8;
+const CUBE_SIZE = '20vmin';
+const CUBE_SIZE_HALF = '10vmin';
+
+
 class CubeTwo {
     constructor(config) {
         this._cubeComponentEl = config.cubeComponent;
+        this._cubes = [];
+        for (var i = 1; i <= CUBE_COUNT; i++) {
+            let cube = qs(`.cubetwo-cube-${i}`, this._cubeComponentEl);
+            this._cubes.push(cube);
+            this[`_cube${i}El`] = cube;
+            this[`_cube${i}DisplayEl`] = qs('[data-type="cubetwo-display"]', cube);
+            this[`_cube${i}TouchEl`] = qs('[data-type="cubetwo-touch"]', cube);
+        }
+        deepFreeze(this._cubes);
 
         log('CubeTwo constructor');
     }
@@ -47,7 +61,19 @@ class CubeTwo {
     }
 
     U() {
+        this._cube1DisplayEl.style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
+        this._cube1DisplayEl.style.transform = `rotateY(-90deg)`;
 
+        this._cube2DisplayEl.style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
+        this._cube2DisplayEl.style.transform = `rotateY(-90deg)`;
+
+        this._cube5DisplayEl.style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
+        this._cube5DisplayEl.style.transform = `rotateY(-90deg)`;
+
+        this._cube6DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
+        this._cube6DisplayEl.style.transform = `rotateY(-90deg)`;
+
+        // And todo reset in transitionEnd
     }
     U_() {
 
@@ -71,25 +97,25 @@ class CubeTwo {
 
     }
 
-    x(){
+    x() {
         log('rotate hole cube in 90deg x axis');
     }
-    y(){}
-    z(){}
-    x2(){
+    y() {}
+    z() {}
+    x2() {
         log('rotate hole cube in 180deg x axis');
     }
-    y2(){}
-    z2(){}
-    x_(){
+    y2() {}
+    z2() {}
+    x_() {
         log('rotate hole cube in -90deg x axis');
     }
-    y_(){}
-    z_(){}
-    x2_(){}
-    y2_(){}
-    z2_(){}
-    
+    y_() {}
+    z_() {}
+    x2_() {}
+    y2_() {}
+    z2_() {}
+
 
     // _updateEventBindings() {
     //     this._handleKeyEvent = this._handleKeyEvent.bind(this);
