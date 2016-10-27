@@ -39,8 +39,8 @@ class CubeTwo {
             let cube = qs(`.cubetwo-cube-${i}`, this._cubeComponentEl);
             this._cubes.push(cube);
             this[`_cube${i}El`] = cube;
-            this[`_cube${i}DisplayEl`] = qs('[data-type="cubetwo-display"]', cube);
-            this[`_cube${i}TouchEl`] = qs('[data-type="cubetwo-touch"]', cube);
+            this[`_cube${i}DisplayEl`] = qs('[data-type="cubetwo-display"]', cube);;
+            this[`_cube${i}TouchEl`] = qs('[data-type="cubetwo-touch"]', cube);;
         }
         deepFreeze(this._cubes);
 
@@ -61,22 +61,53 @@ class CubeTwo {
     }
 
     U() {
+        const angle = '-90';
         this._cube1DisplayEl.style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
-        this._cube1DisplayEl.style.transform = `rotateY(-90deg)`;
-
         this._cube2DisplayEl.style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
-        this._cube2DisplayEl.style.transform = `rotateY(-90deg)`;
-
         this._cube5DisplayEl.style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
-        this._cube5DisplayEl.style.transform = `rotateY(-90deg)`;
-
         this._cube6DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
-        this._cube6DisplayEl.style.transform = `rotateY(-90deg)`;
 
-        // And todo reset in transitionEnd
+        this._cube1DisplayEl.style.transform = `rotateY(${angle}deg)`;
+        this._cube2DisplayEl.style.transform = `rotateY(${angle}deg)`;
+        this._cube5DisplayEl.style.transform = `rotateY(${angle}deg)`;
+        this._cube6DisplayEl.style.transform = `rotateY(${angle}deg)`;
     }
     U_() {
+        const angle = '90';
 
+        this._cube1DisplayEl.style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
+        this._cube2DisplayEl.style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
+        this._cube5DisplayEl.style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
+        this._cube6DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
+
+        this._cube1DisplayEl.style.transform = `rotateY(${angle}deg)`;
+        this._cube2DisplayEl.style.transform = `rotateY(${angle}deg)`;
+        this._cube5DisplayEl.style.transform = `rotateY(${angle}deg)`;
+        this._cube6DisplayEl.style.transform = `rotateY(${angle}deg)`;
+    }
+    U2() {
+        const angle = '-180';
+        this._cube1DisplayEl.style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
+        this._cube2DisplayEl.style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
+        this._cube5DisplayEl.style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
+        this._cube6DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
+
+        this._cube1DisplayEl.style.transform = `rotateY(${angle}deg)`;
+        this._cube2DisplayEl.style.transform = `rotateY(${angle}deg)`;
+        this._cube5DisplayEl.style.transform = `rotateY(${angle}deg)`;
+        this._cube6DisplayEl.style.transform = `rotateY(${angle}deg)`;
+    }
+    U2_() {
+        const angle = '180';
+        this._cube1DisplayEl.style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
+        this._cube2DisplayEl.style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
+        this._cube5DisplayEl.style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
+        this._cube6DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
+
+        this._cube1DisplayEl.style.transform = `rotateY(${angle}deg)`;
+        this._cube2DisplayEl.style.transform = `rotateY(${angle}deg)`;
+        this._cube5DisplayEl.style.transform = `rotateY(${angle}deg)`;
+        this._cube6DisplayEl.style.transform = `rotateY(${angle}deg)`;
     }
     D() {
 
@@ -194,6 +225,23 @@ class CubeTwo {
     // }
 
     init() {
+        for (var i = 1; i <= CUBE_COUNT; i++) {
+            let cubeDisplay = this[`_cube${i}DisplayEl`];
+            if (cubeDisplay) {
+                cubeDisplay.addEventListener('transitionend', (ev) => {
+                    let target;
+                    if (ev.currentTarget) {
+                        target = ev.currentTarget;
+                    } else if (ev.target) {
+                        target = ev.target;
+                    }
+                    if (target) {
+                        target.style.transformOrigin = '';
+                        target.style.transform = '';
+                    }
+                })
+            }
+        }
 
         // this._handleKeyEvent.bind(this);
 
