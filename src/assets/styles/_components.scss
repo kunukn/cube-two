@@ -1,0 +1,534 @@
+@charset "UTF-8";
+.cubetwo-scene {
+    transition: transform 400ms;
+    width: 2 * $cube-size;
+    height: 2 * $cube-size;
+    max-width: 100%;
+    perspective: 3000px;
+    margin: 0 auto;
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(-20deg) rotateY(-20deg) rotateZ(0deg);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    &.left-side {
+        transform: rotateX(-20deg) rotateY(20deg) rotateZ(0deg);
+    }
+    &.down-side {
+        transform: rotateX(20deg) rotateY(-20deg) rotateZ(0deg);
+    }
+    &.left-down-side {
+        transform: rotateX(20deg) rotateY(20deg) rotateZ(0deg);
+    }
+    &.spin {
+        animation: spin-animation 20s linear infinite;
+    }
+    &.left-setup {
+        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+            transform-origin: 0 100% #{$cube-size * -.5};
+        }
+        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+            transform-origin: 0 100% #{$cube-size * .5};
+        }
+        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+            transform-origin: 0 0 #{$cube-size * .5};
+        }
+        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+            transform-origin: 0 0 #{$cube-size * -.5};
+        }
+    }
+    &.x-left {
+        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+            transform: rotateX(90deg);
+        }
+        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+            transform: rotateX(90deg);
+        }
+        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+            transform: rotateX(90deg);
+        }
+        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+            transform: rotateX(90deg);
+        }
+    }
+    &.x2-left {
+        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+            transform: rotateX(180deg);
+        }
+        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+            transform: rotateX(180deg);
+        }
+        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+            transform: rotateX(180deg);
+        }
+        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+            transform: rotateX(180deg);
+        }
+    }
+    &.X-left {
+        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+            transform: rotateX(-90deg);
+        }
+        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+            transform: rotateX(-90deg);
+        }
+        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+            transform: rotateX(-90deg);
+        }
+        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+            transform: rotateX(-90deg);
+        }
+    }
+    &.X2-left {
+        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+            transform: rotateX(-180deg);
+        }
+        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+            transform: rotateX(-180deg);
+        }
+        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+            transform: rotateX(-180deg);
+        }
+        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+            transform: rotateX(-180deg);
+        }
+    }
+    &.x-right {
+        [id="cubetwo-component-2"] [data-type="cubetwo-display"] {
+            transform-origin: 0 100% #{$cube-size * -.5};
+            transform: rotateX(90deg);
+        }
+        [id="cubetwo-component-6"] [data-type="cubetwo-display"] {
+            transform-origin: 0 100% #{$cube-size * .5};
+            transform: rotateX(90deg);
+        }
+        [id="cubetwo-component-8"] [data-type="cubetwo-display"] {
+            transform-origin: 0 0 #{$cube-size * .5};
+            transform: rotateX(90deg);
+        }
+        [id="cubetwo-component-4"] [data-type="cubetwo-display"] {
+            transform-origin: 0 0 #{$cube-size * -.5};
+            transform: rotateX(90deg);
+        }
+    }
+    &.X-right {
+        [id="cubetwo-component-2"] [data-type="cubetwo-display"] {
+            transform-origin: 0 100% #{$cube-size * -.5};
+            transform: rotateX(-90deg);
+        }
+        [id="cubetwo-component-6"] [data-type="cubetwo-display"] {
+            transform-origin: 0 100% #{$cube-size * .5};
+            transform: rotateX(-90deg);
+        }
+        [id="cubetwo-component-8"] [data-type="cubetwo-display"] {
+            transform-origin: 0 0 #{$cube-size * .5};
+            transform: rotateX(-90deg);
+        }
+        [id="cubetwo-component-4"] [data-type="cubetwo-display"] {
+            transform-origin: 0 0 #{$cube-size * -.5};
+            transform: rotateX(-90deg);
+        }
+    }
+    &.y-up {
+        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+            transform-origin: 100% 0% #{$cube-size * -.5};
+            transform: rotateY(90deg);
+        }
+        [id="cubetwo-component-2"] [data-type="cubetwo-display"] {
+            transform-origin: 0% 0% #{$cube-size * -.5};
+            transform: rotateY(90deg);
+        }
+        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+            transform-origin: 100% 0% #{$cube-size * .5};
+            transform: rotateY(90deg);
+        }
+        [id="cubetwo-component-6"] [data-type="cubetwo-display"] {
+            transform-origin: 0% 0% #{$cube-size * .5};
+            transform: rotateY(90deg);
+        }
+    }
+    &.Y-up {
+        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+            transform-origin: 100% 0% #{$cube-size * -.5};
+            transform: rotateY(-90deg);
+        }
+        [id="cubetwo-component-2"] [data-type="cubetwo-display"] {
+            transform-origin: 0% 0% #{$cube-size * -.5};
+            transform: rotateY(-90deg);
+        }
+        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+            transform-origin: 100% 0% #{$cube-size * .5};
+            transform: rotateY(-90deg);
+        }
+        [id="cubetwo-component-6"] [data-type="cubetwo-display"] {
+            transform-origin: 0% 0% #{$cube-size * .5};
+            transform: rotateY(-90deg);
+        }
+    }
+    &.y-down {
+        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+            transform-origin: 100% 0% #{$cube-size * -.5};
+            transform: rotateY(90deg);
+        }
+        [id="cubetwo-component-4"] [data-type="cubetwo-display"] {
+            transform-origin: 0% 0% #{$cube-size * -.5};
+            transform: rotateY(90deg);
+        }
+        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+            transform-origin: 100% 0% #{$cube-size * .5};
+            transform: rotateY(90deg);
+        }
+        [id="cubetwo-component-8"] [data-type="cubetwo-display"] {
+            transform-origin: 0% 0% #{$cube-size * .5};
+            transform: rotateY(90deg);
+        }
+    }
+    &.Y-down {
+        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+            transform-origin: 100% 0% #{$cube-size * -.5};
+            transform: rotateY(-90deg);
+        }
+        [id="cubetwo-component-4"] [data-type="cubetwo-display"] {
+            transform-origin: 0% 0% #{$cube-size * -.5};
+            transform: rotateY(-90deg);
+        }
+        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+            transform-origin: 100% 0% #{$cube-size * .5};
+            transform: rotateY(-90deg);
+        }
+        [id="cubetwo-component-8"] [data-type="cubetwo-display"] {
+            transform-origin: 0% 0% #{$cube-size * .5};
+            transform: rotateY(-90deg);
+        }
+    }
+    &.z-front {
+        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+            transform-origin: 100% 100% #{$cube-size * .5};
+            transform: rotateZ(90deg);
+        }
+        [id="cubetwo-component-2"] [data-type="cubetwo-display"] {
+            transform-origin: 0% 100% #{$cube-size * .5};
+            transform: rotateZ(90deg);
+        }
+        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+            transform-origin: 100% 0% #{$cube-size * .5};
+            transform: rotateZ(90deg);
+        }
+        [id="cubetwo-component-4"] [data-type="cubetwo-display"] {
+            transform-origin: 0% 0% #{$cube-size * .5};
+            transform: rotateZ(90deg);
+        }
+    }
+    &.Z-front {
+        [id="cubetwo-component-1"] [data-type="cubetwo-display"] {
+            transform-origin: 100% 100% #{$cube-size * .5};
+            transform: rotateZ(-90deg);
+        }
+        [id="cubetwo-component-2"] [data-type="cubetwo-display"] {
+            transform-origin: 0% 100% #{$cube-size * .5};
+            transform: rotateZ(-90deg);
+        }
+        [id="cubetwo-component-3"] [data-type="cubetwo-display"] {
+            transform-origin: 100% 0% #{$cube-size * .5};
+            transform: rotateZ(-90deg);
+        }
+        [id="cubetwo-component-4"] [data-type="cubetwo-display"] {
+            transform-origin: 0% 0% #{$cube-size * .5};
+            transform: rotateZ(-90deg);
+        }
+    }
+    &.z-back {
+        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+            transform-origin: 100% 100% #{$cube-size * .5};
+            transform: rotateZ(90deg);
+        }
+        [id="cubetwo-component-6"] [data-type="cubetwo-display"] {
+            transform-origin: 0% 100% #{$cube-size * .5};
+            transform: rotateZ(90deg);
+        }
+        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+            transform-origin: 100% 0% #{$cube-size * .5};
+            transform: rotateZ(90deg);
+        }
+        [id="cubetwo-component-8"] [data-type="cubetwo-display"] {
+            transform-origin: 0% 0% #{$cube-size * .5};
+            transform: rotateZ(90deg);
+        }
+    }
+    &.Z-back {
+        [id="cubetwo-component-5"] [data-type="cubetwo-display"] {
+            transform-origin: 100% 100% #{$cube-size * .5};
+            transform: rotateZ(-90deg);
+        }
+        [id="cubetwo-component-6"] [data-type="cubetwo-display"] {
+            transform-origin: 0% 100% #{$cube-size * .5};
+            transform: rotateZ(-90deg);
+        }
+        [id="cubetwo-component-7"] [data-type="cubetwo-display"] {
+            transform-origin: 100% 0% #{$cube-size * .5};
+            transform: rotateZ(-90deg);
+        }
+        [id="cubetwo-component-8"] [data-type="cubetwo-display"] {
+            transform-origin: 0% 0% #{$cube-size * .5};
+            transform: rotateZ(-90deg);
+        }
+    }
+    .cubetwo-cube-group {
+        transition: transform 300ms;
+        width: 2 * $cube-size;
+        height: 2 * $cube-size;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: space-between;
+        align-content: space-between;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-style: preserve-3d;
+        &--1 {
+            transform: translateZ($cube-size/2);
+        }
+        &--2 {
+            transform: translateZ(-$cube-size/2);
+        }
+    }
+}
+
+[data-type=cubetwo] {
+    width: $cube-size;
+    height: $cube-size;
+    position: relative;
+    transform-style: preserve-3d;
+    font-size: 1rem;
+    &:focus {
+        outline: none;
+        .cubetwo-cube[data-type="cubetwo-display"] {
+            >div {
+                border-color: $color-focus;
+                >div {
+                    //color: $color-focus; //box-shadow color
+                }
+            }
+        }
+    }
+    .cubetwo-cube {
+        width: inherit;
+        height: inherit;
+        transform-style: preserve-3d;
+        [data-type=front] {
+            transform: translateZ($cube-size/2);
+        }
+        [data-type=up] {
+            transform: rotateX(-90deg) translateY($cube-size/2) rotateY(180deg) rotateZ(180deg);
+            transform-origin: top center;
+        }
+        [data-type=right] {
+            transform: rotateY(-270deg) translateX($cube-size/2);
+            transform-origin: top right;
+        }
+        [data-type=back] {
+            transform: translateZ(-$cube-size/2) rotateY(180deg);
+        }
+        [data-type=down] {
+            transform: rotateX(90deg) translateY(-$cube-size/2) rotateY(180deg) rotateZ(180deg);
+            transform-origin: bottom center;
+        }
+        [data-type=left] {
+            transform: rotateY(270deg) translateX(-$cube-size/2);
+            transform-origin: center left;
+        }
+        &[data-type="cubetwo-display"] {
+            // display: none;
+            transition: transform $rotate-transition-duration;
+            user-select: none;
+            pointer-events: none;
+            position: relative;
+            >div {
+                transition: opacity $rotate-transition-duration;
+                user-select: none;
+                pointer-events: none;
+                position: absolute;
+                width: inherit;
+                height: inherit;
+                text-transform: uppercase;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 2px solid $color-theme;
+                font-size: 0;
+                color: transparent;
+                //backface-visibility: hidden;
+                //border-radius: 1px;
+                &.tapped {
+                    opacity: .2;
+                }
+                >div {
+                    color: $color-theme;
+                    //box-shadow: inset 0 0 0 1px, 0 0 0 1px;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0;
+                    top: 0;
+                    //background: url(#{$cube-background-image-url}) no-repeat center center / contain;
+                    background-color: rgba(white, 1);
+                    background-blend-mode: multiply;
+                }
+            }
+        }
+        &[data-type="cubetwo-touch"] {
+            width: inherit;
+            height: inherit;
+            position: absolute;
+            top: 0;
+            left: 0;
+            >div {
+                border: 2px solid;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: inherit;
+                height: inherit;
+                backface-visibility: hidden;
+                z-index: 1;
+                display: flex;
+                justify-content: center;
+                align-items: start;
+                color: #222;
+                color: transparent;
+                cursor: pointer;
+                background: transparent;
+                //background: rgba(red, .5);
+                //display: none;
+                // font-size: 0;
+            }
+        }
+    }
+}
+
+@keyframes spin-animation {
+    from {
+        transform: rotateY(0turn) rotateX(0turn);
+    }
+    to {
+        transform: rotateY(3turn) rotateX(2turn);
+    }
+}
+
+.cubetwo-app-info {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: space-between;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: right;
+    padding: .1em;
+    min-height: 1.5em;
+    border-bottom: 1px solid lightgray;
+    padding: 0 .5rem;
+    color: rgba(white, 1);
+    font-size: .8rem;
+    @include device(medium) {
+        font-size: 1.2rem;
+    }
+    button {
+        background: transparent;
+        border: 1px solid;
+        box-shadow: 2px 2px 4px gray;
+        outline: none;
+        color: $color-focus;
+        font-size: inherit;
+        margin: .5em 1em .5em 0;
+        padding: .5em 1em;
+        @include device(medium) {
+            padding: .2em .5em;
+        }
+        &:focus {
+            box-shadow: 2px 2px 1em $color-focus;
+        }
+    }
+    .cubetwo-row {
+        margin: 0 auto;
+        max-width: 40rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-grow: 1;
+        width: 100%;
+        transition: 200ms;
+        &:nth-of-type(2) {
+            //justify-content: flex-start;
+            font-size: .8em;
+            color: rgba(white, .6);
+            &:hover {
+                color: rgba(white, .7);
+            }
+        }
+    }
+    .cubetwo-device-info {
+        text-align: center;
+    }
+    .cubetwo-device-info--keyboard {
+        .cubetwo-device-info-groups {
+            display: flex;
+        }
+        .cubetwo-device-info-group {
+            display: flex;
+            flex-direction: column;
+            >div {
+                display: flex;
+                flex-direction: row;
+                span,
+                i {
+                    font-size: inherit;
+                    display: inline-block;
+                    position: relative;
+                    min-width: 1.4em;
+                }
+            }
+        }
+    }
+    .cubetwo-button-group {
+        font-weight: 700;
+        display: flex;
+        flex-flow: row wrap;
+    }
+    .cubetwo-state-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        >h3 {
+            margin: 0;
+            padding: 0;
+            font-size: .8em;
+            font-weight: 300;
+        }
+    }
+    .cubetwo-state-infos {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        >div {
+            display: inline-block;
+            font-weight: 400;
+            text-transform: uppercase;
+            min-width: 2em;
+        }
+    }
+}
+
+[data-type="cubetwo"]:not([id="cubetwo-component-1"]) {
+    [data-type="cubetwo-display"]>div>div {
+        //background: rgba(red, .5) !important;
+    }
+}

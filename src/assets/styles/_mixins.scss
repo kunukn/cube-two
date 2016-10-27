@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+/* Major breakpoints */
+
+@mixin device($type) {
+    $small-only: "(max-width: 599px)";
+    $medium: "(min-width: 600px)";
+    $large: "(min-width: 1024px)";
+    @if $type==large {
+        @media #{$large} {
+            @content;
+        }
+    }
+    @else if $type==medium {
+        @media #{$medium} {
+            @content;
+        }
+    }
+    @else if $type==small-only {
+        @media #{$small-only} {
+            @content;
+        }
+    }
+}
+
+@function calculateRem($size) {
+    $remSize: $size / 16px;
+    @return $remSize * 1rem;
+}
+
+%text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+%flex {
+    flex: 1 1 auto;
+}
+
+%clearfix {
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
