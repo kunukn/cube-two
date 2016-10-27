@@ -1,1 +1,1 @@
-# cube-two
+# Cube Two
