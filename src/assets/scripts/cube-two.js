@@ -33,6 +33,15 @@ const CUBE_SIZE_HALF = '10vmin';
 
 class CubeTwo {
     constructor(config) {
+
+        if (!config || !config.cubeComponent) {
+            error(`CubeTwo element was not provided: ${config.cubeComponent}`);
+            return;
+        }
+        this._appState = {};
+        this._config = config;
+        deepFreeze(this._config);
+
         this._cubeComponentEl = config.cubeComponent;
         this._cubes = [];
         for (var i = 1; i <= CUBE_COUNT; i++) {
@@ -44,7 +53,68 @@ class CubeTwo {
         }
         deepFreeze(this._cubes);
 
+        this._updateEventBindings();
+
+        this._initCallbacks();
+
+        this._setState({
+            code: 'todo impl state info for the cube',
+            rotateEnabled: true,
+        });
+
         log('CubeTwo constructor');
+    }
+
+
+    _updateEventBindings() {
+        // this._handleKeyEvent = this._handleKeyEvent.bind(this);
+        this._transitionEnd = this._transitionEnd.bind(this);
+    }
+
+    _initCallbacks() {
+        this.callbacks = {};
+        Object.keys(EVENT_NAMES)
+            .forEach((eventName, index) => this.callbacks[eventName] = []);
+    }
+
+    addCallbackForEvent(eventName, callback) {
+        let collection = this.callbacks[(eventName = eventName.toLowerCase())];
+        if (collection && typeof callback === 'function') {
+            collection.push(callback);
+        }
+    };
+
+    _triggerEvent(eventName, payload) {
+        let collection = this.callbacks[eventName] || [],
+            i, max;
+        for (i = 0, max = collection.length; i < max; i++) {
+            collection[i].call(this, eventName, payload);
+        }
+    }
+
+
+
+    getState() {
+        return cloneObject(this._appState);
+    }
+
+    _setState(state) {
+
+        const copyState = cloneObject(state);
+
+        const previousStateCode = this._appState.code,
+            currentStateCode = copyState.code;
+
+        this._appState = copyState;
+
+        if (previousStateCode !== currentStateCode) {
+            this._triggerEvent('statechange', {
+                cube: this.cubeComponentEl,
+                previousStateCode,
+                currentStateCode,
+                state: copyState
+            });
+        }
     }
 
     F() {
@@ -148,100 +218,65 @@ class CubeTwo {
     z2_() {}
 
 
-    // _updateEventBindings() {
-    //     this._handleKeyEvent = this._handleKeyEvent.bind(this);
-    //     this._transitionEnd = this._transitionEnd.bind(this);
-    // }
+    destroy() {
+
+            // todo foreach display elements, remove transitionend
+            // todo remove key event listener
+
+        //     this.cubeComponentEl.removeEventListener('keydown', this._handleKeyEvent, false);
+        //     this.cubeEl.removeEventListener('transitionend', this._transitionEnd);
+    }
+
+    _updateUiFaces() {
+        // Update view by state
+    }
+
+    _transitionEnd(ev) {
+        let target;
+        if (ev.currentTarget) {
+            target = ev.currentTarget;
+        } else if (ev.target) {
+            target = ev.target;
+        }
+        if (target) {
+
+            const backupTransition = target.style.transition;
+            target.style.transition = `0s`;
+
+            nextFrame(_ => {
+                // Reset
+                target.style.transformOrigin = '';
+                target.style.transform = '';
+
+                this._updateUiFaces();
+
+                target.style.transform = backupTransition;
+                rAF(_ => {
+                    target.style.transition = backupTransition;
+
+                    const state = this.getState();
+                    state.rotateEnabled = true;
+                    this._setState(state);
+                    this._triggerEvent('afterrotate', {
+                        state: state,
+                    });
+                });
+            });
+        }
+    }
 
 
-    // _initCallbacks() {
-    //     this.callbacks = {};
-    //     Object.keys(EVENT_NAMES).forEach((eventName, index) => this.callbacks[eventName] = []);
-    // }
-
-    // addCallbackForEvent(eventName, callback) {
-    //     let collection = this.callbacks[(eventName = eventName.toLowerCase())];
-    //     if (collection && typeof callback === 'function') {
-    //         collection.push(callback);
-    //     }
-    // };
-
-    // _triggerEvent(eventName, payload) {
-    //     let collection = this.callbacks[eventName] || [],
-    //         i, max;
-    //     for (i = 0, max = collection.length; i < max; i++) {
-    //         collection[i].call(this, eventName, payload);
-    //     }
-    // }
-
-
-    // getState() {
-    //     return cloneObject(this._appState);
-    // }
-
-    // _setState(state) {
-
-    //     const copyState = cloneObject(state);
-
-    //     const previousStateCode = this._appState.code,
-    //         currentStateCode = copyState.code;
-
-    //     this._appState = copyState;
-
-    //     if (previousStateCode !== currentStateCode) {
-    //         this._triggerEvent('statechange', {
-    //             cube: this.cubeComponentEl,
-    //             previousStateCode,
-    //             currentStateCode,
-    //             state: copyState
-    //         });
-    //     }
-    // }
-
-    // _transitionEnd(ev) {
-    //     const cubeEl = this.cubeEl;
-    //     const backupTransition = cubeEl.style.transition;
-    //     cubeEl.style.transition = `0s`;
-    //     nextFrame(_ => {
-    //         this._updateUiFaces();
-    //         cubeEl.style.transform = backupTransition;
-    //         rAF(_ => {
-    //             cubeEl.style.transition = backupTransition;
-
-    //             const state = this.getState();
-    //             state.rotateEnabled = true;
-    //             this._setState(state);
-    //             this._triggerEvent('afterrotate', {
-    //                 cube: this.cubeComponentEl,
-    //                 state: state,
-    //             });
-    //         });
-    //     });
-    // }
-
-    // destroy() {
-    //     this.cubeComponentEl.removeEventListener('keydown', this._handleKeyEvent, false);
-    //     this.cubeEl.removeEventListener('transitionend', this._transitionEnd);
-    // }
 
     init() {
+
         for (var i = 1; i <= CUBE_COUNT; i++) {
             let cubeDisplay = this[`_cube${i}DisplayEl`];
             if (cubeDisplay) {
-                cubeDisplay.addEventListener('transitionend', (ev) => {
-                    let target;
-                    if (ev.currentTarget) {
-                        target = ev.currentTarget;
-                    } else if (ev.target) {
-                        target = ev.target;
-                    }
-                    if (target) {
-                        target.style.transformOrigin = '';
-                        target.style.transform = '';
-                    }
-                })
+                cubeDisplay.addEventListener('transitionend', 
+                this._transitionEnd);
             }
         }
+
 
         // this._handleKeyEvent.bind(this);
 
@@ -553,7 +588,7 @@ class CubeTwo {
         // this.cubeComponentEl.addEventListener('keydown', this._handleKeyEvent, false);
         // cubeEl.addEventListener('transitionend', this._transitionEnd);
 
-        // this._triggerEvent('init', { cube: this.cubeComponentEl, state: this.getState() });
+        this._triggerEvent('init', { state: this.getState() });
     }
 
     _updateUiFaces() {

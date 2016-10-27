@@ -73,6 +73,10 @@ function checkForComplete() {
 const cubeTwo = new CubeTwo({
     cubeComponent: cubeComponentEl,
 });
+cubeTwo.addCallbackForEvent('init', (eventName, payload) => {
+    log('init callback');
+    log(payload);
+});
 cubeTwo.init();
 
 // let cube = cubeTwo;
