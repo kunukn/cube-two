@@ -220,8 +220,8 @@ class CubeTwo {
 
     destroy() {
 
-            // todo foreach display elements, remove transitionend
-            // todo remove key event listener
+        // todo foreach display elements, remove transitionend
+        // todo remove key event listener
 
         //     this.cubeComponentEl.removeEventListener('keydown', this._handleKeyEvent, false);
         //     this.cubeEl.removeEventListener('transitionend', this._transitionEnd);
@@ -272,8 +272,8 @@ class CubeTwo {
         for (var i = 1; i <= CUBE_COUNT; i++) {
             let cubeDisplay = this[`_cube${i}DisplayEl`];
             if (cubeDisplay) {
-                cubeDisplay.addEventListener('transitionend', 
-                this._transitionEnd);
+                cubeDisplay.addEventListener('transitionend',
+                    this._transitionEnd);
             }
         }
 
