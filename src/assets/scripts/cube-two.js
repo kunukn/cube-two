@@ -1,34 +1,95 @@
 'use strict';
 
- import { debug, log, error } from './logger';
+import { debug, log, error } from './logger';
 
- import { qs, qsa, byId } from './query';
+import { qs, qsa, byId } from './query';
 
 // import dictCubeSkins from './dictionaries/dict-cube-skins';
 
-// import deepFreeze from 'deep-freeze';
+import deepFreeze from 'deep-freeze';
 
-// import {
-//     rAF,
-//     nextFrame,
-//     cloneObject,
-//     nextState,
-//     getLeft,
-//     getRight,
-//     getDown,
-//     getBack,
-//     getUp,
-//     getFront
-// } from './cube-util';
+import {
+    rAF,
+    nextFrame,
+    cloneObject,
+    nextState,
+    getLeft,
+    getRight,
+    getDown,
+    getBack,
+    getUp,
+    getFront
+} from './cube-util';
 
-// import dictCube from './dictionaries/dict-cube';
-// import dictCubeTransform from './dictionaries/dict-cube-transform';
+import dictCube from './dictionaries/dict-cube';
+import dictCubeTransform from './dictionaries/dict-cube-transform';
 
-// import { STATES, STATES_ARRAY, KEY, EVENT_NAMES } from './constants';
+import { STATES, STATES_ARRAY, KEY, EVENT_NAMES } from './constants';
 
 class CubeTwo {
-    constructor(config) {        
+    constructor(config) {
+        this._cubeComponentEl = config.cubeComponent;
+
+        log('CubeTwo constructor');
     }
+
+    F() {
+        log('front clockwise');
+    }
+    F_() {
+        log('front counter clockwise');
+    }
+    B() {
+
+    }
+    B_() {
+
+    }
+
+    U() {
+
+    }
+    U_() {
+
+    }
+    D() {
+
+    }
+    D_() {
+
+    }
+    R() {
+
+    }
+    R_() {
+
+    }
+    L() {
+
+    }
+    L_() {
+
+    }
+
+    x(){
+        log('rotate hole cube in 90deg x axis');
+    }
+    y(){}
+    z(){}
+    x2(){
+        log('rotate hole cube in 180deg x axis');
+    }
+    y2(){}
+    z2(){}
+    x_(){
+        log('rotate hole cube in -90deg x axis');
+    }
+    y_(){}
+    z_(){}
+    x2_(){}
+    y2_(){}
+    z2_(){}
+    
 
     // _updateEventBindings() {
     //     this._handleKeyEvent = this._handleKeyEvent.bind(this);

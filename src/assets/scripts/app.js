@@ -6,7 +6,7 @@ import { log } from './logger';
 
 import { qs, qsa, byId } from './query';
 
-//import Cubetwo from './cube-two';
+import CubeTwo from './cube-two';
 
 //import dictCubeSkins from './dictionaries/dict-cube-skins';
 
@@ -40,7 +40,7 @@ function initCallback(eventName, payload) {
 }
 
 const bodyWrapperEl = qs('.body-wrapper');
-const cubeComponentEl = byId('cubetwo-component-9');
+const cubeComponentEl = byId('cubetwo-component-1');
 const cubetwoRotationViewEl = qs('.cubetwo-rotation-view', cubeComponentEl);
 
 function checkForComplete() {
@@ -69,58 +69,13 @@ function checkForComplete() {
     // }
 }
 
-const cubetwo = {
-    cubes: []
-};
 
+const cubeTwo = new CubeTwo({
+    cubeComponent: cubeComponentEl,
+});
+cubeTwo.init();
 
-
-// const cube1 = new cubetwo({
-//     cubeComponent: byId('cubetwo-component-1'),
-//     // faceSkins: {
-//     //     u: {
-//     //         bgColor: 'red'
-//     //     },
-//     //     f: {
-//     //         bgColor: 'pink'
-//     //     },
-//     //     r: {
-//     //         bgColor: 'yellow'
-//     //     },
-//     //     l: {
-//     //         bgColor: 'green'
-//     //     },
-//     //     b: {
-//     //         bgColor: 'dodgerblue'
-//     //     },
-//     //     d: {
-//     //         bgColor: 'teal'
-//     //     },
-//     // },
-// });
-// const cube2 = new cubetwo({
-//     cubeComponent: byId('cubetwo-component-2'),
-// });
-// const cube3 = new cubetwo({
-//     cubeComponent: byId('cubetwo-component-3'),
-// });
-// const cube4 = new cubetwo({
-//     cubeComponent: byId('cubetwo-component-4'),
-// });
-// const cube5 = new cubetwo({
-//     cubeComponent: byId('cubetwo-component-5'),
-// });
-// const cube6 = new cubetwo({
-//     cubeComponent: byId('cubetwo-component-6'),
-// });
-// const cube7 = new cubetwo({
-//     cubeComponent: byId('cubetwo-component-7'),
-// });
-// const cube8 = new cubetwo({
-//     cubeComponent: byId('cubetwo-component-8'),
-// });
-
-// let cube = cube1;
+// let cube = cubeTwo;
 // cube.addCallbackForEvent('init', initCallback);
 // cube.addCallbackForEvent('statechange', statechangeCallback);
 // cube.init();
@@ -138,106 +93,9 @@ const cubetwo = {
 //     }
 // });
 
-// //----------
-// cube = cube2;
-// cube.addCallbackForEvent('init', initCallback);
-// cube.addCallbackForEvent('statechange', statechangeCallback);
-// cube.init();
-// cube.setToRandomState();
-// cubetwo.cubes.push(cube);
-// cube.addCallbackForEvent('beforerotate', (eventName, payload) => {
-//     if (payload.action === 'x') {
-//         cube4.x({ skipTriggerEvent: true });
-//     } else if (payload.action === '-x') {
-//         cube4.X({ skipTriggerEvent: true });
-//     } else if (payload.action === 'y') {
-//         cube1.y({ skipTriggerEvent: true });
-//     } else if (payload.action === '-y') {
-//         cube1.Y({ skipTriggerEvent: true });
-//     }
-// });
 
 
-// //----------
-// cube = cube3;
-// cube.addCallbackForEvent('init', initCallback);
-// cube.addCallbackForEvent('statechange', statechangeCallback);
-// cube.init();
-// cube.setToRandomState();
-// cubetwo.cubes.push(cube);
-// cube.addCallbackForEvent('beforerotate', (eventName, payload) => {
-//     if (payload.action === 'x') {
-//         cube1.x({ skipTriggerEvent: true });
-//     } else if (payload.action === '-x') {
-//         cube1.X({ skipTriggerEvent: true });
-//     } else if (payload.action === 'y') {
-//         cube4.y({ skipTriggerEvent: true });
-//     } else if (payload.action === '-y') {
-//         cube4.Y({ skipTriggerEvent: true });
-//     }
-// });
-
-// //----------
-// cube = cube4;
-// cube.addCallbackForEvent('init', initCallback);
-// cube.addCallbackForEvent('statechange', statechangeCallback);
-// cube.init();
-// cube.setToRandomState();
-// cubetwo.cubes.push(cube);
-// cube.addCallbackForEvent('beforerotate', (eventName, payload) => {
-//     if (payload.action === 'x') {
-//         cube2.x({ skipTriggerEvent: true });
-//     } else if (payload.action === '-x') {
-//         cube2.X({ skipTriggerEvent: true });
-//     } else if (payload.action === 'y') {
-//         cube3.y({ skipTriggerEvent: true });
-//     } else if (payload.action === '-y') {
-//         cube3.Y({ skipTriggerEvent: true });
-//     }
-// });
-
-
-// //----------
-// cube = cube5;
-// cube.init();
-// cube.setToRandomState();
-// cubetwo.cubes.push(cube);
-
-
-// //----------
-// cube = cube6;
-// cube.init();
-// cube.setToRandomState();
-// cubetwo.cubes.push(cube);
-
-
-// //----------
-// cube = cube7;
-// cube.init();
-// cube.setToRandomState();
-// cubetwo.cubes.push(cube);
-
-
-// //----------
-// cube = cube8;
-// cube.init();
-// cube.setToRandomState();
-// cubetwo.cubes.push(cube);
-
-
-//----------
-
-
-// cubetwo.solve = () => {
-//     cubetwo.cubes.forEach(cube => cube.gotoState('uf'));
-// };
-
-// cubetwo.random = () => {
-//     cubetwo.cubes.forEach(cube => cube.setToRandomState());
-// };
-
-
-window.cubetwo = cubetwo;
+window.cubeTwo = cubeTwo;
 
 const btncubetwoRotateView = byId('btn-cube-two-rotate-view');
 btncubetwoRotateView.addEventListener('click', (ev) => {
