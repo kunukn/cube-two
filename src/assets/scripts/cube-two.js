@@ -43,15 +43,6 @@ class CubeTwo {
         deepFreeze(this._config);
 
         this._cubeComponentEl = config.cubeComponent;
-        this._cubes = [];
-        for (var i = 1; i <= CUBE_COUNT; i++) {
-            let cube = qs(`.cubetwo-cube-${i}`, this._cubeComponentEl);
-            this._cubes.push(cube);
-            this[`_cube${i}El`] = cube;
-            this[`_cube${i}DisplayEl`] = qs('[data-type="cubetwo-display"]', cube);;
-            this[`_cube${i}TouchEl`] = qs('[data-type="cubetwo-touch"]', cube);;
-        }
-        deepFreeze(this._cubes);
 
         this._updateEventBindings();
 
@@ -503,6 +494,15 @@ class CubeTwo {
 
 
     init() {
+        this._cubes = [];
+        for (var i = 1; i <= CUBE_COUNT; i++) {
+            let cube = qs(`.cubetwo-cube-${i}`, this._cubeComponentEl);
+            this._cubes.push(cube);
+            this[`_cube${i}El`] = cube;
+            this[`_cube${i}DisplayEl`] = qs('[data-type="cubetwo-display"]', cube);
+            this[`_cube${i}TouchEl`] = qs('[data-type="cubetwo-touch"]', cube);
+        }
+        deepFreeze(this._cubes);
 
         for (var i = 1; i <= CUBE_COUNT; i++) {
             let cubeDisplay = this[`_cube${i}DisplayEl`];
