@@ -30,6 +30,27 @@ body {
     animation: page-fade-in 2000ms;
 }
 
+footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2em;
+    padding: .5em;
+    //line-height: 2em;
+    background: rgba(white, .1);
+    >a {
+        transition: 200ms;
+        color: rgba(white, .5);
+        &:focus {
+            color: $color-focus;
+        }
+    }
+}
+
 @keyframes page-fade-in {
     from {
         opacity: 0;

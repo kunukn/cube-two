@@ -59,6 +59,9 @@ class CubeTwo {
 
     _updateEventBindings() {
         this._handleKeyEventCube1 = this._handleKeyEventCube1.bind(this);
+        this._handleKeyEventCube2 = this._handleKeyEventCube2.bind(this);
+        this._handleKeyEventCube3 = this._handleKeyEventCube3.bind(this);
+        this._handleKeyEventCube4 = this._handleKeyEventCube4.bind(this);
         this.handleGlobalKeyEvent = this.handleGlobalKeyEvent.bind(this);
         this._transitionEnd = this._transitionEnd.bind(this);
     }
@@ -1591,6 +1594,9 @@ class CubeTwo {
         this._updateUiFaces();
 
         this._cubeElements[1].addEventListener('keydown', this._handleKeyEventCube1, false);
+        this._cubeElements[2].addEventListener('keydown', this._handleKeyEventCube2, false);
+        this._cubeElements[3].addEventListener('keydown', this._handleKeyEventCube3, false);
+        this._cubeElements[4].addEventListener('keydown', this._handleKeyEventCube4, false);
 
         this._triggerEvent('init', { state: this.getState() });
     }
@@ -1786,12 +1792,10 @@ class CubeTwo {
             case KEY.UP:
                 event.preventDefault();
             case KEY.w:
-            case KEY.x:
                 this.L_();
                 break;
             case KEY.RIGHT:
             case KEY.d:
-            case KEY.y:
                 this.U_();
                 break;
             case KEY.DOWN:
@@ -1803,15 +1807,138 @@ class CubeTwo {
                 this.F_();
                 break;
             case KEY.e:
-            case KEY.z:
                 this.F();
+                break;
+            case KEY.x:
+                this.x();
+                break;
+            case KEY.y:
+                this.y();
+                break;
+            case KEY.z:
+                this.z();
+                break;
+        }
+    }
+    _handleKeyEventCube2(event) {
+        event.stopPropagation();
+
+        switch (event.keyCode) {
+            case KEY.LEFT:
+            case KEY.a:
+                this.U();
+                break;
+            case KEY.UP:
+                event.preventDefault();
+            case KEY.w:
+                this.R();
+                break;
+            case KEY.RIGHT:
+            case KEY.d:
+                this.U_();
+                break;
+            case KEY.DOWN:
+                event.preventDefault();
+            case KEY.s:
+                this.R_();
+                break;
+            case KEY.q:
+                this.F_();
+                break;
+            case KEY.e:
+                this.F();
+                break;
+            case KEY.x:
+                this.x();
+                break;
+            case KEY.y:
+                this.y();
+                break;
+            case KEY.z:
+                this.z();
+                break;
+        }
+    }
+    _handleKeyEventCube3(event) {
+        event.stopPropagation();
+
+        switch (event.keyCode) {
+            case KEY.LEFT:
+            case KEY.a:
+                this.D_();
+                break;
+            case KEY.UP:
+                event.preventDefault();
+            case KEY.w:
+                this.L_();
+                break;
+            case KEY.RIGHT:
+            case KEY.d:
+                this.D();
+                break;
+            case KEY.DOWN:
+                event.preventDefault();
+            case KEY.s:
+                this.L();
+                break;
+            case KEY.q:
+                this.F_();
+                break;
+            case KEY.e:
+                this.F();
+                break;
+            case KEY.x:
+                this.x();
+                break;
+            case KEY.y:
+                this.y();
+                break;
+            case KEY.z:
+                this.z();
+                break;
+        }
+    }
+    _handleKeyEventCube4(event) {
+        event.stopPropagation();
+
+        switch (event.keyCode) {
+            case KEY.LEFT:
+            case KEY.a:
+                this.D_();
+                break;
+            case KEY.UP:
+                event.preventDefault();
+            case KEY.w:
+                this.R();
+                break;
+            case KEY.RIGHT:
+            case KEY.d:
+                this.D();
+                break;
+            case KEY.DOWN:
+                event.preventDefault();
+            case KEY.s:
+                this.R_();
+                break;
+            case KEY.q:
+                this.F_();
+                break;
+            case KEY.e:
+                this.F();
+                break;
+            case KEY.x:
+                this.x();
+                break;
+            case KEY.y:
+                this.y();
+                break;
+            case KEY.z:
+                this.z();
                 break;
         }
     }
 
     handleGlobalKeyEvent(event) {
-
-        // log(event.keyCode);
 
         switch (event.keyCode) {
             case KEY.LEFT:
