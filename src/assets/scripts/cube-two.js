@@ -274,20 +274,54 @@ class CubeTwo {
 
 
     _uix() {
+        this._uiR();
+        this._uiL_();
+    }
+    _uix_() {
+        this._uiR_();
+        this._uiL();
+    }
+    _uix2() {
+        this._uiR2();
+        this._uiL2_();
+    }
+    _uix2_() {
+        this._uiR2_();
+        this._uiL2();
+    }
+
+    _uiy() {
         this._uiU_();
         this._uiD();
     }
-    _uix_() {
+    _uiy_() {
         this._uiU();
         this._uiD_();
     }
-    _uix2() {
+    _uiy2() {
         this._uiU2_();
         this._uiD2();
     }
-    _uix2_() {
+    _uiy2_() {
         this._uiU2();
         this._uiD2_();
+    }
+
+    _uiz() {
+        this._uiF();
+        this._uiB_();
+    }
+    _uiz_() {
+        this._uiF_();
+        this._uiB();
+    }
+    _uiz2() {
+        this._uiF2();
+        this._uiB2_();
+    }
+    _uiz2_() {
+        this._uiF2_();
+        this._uiB2();
     }
 
 
@@ -379,24 +413,45 @@ class CubeTwo {
 
 
     x(config) {
-        log('rotate hole cube in 90deg x axis');
         this._uix();
     }
-    y(config) {}
-    z(config) {}
-    x2(config) {
-        log('rotate hole cube in 180deg x axis');
-    }
-    y2(config) {}
-    z2(config) {}
     x_(config) {
-        log('rotate hole cube in -90deg x axis');
+        this._uix_();
     }
-    y_(config) {}
-    z_(config) {}
-    x2_(config) {}
-    y2_(config) {}
-    z2_(config) {}
+    x2(config) {
+        this._uix2();
+    }
+    x2_(config) {
+        this._uix2_();
+    }
+
+
+    y(config) {
+        this._uiy();
+    }
+    y_(config) {
+        this._uiy_();
+    }
+    y2(config) {
+        this._uiy2();
+    }
+    y2_(config) {
+        this._uiy2_();
+    }
+
+
+    z(config) {
+        this._uiz();
+    }
+    z2(config) {
+        this._uiz2();
+    }
+    z_(config) {
+        this._uiz_();
+    }
+    z2_(config) {
+        this._uiz2_();
+    }
 
 
     destroy() {
