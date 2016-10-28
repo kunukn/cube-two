@@ -492,41 +492,7 @@ class CubeTwo {
         }
     }
 
-
-
-    init() {
-        this._cubeElements = [''];
-        this._touchElements = [''];
-        this._displayElements = [''];
-
-        for (var i = 1; i <= CUBE_COUNT; i++) {
-            let cube = qs(`.cubetwo-cube-${i}`, this._cubeComponentEl),
-                touch = qs('[data-type="cubetwo-touch"]', cube),
-                display = qs('[data-type="cubetwo-display"]', cube);
-
-            this._cubeElements.push(cube);
-            this._displayElements.push(display);
-            this._touchElements.push(touch);
-        }
-        deepFreeze(this._cubeElements);
-        deepFreeze(this._touchElements);
-        deepFreeze(this._displayElements);
-
-        for (var i = 1; i <= CUBE_COUNT; i++) {
-            let cubeDisplay = this._displayElements[i];
-            if (cubeDisplay) {
-                cubeDisplay.addEventListener('transitionend',
-                    this._transitionEnd);
-            }
-        }
-
-
-
-
-        // this._handleKeyEvent.bind(this);
-
-        // const cubeComponentEl = this.cubeComponentEl;
-
+    _setupCube1() {
         let touchEl = this._touchElements[1],
             touchUpEl = qs('[data-type="up"]', touchEl),
             touchDownEl,
@@ -618,311 +584,93 @@ class CubeTwo {
             }
         });
 
-        // const touchUpEl = qs('[data-type="CubeTwo-touch"] > [data-type=up]', cubeComponentEl),
-        //     touchFrontEl = qs('[data-type="CubeTwo-touch"] > [data-type=front]', cubeComponentEl),
-        //     touchRightEl = qs('[data-type="CubeTwo-touch"] >  [data-type=right]', cubeComponentEl),
-        //     touchLeftEl = qs('[data-type="CubeTwo-touch"] >  [data-type=left]', cubeComponentEl),
-        //     touchBackEl = qs('[data-type="CubeTwo-touch"] >  [data-type=back]', cubeComponentEl),
-        //     touchDownEl = qs('[data-type="CubeTwo-touch"] >  [data-type=down]', cubeComponentEl);
+        swipe = new Hammer.Swipe();
+        swipe.set({ direction: Hammer.DIRECTION_ALL });
 
-        // const touches = [touchUpEl, touchFrontEl, touchRightEl, touchLeftEl, touchBackEl, touchDownEl];
-        // touches.forEach(touch => {
-        //     if (!touch) {
-        //         error(`html is invalid for touch elements: `);
-        //         error(touches);
-        //         return;
-        //     }
-        // });
+        hammerManager = new Hammer.Manager(touchLeftEl, {});
+        hammerManager.add(swipe);
+        hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
+        hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
+        hammerManager.get('doubletap').recognizeWith('singletap');
+        hammerManager.get('singletap').requireFailure('doubletap');
 
+        hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+            const type = ev.type;
+            let element = ev.target;
+            //debug(`${type} ${element.dataset.type}`);
 
-        // const cubeEl = qs('[data-type="CubeTwo-display"]', cubeComponentEl);
-        // this.cubeEl = cubeEl;
-        // if (!cubeEl) {
-        //     error(`html is invalid for CubeTwo-display`);
-        //     return;
-        // }
+            if (element.dataset.type !== 'cubetwo') {
+                element = element.parentElement;
+                if (element.dataset.type !== 'cubetwo')
+                    element = element.parentElement;
+            }
+            switch (type) {
+                case 'singletap':
+                    break;
+                case 'doubletap':
+                    break;
+                case 'swipeup':
+                    this.F();
+                    break;
+                case 'swiperight':
+                    this.U_();
+                    break;
+                case 'swipedown':
+                    this.F_();
+                    break;
+                case 'swipeleft':
+                    this.U();
+                    break;
+            }
+        });
 
-        // this.frontEl = qs('[data-type=front] > div', cubeEl);
-        // this.upEl = qs('[data-type=up] > div', cubeEl);
-        // this.rightEl = qs('[data-type=right] > div', cubeEl);
-        // this.leftEl = qs('[data-type=left] > div', cubeEl);
-        // this.backEl = qs('[data-type=back] > div', cubeEl);
-        // this.downEl = qs('[data-type=down] > div', cubeEl);
-        // const displays = [this.frontEl, this.upEl, this.rightEl, this.leftEl, this.backEl, this.downEl];
-        // displays.forEach(display => {
-        //     if (!display) {
-        //         error(`html is invalid for display elements: `);
-        //         error(displays);
-        //         return;
-        //     }
-        // });
+    }
+    _setupCube2() {}
+    _setupCube3() {}
+    _setupCube4() {}
+    _setupCube5() {}
+    _setupCube6() {}
+    _setupCube7() {}
+    _setupCube8() {}
 
-        // const swipeFront = new Hammer.Swipe();
-        // swipeFront.set({ direction: Hammer.DIRECTION_ALL });
-        // const swipeUp = new Hammer.Swipe();
-        // swipeUp.set({ direction: Hammer.DIRECTION_ALL });
-        // const swipeRight = new Hammer.Swipe();
-        // swipeRight.set({ direction: Hammer.DIRECTION_ALL });
-        // const swipeLeft = new Hammer.Swipe();
-        // swipeLeft.set({ direction: Hammer.DIRECTION_ALL });
-        // const swipeDown = new Hammer.Swipe();
-        // swipeDown.set({ direction: Hammer.DIRECTION_ALL });
-        // const swipeBack = new Hammer.Swipe();
-        // swipeBack.set({ direction: Hammer.DIRECTION_ALL });
+    init() {
+        this._cubeElements = [''];
+        this._touchElements = [''];
+        this._displayElements = [''];
 
-        // const hammerFront = new Hammer.Manager(touchFrontEl, {});
-        // hammerFront.add(swipeFront);
+        for (var i = 1; i <= CUBE_COUNT; i++) {
+            let cube = qs(`.cubetwo-cube-${i}`, this._cubeComponentEl),
+                touch = qs('[data-type="cubetwo-touch"]', cube),
+                display = qs('[data-type="cubetwo-display"]', cube);
 
-        // const hammerUp = new Hammer.Manager(touchUpEl, {});
-        // hammerUp.add(swipeUp);
+            this._cubeElements.push(cube);
+            this._displayElements.push(display);
+            this._touchElements.push(touch);
+        }
+        deepFreeze(this._cubeElements);
+        deepFreeze(this._touchElements);
+        deepFreeze(this._displayElements);
 
-        // const hammerRight = new Hammer.Manager(touchRightEl, {});
-        // hammerRight.add(swipeRight);
+        for (var i = 1; i <= CUBE_COUNT; i++) {
+            let cubeDisplay = this._displayElements[i];
+            if (cubeDisplay) {
+                cubeDisplay.addEventListener('transitionend',
+                    this._transitionEnd);
+            }
+        }
 
-        // const hammerLeft = new Hammer.Manager(touchLeftEl, {});
-        // hammerLeft.add(swipeLeft);
-
-        // const hammerDown = new Hammer.Manager(touchDownEl, {});
-        // hammerDown.add(swipeDown);
-
-        // const hammerBack = new Hammer.Manager(touchBackEl, {});
-        // hammerBack.add(swipeBack);
-
-
-        // hammerFront.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
-        // hammerFront.add(new Hammer.Tap({ event: 'singletap' }));
-        // hammerFront.get('doubletap').recognizeWith('singletap');
-        // hammerFront.get('singletap').requireFailure('doubletap');
-
-        // hammerUp.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
-        // hammerUp.add(new Hammer.Tap({ event: 'singletap' }));
-        // hammerUp.get('doubletap').recognizeWith('singletap');
-        // hammerUp.get('singletap').requireFailure('doubletap');
-
-        // hammerRight.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
-        // hammerRight.add(new Hammer.Tap({ event: 'singletap' }));
-        // hammerRight.get('doubletap').recognizeWith('singletap');
-        // hammerRight.get('singletap').requireFailure('doubletap');
-
-        // hammerLeft.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
-        // hammerLeft.add(new Hammer.Tap({ event: 'singletap' }));
-        // hammerLeft.get('doubletap').recognizeWith('singletap');
-        // hammerLeft.get('singletap').requireFailure('doubletap');
-
-        // hammerDown.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
-        // hammerDown.add(new Hammer.Tap({ event: 'singletap' }));
-        // hammerDown.get('doubletap').recognizeWith('singletap');
-        // hammerDown.get('singletap').requireFailure('doubletap');
-
-        // hammerBack.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
-        // hammerBack.add(new Hammer.Tap({ event: 'singletap' }));
-        // hammerBack.get('doubletap').recognizeWith('singletap');
-        // hammerBack.get('singletap').requireFailure('doubletap');
-
-        // hammerFront.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
-
-        //     const type = ev.type;
-        //     let element = ev.target;
-        //     //debug(`${type} ${element.dataset.type}`);
-
-        //     // Find swipe element if event is invoke on child element
-        //     if (element.dataset.type !== 'CubeTwo') {
-        //         element = element.parentElement;
-        //         if (element.dataset.type !== 'CubeTwo')
-        //             element = element.parentElement;
-        //     }
-
-        //     switch (type) {
-        //         case 'singletap':
-        //             break;
-        //         case 'doubletap':
-        //             this.tapped(element, ev.target.dataset.type);
-        //             break;
-        //         case 'swipeup':
-        //             this.x();
-        //             break;
-        //         case 'swiperight':
-        //             this.y();
-        //             break;
-        //         case 'swipedown':
-        //             this.X();
-        //             break;
-        //         case 'swipeleft':
-        //             this.Y();
-        //             break;
-        //     }
-        // });
-
-
-        // hammerUp.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
-        //     const type = ev.type;
-        //     let element = ev.target;
-        //     //debug(`${type} ${element.dataset.type}`);
-
-        //     // Find swipe element if event is invoke on child element
-        //     if (element.dataset.type !== 'CubeTwo') {
-        //         element = element.parentElement;
-        //         if (element.dataset.type !== 'CubeTwo')
-        //             element = element.parentElement;
-        //     }
-
-        //     switch (type) {
-        //         case 'singletap':
-        //             break;
-        //         case 'doubletap':
-        //             this.tapped(element, ev.target.dataset.type);
-        //             break;
-        //         case 'swipeup':
-        //             this.x();
-        //             break;
-        //         case 'swiperight':
-        //             this.z();
-        //             break;
-        //         case 'swipedown':
-        //             this.X();
-        //             break;
-        //         case 'swipeleft':
-        //             this.Z();
-        //             break;
-        //     }
-        // });
-
-
-        // hammerRight.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
-        //     const type = ev.type;
-        //     let element = ev.target;
-        //     //debug(`${type} ${element.dataset.type}`);
-
-        //     // Find swipe element if event is invoke on child element
-        //     if (element.dataset.type !== 'CubeTwo') {
-        //         element = element.parentElement;
-        //         if (element.dataset.type !== 'CubeTwo')
-        //             element = element.parentElement;
-        //     }
-        //     switch (type) {
-        //         case 'singletap':
-        //             break;
-        //         case 'doubletap':
-        //             this.tapped(element, ev.target.dataset.type);
-        //             break;
-        //         case 'swipeup':
-        //             this.Z();
-        //             break;
-        //         case 'swiperight':
-        //             this.y();
-        //             break;
-        //         case 'swipedown':
-        //             this.z();
-        //             break;
-        //         case 'swipeleft':
-        //             this.Y();
-        //             break;
-        //     }
-        // });
-
-
-        // hammerLeft.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
-        //     const type = ev.type;
-        //     let element = ev.target;
-        //     debug(`${type} ${element.dataset.type}`);
-
-        //     // Find swipe element if event is invoke on child element
-        //     if (element.dataset.type !== 'CubeTwo') {
-        //         element = element.parentElement;
-        //         if (element.dataset.type !== 'CubeTwo')
-        //             element = element.parentElement;
-        //     }
-        //     switch (type) {
-        //         case 'singletap':
-        //             break;
-        //         case 'doubletap':
-        //             this.tapped(element, ev.target.dataset.type);
-        //             break;
-        //         case 'swipeup':
-        //             this.z();
-        //             break;
-        //         case 'swiperight':
-        //             this.y();
-        //             break;
-        //         case 'swipedown':
-        //             this.Z();
-        //             break;
-        //         case 'swipeleft':
-        //             this.Y();
-        //             break;
-        //     }
-        // });
-
-        // hammerDown.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
-        //     const type = ev.type;
-        //     let element = ev.target;
-        //     //debug(`${type} ${element.dataset.type}`);
-
-        //     // Find swipe element if event is invoke on child element
-        //     if (element.dataset.type !== 'CubeTwo') {
-        //         element = element.parentElement;
-        //         if (element.dataset.type !== 'CubeTwo')
-        //             element = element.parentElement;
-        //     }
-        //     switch (type) {
-        //         case 'singletap':
-        //             break;
-        //         case 'doubletap':
-        //             this.tapped(element, ev.target.dataset.type);
-        //             break;
-        //         case 'swipeup':
-        //             this.x();
-        //             break;
-        //         case 'swiperight':
-        //             this.Z();
-        //             break;
-        //         case 'swipedown':
-        //             this.X();
-        //             break;
-        //         case 'swipeleft':
-        //             this.z();
-        //             break;
-        //     }
-        // });
-
-
-        // hammerBack.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
-        //     const type = ev.type;
-        //     let element = ev.target;
-        //     //debug(`${type} ${element.dataset.type}`);
-
-        //     // Find swipe element if event is invoke on child element
-        //     if (element.dataset.type !== 'CubeTwo') {
-        //         element = element.parentElement;
-        //         if (element.dataset.type !== 'CubeTwo')
-        //             element = element.parentElement;
-        //     }
-        //     switch (type) {
-        //         case 'singletap':
-        //             break;
-        //         case 'doubletap':
-        //             this.tapped(element, ev.target.dataset.type);
-        //             break;
-        //         case 'swipeup':
-        //             this.X();
-        //             break;
-        //         case 'swiperight':
-        //             this.y();
-        //             break;
-        //         case 'swipedown':
-        //             this.x();
-        //             break;
-        //         case 'swipeleft':
-        //             this.Y();
-        //             break;
-        //     }
-        // });
-
+        this._setupCube1();
+        this._setupCube2();
+        this._setupCube3();
+        this._setupCube4();
+        this._setupCube5();
+        this._setupCube6();
+        this._setupCube7();
+        this._setupCube8();
 
         // this._updateUiFaces();
 
         // this.cubeComponentEl.addEventListener('keydown', this._handleKeyEvent, false);
-        // cubeEl.addEventListener('transitionend', this._transitionEnd);
 
         this._triggerEvent('init', { state: this.getState() });
     }
