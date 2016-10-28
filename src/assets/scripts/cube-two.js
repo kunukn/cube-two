@@ -463,14 +463,8 @@ class CubeTwo {
     }
 
     _transitionEnd(ev) {
-        let target;
-        if (ev.currentTarget) {
-            target = ev.currentTarget;
-        } else if (ev.target) {
-            target = ev.target;
-        }
+        let target = ev.currentTarget;
         if (target) {
-
             const backupTransition = target.style.transition;
             target.style.transition = `0s`;
 

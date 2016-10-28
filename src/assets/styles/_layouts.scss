@@ -40,9 +40,8 @@ footer {
     left: 0;
     min-height: 4em;
     padding: .5em;
-    //line-height: 2em;
     background: rgba(white, .1);
-    .btn-group {
+    .cubetwo-btn-group {
         flex: 1;
         display: flex;
         justify-content: center;
@@ -57,8 +56,12 @@ footer {
             box-shadow: 2px 2px 4px gray;
             outline: none;
             min-height: 32px;
+            transition: background 200ms;
             &:focus {
                 box-shadow: 2px 2px 1em $color-focus;
+            }
+            &.cubetwo-active {
+                background: rgba(white, .1);
             }
         }
     }

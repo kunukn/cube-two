@@ -102,8 +102,13 @@ window.addEventListener('keydown', cubeTwo.handleGlobalKeyEvent, false);
 
 window.cubeTwo = cubeTwo;
 
-const btncubetwoRotateView = byId('btn-cube-two-rotate-view');
-btncubetwoRotateView.addEventListener('click', (ev) => {
+const cubetwoHelpEl = byId('cubetwo-help');
+byId('btn-cubetwo-help').addEventListener('click', (ev) => {
+    cubetwoHelpEl.classList.toggle('cubetwo-show-help');
+    ev.currentTarget.classList.toggle('cubetwo-active');
+});
+
+byId('btn-cubetwo-rotate-view').addEventListener('click', (ev) => {
     if (cubetwoRotationViewEl.classList.contains('left-side')) {
         cubetwoRotationViewEl.classList.remove('left-side');
         cubetwoRotationViewEl.classList.add('down-side');
