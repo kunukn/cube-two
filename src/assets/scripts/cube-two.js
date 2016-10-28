@@ -12,19 +12,19 @@ import {
     rAF,
     nextFrame,
     cloneObject,
-    nextState,
-    getLeft,
-    getRight,
-    getDown,
-    getBack,
-    getUp,
-    getFront
+    // nextState,
+    // getLeft,
+    // getRight,
+    // getDown,
+    // getBack,
+    // getUp,
+    // getFront
 } from './cube-util';
 
-import dictCube from './dictionaries/dict-cube';
-import dictCubeTransform from './dictionaries/dict-cube-transform';
+// import dictCube from './dictionaries/dict-cube';
+// import dictCubeTransform from './dictionaries/dict-cube-transform';
 
-import { STATES, STATES_ARRAY, KEY, EVENT_NAMES } from './constants';
+import { /*STATES, STATES_ARRAY, KEY, */ EVENT_NAMES } from './constants';
 
 const CUBE_COUNT = 8;
 const CUBE_SIZE = '20vmin';
@@ -625,8 +625,270 @@ class CubeTwo {
         });
 
     }
-    _setupCube2() {}
-    _setupCube3() {}
+    _setupCube2() {
+        let touchEl = this._touchElements[2],
+            touchUpEl = qs('[data-type="up"]', touchEl),
+            touchDownEl,
+            touchFrontEl = qs('[data-type="front"]', touchEl),
+            touchBackEl,
+            touchRightEl = qs('[data-type="right"]', touchEl),
+            touchLeftEl;
+
+        let swipe = new Hammer.Swipe();
+        swipe.set({ direction: Hammer.DIRECTION_ALL });
+
+        let hammerManager = new Hammer.Manager(touchFrontEl, {});
+        hammerManager.add(swipe);
+        hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
+        hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
+        hammerManager.get('doubletap').recognizeWith('singletap');
+        hammerManager.get('singletap').requireFailure('doubletap');
+
+        hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+            const type = ev.type;
+            let element = ev.target;
+            //debug(`${type} ${element.dataset.type}`);
+
+            // Find swipe element if event is invoke on child element
+            if (element.dataset.type !== 'cubetwo') {
+                element = element.parentElement;
+                if (element.dataset.type !== 'cubetwo')
+                    element = element.parentElement;
+            }
+            switch (type) {
+                case 'singletap':
+                    break;
+                case 'doubletap':
+                    //this.tapped(element, ev.target.dataset.type);
+                    break;
+                case 'swipeup':
+                    this.R();
+                    break;
+                case 'swiperight':
+                    this.U_();
+                    break;
+                case 'swipedown':
+                    this.R_();
+                    break;
+                case 'swipeleft':
+                    this.U();
+                    break;
+            }
+        });
+
+
+        swipe = new Hammer.Swipe();
+        swipe.set({ direction: Hammer.DIRECTION_ALL });
+
+        hammerManager = new Hammer.Manager(touchUpEl, {});
+        hammerManager.add(swipe);
+        hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
+        hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
+        hammerManager.get('doubletap').recognizeWith('singletap');
+        hammerManager.get('singletap').requireFailure('doubletap');
+
+        hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+            const type = ev.type;
+            let element = ev.target;
+            //debug(`${type} ${element.dataset.type}`);
+
+            if (element.dataset.type !== 'cubetwo') {
+                element = element.parentElement;
+                if (element.dataset.type !== 'cubetwo')
+                    element = element.parentElement;
+            }
+            switch (type) {
+                case 'singletap':
+                    break;
+                case 'doubletap':
+                    break;
+                case 'swipeup':
+                    this.R();
+                    break;
+                case 'swiperight':
+                    this.F();
+                    break;
+                case 'swipedown':
+                    this.R_();
+                    break;
+                case 'swipeleft':
+                    this.F_();
+                    break;
+            }
+        });
+
+        swipe = new Hammer.Swipe();
+        swipe.set({ direction: Hammer.DIRECTION_ALL });
+
+        hammerManager = new Hammer.Manager(touchRightEl, {});
+        hammerManager.add(swipe);
+        hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
+        hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
+        hammerManager.get('doubletap').recognizeWith('singletap');
+        hammerManager.get('singletap').requireFailure('doubletap');
+
+        hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+            const type = ev.type;
+            let element = ev.target;
+            //debug(`${type} ${element.dataset.type}`);
+
+            if (element.dataset.type !== 'cubetwo') {
+                element = element.parentElement;
+                if (element.dataset.type !== 'cubetwo')
+                    element = element.parentElement;
+            }
+            switch (type) {
+                case 'singletap':
+                    break;
+                case 'doubletap':
+                    break;
+                case 'swipeup':
+                    this.F_();
+                    break;
+                case 'swiperight':
+                    this.U_();
+                    break;
+                case 'swipedown':
+                    this.F();
+                    break;
+                case 'swipeleft':
+                    this.U();
+                    break;
+            }
+        });
+    }
+    _setupCube3() {
+        let touchEl = this._touchElements[3],
+            touchUpEl,
+            touchDownEl = qs('[data-type="down"]', touchEl),
+            touchFrontEl = qs('[data-type="front"]', touchEl),
+            touchBackEl,
+            touchRightEl,
+            touchLeftEl = qs('[data-type="left"]', touchEl);
+
+        let swipe = new Hammer.Swipe();
+        swipe.set({ direction: Hammer.DIRECTION_ALL });
+
+        let hammerManager = new Hammer.Manager(touchFrontEl, {});
+        hammerManager.add(swipe);
+        hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
+        hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
+        hammerManager.get('doubletap').recognizeWith('singletap');
+        hammerManager.get('singletap').requireFailure('doubletap');
+
+        hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+            const type = ev.type;
+            let element = ev.target;
+            //debug(`${type} ${element.dataset.type}`);
+
+            // Find swipe element if event is invoke on child element
+            if (element.dataset.type !== 'cubetwo') {
+                element = element.parentElement;
+                if (element.dataset.type !== 'cubetwo')
+                    element = element.parentElement;
+            }
+            switch (type) {
+                case 'singletap':
+                    break;
+                case 'doubletap':
+                    //this.tapped(element, ev.target.dataset.type);
+                    break;
+                case 'swipeup':
+                    this.L_();
+                    break;
+                case 'swiperight':
+                    this.D();
+                    break;
+                case 'swipedown':
+                    this.L();
+                    break;
+                case 'swipeleft':
+                    this.D_();
+                    break;
+            }
+        });
+
+
+        swipe = new Hammer.Swipe();
+        swipe.set({ direction: Hammer.DIRECTION_ALL });
+
+        hammerManager = new Hammer.Manager(touchDownEl, {});
+        hammerManager.add(swipe);
+        hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
+        hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
+        hammerManager.get('doubletap').recognizeWith('singletap');
+        hammerManager.get('singletap').requireFailure('doubletap');
+
+        hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+            const type = ev.type;
+            let element = ev.target;
+            //debug(`${type} ${element.dataset.type}`);
+
+            if (element.dataset.type !== 'cubetwo') {
+                element = element.parentElement;
+                if (element.dataset.type !== 'cubetwo')
+                    element = element.parentElement;
+            }
+            switch (type) {
+                case 'singletap':
+                    break;
+                case 'doubletap':
+                    break;
+                case 'swipeup':
+                    this.L_();
+                    break;
+                case 'swiperight':
+                    this.F_();
+                    break;
+                case 'swipedown':
+                    this.L();
+                    break;
+                case 'swipeleft':
+                    this.F();
+                    break;
+            }
+        });
+
+        swipe = new Hammer.Swipe();
+        swipe.set({ direction: Hammer.DIRECTION_ALL });
+
+        hammerManager = new Hammer.Manager(touchLeftEl, {});
+        hammerManager.add(swipe);
+        hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
+        hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
+        hammerManager.get('doubletap').recognizeWith('singletap');
+        hammerManager.get('singletap').requireFailure('doubletap');
+
+        hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+            const type = ev.type;
+            let element = ev.target;
+            //debug(`${type} ${element.dataset.type}`);
+
+            if (element.dataset.type !== 'cubetwo') {
+                element = element.parentElement;
+                if (element.dataset.type !== 'cubetwo')
+                    element = element.parentElement;
+            }
+            switch (type) {
+                case 'singletap':
+                    break;
+                case 'doubletap':
+                    break;
+                case 'swipeup':
+                    this.F();
+                    break;
+                case 'swiperight':
+                    this.D();
+                    break;
+                case 'swipedown':
+                    this.F_();
+                    break;
+                case 'swipeleft':
+                    this.D_();
+                    break;
+            }
+        });
+    }
     _setupCube4() {}
     _setupCube5() {}
     _setupCube6() {}

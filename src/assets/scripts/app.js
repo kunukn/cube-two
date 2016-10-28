@@ -74,8 +74,8 @@ const cubeTwo = new CubeTwo({
     cubeComponent: cubeComponentEl,
 });
 cubeTwo.addCallbackForEvent('init', (eventName, payload) => {
-    log('init callback');
-    log(payload);
+    // log('init callback');
+    // log(payload);
 });
 cubeTwo.init();
 
