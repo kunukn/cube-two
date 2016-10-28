@@ -130,8 +130,7 @@ class CubeTwo {
 
     }
 
-    U() {
-        const angle = '-90';
+    _uiU_Helper(angle) {
         this._cube1DisplayEl.style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
         this._cube2DisplayEl.style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
         this._cube5DisplayEl.style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
@@ -142,87 +141,152 @@ class CubeTwo {
         this._cube5DisplayEl.style.transform = `rotateY(${angle}deg)`;
         this._cube6DisplayEl.style.transform = `rotateY(${angle}deg)`;
     }
-    U_() {
-        const angle = '90';
-
-        this._cube1DisplayEl.style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
-        this._cube2DisplayEl.style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
-        this._cube5DisplayEl.style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
-        this._cube6DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
-
-        this._cube1DisplayEl.style.transform = `rotateY(${angle}deg)`;
-        this._cube2DisplayEl.style.transform = `rotateY(${angle}deg)`;
-        this._cube5DisplayEl.style.transform = `rotateY(${angle}deg)`;
-        this._cube6DisplayEl.style.transform = `rotateY(${angle}deg)`;
+    _uiU() {
+        this._uiU_Helper('-90');
     }
-    U2() {
-        const angle = '-180';
-        this._cube1DisplayEl.style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
-        this._cube2DisplayEl.style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
-        this._cube5DisplayEl.style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
-        this._cube6DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
-
-        this._cube1DisplayEl.style.transform = `rotateY(${angle}deg)`;
-        this._cube2DisplayEl.style.transform = `rotateY(${angle}deg)`;
-        this._cube5DisplayEl.style.transform = `rotateY(${angle}deg)`;
-        this._cube6DisplayEl.style.transform = `rotateY(${angle}deg)`;
+    _uiU_() {
+        this._uiU_Helper('90');
     }
-    U2_() {
-        const angle = '180';
-        this._cube1DisplayEl.style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
-        this._cube2DisplayEl.style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
-        this._cube5DisplayEl.style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
-        this._cube6DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
-
-        this._cube1DisplayEl.style.transform = `rotateY(${angle}deg)`;
-        this._cube2DisplayEl.style.transform = `rotateY(${angle}deg)`;
-        this._cube5DisplayEl.style.transform = `rotateY(${angle}deg)`;
-        this._cube6DisplayEl.style.transform = `rotateY(${angle}deg)`;
+    _uiU2() {
+        this._uiU_Helper('-180');
     }
-    D() {
-
+    _uiU2_() {
+        this._uiU_Helper('180');
     }
-    D_() {
 
-    }
-    R() {
+    _uiD_Helper(angle) {
+        this._cube3DisplayEl.style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
+        this._cube4DisplayEl.style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
+        this._cube7DisplayEl.style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
+        this._cube8DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
 
+        this._cube3DisplayEl.style.transform = `rotateY(${angle}deg)`;
+        this._cube4DisplayEl.style.transform = `rotateY(${angle}deg)`;
+        this._cube7DisplayEl.style.transform = `rotateY(${angle}deg)`;
+        this._cube8DisplayEl.style.transform = `rotateY(${angle}deg)`;
     }
-    R_() {
-
+    _uiD() {
+        this._uiD_Helper('90');
     }
-    L() {
-
+    _uiD_() {
+        this._uiD_Helper('-90');
     }
-    L_() {
+    _uiD2() {
+        this._uiD_Helper('180');
+    }
+    _uiD2_() {
+        this._uiD_Helper('-180');
+    }
+    _uiR() {
 
     }
 
-    x() {
+    _uiR_() {
+
+    }
+
+    _uiL() {
+
+    }
+
+    _uiL_() {
+
+    }
+
+    _uix() {
+        this._uiU_();
+        this._uiD();
+    }
+    _uix_() {
+        this._uiU();
+        this._uiD_();
+    }
+    _uix2() {
+        this._uiU2_();
+        this._uiD2();
+    }
+    _uix2_() {
+        this._uiU2();
+        this._uiD2_();
+    }
+
+
+    /* -------------------- */
+
+    U(config) {
+        this._uiU();
+    }
+    U_(config) {
+        this._uiU_();
+    }
+    U2(config) {
+        this._uiU2();
+    }
+    U2_(config) {
+        this._uiU2_();
+    }
+    D(config) {
+        this._uiD();
+    }
+    D_(config) {
+        this._uiD_();
+    }
+    D2(config) {
+        this._uiD2();
+    }
+    D2_(config) {
+        this._uiD2_();
+    }
+    R(config) {
+        this._uiR();
+    }
+    R_(config) {
+        this._uiR_();
+    }
+    R2(config) {
+        this._uiR2();
+    }
+    R2_(config) {
+        this._uiR2_();
+    }
+    L(config) {
+        this._uiL();
+    }
+    L_(config) {
+        this._uiL_();
+    }
+    L2(config) {
+        this._uiL2();
+    }
+    L2_(config) {
+        this._uiL2_();
+    }
+
+    x(config) {
         log('rotate hole cube in 90deg x axis');
+        this._uix();
     }
-    y() {}
-    z() {}
-    x2() {
+    y(config) {}
+    z(config) {}
+    x2(config) {
         log('rotate hole cube in 180deg x axis');
     }
-    y2() {}
-    z2() {}
-    x_() {
+    y2(config) {}
+    z2(config) {}
+    x_(config) {
         log('rotate hole cube in -90deg x axis');
     }
-    y_() {}
-    z_() {}
-    x2_() {}
-    y2_() {}
-    z2_() {}
+    y_(config) {}
+    z_(config) {}
+    x2_(config) {}
+    y2_(config) {}
+    z2_(config) {}
 
 
     destroy() {
 
         // todo foreach display elements, remove transitionend
         // todo remove key event listener
-
         //     this.cubeComponentEl.removeEventListener('keydown', this._handleKeyEvent, false);
         //     this.cubeEl.removeEventListener('transitionend', this._transitionEnd);
     }
