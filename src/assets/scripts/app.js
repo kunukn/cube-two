@@ -6,7 +6,7 @@ import { log } from './logger';
 
 import { qs, qsa, byId } from './query';
 
-import CubeTwo from './cube-two';
+import { CubeTwo } from './cube-two';
 
 //log('App running');
 
@@ -81,13 +81,13 @@ byId('btn-cubetwo-rotate-view').addEventListener('click', ev => {
 // );
 
 
-byId('btn-cubetwo-rotate-2y').addEventListener('click',
+byId('btn-cubetwo-rotate-1').addEventListener('click',
     ev => cubetwo.y2()
 );
 
 
-byId('btn-cubetwo-rotate-2y_').addEventListener('click',
-    ev => cubetwo.y2_()
+byId('btn-cubetwo-rotate-2').addEventListener('click',
+    ev => cubetwo.x2()
 );
 
 

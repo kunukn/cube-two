@@ -1,10 +1,10 @@
 'use strict';
 
-import { debug, log, error } from './logger';
+import { debug, log, error } from '../logger';
 
-import { qs, qsa, byId } from './query';
+import { qs, qsa, byId } from '../query';
 
-// import dictCubeSkins from './dictionaries/dict-cube-skins';
+// import dictCubeSkins from '../dictionaries/dict-cube-skins';
 
 import deepFreeze from 'deep-freeze';
 
@@ -12,12 +12,12 @@ import {
     rAF,
     nextFrame,
     cloneObject,
-} from './cube-util';
+} from '../cube-util';
 
-// import dictCube from './dictionaries/dict-cube';
-// import dictCubeTransform from './dictionaries/dict-cube-transform';
+// import dictCube from '../dictionaries/dict-cube';
+// import dictCubeTransform from '../dictionaries/dict-cube-transform';
 
-import { /*STATES, STATES_ARRAY,*/ KEY, EVENT_NAMES } from './constants';
+import { /*STATES, STATES_ARRAY,*/ KEY, EVENT_NAMES } from '../constants';
 
 const CUBE_COUNT = 8;
 const CUBE_SIZE = '20vmin';
@@ -458,8 +458,6 @@ class CubeTwo {
     }
 
     _transitionEnd(ev) {
-
-
         let target = ev.currentTarget;
         if (target) {
             const backupTransition = target.style.transition;
@@ -1595,7 +1593,7 @@ class CubeTwo {
     }
 
     _updateUiFaces() {
-        // update view by state
+        // todo update view by state
     }
 
     _handleKeyEventCube1(event) {
@@ -1809,4 +1807,4 @@ class CubeTwo {
     }
 }
 
-export default CubeTwo;
+export  {CubeTwo};
