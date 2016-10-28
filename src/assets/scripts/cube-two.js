@@ -111,15 +111,16 @@ class CubeTwo {
 
 
     _uiF_Helper(angle) {
-        this._cube1DisplayEl.style.transformOrigin = `100% 100% ${CUBE_SIZE_HALF}`;
-        this._cube2DisplayEl.style.transformOrigin = `0% 100% ${CUBE_SIZE_HALF}`;
-        this._cube3DisplayEl.style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
-        this._cube4DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
 
-        this._cube1DisplayEl.style.transform = `rotateZ(${angle}deg)`;
-        this._cube2DisplayEl.style.transform = `rotateZ(${angle}deg)`;
-        this._cube3DisplayEl.style.transform = `rotateZ(${angle}deg)`;
-        this._cube4DisplayEl.style.transform = `rotateZ(${angle}deg)`;
+        this._displayElements[1].style.transformOrigin = `100% 100% ${CUBE_SIZE_HALF}`;
+        this._displayElements[2].style.transformOrigin = `0% 100% ${CUBE_SIZE_HALF}`;
+        this._displayElements[3].style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
+        this._displayElements[4].style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
+
+        this._displayElements[1].style.transform = `rotateZ(${angle}deg)`;
+        this._displayElements[2].style.transform = `rotateZ(${angle}deg)`;
+        this._displayElements[3].style.transform = `rotateZ(${angle}deg)`;
+        this._displayElements[4].style.transform = `rotateZ(${angle}deg)`;
     }
     _uiF() {
         this._uiF_Helper('90');
@@ -135,15 +136,15 @@ class CubeTwo {
     }
 
     _uiB_Helper(angle) {
-        this._cube5DisplayEl.style.transformOrigin = `100% 100% ${CUBE_SIZE_HALF}`;
-        this._cube6DisplayEl.style.transformOrigin = `0% 100% ${CUBE_SIZE_HALF}`;
-        this._cube7DisplayEl.style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
-        this._cube8DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
+        this._displayElements[5].style.transformOrigin = `100% 100% ${CUBE_SIZE_HALF}`;
+        this._displayElements[6].style.transformOrigin = `0% 100% ${CUBE_SIZE_HALF}`;
+        this._displayElements[7].style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
+        this._displayElements[8].style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
 
-        this._cube5DisplayEl.style.transform = `rotateZ(${angle}deg)`;
-        this._cube6DisplayEl.style.transform = `rotateZ(${angle}deg)`;
-        this._cube7DisplayEl.style.transform = `rotateZ(${angle}deg)`;
-        this._cube8DisplayEl.style.transform = `rotateZ(${angle}deg)`;
+        this._displayElements[5].style.transform = `rotateZ(${angle}deg)`;
+        this._displayElements[6].style.transform = `rotateZ(${angle}deg)`;
+        this._displayElements[7].style.transform = `rotateZ(${angle}deg)`;
+        this._displayElements[8].style.transform = `rotateZ(${angle}deg)`;
     }
     _uiB() {
         this._uiB_Helper('-90');
@@ -160,15 +161,15 @@ class CubeTwo {
 
 
     _uiU_Helper(angle) {
-        this._cube1DisplayEl.style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
-        this._cube2DisplayEl.style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
-        this._cube5DisplayEl.style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
-        this._cube6DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
+        this._displayElements[1].style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
+        this._displayElements[2].style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
+        this._displayElements[5].style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
+        this._displayElements[6].style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
 
-        this._cube1DisplayEl.style.transform = `rotateY(${angle}deg)`;
-        this._cube2DisplayEl.style.transform = `rotateY(${angle}deg)`;
-        this._cube5DisplayEl.style.transform = `rotateY(${angle}deg)`;
-        this._cube6DisplayEl.style.transform = `rotateY(${angle}deg)`;
+        this._displayElements[1].style.transform = `rotateY(${angle}deg)`;
+        this._displayElements[2].style.transform = `rotateY(${angle}deg)`;
+        this._displayElements[5].style.transform = `rotateY(${angle}deg)`;
+        this._displayElements[6].style.transform = `rotateY(${angle}deg)`;
     }
     _uiU() {
         this._uiU_Helper('-90');
@@ -186,15 +187,15 @@ class CubeTwo {
 
 
     _uiD_Helper(angle) {
-        this._cube3DisplayEl.style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
-        this._cube4DisplayEl.style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
-        this._cube7DisplayEl.style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
-        this._cube8DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
+        this._displayElements[3].style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
+        this._displayElements[4].style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
+        this._displayElements[7].style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
+        this._displayElements[8].style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
 
-        this._cube3DisplayEl.style.transform = `rotateY(${angle}deg)`;
-        this._cube4DisplayEl.style.transform = `rotateY(${angle}deg)`;
-        this._cube7DisplayEl.style.transform = `rotateY(${angle}deg)`;
-        this._cube8DisplayEl.style.transform = `rotateY(${angle}deg)`;
+        this._displayElements[3].style.transform = `rotateY(${angle}deg)`;
+        this._displayElements[4].style.transform = `rotateY(${angle}deg)`;
+        this._displayElements[7].style.transform = `rotateY(${angle}deg)`;
+        this._displayElements[8].style.transform = `rotateY(${angle}deg)`;
     }
     _uiD() {
         this._uiD_Helper('90');
@@ -212,15 +213,15 @@ class CubeTwo {
 
 
     _uiR_Helper(angle) {
-        this._cube2DisplayEl.style.transformOrigin = `0% 100% -${CUBE_SIZE_HALF}`;
-        this._cube6DisplayEl.style.transformOrigin = `0% 100% ${CUBE_SIZE_HALF}`;
-        this._cube8DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
-        this._cube4DisplayEl.style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
+        this._displayElements[2].style.transformOrigin = `0% 100% -${CUBE_SIZE_HALF}`;
+        this._displayElements[6].style.transformOrigin = `0% 100% ${CUBE_SIZE_HALF}`;
+        this._displayElements[8].style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
+        this._displayElements[4].style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
 
-        this._cube2DisplayEl.style.transform = `rotateX(${angle}deg)`;
-        this._cube6DisplayEl.style.transform = `rotateX(${angle}deg)`;
-        this._cube8DisplayEl.style.transform = `rotateX(${angle}deg)`;
-        this._cube4DisplayEl.style.transform = `rotateX(${angle}deg)`;
+        this._displayElements[2].style.transform = `rotateX(${angle}deg)`;
+        this._displayElements[6].style.transform = `rotateX(${angle}deg)`;
+        this._displayElements[8].style.transform = `rotateX(${angle}deg)`;
+        this._displayElements[4].style.transform = `rotateX(${angle}deg)`;
     }
     _uiR() {
         this._uiR_Helper('90');
@@ -238,15 +239,15 @@ class CubeTwo {
 
 
     _uiL_Helper(angle) {
-        this._cube1DisplayEl.style.transformOrigin = `0% 100% -${CUBE_SIZE_HALF}`;
-        this._cube5DisplayEl.style.transformOrigin = `0% 100% ${CUBE_SIZE_HALF}`;
-        this._cube7DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
-        this._cube3DisplayEl.style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
+        this._displayElements[1].style.transformOrigin = `0% 100% -${CUBE_SIZE_HALF}`;
+        this._displayElements[5].style.transformOrigin = `0% 100% ${CUBE_SIZE_HALF}`;
+        this._displayElements[7].style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
+        this._displayElements[3].style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
 
-        this._cube1DisplayEl.style.transform = `rotateX(${angle}deg)`;
-        this._cube5DisplayEl.style.transform = `rotateX(${angle}deg)`;
-        this._cube7DisplayEl.style.transform = `rotateX(${angle}deg)`;
-        this._cube3DisplayEl.style.transform = `rotateX(${angle}deg)`;
+        this._displayElements[1].style.transform = `rotateX(${angle}deg)`;
+        this._displayElements[5].style.transform = `rotateX(${angle}deg)`;
+        this._displayElements[7].style.transform = `rotateX(${angle}deg)`;
+        this._displayElements[3].style.transform = `rotateX(${angle}deg)`;
     }
     _uiL() {
         this._uiL_Helper('-90');
@@ -494,23 +495,32 @@ class CubeTwo {
 
 
     init() {
-        this._cubes = [];
-        for (var i = 1; i <= CUBE_COUNT; i++) {
-            let cube = qs(`.cubetwo-cube-${i}`, this._cubeComponentEl);
-            this._cubes.push(cube);
-            this[`_cube${i}El`] = cube;
-            this[`_cube${i}DisplayEl`] = qs('[data-type="cubetwo-display"]', cube);
-            this[`_cube${i}TouchEl`] = qs('[data-type="cubetwo-touch"]', cube);
-        }
-        deepFreeze(this._cubes);
+        this._cubeElements = [''];
+        this._touchElements = [''];
+        this._displayElements = [''];
 
         for (var i = 1; i <= CUBE_COUNT; i++) {
-            let cubeDisplay = this[`_cube${i}DisplayEl`];
+            let cube = qs(`.cubetwo-cube-${i}`, this._cubeComponentEl),
+                touch = qs('[data-type="cubetwo-display"]', cube),
+                display = qs('[data-type="cubetwo-display"]', cube);
+
+            this._cubeElements.push(cube);
+            this._displayElements.push(display);
+            this._touchElements.push(touch);
+        }
+        deepFreeze(this._cubeElements);
+        deepFreeze(this._touchElements);
+        deepFreeze(this._displayElements);
+
+        for (var i = 1; i <= CUBE_COUNT; i++) {            
+            let cubeDisplay = this._displayElements[i];
             if (cubeDisplay) {
                 cubeDisplay.addEventListener('transitionend',
                     this._transitionEnd);
             }
         }
+
+
 
 
         // this._handleKeyEvent.bind(this);
