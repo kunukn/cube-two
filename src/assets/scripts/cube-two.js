@@ -12,13 +12,6 @@ import {
     rAF,
     nextFrame,
     cloneObject,
-    // nextState,
-    // getLeft,
-    // getRight,
-    // getDown,
-    // getBack,
-    // getUp,
-    // getFront
 } from './cube-util';
 
 // import dictCube from './dictionaries/dict-cube';
@@ -66,7 +59,7 @@ class CubeTwo {
         this._handleKeyEventCube6 = this._handleKeyEventCube6.bind(this);
         this._handleKeyEventCube7 = this._handleKeyEventCube7.bind(this);
         this._handleKeyEventCube8 = this._handleKeyEventCube8.bind(this);
-        
+
         this.handleGlobalKeyEvent = this.handleGlobalKeyEvent.bind(this);
         this._transitionEnd = this._transitionEnd.bind(this);
     }
@@ -1596,189 +1589,13 @@ class CubeTwo {
         this._cubeElements[6].addEventListener('keydown', this._handleKeyEventCube6, false);
         this._cubeElements[7].addEventListener('keydown', this._handleKeyEventCube7, false);
         this._cubeElements[8].addEventListener('keydown', this._handleKeyEventCube8, false);
-        
+
         this._triggerEvent('init', { state: this.getState() });
     }
 
     _updateUiFaces() {
-
-        // let u, f, r, l, b, d;
-        // const state = this.getState();
-
-        // u = getUp(state.code);
-        // f = getFront(state.code);
-        // r = getRight(state.code);
-        // l = getLeft(state.code);
-        // b = getBack(state.code);
-        // d = getDown(state.code);
-
-        // const faceSkins = this._config.faceSkins;
-        // if (faceSkins) {
-        //     let skin = '';
-
-        //     this.upEl.style.backgroundColor = (skin = faceSkins[u].bgColor) ? skin : dictCubeSkins[u];
-        //     this.frontEl.style.backgroundColor = (skin = faceSkins[f].bgColor) ? skin : dictCubeSkins[f];
-        //     this.rightEl.style.backgroundColor = (skin = faceSkins[r].bgColor) ? skin : dictCubeSkins[r];
-        //     this.leftEl.style.backgroundColor = (skin = faceSkins[l].bgColor) ? skin : dictCubeSkins[l];
-        //     this.backEl.style.backgroundColor = (skin = faceSkins[b].bgColor) ? skin : dictCubeSkins[b];
-        //     this.downEl.style.backgroundColor = (skin = faceSkins[d].bgColor) ? skin : dictCubeSkins[d];
-
-        //     this.upEl.style.backgroundImage = (skin = faceSkins[u].bgImg) ? skin : '';
-        //     this.frontEl.style.backgroundImage = (skin = faceSkins[f].bgImg) ? skin : '';
-        //     this.rightEl.style.backgroundImage = (skin = faceSkins[r].bgImg) ? skin : '';
-        //     this.leftEl.style.backgroundImage = (skin = faceSkins[l].bgImg) ? skin : '';
-        //     this.backEl.style.backgroundImage = (skin = faceSkins[b].bgImg) ? skin : '';
-        //     this.downEl.style.backgroundImage = (skin = faceSkins[d].bgImg) ? skin : '';
-
-
-        // } else {
-        //     this.upEl.style.backgroundColor = dictCubeSkins[u];
-        //     this.frontEl.style.backgroundColor = dictCubeSkins[f];
-        //     this.rightEl.style.backgroundColor = dictCubeSkins[r];
-        //     this.leftEl.style.backgroundColor = dictCubeSkins[l];
-        //     this.backEl.style.backgroundColor = dictCubeSkins[b];
-        //     this.downEl.style.backgroundColor = dictCubeSkins[d];
-        // }
-
-        // let t = dictCubeTransform[state.code]['u'];
-        // this.upEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-
-        // t = dictCubeTransform[state.code]['f'];
-        // this.frontEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-
-        // t = dictCubeTransform[state.code]['r'];
-        // this.rightEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-
-        // t = dictCubeTransform[state.code]['l'];
-        // this.leftEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-
-        // t = dictCubeTransform[state.code]['b'];
-        // this.backEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-
-        // t = dictCubeTransform[state.code]['d'];
-        // this.downEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+        // update view by state
     }
-
-    // tapped(element, target) {
-    //     qs(`[data-type="${target}"]`, element).classList.toggle('tapped');
-    // }
-
-    // _actionInvoke(action, ui, config) {
-    //     let state = this.getState(),
-    //         stateCode = state.code;
-
-    //     if (!state.rotateEnabled)
-    //         return;
-
-    //     const skipAnimation = config && config.skipAnimation;
-
-    //     state.code = dictCube[stateCode][action]; // reducer
-
-    //     if (!skipAnimation) {
-    //         state.rotateEnabled = false; // lock current anim
-    //     }
-
-    //     this._setState(state);
-
-    //     if (!skipAnimation) {
-    //         ui = ui.bind(this);
-    //         ui();
-    //     }
-    //     if (skipAnimation) {
-    //         this._updateUiFaces();
-    //     }
-    // }
-
-    // gotoState(stateCode) {
-    //     if (!STATES[stateCode])
-    //         return;
-
-    //     let state = this.getState();
-    //     state.code = stateCode;
-    //     this._setState(state);
-    //     this._updateUiFaces();
-    // }
-
-    // setToRandomState() {
-    //     let state = this.getState();
-    //     state.code = STATES_ARRAY[(STATES_ARRAY.length * Math.random()) | 0];
-    //     this._setState(state);
-    //     this._updateUiFaces();
-    // }
-
-    // x(config) {
-    //     if (!config || !config.skipTriggerEvent) {
-    //         this._triggerEvent('beforerotate', {
-    //             cube: this.cubeComponentEl,
-    //             action: 'x',
-    //             state: this.getState(),
-    //         });
-    //     }
-    //     this._actionInvoke('x', this._uix, config);
-    // }
-
-    // X(config) {
-    //     if (!config || !config.skipTriggerEvent) {
-    //         this._triggerEvent('beforerotate', {
-    //             cube: this.cubeComponentEl,
-    //             action: '-x',
-    //             state: this.getState(),
-    //         });
-    //     }
-    //     this._actionInvoke('-x', this._uiX, config);
-    // }
-
-    // y(config) {
-    //     if (!config || !config.skipTriggerEvent) {
-    //         this._triggerEvent('beforerotate', {
-    //             cube: this.cubeComponentEl,
-    //             action: 'y',
-    //             state: this.getState(),
-    //         });
-    //     }
-    //     this._actionInvoke('y', this._uiy, config);
-    // }
-
-    // Y(config) {
-    //     if (!config || !config.skipTriggerEvent) {
-    //         this._triggerEvent('beforerotate', {
-    //             cube: this.cubeComponentEl,
-    //             action: '-y',
-    //             state: this.getState(),
-    //         });
-    //     }
-    //     this._actionInvoke('-y', this._uiY, config);
-    // }
-
-    // z(config) {
-    //     if (!config || !config.skipTriggerEvent) {
-    //         this._triggerEvent('beforerotate', {
-    //             cube: this.cubeComponentEl,
-    //             action: 'z',
-    //             state: this.getState(),
-    //         });
-    //     }
-    //     this._actionInvoke('z', this._uiz, config);
-    // }
-
-    // Z(config) {
-    //     if (!config || !config.skipTriggerEvent) {
-    //         this._triggerEvent('beforerotate', {
-    //             cube: this.cubeComponentEl,
-    //             action: '-z',
-    //             state: this.getState(),
-    //         });
-    //     }
-    //     this._actionInvoke('-z', this._uiZ, config);
-    // }
-
-
-
-    // reset() {
-    //     this.gotoState('uf');
-    //     return 'reset';
-    // }
-
 
     _handleKeyEventCube1(event) {
         event.stopPropagation();
