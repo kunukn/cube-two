@@ -117,18 +117,56 @@ class CubeTwo {
         }
     }
 
-    F() {
-        log('front clockwise');
-    }
-    F_() {
-        log('front counter clockwise');
-    }
-    B() {
 
-    }
-    B_() {
 
+    _uiF_Helper(angle) {
+        this._cube1DisplayEl.style.transformOrigin = `100% 100% ${CUBE_SIZE_HALF}`;
+        this._cube2DisplayEl.style.transformOrigin = `0% 100% ${CUBE_SIZE_HALF}`;
+        this._cube3DisplayEl.style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
+        this._cube4DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
+
+        this._cube1DisplayEl.style.transform = `rotateZ(${angle}deg)`;
+        this._cube2DisplayEl.style.transform = `rotateZ(${angle}deg)`;
+        this._cube3DisplayEl.style.transform = `rotateZ(${angle}deg)`;
+        this._cube4DisplayEl.style.transform = `rotateZ(${angle}deg)`;
     }
+    _uiF() {
+        this._uiF_Helper('90');
+    }
+    _uiF_() {
+        this._uiF_Helper('-90');
+    }
+    _uiF2() {
+        this._uiF_Helper('180');
+    }
+    _uiF2_() {
+        this._uiF_Helper('-180');
+    }
+
+    _uiB_Helper(angle) {
+        this._cube5DisplayEl.style.transformOrigin = `100% 100% ${CUBE_SIZE_HALF}`;
+        this._cube6DisplayEl.style.transformOrigin = `0% 100% ${CUBE_SIZE_HALF}`;
+        this._cube7DisplayEl.style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
+        this._cube8DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
+
+        this._cube5DisplayEl.style.transform = `rotateZ(${angle}deg)`;
+        this._cube6DisplayEl.style.transform = `rotateZ(${angle}deg)`;
+        this._cube7DisplayEl.style.transform = `rotateZ(${angle}deg)`;
+        this._cube8DisplayEl.style.transform = `rotateZ(${angle}deg)`;
+    }
+    _uiB() {
+        this._uiB_Helper('-90');
+    }
+    _uiB_() {
+        this._uiB_Helper('90');
+    }
+    _uiB2() {
+        this._uiB_Helper('-180');
+    }
+    _uiB2_() {
+        this._uiB_Helper('180');
+    }
+
 
     _uiU_Helper(angle) {
         this._cube1DisplayEl.style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
@@ -154,6 +192,8 @@ class CubeTwo {
         this._uiU_Helper('180');
     }
 
+
+
     _uiD_Helper(angle) {
         this._cube3DisplayEl.style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
         this._cube4DisplayEl.style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
@@ -177,6 +217,9 @@ class CubeTwo {
     _uiD2_() {
         this._uiD_Helper('-180');
     }
+
+
+
     _uiR_Helper(angle) {
         this._cube2DisplayEl.style.transformOrigin = `0% 100% -${CUBE_SIZE_HALF}`;
         this._cube6DisplayEl.style.transformOrigin = `0% 100% ${CUBE_SIZE_HALF}`;
@@ -188,21 +231,20 @@ class CubeTwo {
         this._cube8DisplayEl.style.transform = `rotateX(${angle}deg)`;
         this._cube4DisplayEl.style.transform = `rotateX(${angle}deg)`;
     }
-
     _uiR() {
         this._uiR_Helper('90');
     }
-
     _uiR_() {
         this._uiR_Helper('-90');
     }
     _uiR2() {
         this._uiR_Helper('180');
     }
-
     _uiR2_() {
         this._uiR_Helper('-180');
     }
+
+
 
     _uiL_Helper(angle) {
         this._cube1DisplayEl.style.transformOrigin = `0% 100% -${CUBE_SIZE_HALF}`;
@@ -215,7 +257,6 @@ class CubeTwo {
         this._cube7DisplayEl.style.transform = `rotateX(${angle}deg)`;
         this._cube3DisplayEl.style.transform = `rotateX(${angle}deg)`;
     }
-
     _uiL() {
         this._uiL_Helper('-90');
     }
@@ -228,6 +269,9 @@ class CubeTwo {
     _uiL2_() {
         this._uiL_Helper('180');
     }
+
+
+
 
     _uix() {
         this._uiU_();
@@ -249,6 +293,35 @@ class CubeTwo {
 
     /* -------------------- */
 
+    F(config) {
+        this._uiF();
+    }
+    F_(config) {
+        this._uiF_();
+    }
+    F2(config) {
+        this._uiF2();
+    }
+    F2_(config) {
+        this._uiF2_();
+    }
+
+
+    B(config) {
+        this._uiB();
+    }
+    B_(config) {
+        this._uiB_();
+    }
+    B2(config) {
+        this._uiB2();
+    }
+    B2_(config) {
+        this._uiB2_();
+    }
+
+
+
     U(config) {
         this._uiU();
     }
@@ -261,6 +334,8 @@ class CubeTwo {
     U2_(config) {
         this._uiU2_();
     }
+
+
     D(config) {
         this._uiD();
     }
@@ -273,6 +348,8 @@ class CubeTwo {
     D2_(config) {
         this._uiD2_();
     }
+
+
     R(config) {
         this._uiR();
     }
@@ -285,6 +362,8 @@ class CubeTwo {
     R2_(config) {
         this._uiR2_();
     }
+
+
     L(config) {
         this._uiL();
     }
@@ -297,6 +376,7 @@ class CubeTwo {
     L2_(config) {
         this._uiL2_();
     }
+
 
     x(config) {
         log('rotate hole cube in 90deg x axis');
