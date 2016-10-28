@@ -62,6 +62,11 @@ class CubeTwo {
         this._handleKeyEventCube2 = this._handleKeyEventCube2.bind(this);
         this._handleKeyEventCube3 = this._handleKeyEventCube3.bind(this);
         this._handleKeyEventCube4 = this._handleKeyEventCube4.bind(this);
+        this._handleKeyEventCube5 = this._handleKeyEventCube5.bind(this);
+        this._handleKeyEventCube6 = this._handleKeyEventCube6.bind(this);
+        this._handleKeyEventCube7 = this._handleKeyEventCube7.bind(this);
+        this._handleKeyEventCube8 = this._handleKeyEventCube8.bind(this);
+        
         this.handleGlobalKeyEvent = this.handleGlobalKeyEvent.bind(this);
         this._transitionEnd = this._transitionEnd.bind(this);
     }
@@ -86,8 +91,6 @@ class CubeTwo {
             collection[i].call(this, eventName, payload);
         }
     }
-
-
 
     getState() {
         return cloneObject(this._appState);
@@ -1583,15 +1586,17 @@ class CubeTwo {
         this._setupCube7();
         this._setupCube8();
 
-
-
         this._updateUiFaces();
 
         this._cubeElements[1].addEventListener('keydown', this._handleKeyEventCube1, false);
         this._cubeElements[2].addEventListener('keydown', this._handleKeyEventCube2, false);
         this._cubeElements[3].addEventListener('keydown', this._handleKeyEventCube3, false);
         this._cubeElements[4].addEventListener('keydown', this._handleKeyEventCube4, false);
-
+        this._cubeElements[5].addEventListener('keydown', this._handleKeyEventCube5, false);
+        this._cubeElements[6].addEventListener('keydown', this._handleKeyEventCube6, false);
+        this._cubeElements[7].addEventListener('keydown', this._handleKeyEventCube7, false);
+        this._cubeElements[8].addEventListener('keydown', this._handleKeyEventCube8, false);
+        
         this._triggerEvent('init', { state: this.getState() });
     }
 
@@ -1930,6 +1935,26 @@ class CubeTwo {
                 this.z();
                 break;
         }
+    }
+    _handleKeyEventCube5(event) {
+        event.stopPropagation();
+
+        // todo
+    }
+    _handleKeyEventCube6(event) {
+        event.stopPropagation();
+
+        // todo
+    }
+    _handleKeyEventCube7(event) {
+        event.stopPropagation();
+
+        // todo
+    }
+    _handleKeyEventCube8(event) {
+        event.stopPropagation();
+
+        // todo
     }
 
     handleGlobalKeyEvent(event) {
