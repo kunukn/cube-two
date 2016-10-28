@@ -30,6 +30,111 @@ body {
     animation: page-fade-in 2000ms;
 }
 
+.cubetwo-help {
+    z-index: 2;
+    pointer-events: none;
+    background: rgba($color-theme, .5);
+    transition: transform 200ms;
+    position: fixed;
+    display: flex;
+    transform: translateY(-50vh);
+    justify-content: center;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: right;
+    min-height: 1.5em;
+    border-bottom: 1px solid rgba(white, .2);
+    padding: .5em 0;
+    color: rgba(white, 1);
+    font-size: .8rem;
+    &.cubetwo-show-help {
+        transform: translateY(0);
+    }
+    @include device(medium) {
+        font-size: 1.2rem;
+    }
+    button {
+        background: transparent;
+        border: 1px solid;
+        box-shadow: 2px 2px 4px gray;
+        outline: none;
+        color: $color-focus;
+        font-size: inherit;
+        margin: .5em 1em .5em 0;
+        padding: .5em 1em;
+        @include device(medium) {
+            padding: .2em .5em;
+        }
+        &:focus {
+            box-shadow: 2px 2px 1em $color-focus;
+        }
+    }
+    .cubetwo-row {
+        padding: .1em 0;
+        margin: 0 auto;
+        max-width: 40rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-grow: 1;
+        width: 100%;
+        transition: 200ms;
+        font-size: .8em;
+        color: rgba(white, .6);
+        &:hover {
+            color: rgba(white, .7);
+        }
+    }
+    .cubetwo-device-info {
+        text-align: center;
+    }
+    .cubetwo-device-info--keyboard {
+        .cubetwo-device-info-groups {
+            display: flex;
+        }
+        .cubetwo-device-info-group {
+            display: flex;
+            flex-direction: column;
+            >div {
+                display: flex;
+                flex-direction: row;
+                span,
+                i {
+                    font-size: inherit;
+                    display: inline-block;
+                    position: relative;
+                    min-width: 1.4em;
+                }
+            }
+        }
+    }
+    .cubetwo-state-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        >h3 {
+            margin: 0;
+            padding: 0;
+            font-size: .8em;
+            font-weight: 300;
+        }
+    }
+    .cubetwo-state-infos {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        >div {
+            display: inline-block;
+            font-weight: 400;
+            text-transform: uppercase;
+            min-width: 2em;
+        }
+    }
+}
+
 footer {
     display: flex;
     justify-content: space-between;
@@ -40,7 +145,7 @@ footer {
     left: 0;
     min-height: 4em;
     padding: .5em;
-    background: rgba(white, .1);
+    background: $color-theme; // rgba(white, .0);
     .cubetwo-btn-group {
         flex: 1;
         display: flex;
@@ -50,7 +155,7 @@ footer {
             display: flex;
             align-items: center;
             margin: 0 1em;
-            background: black;
+            background: $color-theme;
             border: 1px solid $color-focus;
             color: $color-focus;
             box-shadow: 2px 2px 4px gray;
@@ -61,7 +166,7 @@ footer {
                 box-shadow: 2px 2px 1em $color-focus;
             }
             &.cubetwo-active {
-                background: rgba(white, .1);
+                background: rgba(white, .2);
             }
         }
     }

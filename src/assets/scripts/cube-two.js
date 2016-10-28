@@ -320,138 +320,137 @@ class CubeTwo {
     /* -------------------- */
 
     F(config) {
-        this._uiF();
+        this._rotationInvoke(config, this._uiF);
     }
     F_(config) {
-        this._uiF_();
+        this._rotationInvoke(config, this._uiF_);
     }
     F2(config) {
-        this._uiF2();
+        this._rotationInvoke(config, this._uiF2);
     }
     F2_(config) {
-        this._uiF2_();
+        this._rotationInvoke(config, this._uiF2_);
     }
 
 
     B(config) {
-        this._uiB();
+        this._rotationInvoke(config, this._uiB);
     }
     B_(config) {
-        this._uiB_();
+        this._rotationInvoke(config, this._uiB_);
     }
     B2(config) {
-        this._uiB2();
+        this._rotationInvoke(config, this._uiB2);
     }
     B2_(config) {
-        this._uiB2_();
+        this._rotationInvoke(config, this._uiB2_);
     }
-
 
 
     U(config) {
-        this._uiU();
+        this._rotationInvoke(config, this._uiU);
     }
     U_(config) {
-        this._uiU_();
+        this._rotationInvoke(config, this._uiU_);
     }
     U2(config) {
-        this._uiU2();
+        this._rotationInvoke(config, this._uiU2);
     }
     U2_(config) {
-        this._uiU2_();
+        this._rotationInvoke(config, this._uiU2_);
     }
 
 
     D(config) {
-        this._uiD();
+        this._rotationInvoke(config, this._uiD);
     }
     D_(config) {
-        this._uiD_();
+        this._rotationInvoke(config, this._uiD_);
     }
     D2(config) {
-        this._uiD2();
+        this._rotationInvoke(config, this._uiD2);
     }
     D2_(config) {
-        this._uiD2_();
+        this._rotationInvoke(config, this._uiD2_);
     }
 
 
     R(config) {
-        this._uiR();
+        this._rotationInvoke(config, this._uiR);
     }
     R_(config) {
-        this._uiR_();
+        this._rotationInvoke(config, this._uiR_);
     }
     R2(config) {
-        this._uiR2();
+        this._rotationInvoke(config, this._uiR2);
     }
     R2_(config) {
-        this._uiR2_();
+        this._rotationInvoke(config, this._uiR2_);
     }
 
 
     L(config) {
-        this._uiL();
+        this._rotationInvoke(config, this._uiL);
     }
     L_(config) {
-        this._uiL_();
+        this._rotationInvoke(config, this._uiL_);
     }
     L2(config) {
-        this._uiL2();
+        this._rotationInvoke(config, this._uiL2);
     }
     L2_(config) {
-        this._uiL2_();
+        this._rotationInvoke(config, this._uiL2_);
     }
 
 
     x(config) {
-        this._uix();
+        this._rotationInvoke(config, this._uix);
     }
     x_(config) {
-        this._uix_();
+        this._rotationInvoke(config, this._uix_);
     }
     x2(config) {
-        this._uix2();
+        this._rotationInvoke(config, this._uix2);
     }
     x2_(config) {
-        this._uix2_();
+        this._rotationInvoke(config, this._uix2_);
     }
-
 
     y(config) {
-        this._uiy();
+        this._rotationInvoke(config, this._uiy);
     }
     y_(config) {
-        this._uiy_();
+        this._rotationInvoke(config, this._uiy_);
     }
     y2(config) {
-        this._uiy2();
+        this._rotationInvoke(config, this._uiy2);
     }
     y2_(config) {
-        this._uiy2_();
+        this._rotationInvoke(config, this._uiy2_);
     }
 
 
     z(config) {
-        this._uiz();
+        this._rotationInvoke(config, this._uiz);
     }
     z2(config) {
-        this._uiz2();
+        this._rotationInvoke(config, this._uiz2);
     }
     z_(config) {
-        this._uiz_();
+        this._rotationInvoke(config, this._uiz_);
     }
     z2_(config) {
-        this._uiz2_();
+        this._rotationInvoke(config, this._uiz2_);
     }
 
+    _rotationInvoke(config, ui) {
+        // todo add animation lock and use queue buffer to enqueue rotation actions
+        ui.bind(this)();
+    }
 
     destroy() {
-
         // todo foreach display elements, remove transitionend
         // todo remove key event listener
-        //     this.cubeComponentEl.removeEventListener('keydown', this._handleKeyEvent, false);
-        //     this.cubeEl.removeEventListener('transitionend', this._transitionEnd);
     }
 
     _updateUiFaces() {
@@ -459,6 +458,8 @@ class CubeTwo {
     }
 
     _transitionEnd(ev) {
+
+
         let target = ev.currentTarget;
         if (target) {
             const backupTransition = target.style.transition;

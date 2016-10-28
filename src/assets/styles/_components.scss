@@ -1,20 +1,21 @@
 @charset "UTF-8";
+
+
 .cubetwo-component {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 2 * $cube-size;
     width: 100%;
     height: 4 * $cube-size;
     max-width: 100%;
     margin: 0 auto;
     position: relative;
-    //background: rgba(pink, .5);
+    background: rgba(white, .06);
     overflow-x: hidden;
 }
 
 .cubetwo-rotation-view {
-    transition: transform 400ms;
+    transition: transform 200ms;
     width: 2 * $cube-size;
     height: 2 * $cube-size;
     max-width: 100%;
@@ -182,112 +183,6 @@
     }
     to {
         transform: rotateY(3turn) rotateX(2turn);
-    }
-}
-
-.cubetwo-help {
-    z-index: 2;
-    pointer-events: none;
-    background: rgba(black, .3);
-    transition: transform 200ms;
-    position: fixed;
-    display: flex;
-    transform: translateY(-50vh);
-    justify-content: center;
-    flex-direction: column;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: right;
-    padding: .1em;
-    min-height: 1.5em;
-    border-bottom: 1px solid rgba(white, .2);
-    padding: 0 .5rem;
-    color: rgba(white, 1);
-    font-size: .8rem;
-    &.cubetwo-show-help {
-        transform: translateY(0);
-    }
-    @include device(medium) {
-        font-size: 1.2rem;
-    }
-    button {
-        background: transparent;
-        border: 1px solid;
-        box-shadow: 2px 2px 4px gray;
-        outline: none;
-        color: $color-focus;
-        font-size: inherit;
-        margin: .5em 1em .5em 0;
-        padding: .5em 1em;
-        @include device(medium) {
-            padding: .2em .5em;
-        }
-        &:focus {
-            box-shadow: 2px 2px 1em $color-focus;
-        }
-    }
-    .cubetwo-row {
-        padding: .1em 0;
-        margin: 0 auto;
-        max-width: 40rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-grow: 1;
-        width: 100%;
-        transition: 200ms;
-        font-size: .8em;
-        color: rgba(white, .6);
-        &:hover {
-            color: rgba(white, .7);
-        }
-    }
-    .cubetwo-device-info {
-        text-align: center;
-    }
-    .cubetwo-device-info--keyboard {
-        .cubetwo-device-info-groups {
-            display: flex;
-        }
-        .cubetwo-device-info-group {
-            display: flex;
-            flex-direction: column;
-            >div {
-                display: flex;
-                flex-direction: row;
-                span,
-                i {
-                    font-size: inherit;
-                    display: inline-block;
-                    position: relative;
-                    min-width: 1.4em;
-                }
-            }
-        }
-    }
-    .cubetwo-state-group {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-direction: column;
-        >h3 {
-            margin: 0;
-            padding: 0;
-            font-size: .8em;
-            font-weight: 300;
-        }
-    }
-    .cubetwo-state-infos {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        >div {
-            display: inline-block;
-            font-weight: 400;
-            text-transform: uppercase;
-            min-width: 2em;
-        }
     }
 }
 
