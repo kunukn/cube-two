@@ -963,13 +963,13 @@ class CubeTwo {
                     this.R();
                     break;
                 case 'swiperight':
-                    this.F();
+                    this.F_();
                     break;
                 case 'swipedown':
                     this.R_();
                     break;
                 case 'swipeleft':
-                    this.F_();
+                    this.F();
                     break;
             }
         });
