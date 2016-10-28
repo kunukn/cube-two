@@ -32,16 +32,36 @@ body {
 
 footer {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 2em;
+    min-height: 4em;
     padding: .5em;
     //line-height: 2em;
     background: rgba(white, .1);
+    .btn-group {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        button {
+            display: flex;
+            align-items: center;
+            margin: 0 1em;
+            background: black;
+            border: 1px solid $color-focus;
+            color: $color-focus;
+            box-shadow: 2px 2px 4px gray;
+            outline: none;
+            min-height: 32px;
+            &:focus {
+                box-shadow: 2px 2px 1em $color-focus;
+            }
+        }
+    }
     >a {
         transition: 200ms;
         color: rgba(white, .5);

@@ -215,6 +215,7 @@
         }
     }
     .cubetwo-row {
+        padding: .1em 0;
         margin: 0 auto;
         max-width: 40rem;
         display: flex;
@@ -254,11 +255,6 @@
                 }
             }
         }
-    }
-    .cubetwo-button-group {
-        font-weight: 700;
-        display: flex;
-        flex-flow: row wrap;
     }
     .cubetwo-state-group {
         display: flex;
