@@ -58,7 +58,8 @@ class CubeTwo {
 
 
     _updateEventBindings() {
-        this._handleKeyEvent = this._handleKeyEvent.bind(this);
+        this._handleKeyEventCube1 = this._handleKeyEventCube1.bind(this);
+        this.handleGlobalKeyEvent = this.handleGlobalKeyEvent.bind(this);
         this._transitionEnd = this._transitionEnd.bind(this);
     }
 
@@ -1585,9 +1586,11 @@ class CubeTwo {
         this._setupCube7();
         this._setupCube8();
 
+
+
         this._updateUiFaces();
 
-        this._cubeComponentEl.addEventListener('keydown', this._handleKeyEvent, false);
+        this._cubeElements[1].addEventListener('keydown', this._handleKeyEventCube1, false);
 
         this._triggerEvent('init', { state: this.getState() });
     }
@@ -1772,7 +1775,41 @@ class CubeTwo {
     // }
 
 
-    _handleKeyEvent(event) {
+    _handleKeyEventCube1(event) {
+        event.stopPropagation();
+
+        switch (event.keyCode) {
+            case KEY.LEFT:
+            case KEY.a:
+                this.U();
+                break;
+            case KEY.UP:
+                event.preventDefault();
+            case KEY.w:
+            case KEY.x:
+                this.L_();
+                break;
+            case KEY.RIGHT:
+            case KEY.d:
+            case KEY.y:
+                this.U_();
+                break;
+            case KEY.DOWN:
+                event.preventDefault();
+            case KEY.s:
+                this.L();
+                break;
+            case KEY.q:
+                this.F_();
+                break;
+            case KEY.e:
+            case KEY.z:
+                this.F();
+                break;
+        }
+    }
+
+    handleGlobalKeyEvent(event) {
 
         // log(event.keyCode);
 

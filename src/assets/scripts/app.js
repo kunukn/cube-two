@@ -78,6 +78,7 @@ cubeTwo.addCallbackForEvent('init', (eventName, payload) => {
     // log(payload);
 });
 cubeTwo.init();
+window.addEventListener('keydown', cubeTwo.handleGlobalKeyEvent, false);
 
 // let cube = cubeTwo;
 // cube.addCallbackForEvent('init', initCallback);
