@@ -24,7 +24,7 @@ import {
 // import dictCube from './dictionaries/dict-cube';
 // import dictCubeTransform from './dictionaries/dict-cube-transform';
 
-import { /*STATES, STATES_ARRAY, KEY, */ EVENT_NAMES } from './constants';
+import { /*STATES, STATES_ARRAY,*/ KEY, EVENT_NAMES } from './constants';
 
 const CUBE_COUNT = 8;
 const CUBE_SIZE = '20vmin';
@@ -58,7 +58,7 @@ class CubeTwo {
 
 
     _updateEventBindings() {
-        // this._handleKeyEvent = this._handleKeyEvent.bind(this);
+        this._handleKeyEvent = this._handleKeyEvent.bind(this);
         this._transitionEnd = this._transitionEnd.bind(this);
     }
 
@@ -930,9 +930,9 @@ class CubeTwo {
         this._setupCube7();
         this._setupCube8();
 
-        // this._updateUiFaces();
+        this._updateUiFaces();
 
-        // this.cubeComponentEl.addEventListener('keydown', this._handleKeyEvent, false);
+        this._cubeComponentEl.addEventListener('keydown', this._handleKeyEvent, false);
 
         this._triggerEvent('init', { state: this.getState() });
     }
@@ -1109,29 +1109,7 @@ class CubeTwo {
     //     this._actionInvoke('-z', this._uiZ, config);
     // }
 
-    // _uix() {
-    //     this.cubeEl.style.transform = `rotateX(90deg)`;
-    // }
 
-    // _uiy() {
-    //     this.cubeEl.style.transform = `rotateY(90deg)`;
-    // }
-
-    // _uiX() {
-    //     this.cubeEl.style.transform = `rotateX(-90deg)`;
-    // }
-
-    // _uiY() {
-    //     this.cubeEl.style.transform = `rotateY(-90deg)`;
-    // }
-
-    // _uiz() {
-    //     this.cubeEl.style.transform = `rotateZ(90deg)`;
-    // }
-
-    // _uiZ() {
-    //     this.cubeEl.style.transform = `rotateZ(-90deg)`;
-    // }
 
     // reset() {
     //     this.gotoState('uf');
@@ -1139,34 +1117,40 @@ class CubeTwo {
     // }
 
 
-    // _handleKeyEvent(event) {
-    //     switch (event.keyCode) {
-    //         case KEY.LEFT:
-    //         case KEY.a:
-    //             this.Y();
-    //             break;
-    //         case KEY.UP:
-    //             event.preventDefault();
-    //         case KEY.w:
-    //             this.x();
-    //             break;
-    //         case KEY.RIGHT:
-    //         case KEY.d:
-    //             this.y();
-    //             break;
-    //         case KEY.DOWN:
-    //             event.preventDefault();
-    //         case KEY.s:
-    //             this.X();
-    //             break;
-    //         case KEY.q:
-    //             this.Z();
-    //             break;
-    //         case KEY.e:
-    //             this.z();
-    //             break;
-    //     }
-    // }
+    _handleKeyEvent(event) {
+
+        // log(event.keyCode);
+
+        switch (event.keyCode) {
+            case KEY.LEFT:
+            case KEY.a:
+                this.y_();
+                break;
+            case KEY.UP:
+                event.preventDefault();
+            case KEY.w:
+            case KEY.x:
+                this.x();
+                break;
+            case KEY.RIGHT:
+            case KEY.d:
+            case KEY.y:
+                this.y();
+                break;
+            case KEY.DOWN:
+                event.preventDefault();
+            case KEY.s:
+                this.x_();
+                break;
+            case KEY.q:
+                this.z_();
+                break;
+            case KEY.e:
+            case KEY.z:
+                this.z();
+                break;
+        }
+    }
 }
 
 export default CubeTwo;

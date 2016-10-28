@@ -45,6 +45,9 @@ const KEY = {
     q: 81,
     s: 83,
     w: 87,
+    x: 88,
+    y: 89,
+    z: 90,
 };
 deepFreeze(KEY);
 

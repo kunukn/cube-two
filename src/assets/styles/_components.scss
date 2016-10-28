@@ -107,7 +107,7 @@
             pointer-events: none;
             position: relative;
             >div {
-                transition: opacity $rotate-transition-duration;                
+                transition: opacity $rotate-transition-duration;
                 user-select: none;
                 pointer-events: none;
                 position: absolute;
@@ -160,7 +160,7 @@
                 color: #222;
                 color: transparent;
                 cursor: pointer;
-                background: transparent;                
+                background: transparent;
                 //background: rgba(red, .5);
                 //display: none;
                 font-size: 0;
