@@ -177,20 +177,56 @@ class CubeTwo {
     _uiD2_() {
         this._uiD_Helper('-180');
     }
-    _uiR() {
+    _uiR_Helper(angle) {
+        this._cube2DisplayEl.style.transformOrigin = `0% 100% -${CUBE_SIZE_HALF}`;
+        this._cube6DisplayEl.style.transformOrigin = `0% 100% ${CUBE_SIZE_HALF}`;
+        this._cube8DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
+        this._cube4DisplayEl.style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
 
+        this._cube2DisplayEl.style.transform = `rotateX(${angle}deg)`;
+        this._cube6DisplayEl.style.transform = `rotateX(${angle}deg)`;
+        this._cube8DisplayEl.style.transform = `rotateX(${angle}deg)`;
+        this._cube4DisplayEl.style.transform = `rotateX(${angle}deg)`;
+    }
+
+    _uiR() {
+        this._uiR_Helper('90');
     }
 
     _uiR_() {
+        this._uiR_Helper('-90');
+    }
+    _uiR2() {
+        this._uiR_Helper('180');
+    }
 
+    _uiR2_() {
+        this._uiR_Helper('-180');
+    }
+
+    _uiL_Helper(angle) {
+        this._cube1DisplayEl.style.transformOrigin = `0% 100% -${CUBE_SIZE_HALF}`;
+        this._cube5DisplayEl.style.transformOrigin = `0% 100% ${CUBE_SIZE_HALF}`;
+        this._cube7DisplayEl.style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
+        this._cube3DisplayEl.style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
+
+        this._cube1DisplayEl.style.transform = `rotateX(${angle}deg)`;
+        this._cube5DisplayEl.style.transform = `rotateX(${angle}deg)`;
+        this._cube7DisplayEl.style.transform = `rotateX(${angle}deg)`;
+        this._cube3DisplayEl.style.transform = `rotateX(${angle}deg)`;
     }
 
     _uiL() {
-
+        this._uiL_Helper('-90');
     }
-
     _uiL_() {
-
+        this._uiL_Helper('90');
+    }
+    _uiL2() {
+        this._uiL_Helper('-180');
+    }
+    _uiL2_() {
+        this._uiL_Helper('180');
     }
 
     _uix() {
