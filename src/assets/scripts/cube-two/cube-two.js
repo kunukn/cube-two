@@ -20,8 +20,8 @@ import {
 import { /*STATES, STATES_ARRAY,*/ KEY, EVENT_NAMES } from '../constants';
 
 const CUBE_COUNT = 8;
-const CUBE_SIZE = '20vmin';
-const CUBE_SIZE_HALF = '10vmin';
+const CUBE_SIZE = '24vmin';
+const CUBE_SIZE_HALF = '12vmin';
 
 
 class CubeTwo {
@@ -1807,4 +1807,4 @@ class CubeTwo {
     }
 }
 
-export  {CubeTwo};
+export { CubeTwo };
