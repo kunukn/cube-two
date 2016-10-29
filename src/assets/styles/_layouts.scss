@@ -21,7 +21,7 @@ body {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     background-blend-mode: multiply;
     &.with-background-image {
         background: rgba(white, .5) url($cube-background-image-url) 0% 0% no-repeat;
@@ -129,7 +129,7 @@ footer {
     left: 0;
     min-height: 2em;
     padding: .2em;
-    background: $color-theme; // rgba(white, .0);
+    background: rgba(white, .1);
     .cubetwo-btn-group {
         flex: 1;
         display: flex;
