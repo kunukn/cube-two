@@ -33,7 +33,6 @@ body {
 .cubetwo-help {
     z-index: 2;
     pointer-events: none;
-    background: rgba($color-theme, .5);
     transition: transform 200ms;
     position: fixed;
     display: flex;
@@ -48,28 +47,13 @@ body {
     border-bottom: 1px solid rgba(white, .2);
     padding: .5em 0;
     color: rgba(white, 1);
+    background: rgba($color-theme, .96);
     font-size: .8rem;
     &.cubetwo-show-help {
         transform: translateY(0);
     }
     @include device(medium) {
         font-size: 1.2rem;
-    }
-    button {
-        background: transparent;
-        border: 1px solid;
-        box-shadow: 2px 2px 4px gray;
-        outline: none;
-        color: $color-focus;
-        font-size: inherit;
-        margin: .5em 1em .5em 0;
-        padding: .5em 1em;
-        @include device(medium) {
-            padding: .2em .5em;
-        }
-        &:focus {
-            box-shadow: 2px 2px 1em $color-focus;
-        }
     }
     .cubetwo-row {
         padding: .1em 0;
@@ -82,9 +66,9 @@ body {
         width: 100%;
         transition: 200ms;
         font-size: .8em;
-        color: rgba(white, .6);
+        // color: rgba(white, .6);
         &:hover {
-            color: rgba(white, .7);
+            //   color: rgba(white, .7);
         }
     }
     .cubetwo-device-info {
@@ -143,7 +127,7 @@ footer {
     position: absolute;
     bottom: 0;
     left: 0;
-    min-height: 4em;
+    min-height: 2em;
     padding: .5em;
     background: $color-theme; // rgba(white, .0);
     .cubetwo-btn-group {
@@ -152,22 +136,7 @@ footer {
         justify-content: center;
         align-items: center;
         button {
-            display: flex;
-            align-items: center;
-            margin: 0 1em;
-            background: $color-theme;
-            border: 1px solid $color-focus;
-            color: $color-focus;
-            box-shadow: 2px 2px 4px gray;
-            outline: none;
-            min-height: 32px;
-            transition: background 200ms;
-            &:focus {
-                box-shadow: 2px 2px 1em $color-focus;
-            }
-            &.cubetwo-active {
-                background: rgba(white, .2);
-            }
+            margin: 0 2em;
         }
     }
     >a {

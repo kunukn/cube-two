@@ -1,5 +1,12 @@
 import deepFreeze from 'deep-freeze';
 
+const ROTATION_VIEW = {
+    X: 20,
+    Y: 30
+}
+deepFreeze(ROTATION_VIEW);
+
+
 const STATES = {
     uf: 'uf',
     ur: 'ur',
@@ -102,4 +109,4 @@ LEFT['ld'] = 'b';
 LEFT['lf'] = 'd';
 
 
-export { STATES, STATES_ARRAY, OPPOSITE, LEFT, KEY, EVENT_NAMES };
+export { STATES, STATES_ARRAY, OPPOSITE, LEFT, KEY, EVENT_NAMES, ROTATION_VIEW };

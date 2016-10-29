@@ -1,15 +1,77 @@
 @charset "UTF-8";
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    background: $color-theme;
+    border: 1px solid $color-focus;
+    color: $color-focus;
+    box-shadow: 2px 2px 4px gray;
+    outline: none;
+    min-height: 32px;
+    transition: background 200ms;
+    border-radius: 0;
+    &:focus {
+        box-shadow: 2px 2px 1em $color-focus;
+    }
+    &.cubetwo-active {
+        background: rgba(white, .2);
+    }
+}
+
 .cubetwo-component {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 4 * $cube-size;
     height: 4 * $cube-size;
     max-width: 100%;
     margin: 0 auto;
     position: relative;
     background: rgba(white, .06);
     overflow-x: hidden;
+    $btn-size: 32px;
+    > button {
+        position: absolute;
+        overflow: hidden;
+        height: $btn-size;
+        width: $btn-size;
+    }
+    > .cubetwo {
+        &-btn-top-left {
+            top: 0;
+            left: 0;
+        }
+        &-btn-top-center {
+            top: 0;
+            left: calc(50% - #{$btn-size});
+        }
+        &-btn-top-right {
+            top: 0;
+            right: 0;
+        }
+        &-btn-center-left {
+            top: calc(50% - #{$btn-size});
+            left: 0;
+        }
+        &-btn-center-right {
+            top: calc(50% - #{$btn-size});
+            right: 0;
+        }
+        &-btn-bottom-left {
+            bottom: 0;
+            left: 0;
+        }
+        &-btn-bottom-center {
+            bottom: 0;
+            left: calc(50% - #{$btn-size});
+        }
+        &-btn-bottom-right {
+            bottom: 0;
+            right: 0;
+        }
+    }
 }
 
 .cubetwo-rotation-view {
@@ -20,7 +82,7 @@
     perspective: 3000px;
     position: relative;
     transform-style: preserve-3d;
-    transform: rotateX(-20deg) rotateY(-20deg) rotateZ(0deg);
+    transform: rotateX(-#{$rotate-view-x}deg) rotateY(-#{$rotate-view-y}deg) rotateZ(0deg);
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -28,13 +90,13 @@
     align-items: center;
     align-content: center;
     &.left-side {
-        transform: rotateX(-20deg) rotateY(20deg) rotateZ(0deg);
+        transform: rotateX(-#{$rotate-view-x}deg) rotateY(#{$rotate-view-y}deg) rotateZ(0deg);
     }
     &.down-side {
-        transform: rotateX(20deg) rotateY(-20deg) rotateZ(0deg);
+        transform: rotateX(#{$rotate-view-x}deg) rotateY(-#{$rotate-view-y}deg) rotateZ(0deg);
     }
     &.left-down-side {
-        transform: rotateX(20deg) rotateY(20deg) rotateZ(0deg);
+        transform: rotateX(#{$rotate-view-x}deg) rotateY(#{$rotate-view-y}deg) rotateZ(0deg);
     }
     &.spin {
         animation: spin-animation 20s linear infinite;

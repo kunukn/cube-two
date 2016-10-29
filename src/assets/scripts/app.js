@@ -6,6 +6,8 @@ import { log } from './logger';
 
 import { qs, qsa, byId } from './query';
 
+import { ROTATION_VIEW } from './constants';
+
 import { CubeTwo } from './cube-two';
 
 //log('App running');
@@ -61,33 +63,38 @@ byId('btn-cubetwo-help').addEventListener('click', ev => {
     ev.currentTarget.classList.toggle('cubetwo-active');
 });
 
-byId('btn-cubetwo-rotate-view').addEventListener('click', ev => {
-    if (cubetwoRotationViewEl.classList.contains('left-side')) {
-        cubetwoRotationViewEl.classList.remove('left-side');
-        cubetwoRotationViewEl.classList.add('down-side');
-    } else if (cubetwoRotationViewEl.classList.contains('down-side')) {
-        cubetwoRotationViewEl.classList.remove('down-side');
-        cubetwoRotationViewEl.classList.add('left-down-side');
-    } else if (cubetwoRotationViewEl.classList.contains('left-down-side')) {
-        cubetwoRotationViewEl.classList.remove('left-down-side');
-    } else {
-        cubetwoRotationViewEl.classList.add('left-side');
-    }
-});
+qs('.cubetwo-btn-top-left', cubeComponentEl).addEventListener('click',
+    ev => cubetwoRotationViewEl.style.transform = `rotateX(${ROTATION_VIEW.X}deg) rotateY(-${ROTATION_VIEW.Y}deg) rotateZ(0deg)`
+);
+qs('.cubetwo-btn-top-right', cubeComponentEl).addEventListener('click',
+    ev => cubetwoRotationViewEl.style.transform = `rotateX(${ROTATION_VIEW.X}deg) rotateY(${ROTATION_VIEW.Y}deg) rotateZ(0deg)`
+);
+qs('.cubetwo-btn-bottom-left', cubeComponentEl).addEventListener('click',
+    ev => cubetwoRotationViewEl.style.transform = `rotateX(-${ROTATION_VIEW.X}deg) rotateY(-${ROTATION_VIEW.Y}deg) rotateZ(0deg)`
+);
+qs('.cubetwo-btn-bottom-right', cubeComponentEl).addEventListener('click',
+    ev => cubetwoRotationViewEl.style.transform = `rotateX(-${ROTATION_VIEW.X}deg) rotateY(${ROTATION_VIEW.Y}deg) rotateZ(0deg)`
+);
 
-
-// byId('btn-cubetwo-solve').addEventListener('click',
-//     ev => cubetwo.solve()
-// );
-
-
-byId('btn-cubetwo-rotate-1').addEventListener('click',
-    ev => cubetwo.y2()
+//-----
+qs('.cubetwo-btn-top-center', cubeComponentEl).addEventListener('click',
+    ev => cubeTwo.x()
+);
+qs('.cubetwo-btn-bottom-center', cubeComponentEl).addEventListener('click',
+    ev => cubeTwo.x_()
+);
+qs('.cubetwo-btn-center-left', cubeComponentEl).addEventListener('click',
+    ev => cubeTwo.y_()
+);
+qs('.cubetwo-btn-center-right', cubeComponentEl).addEventListener('click',
+    ev => cubeTwo.y()
 );
 
 
-byId('btn-cubetwo-rotate-2').addEventListener('click',
-    ev => cubetwo.x2()
+//-----
+
+byId('btn-cubetwo-rotate-1').addEventListener('click',
+    ev => cubeTwo.y2()
 );
 
 
