@@ -10,8 +10,8 @@ http://codepen.io/kunukn/full/EgzJdR/
 ## Browser support
 
 * Chrome
-* Safari
-* Firefox (currently glitchy, might refine it with tricks and tweaks like css scale .99 some day)
+
+Maybe I can make some tweaks to make it work with Safari and Firefox some day.
 
 
 ## Getting started
