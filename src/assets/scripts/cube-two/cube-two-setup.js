@@ -19,7 +19,7 @@ export function setupCube1() {
 
     hammerManager.on('singletab swipeup swipedown swiperight swipeleft', (ev) => {
         const type = ev.type;
-        let element = ev.target;        
+        let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
         switch (type) {

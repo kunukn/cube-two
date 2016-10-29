@@ -52,10 +52,7 @@ class CubeTwo {
             code: 'todo impl state info for the cube',
             rotateEnabled: true,
         });
-
-        log('CubeTwo constructor');
     }
-
 
     _updateEventBindings() {
         this._handleKeyEventCube1 = this._handleKeyEventCube1.bind(this);
@@ -66,7 +63,6 @@ class CubeTwo {
         this._handleKeyEventCube6 = this._handleKeyEventCube6.bind(this);
         this._handleKeyEventCube7 = this._handleKeyEventCube7.bind(this);
         this._handleKeyEventCube8 = this._handleKeyEventCube8.bind(this);
-
         this.handleGlobalKeyEvent = this.handleGlobalKeyEvent.bind(this);
         this._transitionEnd = this._transitionEnd.bind(this);
     }
