@@ -205,7 +205,7 @@ class CubeTwo {
 
 
     x(config) {
-        this._rotationInvoke(config, this._ui.ui.uix);
+        this._rotationInvoke(config, this._ui.uix);
     }
     x_(config) {
         this._rotationInvoke(config, this._ui.uix_);
