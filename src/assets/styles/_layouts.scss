@@ -21,7 +21,7 @@ body {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     background-blend-mode: multiply;
     &.with-background-image {
         background: rgba(white, .5) url($cube-background-image-url) 0% 0% no-repeat;
@@ -127,23 +127,31 @@ footer {
     position: absolute;
     bottom: 0;
     left: 0;
-    min-height: 2em;
-    padding: .2em;
+    min-height: $btn-size;
     background: rgba(white, .1);
+    > div {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 0 1em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        >a {
+            transition: 200ms;
+            color: rgba(white, .5);
+            &:focus {
+                color: $color-focus;
+            }
+        }
+    }
     .cubetwo-btn-group {
         flex: 1;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         button {
             margin: 0 2em;
-        }
-    }
-    >a {
-        transition: 200ms;
-        color: rgba(white, .5);
-        &:focus {
-            color: $color-focus;
         }
     }
 }
