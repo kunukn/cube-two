@@ -465,7 +465,7 @@ export function setupCube4() {
         }
         switch (type) {
             case 'singletap':
-                this.D_();            
+                this.D_();
                 break;
             case 'swipeup':
                 this.F_();
@@ -496,12 +496,9 @@ export function setupCube5() {
 
     let hammerManager = new Hammer.Manager(touchBackEl, {});
     hammerManager.add(swipe);
-    hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
     hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
-    hammerManager.get('doubletap').recognizeWith('singletap');
-    hammerManager.get('singletap').requireFailure('doubletap');
 
-    hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+    hammerManager.on('singletap swipeup swipedown swiperight swipeleft', (ev) => {
         const type = ev.type;
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
@@ -514,9 +511,7 @@ export function setupCube5() {
         }
         switch (type) {
             case 'singletap':
-                break;
-            case 'doubletap':
-                //this.tapped(element, ev.target.dataset.type);
+                this.L_();
                 break;
             case 'swipeup':
                 this.L_();
@@ -539,12 +534,9 @@ export function setupCube5() {
 
     hammerManager = new Hammer.Manager(touchUpEl, {});
     hammerManager.add(swipe);
-    hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
     hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
-    hammerManager.get('doubletap').recognizeWith('singletap');
-    hammerManager.get('singletap').requireFailure('doubletap');
 
-    hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+    hammerManager.on('singletap swipeup swipedown swiperight swipeleft', (ev) => {
         const type = ev.type;
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
@@ -556,8 +548,7 @@ export function setupCube5() {
         }
         switch (type) {
             case 'singletap':
-                break;
-            case 'doubletap':
+                this.B();
                 break;
             case 'swipeup':
                 this.L_();
@@ -579,12 +570,9 @@ export function setupCube5() {
 
     hammerManager = new Hammer.Manager(touchLeftEl, {});
     hammerManager.add(swipe);
-    hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
     hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
-    hammerManager.get('doubletap').recognizeWith('singletap');
-    hammerManager.get('singletap').requireFailure('doubletap');
 
-    hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+    hammerManager.on('singletap swipeup swipedown swiperight swipeleft', (ev) => {
         const type = ev.type;
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
@@ -596,8 +584,7 @@ export function setupCube5() {
         }
         switch (type) {
             case 'singletap':
-                break;
-            case 'doubletap':
+                this.U();
                 break;
             case 'swipeup':
                 this.B_();
@@ -629,12 +616,9 @@ export function setupCube6() {
 
     let hammerManager = new Hammer.Manager(touchBackEl, {});
     hammerManager.add(swipe);
-    hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
     hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
-    hammerManager.get('doubletap').recognizeWith('singletap');
-    hammerManager.get('singletap').requireFailure('doubletap');
 
-    hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+    hammerManager.on('singletap swipeup swipedown swiperight swipeleft', (ev) => {
         const type = ev.type;
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
@@ -647,9 +631,6 @@ export function setupCube6() {
         }
         switch (type) {
             case 'singletap':
-                break;
-            case 'doubletap':
-                //this.tapped(element, ev.target.dataset.type);
                 break;
             case 'swipeup':
                 this.R();
@@ -672,12 +653,9 @@ export function setupCube6() {
 
     hammerManager = new Hammer.Manager(touchUpEl, {});
     hammerManager.add(swipe);
-    hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
     hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
-    hammerManager.get('doubletap').recognizeWith('singletap');
-    hammerManager.get('singletap').requireFailure('doubletap');
 
-    hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+    hammerManager.on('singletap swipeup swipedown swiperight swipeleft', (ev) => {
         const type = ev.type;
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
@@ -689,8 +667,7 @@ export function setupCube6() {
         }
         switch (type) {
             case 'singletap':
-                break;
-            case 'doubletap':
+                this.B_();
                 break;
             case 'swipeup':
                 this.R();
@@ -712,12 +689,9 @@ export function setupCube6() {
 
     hammerManager = new Hammer.Manager(touchRightEl, {});
     hammerManager.add(swipe);
-    hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
     hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
-    hammerManager.get('doubletap').recognizeWith('singletap');
-    hammerManager.get('singletap').requireFailure('doubletap');
 
-    hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+    hammerManager.on('singletap swipeup swipedown swiperight swipeleft', (ev) => {
         const type = ev.type;
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
@@ -729,8 +703,7 @@ export function setupCube6() {
         }
         switch (type) {
             case 'singletap':
-                break;
-            case 'doubletap':
+                this.U_();
                 break;
             case 'swipeup':
                 this.B();
@@ -761,12 +734,9 @@ export function setupCube7() {
 
     let hammerManager = new Hammer.Manager(touchBackEl, {});
     hammerManager.add(swipe);
-    hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
     hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
-    hammerManager.get('doubletap').recognizeWith('singletap');
-    hammerManager.get('singletap').requireFailure('doubletap');
 
-    hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+    hammerManager.on('singletap swipeup swipedown swiperight swipeleft', (ev) => {
         const type = ev.type;
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
@@ -779,9 +749,6 @@ export function setupCube7() {
         }
         switch (type) {
             case 'singletap':
-                break;
-            case 'doubletap':
-                //this.tapped(element, ev.target.dataset.type);
                 break;
             case 'swipeup':
                 this.L_();
@@ -804,12 +771,9 @@ export function setupCube7() {
 
     hammerManager = new Hammer.Manager(touchDownEl, {});
     hammerManager.add(swipe);
-    hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
     hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
-    hammerManager.get('doubletap').recognizeWith('singletap');
-    hammerManager.get('singletap').requireFailure('doubletap');
 
-    hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+    hammerManager.on('singletap swipeup swipedown swiperight swipeleft', (ev) => {
         const type = ev.type;
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
@@ -821,8 +785,7 @@ export function setupCube7() {
         }
         switch (type) {
             case 'singletap':
-                break;
-            case 'doubletap':
+                this.B_();
                 break;
             case 'swipeup':
                 this.L_();
@@ -844,12 +807,9 @@ export function setupCube7() {
 
     hammerManager = new Hammer.Manager(touchLeftEl, {});
     hammerManager.add(swipe);
-    hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
     hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
-    hammerManager.get('doubletap').recognizeWith('singletap');
-    hammerManager.get('singletap').requireFailure('doubletap');
 
-    hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+    hammerManager.on('singletap swipeup swipedown swiperight swipeleft', (ev) => {
         const type = ev.type;
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
@@ -861,8 +821,7 @@ export function setupCube7() {
         }
         switch (type) {
             case 'singletap':
-                break;
-            case 'doubletap':
+                this.D_();
                 break;
             case 'swipeup':
                 this.B_();
@@ -893,12 +852,9 @@ export function setupCube8() {
 
     let hammerManager = new Hammer.Manager(touchBackEl, {});
     hammerManager.add(swipe);
-    hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
     hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
-    hammerManager.get('doubletap').recognizeWith('singletap');
-    hammerManager.get('singletap').requireFailure('doubletap');
 
-    hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+    hammerManager.on('singletap swipeup swipedown swiperight swipeleft', (ev) => {
         const type = ev.type;
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
@@ -911,8 +867,7 @@ export function setupCube8() {
         }
         switch (type) {
             case 'singletap':
-                break;
-            case 'doubletap':
+                this.R_();
                 break;
             case 'swipeup':
                 this.R();
@@ -935,12 +890,9 @@ export function setupCube8() {
 
     hammerManager = new Hammer.Manager(touchDownEl, {});
     hammerManager.add(swipe);
-    hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
     hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
-    hammerManager.get('doubletap').recognizeWith('singletap');
-    hammerManager.get('singletap').requireFailure('doubletap');
 
-    hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+    hammerManager.on('singletap swipeup swipedown swiperight swipeleft', (ev) => {
         const type = ev.type;
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
@@ -952,8 +904,7 @@ export function setupCube8() {
         }
         switch (type) {
             case 'singletap':
-                break;
-            case 'doubletap':
+                this.B();
                 break;
             case 'swipeup':
                 this.R();
@@ -975,12 +926,9 @@ export function setupCube8() {
 
     hammerManager = new Hammer.Manager(touchRightEl, {});
     hammerManager.add(swipe);
-    hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
     hammerManager.add(new Hammer.Tap({ event: 'singletap' }));
-    hammerManager.get('doubletap').recognizeWith('singletap');
-    hammerManager.get('singletap').requireFailure('doubletap');
 
-    hammerManager.on('singletap doubletap swipeup swipedown swiperight swipeleft', (ev) => {
+    hammerManager.on('singletap swipeup swipedown swiperight swipeleft', (ev) => {
         const type = ev.type;
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
@@ -992,8 +940,7 @@ export function setupCube8() {
         }
         switch (type) {
             case 'singletap':
-                break;
-            case 'doubletap':
+                this.D();            
                 break;
             case 'swipeup':
                 this.B();
