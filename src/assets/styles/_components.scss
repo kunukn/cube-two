@@ -31,7 +31,6 @@ button {
     position: relative;
     background: rgba(white, .06);
     overflow-x: hidden;
-    $btn-size: 32px;
     > button {
         position: absolute;
         overflow: hidden;
@@ -79,7 +78,7 @@ button {
     width: 2 * $cube-size;
     height: 2 * $cube-size;
     max-width: 100%;
-    perspective: 3000px;
+    perspective: 2000px;
     position: relative;
     transform-style: preserve-3d;
     transform: rotateX(-#{$rotate-view-x}deg) rotateY(-#{$rotate-view-y}deg) rotateZ(0deg);
@@ -102,7 +101,7 @@ button {
         animation: spin-animation 20s linear infinite;
     }
     .cubetwo-cube-group {
-        transition: transform 300ms;
+        //transition: transform 300ms;
         width: 2 * $cube-size;
         height: 2 * $cube-size;
         display: flex;

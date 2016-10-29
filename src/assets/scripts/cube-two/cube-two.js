@@ -4,8 +4,6 @@ import { debug, log, error } from '../logger';
 
 import { qs, qsa, byId } from '../query';
 
-// import dictCubeSkins from '../dictionaries/dict-cube-skins';
-
 import deepFreeze from 'deep-freeze';
 
 import {
@@ -29,8 +27,6 @@ import { CUBE_COUNT, CUBE_SIZE, CUBE_SIZE_HALF } from './cube-two-constants';
 
 import { CubeTwoUi } from './cube-two-ui';
 
-// import dictCube from '../dictionaries/dict-cube';
-// import dictCubeTransform from '../dictionaries/dict-cube-transform';
 
 import { /*STATES, STATES_ARRAY,*/ KEY, EVENT_NAMES } from '../constants';
 
@@ -321,7 +317,6 @@ class CubeTwo {
         setupCube6.bind(this)();
         setupCube7.bind(this)();
         setupCube8.bind(this)();
-
 
         this._updateUiFaces();
 

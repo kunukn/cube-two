@@ -15,22 +15,13 @@ export function setupCube1() {
 
     let hammerManager = new Hammer.Manager(touchFrontEl, {});
     hammerManager.add(swipe);
-    // hammerManager.add(new Hammer.Tap({ event: 'doubletap', taps: 2 }));
     hammerManager.add(new Hammer.Tap({ event: 'singletab' }));
-    // hammerManager.get('doubletap').recognizeWith('tab');
-    // hammerManager.get('tab').requireFailure('doubletap');
 
     hammerManager.on('singletab swipeup swipedown swiperight swipeleft', (ev) => {
         const type = ev.type;
-        let element = ev.target;
+        let element = ev.target;        
         //debug(`${type} ${element.dataset.type}`);
 
-        // Find swipe element if event is invoke on child element
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletab':
                 this.L_();
@@ -145,12 +136,6 @@ export function setupCube2() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        // Find swipe element if event is invoke on child element
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 this.R();
@@ -265,12 +250,6 @@ export function setupCube3() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        // Find swipe element if event is invoke on child element
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 this.L();
@@ -303,11 +282,6 @@ export function setupCube3() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 this.F();
@@ -339,11 +313,6 @@ export function setupCube3() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 this.D();
@@ -384,12 +353,6 @@ export function setupCube4() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        // Find swipe element if event is invoke on child element
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 this.R_();
@@ -422,11 +385,6 @@ export function setupCube4() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 this.F_();
@@ -458,11 +416,6 @@ export function setupCube4() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 this.D_();
@@ -503,12 +456,6 @@ export function setupCube5() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        // Find swipe element if event is invoke on child element
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 this.L_();
@@ -541,11 +488,6 @@ export function setupCube5() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 this.B();
@@ -577,11 +519,6 @@ export function setupCube5() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 this.U();
@@ -623,12 +560,6 @@ export function setupCube6() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        // Find swipe element if event is invoke on child element
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 break;
@@ -660,11 +591,6 @@ export function setupCube6() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 this.B_();
@@ -696,11 +622,6 @@ export function setupCube6() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 this.U_();
@@ -741,12 +662,6 @@ export function setupCube7() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        // Find swipe element if event is invoke on child element
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 break;
@@ -778,11 +693,6 @@ export function setupCube7() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 this.B_();
@@ -814,11 +724,6 @@ export function setupCube7() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 this.D_();
@@ -859,12 +764,6 @@ export function setupCube8() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        // Find swipe element if event is invoke on child element
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 this.R_();
@@ -897,11 +796,6 @@ export function setupCube8() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 this.B();
@@ -933,11 +827,6 @@ export function setupCube8() {
         let element = ev.target;
         //debug(`${type} ${element.dataset.type}`);
 
-        if (element.dataset.type !== 'cubetwo') {
-            element = element.parentElement;
-            if (element.dataset.type !== 'cubetwo')
-                element = element.parentElement;
-        }
         switch (type) {
             case 'singletap':
                 this.D();
