@@ -36,6 +36,7 @@ button {
         overflow: hidden;
         height: $btn-size;
         width: $btn-size;
+        padding: 4px;
     }
     > .cubetwo {
         &-btn-top-left {
@@ -53,7 +54,7 @@ button {
         &-btn-center-left {
             top: calc(50% - #{$btn-size/2});
             left: 0;
-        }
+           }
         &-btn-center-right {
             top: calc(50% - #{$btn-size/2});
             right: 0;

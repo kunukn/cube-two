@@ -256,15 +256,13 @@ class CubeTwo {
             target.style.transition = `0s`;
 
             nextFrame(_ => {
-                // Reset
-                target.style.transformOrigin = '';
-                target.style.transform = '';
 
                 this._updateUiFaces();
-
+                target.style.transformOrigin = ''; // reset
                 target.style.transform = backupTransition;
                 rAF(_ => {
                     target.style.transition = backupTransition;
+
 
                     const state = this.getState();
                     state.rotateEnabled = true;
