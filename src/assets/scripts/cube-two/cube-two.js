@@ -25,15 +25,14 @@ import {
     setupCube8
 } from './cube-two-setup';
 
+import { CUBE_COUNT, CUBE_SIZE, CUBE_SIZE_HALF } from './cube-two-constants';
+
+import { CubeTwoUi } from './cube-two-ui';
+
 // import dictCube from '../dictionaries/dict-cube';
 // import dictCubeTransform from '../dictionaries/dict-cube-transform';
 
 import { /*STATES, STATES_ARRAY,*/ KEY, EVENT_NAMES } from '../constants';
-
-const CUBE_COUNT = 8;
-const CUBE_SIZE = '20vmin';
-const CUBE_SIZE_HALF = '10vmin';
-
 
 class CubeTwo {
     constructor(config) {
@@ -43,6 +42,7 @@ class CubeTwo {
             return;
         }
         this._appState = {};
+        this._ui = null;
         this._config = config;
         deepFreeze(this._config);
 
@@ -120,343 +120,132 @@ class CubeTwo {
     }
 
 
-
-    _uiF_Helper(angle) {
-
-        this._displayElements[1].style.transformOrigin = `100% 100% ${CUBE_SIZE_HALF}`;
-        this._displayElements[2].style.transformOrigin = `0% 100% ${CUBE_SIZE_HALF}`;
-        this._displayElements[3].style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
-        this._displayElements[4].style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
-
-        this._displayElements[1].style.transform = `rotateZ(${angle}deg)`;
-        this._displayElements[2].style.transform = `rotateZ(${angle}deg)`;
-        this._displayElements[3].style.transform = `rotateZ(${angle}deg)`;
-        this._displayElements[4].style.transform = `rotateZ(${angle}deg)`;
-    }
-    _uiF() {
-        this._uiF_Helper('90');
-    }
-    _uiF_() {
-        this._uiF_Helper('-90');
-    }
-    _uiF2() {
-        this._uiF_Helper('180');
-    }
-    _uiF2_() {
-        this._uiF_Helper('-180');
-    }
-
-    _uiB_Helper(angle) {
-        this._displayElements[5].style.transformOrigin = `100% 100% ${CUBE_SIZE_HALF}`;
-        this._displayElements[6].style.transformOrigin = `0% 100% ${CUBE_SIZE_HALF}`;
-        this._displayElements[7].style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
-        this._displayElements[8].style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
-
-        this._displayElements[5].style.transform = `rotateZ(${angle}deg)`;
-        this._displayElements[6].style.transform = `rotateZ(${angle}deg)`;
-        this._displayElements[7].style.transform = `rotateZ(${angle}deg)`;
-        this._displayElements[8].style.transform = `rotateZ(${angle}deg)`;
-    }
-    _uiB() {
-        this._uiB_Helper('-90');
-    }
-    _uiB_() {
-        this._uiB_Helper('90');
-    }
-    _uiB2() {
-        this._uiB_Helper('-180');
-    }
-    _uiB2_() {
-        this._uiB_Helper('180');
-    }
-
-
-    _uiU_Helper(angle) {
-        this._displayElements[1].style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
-        this._displayElements[2].style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
-        this._displayElements[5].style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
-        this._displayElements[6].style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
-
-        this._displayElements[1].style.transform = `rotateY(${angle}deg)`;
-        this._displayElements[2].style.transform = `rotateY(${angle}deg)`;
-        this._displayElements[5].style.transform = `rotateY(${angle}deg)`;
-        this._displayElements[6].style.transform = `rotateY(${angle}deg)`;
-    }
-    _uiU() {
-        this._uiU_Helper('-90');
-    }
-    _uiU_() {
-        this._uiU_Helper('90');
-    }
-    _uiU2() {
-        this._uiU_Helper('-180');
-    }
-    _uiU2_() {
-        this._uiU_Helper('180');
-    }
-
-
-
-    _uiD_Helper(angle) {
-        this._displayElements[3].style.transformOrigin = `100% 0% -${CUBE_SIZE_HALF}`;
-        this._displayElements[4].style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
-        this._displayElements[7].style.transformOrigin = `100% 0% ${CUBE_SIZE_HALF}`;
-        this._displayElements[8].style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
-
-        this._displayElements[3].style.transform = `rotateY(${angle}deg)`;
-        this._displayElements[4].style.transform = `rotateY(${angle}deg)`;
-        this._displayElements[7].style.transform = `rotateY(${angle}deg)`;
-        this._displayElements[8].style.transform = `rotateY(${angle}deg)`;
-    }
-    _uiD() {
-        this._uiD_Helper('90');
-    }
-    _uiD_() {
-        this._uiD_Helper('-90');
-    }
-    _uiD2() {
-        this._uiD_Helper('180');
-    }
-    _uiD2_() {
-        this._uiD_Helper('-180');
-    }
-
-
-
-    _uiR_Helper(angle) {
-        this._displayElements[2].style.transformOrigin = `0% 100% -${CUBE_SIZE_HALF}`;
-        this._displayElements[6].style.transformOrigin = `0% 100% ${CUBE_SIZE_HALF}`;
-        this._displayElements[8].style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
-        this._displayElements[4].style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
-
-        this._displayElements[2].style.transform = `rotateX(${angle}deg)`;
-        this._displayElements[6].style.transform = `rotateX(${angle}deg)`;
-        this._displayElements[8].style.transform = `rotateX(${angle}deg)`;
-        this._displayElements[4].style.transform = `rotateX(${angle}deg)`;
-    }
-    _uiR() {
-        this._uiR_Helper('90');
-    }
-    _uiR_() {
-        this._uiR_Helper('-90');
-    }
-    _uiR2() {
-        this._uiR_Helper('180');
-    }
-    _uiR2_() {
-        this._uiR_Helper('-180');
-    }
-
-
-
-    _uiL_Helper(angle) {
-        this._displayElements[1].style.transformOrigin = `0% 100% -${CUBE_SIZE_HALF}`;
-        this._displayElements[5].style.transformOrigin = `0% 100% ${CUBE_SIZE_HALF}`;
-        this._displayElements[7].style.transformOrigin = `0% 0% ${CUBE_SIZE_HALF}`;
-        this._displayElements[3].style.transformOrigin = `0% 0% -${CUBE_SIZE_HALF}`;
-
-        this._displayElements[1].style.transform = `rotateX(${angle}deg)`;
-        this._displayElements[5].style.transform = `rotateX(${angle}deg)`;
-        this._displayElements[7].style.transform = `rotateX(${angle}deg)`;
-        this._displayElements[3].style.transform = `rotateX(${angle}deg)`;
-    }
-    _uiL() {
-        this._uiL_Helper('-90');
-    }
-    _uiL_() {
-        this._uiL_Helper('90');
-    }
-    _uiL2() {
-        this._uiL_Helper('-180');
-    }
-    _uiL2_() {
-        this._uiL_Helper('180');
-    }
-
-
-
-
-    _uix() {
-        this._uiR();
-        this._uiL_();
-    }
-    _uix_() {
-        this._uiR_();
-        this._uiL();
-    }
-    _uix2() {
-        this._uiR2();
-        this._uiL2_();
-    }
-    _uix2_() {
-        this._uiR2_();
-        this._uiL2();
-    }
-
-    _uiy() {
-        this._uiU_();
-        this._uiD();
-    }
-    _uiy_() {
-        this._uiU();
-        this._uiD_();
-    }
-    _uiy2() {
-        this._uiU2_();
-        this._uiD2();
-    }
-    _uiy2_() {
-        this._uiU2();
-        this._uiD2_();
-    }
-
-    _uiz() {
-        this._uiF();
-        this._uiB_();
-    }
-    _uiz_() {
-        this._uiF_();
-        this._uiB();
-    }
-    _uiz2() {
-        this._uiF2();
-        this._uiB2_();
-    }
-    _uiz2_() {
-        this._uiF2_();
-        this._uiB2();
-    }
-
-
-    /* -------------------- */
-
     F(config) {
-        this._rotationInvoke(config, this._uiF);
+        this._rotationInvoke(config, this._ui.uiF);
     }
     F_(config) {
-        this._rotationInvoke(config, this._uiF_);
+        this._rotationInvoke(config, this._ui.uiF_);
     }
     F2(config) {
-        this._rotationInvoke(config, this._uiF2);
+        this._rotationInvoke(config, this._ui.uiF2);
     }
     F2_(config) {
-        this._rotationInvoke(config, this._uiF2_);
+        this._rotationInvoke(config, this._ui.uiF2_);
     }
 
 
     B(config) {
-        this._rotationInvoke(config, this._uiB);
+        this._rotationInvoke(config, this._ui.uiB);
     }
     B_(config) {
-        this._rotationInvoke(config, this._uiB_);
+        this._rotationInvoke(config, this._ui.uiB_);
     }
     B2(config) {
-        this._rotationInvoke(config, this._uiB2);
+        this._rotationInvoke(config, this._ui.uiB2);
     }
     B2_(config) {
-        this._rotationInvoke(config, this._uiB2_);
+        this._rotationInvoke(config, this._ui.uiB2_);
     }
 
 
     U(config) {
-        this._rotationInvoke(config, this._uiU);
+        this._rotationInvoke(config, this._ui.uiU);
     }
     U_(config) {
-        this._rotationInvoke(config, this._uiU_);
+        this._rotationInvoke(config, this._ui.uiU_);
     }
     U2(config) {
-        this._rotationInvoke(config, this._uiU2);
+        this._rotationInvoke(config, this._ui.uiU2);
     }
     U2_(config) {
-        this._rotationInvoke(config, this._uiU2_);
+        this._rotationInvoke(config, this._ui.uiU2_);
     }
 
 
     D(config) {
-        this._rotationInvoke(config, this._uiD);
+        this._rotationInvoke(config, this._ui.uiD);
     }
     D_(config) {
-        this._rotationInvoke(config, this._uiD_);
+        this._rotationInvoke(config, this._ui.uiD_);
     }
     D2(config) {
-        this._rotationInvoke(config, this._uiD2);
+        this._rotationInvoke(config, this._ui.uiD2);
     }
     D2_(config) {
-        this._rotationInvoke(config, this._uiD2_);
+        this._rotationInvoke(config, this._ui.uiD2_);
     }
 
 
     R(config) {
-        this._rotationInvoke(config, this._uiR);
+        this._rotationInvoke(config, this._ui.uiR);
     }
     R_(config) {
-        this._rotationInvoke(config, this._uiR_);
+        this._rotationInvoke(config, this._ui.uiR_);
     }
     R2(config) {
-        this._rotationInvoke(config, this._uiR2);
+        this._rotationInvoke(config, this._ui.uiR2);
     }
     R2_(config) {
-        this._rotationInvoke(config, this._uiR2_);
+        this._rotationInvoke(config, this._ui.uiR2_);
     }
 
 
     L(config) {
-        this._rotationInvoke(config, this._uiL);
+        this._rotationInvoke(config, this._ui.uiL);
     }
     L_(config) {
-        this._rotationInvoke(config, this._uiL_);
+        this._rotationInvoke(config, this._ui.uiL_);
     }
     L2(config) {
-        this._rotationInvoke(config, this._uiL2);
+        this._rotationInvoke(config, this._ui.uiL2);
     }
     L2_(config) {
-        this._rotationInvoke(config, this._uiL2_);
+        this._rotationInvoke(config, this._ui.uiL2_);
     }
 
 
     x(config) {
-        this._rotationInvoke(config, this._uix);
+        this._rotationInvoke(config, this._ui.ui.uix);
     }
     x_(config) {
-        this._rotationInvoke(config, this._uix_);
+        this._rotationInvoke(config, this._ui.uix_);
     }
     x2(config) {
-        this._rotationInvoke(config, this._uix2);
+        this._rotationInvoke(config, this._ui.uix2);
     }
     x2_(config) {
-        this._rotationInvoke(config, this._uix2_);
+        this._rotationInvoke(config, this._ui.uix2_);
     }
 
     y(config) {
-        this._rotationInvoke(config, this._uiy);
+        this._rotationInvoke(config, this._ui.uiy);
     }
     y_(config) {
-        this._rotationInvoke(config, this._uiy_);
+        this._rotationInvoke(config, this._ui.uiy_);
     }
     y2(config) {
-        this._rotationInvoke(config, this._uiy2);
+        this._rotationInvoke(config, this._ui.uiy2);
     }
     y2_(config) {
-        this._rotationInvoke(config, this._uiy2_);
+        this._rotationInvoke(config, this._ui.uiy2_);
     }
-
 
     z(config) {
-        this._rotationInvoke(config, this._uiz);
+        this._rotationInvoke(config, this._ui.uiz);
     }
     z2(config) {
-        this._rotationInvoke(config, this._uiz2);
+        this._rotationInvoke(config, this._ui.uiz2);
     }
     z_(config) {
-        this._rotationInvoke(config, this._uiz_);
+        this._rotationInvoke(config, this._ui.uiz_);
     }
     z2_(config) {
-        this._rotationInvoke(config, this._uiz2_);
+        this._rotationInvoke(config, this._ui.uiz2_);
     }
 
     _rotationInvoke(config, ui) {
         // todo add animation lock and use queue buffer to enqueue rotation actions
-        ui.bind(this)();
+        ui.bind(this._ui)();
     }
 
     destroy() {
@@ -513,6 +302,8 @@ class CubeTwo {
         deepFreeze(this._cubeElements);
         deepFreeze(this._touchElements);
         deepFreeze(this._displayElements);
+
+        this._ui = new CubeTwoUi(this._displayElements);
 
         for (var i = 1; i <= CUBE_COUNT; i++) {
             let cubeDisplay = this._displayElements[i];

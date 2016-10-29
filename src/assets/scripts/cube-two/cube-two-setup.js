@@ -940,7 +940,7 @@ export function setupCube8() {
         }
         switch (type) {
             case 'singletap':
-                this.D();            
+                this.D();
                 break;
             case 'swipeup':
                 this.B();
