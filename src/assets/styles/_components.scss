@@ -45,18 +45,18 @@ button {
         }
         &-btn-top-center {
             top: 0;
-            left: calc(50% - #{$btn-size});
+            left: calc(50% - #{$btn-size/2});
         }
         &-btn-top-right {
             top: 0;
             right: 0;
         }
         &-btn-center-left {
-            top: calc(50% - #{$btn-size});
+            top: calc(50% - #{$btn-size/2});
             left: 0;
         }
         &-btn-center-right {
-            top: calc(50% - #{$btn-size});
+            top: calc(50% - #{$btn-size/2});
             right: 0;
         }
         &-btn-bottom-left {
@@ -65,7 +65,7 @@ button {
         }
         &-btn-bottom-center {
             bottom: 0;
-            left: calc(50% - #{$btn-size});
+            left: calc(50% - #{$btn-size/2});
         }
         &-btn-bottom-right {
             bottom: 0;
