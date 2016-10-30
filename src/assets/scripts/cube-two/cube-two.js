@@ -32,14 +32,20 @@ import { /*STATES, STATES_ARRAY,*/ KEY, EVENT_NAMES } from '../constants';
 
 class CubeTwo {
     constructor(config) {
-
-        if (!config || !config.cubeComponent) {
+        if (!config) {
+            error(`config is invalid for CubeTwo`);
+            return;
+        }
+        if (!config.cubeComponent) {
             error(`CubeTwo element was not provided: ${config.cubeComponent}`);
             return;
         }
         this._appState = {};
         this._ui = null;
         this._config = config;
+        if(this._config.isTransitionEnabled !== false)
+            this._config.isTransitionEnabled = true;
+
         deepFreeze(this._config);
 
         this._cubeComponentEl = config.cubeComponent;
@@ -251,7 +257,7 @@ class CubeTwo {
 
     _transitionEnd(ev) {
         let target = ev.currentTarget;
-        if (target) {
+        if (this._config.isTransitionEnabled && target) {
             const backupTransition = target.style.transition;
             target.style.transition = `0s`;
 
@@ -262,8 +268,6 @@ class CubeTwo {
                 target.style.transform = backupTransition;
                 rAF(_ => {
                     target.style.transition = backupTransition;
-
-
                     const state = this.getState();
                     state.rotateEnabled = true;
                     this._setState(state);

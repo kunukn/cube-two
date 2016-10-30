@@ -44,13 +44,11 @@ button {
         top: 0;
         left: 0;
         height: 100%;
-        // min-width: 32px;
-        // background: pink;
         display: flex;
         justify-content: space-between;
         align-items: center;
         button {
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
         }
     }
     > .cubetwo-button-column-right {
@@ -104,32 +102,57 @@ button {
         animation: spin-animation 20s linear infinite;
     }
     .cubetwo-cube-group {
-        //transition: transform 300ms;
         width: 2 * $cube-size;
         height: 2 * $cube-size;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: space-between;
-        align-content: space-between;
+        // display: flex;
+        // flex-wrap: wrap;
+        // flex-direction: row;
+        // justify-content: center;
+        // align-items: center;
         position: absolute;
         top: 0;
         left: 0;
         transform-style: preserve-3d;
-        &--1 {
-            transform: translateZ($cube-size/2);
-        }
+        //outline: 1px solid red;
+        &--1 {}
         &--2 {
-            transform: translateZ(-$cube-size/2);
+            transform: translateZ(-$cube-size);
         }
     }
+}
+
+.cubetwo-cube-1,
+.cubetwo-cube-5 {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.cubetwo-cube-2,
+.cubetwo-cube-6 {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.cubetwo-cube-3,
+.cubetwo-cube-7 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.cubetwo-cube-4,
+.cubetwo-cube-8 {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 [data-type="cubetwo"] {
     width: $cube-size;
     height: $cube-size;
-    position: relative;
+    //position: relative;
     transform-style: preserve-3d;
     font-size: 1rem;
     &:focus {
@@ -148,25 +171,25 @@ button {
         height: inherit;
         transform-style: preserve-3d;
         [data-type=front] {
-            transform: translateZ($cube-size/2);
+            transform: translateZ($cube-size);
         }
         [data-type=up] {
-            transform: rotateX(-90deg) translateY($cube-size/2) rotateY(180deg) rotateZ(180deg);
+            transform: rotateX(-90deg) rotateY(180deg) rotateZ(180deg);
             transform-origin: top center;
         }
         [data-type=right] {
-            transform: rotateY(-270deg) translateX($cube-size/2);
+            transform: rotateY(-270deg);
             transform-origin: top right;
         }
         [data-type=back] {
-            transform: translateZ(-$cube-size/2) rotateY(180deg);
+            transform: rotateY(180deg);
         }
         [data-type=down] {
-            transform: rotateX(90deg) translateY(-$cube-size/2) rotateY(180deg) rotateZ(180deg);
+            transform: rotateX(90deg) rotateY(180deg) rotateZ(180deg);
             transform-origin: bottom center;
         }
         [data-type=left] {
-            transform: rotateY(270deg) translateX(-$cube-size/2);
+            transform: rotateY(270deg);
             transform-origin: center left;
         }
         &[data-type="cubetwo-display"] {
@@ -250,8 +273,8 @@ button {
 
 /* debug */
 
-[data-type="cubetwo"]:not([id="cubetwo-cube-1"]) {
-    [data-type="cubetwo-display"]>div>div {
-        //background: rgba(red, .5) !important;
-    }
-}
+// [data-type="cubetwo"]:not(.cubetwo-cube-1) {
+//     [data-type="cubetwo-display"]>div>div {
+//         background: rgba(red, .5) !important;
+//     }
+// }
