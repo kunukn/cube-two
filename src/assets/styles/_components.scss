@@ -13,16 +13,19 @@ button {
     transition: background 200ms;
     border-radius: 0;
     font-size: 0; // trick to remove spaces from inner element display inline-block
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+    border-radius: 50%;
     &:focus {
         box-shadow: 2px 2px 1rem $color-focus;
+        //box-shadow: none;
+        //outline: 1px solid $color-focus;
     }
     &.cubetwo-active {
         background: rgba(white, .2);
     }
-    &.cubetwo-btn-simple{
-        border: 0;
-        box-shadow: none;
-        background: transparent;
+    &.cubetwo-btn-adjust {
     }
 }
 
@@ -38,6 +41,7 @@ button {
     //background: rgba(white, .06);
     overflow-x: hidden;
     > .cubetwo-button-grid {
+        padding: .5rem;
         button {
             display: block;
         }
@@ -53,7 +57,10 @@ button {
         justify-content: space-between;
         align-items: center;
         button {
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
+            @include device(medium) {
+                margin-bottom: 2rem;
+            }
         }
     }
     > .cubetwo-button-column-right {
@@ -63,6 +70,7 @@ button {
     > .cubetwo-button-row {}
     > .cubetwo-button-row-top,
     > .cubetwo-button-row-bottom {
+        z-index: 1;
         position: absolute;
         top: 0;
         left: 0;
@@ -186,7 +194,6 @@ button {
             >div {
                 transition: opacity $rotate-transition-duration;
                 user-select: none;
-                pointer-events: none;
                 position: absolute;
                 width: inherit;
                 height: inherit;
