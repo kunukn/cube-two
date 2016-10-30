@@ -4,6 +4,7 @@ button {
     // align-items: center;
     // justify-content: center;
     margin: 0;
+    padding: 4px;
     background: $color-theme;
     border: 1px solid $color-focus;
     color: $color-focus;
@@ -11,6 +12,7 @@ button {
     outline: none;
     transition: background 200ms;
     border-radius: 0;
+    font-size: 0; // trick to remove spaces from inner element display inline-block
     &:focus {
         box-shadow: 2px 2px 1em $color-focus;
     }
@@ -30,45 +32,47 @@ button {
     position: relative;
     //background: rgba(white, .06);
     overflow-x: hidden;
-    > button {
-        position: absolute;
-        overflow: hidden;
-        padding: 4px;
-        font-size: 0; // trick to remove spaces from inner element display inline-block
+    > .cubetwo-button-grid {
+        button {
+            display: block;
+        }
     }
-    > .cubetwo {
-        &-btn-top-left {
-            top: 0;
-            left: 0;
+    > .cubetwo-button-column {}
+    > .cubetwo-button-column-left,
+    > .cubetwo-button-column-right {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        // min-width: 32px;
+        // background: pink;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        button {
+            margin-bottom: 1rem;
         }
-        &-btn-top-center {
-            top: 0;
-            left: calc(50% - #{$btn-size/2});
-        }
-        &-btn-top-right {
-            top: 0;
-            right: 0;
-        }
-        &-btn-center-left {
-            top: calc(50% - #{$btn-size/2});
-            left: 0;
-        }
-        &-btn-center-right {
-            top: calc(50% - #{$btn-size/2});
-            right: 0;
-        }
-        &-btn-bottom-left {
-            bottom: 0;
-            left: 0;
-        }
-        &-btn-bottom-center {
-            bottom: 0;
-            left: calc(50% - #{$btn-size/2});
-        }
-        &-btn-bottom-right {
-            bottom: 0;
-            right: 0;
-        }
+    }
+    > .cubetwo-button-column-right {
+        left: auto;
+        right: 0;
+    }
+    > .cubetwo-button-row {}
+    > .cubetwo-button-row-top,
+    > .cubetwo-button-row-bottom {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        // min-height: 32px;
+        // background: pink;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    > .cubetwo-button-row-bottom {
+        top: auto;
+        bottom: 0;
     }
 }
 
@@ -185,7 +189,7 @@ button {
                 border: 2px solid $color-theme;
                 font-size: 0;
                 color: transparent;
-                //backface-visibility: hidden;
+                backface-visibility: hidden;
                 //border-radius: 1px;
                 &.tapped {
                     opacity: .2;
@@ -227,7 +231,6 @@ button {
                 cursor: pointer;
                 background: transparent;
                 //background: rgba(red, .5);
-                //display: none;
                 font-size: 0;
                 user-select: none;
             }

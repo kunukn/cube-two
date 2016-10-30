@@ -43,7 +43,7 @@ body {
     left: 0;
     width: 100%;
     text-align: right;
-    min-height: 1.5em;
+    //min-height: 50vh;
     border-bottom: 1px solid rgba(white, .2);
     padding: .5em 0;
     color: rgba(white, 1);
@@ -120,6 +120,7 @@ body {
 }
 
 footer {
+    z-index: -1;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -127,9 +128,8 @@ footer {
     position: absolute;
     bottom: 0;
     left: 0;
-    min-height: $btn-size;
+    //min-height: $btn-size;
     background: rgba(white, .1);
-    
     > div {
         max-width: 1200px;
         width: 100%;
@@ -152,9 +152,7 @@ footer {
         justify-content: flex-start;
         align-items: center;
         button {
-            font-size: 0;
             margin: 0 1rem;
-            
         }
     }
 }
