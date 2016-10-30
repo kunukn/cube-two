@@ -83,32 +83,12 @@ button {
     position: relative;
     transform-style: preserve-3d;
     transform: rotateX(-#{$rotate-view-x}deg) rotateY(-#{$rotate-view-y}deg) rotateZ(0deg);
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    &.left-side {
-        transform: rotateX(-#{$rotate-view-x}deg) rotateY(#{$rotate-view-y}deg) rotateZ(0deg);
-    }
-    &.down-side {
-        transform: rotateX(#{$rotate-view-x}deg) rotateY(-#{$rotate-view-y}deg) rotateZ(0deg);
-    }
-    &.left-down-side {
-        transform: rotateX(#{$rotate-view-x}deg) rotateY(#{$rotate-view-y}deg) rotateZ(0deg);
-    }
     &.spin {
         animation: spin-animation 20s linear infinite;
     }
     .cubetwo-cube-group {
         width: 2 * $cube-size;
         height: 2 * $cube-size;
-        // display: flex;
-        // flex-wrap: wrap;
-        // flex-direction: row;
-        // justify-content: center;
-        // align-items: center;
         position: absolute;
         top: 0;
         left: 0;
