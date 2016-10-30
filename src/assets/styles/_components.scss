@@ -14,7 +14,7 @@ button {
     border-radius: 0;
     font-size: 0; // trick to remove spaces from inner element display inline-block
     &:focus {
-        box-shadow: 2px 2px 1em $color-focus;
+        box-shadow: 2px 2px 1rem $color-focus;
     }
     &.cubetwo-active {
         background: rgba(white, .2);
