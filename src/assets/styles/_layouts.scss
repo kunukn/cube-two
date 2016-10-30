@@ -129,6 +129,7 @@ footer {
     left: 0;
     min-height: $btn-size;
     background: rgba(white, .1);
+    
     > div {
         max-width: 1200px;
         width: 100%;
@@ -151,7 +152,9 @@ footer {
         justify-content: flex-start;
         align-items: center;
         button {
-            margin: 0 2em;
+            font-size: 0;
+            margin: 0 1rem;
+            
         }
     }
 }

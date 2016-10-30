@@ -1,15 +1,14 @@
 @charset "UTF-8";
 button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
     margin: 0;
     background: $color-theme;
     border: 1px solid $color-focus;
     color: $color-focus;
     box-shadow: 2px 2px 4px gray;
     outline: none;
-    min-height: 32px;
     transition: background 200ms;
     border-radius: 0;
     &:focus {
@@ -34,9 +33,8 @@ button {
     > button {
         position: absolute;
         overflow: hidden;
-        height: $btn-size;
-        width: $btn-size;
         padding: 4px;
+        font-size: 0; // trick to remove spaces from inner element display inline-block
     }
     > .cubetwo {
         &-btn-top-left {
@@ -54,7 +52,7 @@ button {
         &-btn-center-left {
             top: calc(50% - #{$btn-size/2});
             left: 0;
-           }
+        }
         &-btn-center-right {
             top: calc(50% - #{$btn-size/2});
             right: 0;
