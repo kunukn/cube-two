@@ -19,6 +19,11 @@ button {
     &.cubetwo-active {
         background: rgba(white, .2);
     }
+    &.cubetwo-btn-simple{
+        border: 0;
+        box-shadow: none;
+        background: transparent;
+    }
 }
 
 .cubetwo-component {
