@@ -31,7 +31,6 @@ import { CubeTwoUi } from './cube-two-ui';
 
 import dictCubeSkins from '../dictionaries/dict-cube-skins';
 
-
 import { /*STATES, STATES_ARRAY,*/ KEY, EVENT_NAMES } from '../constants';
 import {
     handleKeyEventCube1,
@@ -61,7 +60,6 @@ class CubeTwo {
         this._ui = null;
         //this._actionQueue = new Queue();
 
-
         this._config = cloneObject(config);
         this._parseConfig(this._config, this._cubeComponentEl);
 
@@ -70,7 +68,16 @@ class CubeTwo {
         this._initCallbacks();
 
         this._setState({
-            code: 'todo impl state info for the cube',
+            code: {
+                c1: 'uf',
+                c2: 'uf',
+                c3: 'uf',
+                c4: 'uf',
+                c5: 'uf',
+                c6: 'uf',
+                c7: 'uf',
+                c8: 'uf',
+            },
             isRotateEnabled: true,
         });
     }
@@ -394,6 +401,10 @@ class CubeTwo {
         const appConfig = this._config;
         let cube, f, b, u, d, r, l;
 
+        const imageUrl = 'url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg)';
+        // `rgba(0, 158, 96, ${alpha}) ${imageUrl} 0% 0% / 50vmin 50vmin no-repeat`
+        const alpha = .9;
+
         cube = this._displayElements[1];
         f = qs('[data-type="front"] > div', cube);
         b = qs('[data-type="back"] > div', cube);
@@ -402,12 +413,13 @@ class CubeTwo {
         r = qs('[data-type="right"] > div', cube);
         l = qs('[data-type="left"] > div', cube);
 
-        f.style.backgroundColor = dictCubeSkins['f'];
-        b.style.backgroundColor = dictCubeSkins['_'];
-        u.style.backgroundColor = dictCubeSkins['u'];
-        d.style.backgroundColor = dictCubeSkins['_'];
-        r.style.backgroundColor = dictCubeSkins['_'];
-        l.style.backgroundColor = dictCubeSkins['l'];
+        f.style.background = dictCubeSkins['f'];
+        f.style.background = `rgba(0, 158, 96, ${alpha}) ${imageUrl} 0% 0% / 50vmin 50vmin no-repeat`;
+        b.style.background = dictCubeSkins['_'];
+        u.style.background = dictCubeSkins['u'];
+        d.style.background = dictCubeSkins['_'];
+        r.style.background = dictCubeSkins['_'];
+        l.style.background = dictCubeSkins['l'];
 
         cube = this._displayElements[2];
         f = qs('[data-type="front"] > div', cube);
@@ -417,12 +429,13 @@ class CubeTwo {
         r = qs('[data-type="right"] > div', cube);
         l = qs('[data-type="left"] > div', cube);
 
-        f.style.backgroundColor = dictCubeSkins['f'];
-        b.style.backgroundColor = dictCubeSkins['_'];
-        u.style.backgroundColor = dictCubeSkins['u'];
-        d.style.backgroundColor = dictCubeSkins['_'];
-        r.style.backgroundColor = dictCubeSkins['r'];
-        l.style.backgroundColor = dictCubeSkins['_'];
+        f.style.background = dictCubeSkins['f'];
+        f.style.background = `rgba(0, 158, 96, ${alpha}) ${imageUrl} 100% 0% / 50vmin 50vmin no-repeat`;
+        b.style.background = dictCubeSkins['_'];
+        u.style.background = dictCubeSkins['u'];
+        d.style.background = dictCubeSkins['_'];
+        r.style.background = dictCubeSkins['r'];
+        l.style.background = dictCubeSkins['_'];
 
         cube = this._displayElements[3];
         f = qs('[data-type="front"] > div', cube);
@@ -432,12 +445,13 @@ class CubeTwo {
         r = qs('[data-type="right"] > div', cube);
         l = qs('[data-type="left"] > div', cube);
 
-        f.style.backgroundColor = dictCubeSkins['f'];
-        b.style.backgroundColor = dictCubeSkins['_'];
-        u.style.backgroundColor = dictCubeSkins['_'];
-        d.style.backgroundColor = dictCubeSkins['d'];
-        r.style.backgroundColor = dictCubeSkins['_'];
-        l.style.backgroundColor = dictCubeSkins['l'];
+        f.style.background = dictCubeSkins['f'];
+        f.style.background = `rgba(0, 158, 96, ${alpha}) ${imageUrl} 0% 100% / 50vmin 50vmin no-repeat`;
+        b.style.background = dictCubeSkins['_'];
+        u.style.background = dictCubeSkins['_'];
+        d.style.background = dictCubeSkins['d'];
+        r.style.background = dictCubeSkins['_'];
+        l.style.background = dictCubeSkins['l'];
 
         cube = this._displayElements[4];
         f = qs('[data-type="front"] > div', cube);
@@ -447,16 +461,73 @@ class CubeTwo {
         r = qs('[data-type="right"] > div', cube);
         l = qs('[data-type="left"] > div', cube);
 
-        f.style.backgroundColor = dictCubeSkins['f'];
-        b.style.backgroundColor = dictCubeSkins['_'];
-        u.style.backgroundColor = dictCubeSkins['_'];
-        d.style.backgroundColor = dictCubeSkins['d'];
-        r.style.backgroundColor = dictCubeSkins['r'];
-        l.style.backgroundColor = dictCubeSkins['_'];
+        f.style.background = dictCubeSkins['f'];
+        f.style.background = `rgba(0, 158, 96, ${alpha}) ${imageUrl} 100% 100% / 50vmin 50vmin no-repeat`;
+        b.style.background = dictCubeSkins['_'];
+        u.style.background = dictCubeSkins['_'];
+        d.style.background = dictCubeSkins['d'];
+        r.style.background = dictCubeSkins['r'];
+        l.style.background = dictCubeSkins['_'];
 
+        cube = this._displayElements[5];
+        f = qs('[data-type="front"] > div', cube);
+        b = qs('[data-type="back"] > div', cube);
+        u = qs('[data-type="up"] > div', cube);
+        d = qs('[data-type="down"] > div', cube);
+        r = qs('[data-type="right"] > div', cube);
+        l = qs('[data-type="left"] > div', cube);
 
+        f.style.background = dictCubeSkins['_'];
+        b.style.background = dictCubeSkins['b'];
+        u.style.background = dictCubeSkins['u'];
+        d.style.background = dictCubeSkins['_'];
+        r.style.background = dictCubeSkins['_'];
+        l.style.background = dictCubeSkins['l'];
 
+        cube = this._displayElements[6];
+        f = qs('[data-type="front"] > div', cube);
+        b = qs('[data-type="back"] > div', cube);
+        u = qs('[data-type="up"] > div', cube);
+        d = qs('[data-type="down"] > div', cube);
+        r = qs('[data-type="right"] > div', cube);
+        l = qs('[data-type="left"] > div', cube);
 
+        f.style.background = dictCubeSkins['_'];
+        b.style.background = dictCubeSkins['b'];
+        u.style.background = dictCubeSkins['u'];
+        d.style.background = dictCubeSkins['_'];
+        r.style.background = dictCubeSkins['r'];
+        l.style.background = dictCubeSkins['_'];
+
+        cube = this._displayElements[7];
+        f = qs('[data-type="front"] > div', cube);
+        b = qs('[data-type="back"] > div', cube);
+        u = qs('[data-type="up"] > div', cube);
+        d = qs('[data-type="down"] > div', cube);
+        r = qs('[data-type="right"] > div', cube);
+        l = qs('[data-type="left"] > div', cube);
+
+        f.style.background = dictCubeSkins['_'];
+        b.style.background = dictCubeSkins['b'];
+        u.style.background = dictCubeSkins['_'];
+        d.style.background = dictCubeSkins['d'];
+        r.style.background = dictCubeSkins['_'];
+        l.style.background = dictCubeSkins['l'];
+
+        cube = this._displayElements[8];
+        f = qs('[data-type="front"] > div', cube);
+        b = qs('[data-type="back"] > div', cube);
+        u = qs('[data-type="up"] > div', cube);
+        d = qs('[data-type="down"] > div', cube);
+        r = qs('[data-type="right"] > div', cube);
+        l = qs('[data-type="left"] > div', cube);
+
+        f.style.background = dictCubeSkins['_'];
+        b.style.background = dictCubeSkins['b'];
+        u.style.background = dictCubeSkins['_'];
+        d.style.background = dictCubeSkins['d'];
+        r.style.background = dictCubeSkins['r'];
+        l.style.background = dictCubeSkins['_'];
     }
 }
 

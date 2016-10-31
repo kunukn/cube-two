@@ -9,6 +9,7 @@ dictCubeSkins['blank'] = `rgba(0, 0, 0, ${alpha})`;
 dictCubeSkins['_'] = `transparent`;
 dictCubeSkins['u'] = `rgba(255, 255, 255, ${alpha})`; // #fff
 dictCubeSkins['f'] = `rgba(0, 158, 96, ${alpha})`; // #009E60
+//dictCubeSkins['f'] = `rgba(0, 158, 96, ${alpha}) url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/visma-logo.svg) 0% 0% / 50vmin 50vmin no-repeat`
 dictCubeSkins['r'] = `rgba(196, 30, 58, ${alpha})`; // #C41E3A
 dictCubeSkins['l'] = `rgba(255, 88, 0, ${alpha})`; // #FF5800
 dictCubeSkins['b'] = `rgba(0, 81, 186, ${alpha})`; // #0051BA

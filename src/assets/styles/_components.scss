@@ -279,7 +279,7 @@ button {
                 border: 2px solid $color-theme;
                 font-size: 0;
                 color: transparent;
-                backface-visibility: hidden;
+                //backface-visibility: hidden;
                 //border-radius: 1px;
                 &.tapped {
                     opacity: .2;
