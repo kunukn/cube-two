@@ -49,7 +49,7 @@ const cubeTwo = new CubeTwo({
     cubeComponent: cubeComponentEl,
     isTapEnabled: true, // default: true
     isRotateAnimationEnabled: true, // default: true
-    transition: 'transform 200ms', // default: transform 200ms
+    transition: 'transform cubic-bezier(0.4, 0.0, 0.2, 1) 250ms', // default: transform 200ms
     isAnimationLockEnabled: true, // default: true
 });
 cubeTwo.addCallbackForEvent('init', (eventName, payload) => {
