@@ -1,4 +1,3 @@
-import { CUBE_SIZE } from './cube-two-constants';
 import { debug, log, error } from '../logger';
 
 
@@ -60,8 +59,8 @@ export class CubeTwoUi {
     uiU_Helper(angle) {
         this.displayElements[1].style.transformOrigin = `100% 0%`;
         this.displayElements[2].style.transformOrigin = `0% 0%`;
-        this.displayElements[5].style.transformOrigin = `100% 0% ${CUBE_SIZE}`;
-        this.displayElements[6].style.transformOrigin = `0% 0% ${CUBE_SIZE}`;
+        this.displayElements[5].style.transformOrigin = `100% 0%`;
+        this.displayElements[6].style.transformOrigin = `0% 0%`;
 
         this.displayElements[1].style.transform = `rotateY(${angle}deg)`;
         this.displayElements[2].style.transform = `rotateY(${angle}deg)`;
@@ -85,8 +84,8 @@ export class CubeTwoUi {
     uiD_Helper(angle) {
         this.displayElements[3].style.transformOrigin = `100% 0%`;
         this.displayElements[4].style.transformOrigin = `0% 0%`;
-        this.displayElements[7].style.transformOrigin = `100% 0% ${CUBE_SIZE}`;
-        this.displayElements[8].style.transformOrigin = `0% 0% ${CUBE_SIZE}`;
+        this.displayElements[7].style.transformOrigin = `100% 0%`;
+        this.displayElements[8].style.transformOrigin = `0% 0%`;
 
         this.displayElements[3].style.transform = `rotateY(${angle}deg)`;
         this.displayElements[4].style.transform = `rotateY(${angle}deg)`;
@@ -108,8 +107,8 @@ export class CubeTwoUi {
 
     uiR_Helper(angle) {
         this.displayElements[2].style.transformOrigin = `0% 100%`;
-        this.displayElements[6].style.transformOrigin = `0% 100% ${CUBE_SIZE}`;
-        this.displayElements[8].style.transformOrigin = `0% 0% ${CUBE_SIZE}`;
+        this.displayElements[6].style.transformOrigin = `0% 100%`;
+        this.displayElements[8].style.transformOrigin = `0% 0%`;
         this.displayElements[4].style.transformOrigin = `0% 0%`;
 
         this.displayElements[2].style.transform = `rotateX(${angle}deg)`;
@@ -132,8 +131,8 @@ export class CubeTwoUi {
 
     uiL_Helper(angle) {
         this.displayElements[1].style.transformOrigin = `0% 100%`;
-        this.displayElements[5].style.transformOrigin = `0% 100% ${CUBE_SIZE}`;
-        this.displayElements[7].style.transformOrigin = `0% 0% ${CUBE_SIZE}`;
+        this.displayElements[5].style.transformOrigin = `0% 100%`;
+        this.displayElements[7].style.transformOrigin = `0% 0%`;
         this.displayElements[3].style.transformOrigin = `0% 0%`;
 
         this.displayElements[1].style.transform = `rotateX(${angle}deg)`;
