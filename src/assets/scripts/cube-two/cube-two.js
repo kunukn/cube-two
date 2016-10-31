@@ -51,15 +51,14 @@ class CubeTwo {
             error(`CubeTwo element was not provided: ${config.cubeComponent}`);
             return;
         }
+        this._cubeComponentEl = config.cubeComponent;
+
         this._appState = {};
         this._ui = null;
-        this._config = config;
-        if (this._config.isTransitionEnabled !== false)
-            this._config.isTransitionEnabled = true;
 
-        deepFreeze(this._config);
 
-        this._cubeComponentEl = config.cubeComponent;
+        this._config = cloneObject(config);
+        this._parseConfig(this._config, this._cubeComponentEl);
 
         this._updateEventBindings();
 
@@ -67,11 +66,27 @@ class CubeTwo {
 
         this._setState({
             code: 'todo impl state info for the cube',
-            rotateEnabled: true,
+            isRotateEnabled: true,
         });
     }
 
-    _updateEventBindings() {        
+    _parseConfig(config, cubeComponentEl) {
+        if (config.isTransitionEnabled !== false)
+            config.isTransitionEnabled = true;
+
+        if (config.isTapEnabled !== false)
+            config.isTapEnabled = true;
+
+        if (config.transition) {
+            qsa('[data-type="cubetwo-display"]', cubeComponentEl).forEach(cube => {
+                cube.style.transition = config.transition;
+            });
+        }
+
+        deepFreeze(this._config);
+    }
+
+    _updateEventBindings() {
         this._transitionEnd = this._transitionEnd.bind(this);
         this.handleGlobalKeyEvent = handleGlobalKeyEvent.bind(this);
     }
@@ -246,7 +261,21 @@ class CubeTwo {
 
     _rotationInvoke(config, ui) {
         // todo add animation lock and use queue buffer to enqueue rotation actions
-        ui.bind(this._ui)();
+
+        if (!this._config.isTransitionEnabled) {
+            // todo update state
+            this._updateUiFaces();
+
+        } else {
+            const state = this.getState();
+            if (!state.isRotateEnabled) {
+                debug(`rotate is locked ${new Date()}`);
+                return;
+            }
+            state.isRotateEnabled = false;
+            this._setState(state);
+            ui.bind(this._ui)();
+        }
     }
 
     destroy() {
@@ -266,14 +295,17 @@ class CubeTwo {
 
             nextFrame(_ => {
 
-                this._updateUiFaces();
                 target.style.transformOrigin = ''; // reset
-                target.style.transform = backupTransition;
+                target.style.transform = '';
+                this._updateUiFaces();
+
                 rAF(_ => {
                     target.style.transition = backupTransition;
+
                     const state = this.getState();
-                    state.rotateEnabled = true;
+                    state.isRotateEnabled = true;
                     this._setState(state);
+
                     this._triggerEvent('afterrotate', {
                         state: state,
                     });
@@ -310,17 +342,17 @@ class CubeTwo {
             }
         }
 
-        setupCube1.bind(this)();
-        setupCube2.bind(this)();
-        setupCube3.bind(this)();
-        setupCube4.bind(this)();
-        setupCube5.bind(this)();
-        setupCube6.bind(this)();
-        setupCube7.bind(this)();
-        setupCube8.bind(this)();
+        setupCube1.bind(this)(this._config);
+        setupCube2.bind(this)(this._config);
+        setupCube3.bind(this)(this._config);
+        setupCube4.bind(this)(this._config);
+        setupCube5.bind(this)(this._config);
+        setupCube6.bind(this)(this._config);
+        setupCube7.bind(this)(this._config);
+        setupCube8.bind(this)(this._config);
 
-        this._updateUiFaces();
-        
+        this._updateUiFaces(this._config);
+
         this._cubeElements[1].addEventListener('keydown', handleKeyEventCube1.bind(this), false);
         this._cubeElements[2].addEventListener('keydown', handleKeyEventCube2.bind(this), false);
         this._cubeElements[3].addEventListener('keydown', handleKeyEventCube3.bind(this), false);
@@ -333,7 +365,7 @@ class CubeTwo {
         this._triggerEvent('init', { state: this.getState() });
     }
 
-    _updateUiFaces() {
+    _updateUiFaces(config) {
         // todo update view by state
     }
 }

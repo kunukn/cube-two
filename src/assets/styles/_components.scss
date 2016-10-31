@@ -263,7 +263,7 @@ button {
         }
         &[data-type="cubetwo-display"] {
             // display: none;
-            transition: transform $rotate-transition-duration;
+            transition: transform $rotate-transition-duration;            
             user-select: none;
             pointer-events: none;
             position: relative;

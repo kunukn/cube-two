@@ -1,7 +1,10 @@
 import { qs, qsa, byId } from '../query';
 import { debug, log, error } from '../logger';
 
-export function setupCube1() {
+export function setupCube1(config) {
+
+    const isTapEnabled = config && config.isTapEnabled;
+
     let touchEl = this._touchElements[1],
         touchUpEl = qs('[data-type="up"]', touchEl),
         touchDownEl,
@@ -24,7 +27,9 @@ export function setupCube1() {
 
         switch (type) {
             case 'singletab':
-                this.L_();
+                if (isTapEnabled) {
+                    this.L_();
+                }
                 break;
             case 'swipeup':
                 this.L_();
@@ -61,7 +66,9 @@ export function setupCube1() {
         }
         switch (type) {
             case 'singletap':
-                this.F_();
+                if (isTapEnabled) {
+                    this.F_();
+                }
                 break;
             case 'swipeup':
                 this.L_();
@@ -97,7 +104,9 @@ export function setupCube1() {
         }
         switch (type) {
             case 'singletap':
-                this.U_();
+                if (isTapEnabled) {
+                    this.U_();
+                }
                 break;
             case 'swipeup':
                 this.F();
@@ -115,7 +124,10 @@ export function setupCube1() {
     });
 
 }
-export function setupCube2() {
+export function setupCube2(config) {
+
+    const isTapEnabled = config && config.isTapEnabled;
+
     let touchEl = this._touchElements[2],
         touchUpEl = qs('[data-type="up"]', touchEl),
         touchDownEl,
@@ -138,7 +150,9 @@ export function setupCube2() {
 
         switch (type) {
             case 'singletap':
-                this.R();
+                if (isTapEnabled) {
+                    this.R();
+                }
                 break;
             case 'swipeup':
                 this.R();
@@ -175,8 +189,9 @@ export function setupCube2() {
         }
         switch (type) {
             case 'singletap':
-                this.F();
-
+                if (isTapEnabled) {
+                    this.F();
+                }
                 break;
             case 'swipeup':
                 this.R();
@@ -212,7 +227,9 @@ export function setupCube2() {
         }
         switch (type) {
             case 'singletap':
-                this.U();
+                if (isTapEnabled) {
+                    this.U();
+                }
                 break;
             case 'swipeup':
                 this.F_();
@@ -229,7 +246,10 @@ export function setupCube2() {
         }
     });
 }
-export function setupCube3() {
+export function setupCube3(config) {
+
+    const isTapEnabled = config && config.isTapEnabled;
+
     let touchEl = this._touchElements[3],
         touchUpEl,
         touchDownEl = qs('[data-type="down"]', touchEl),
@@ -252,7 +272,9 @@ export function setupCube3() {
 
         switch (type) {
             case 'singletap':
-                this.L();
+                if (isTapEnabled) {
+                    this.L();
+                }
                 break;
             case 'swipeup':
                 this.L_();
@@ -284,7 +306,9 @@ export function setupCube3() {
 
         switch (type) {
             case 'singletap':
-                this.F();
+                if (isTapEnabled) {
+                    this.F();
+                }
                 break;
             case 'swipeup':
                 this.L_();
@@ -315,7 +339,9 @@ export function setupCube3() {
 
         switch (type) {
             case 'singletap':
-                this.D();
+                if (isTapEnabled) {
+                    this.D();
+                }
                 break;
             case 'swipeup':
                 this.F();
@@ -332,7 +358,10 @@ export function setupCube3() {
         }
     });
 }
-export function setupCube4() {
+export function setupCube4(config) {
+
+    const isTapEnabled = config && config.isTapEnabled;
+
     let touchEl = this._touchElements[4],
         touchUpEl,
         touchDownEl = qs('[data-type="down"]', touchEl),
@@ -355,7 +384,9 @@ export function setupCube4() {
 
         switch (type) {
             case 'singletap':
-                this.R_();
+                if (isTapEnabled) {
+                    this.R_();
+                }
                 break;
             case 'swipeup':
                 this.R();
@@ -387,7 +418,9 @@ export function setupCube4() {
 
         switch (type) {
             case 'singletap':
-                this.F_();
+                if (isTapEnabled) {
+                    this.F_();
+                }
                 break;
             case 'swipeup':
                 this.R();
@@ -418,7 +451,9 @@ export function setupCube4() {
 
         switch (type) {
             case 'singletap':
-                this.D_();
+                if (isTapEnabled) {
+                    this.D_();
+                }
                 break;
             case 'swipeup':
                 this.F_();
@@ -435,7 +470,10 @@ export function setupCube4() {
         }
     });
 }
-export function setupCube5() {
+export function setupCube5(config) {
+
+    const isTapEnabled = config && config.isTapEnabled;
+
     let touchEl = this._touchElements[5],
         touchUpEl = qs('[data-type="up"]', touchEl),
         touchDownEl,
@@ -458,7 +496,9 @@ export function setupCube5() {
 
         switch (type) {
             case 'singletap':
-                this.L_();
+                if (isTapEnabled) {
+                    this.L_();
+                }
                 break;
             case 'swipeup':
                 this.L_();
@@ -490,7 +530,9 @@ export function setupCube5() {
 
         switch (type) {
             case 'singletap':
-                this.B();
+                if (isTapEnabled) {
+                    this.B();
+                }
                 break;
             case 'swipeup':
                 this.L_();
@@ -521,7 +563,9 @@ export function setupCube5() {
 
         switch (type) {
             case 'singletap':
-                this.U();
+                if (isTapEnabled) {
+                    this.U();
+                }
                 break;
             case 'swipeup':
                 this.B_();
@@ -539,7 +583,10 @@ export function setupCube5() {
     });
 
 }
-export function setupCube6() {
+export function setupCube6(config) {
+
+    const isTapEnabled = config && config.isTapEnabled;
+
     let touchEl = this._touchElements[6],
         touchUpEl = qs('[data-type="up"]', touchEl),
         touchDownEl,
@@ -562,6 +609,7 @@ export function setupCube6() {
 
         switch (type) {
             case 'singletap':
+                if (isTapEnabled) {}
                 break;
             case 'swipeup':
                 this.R();
@@ -593,7 +641,9 @@ export function setupCube6() {
 
         switch (type) {
             case 'singletap':
-                this.B_();
+                if (isTapEnabled) {
+                    this.B_();
+                }
                 break;
             case 'swipeup':
                 this.R();
@@ -624,7 +674,9 @@ export function setupCube6() {
 
         switch (type) {
             case 'singletap':
-                this.U_();
+                if (isTapEnabled) {
+                    this.U_();
+                }
                 break;
             case 'swipeup':
                 this.B();
@@ -641,7 +693,10 @@ export function setupCube6() {
         }
     });
 }
-export function setupCube7() {
+export function setupCube7(config) {
+
+    const isTapEnabled = config && config.isTapEnabled;
+
     let touchEl = this._touchElements[7],
         touchUpEl,
         touchDownEl = qs('[data-type="down"]', touchEl),
@@ -743,7 +798,10 @@ export function setupCube7() {
         }
     });
 }
-export function setupCube8() {
+export function setupCube8(config) {
+
+    const isTapEnabled = config && config.isTapEnabled;
+
     let touchEl = this._touchElements[8],
         touchUpEl,
         touchDownEl = qs('[data-type="down"]', touchEl),
@@ -766,7 +824,9 @@ export function setupCube8() {
 
         switch (type) {
             case 'singletap':
-                this.R_();
+                if (isTapEnabled) {
+                    this.R_();
+                }
                 break;
             case 'swipeup':
                 this.R();
@@ -798,7 +858,9 @@ export function setupCube8() {
 
         switch (type) {
             case 'singletap':
-                this.B();
+                if (isTapEnabled) {
+                    this.B();
+                }
                 break;
             case 'swipeup':
                 this.R();
@@ -829,7 +891,9 @@ export function setupCube8() {
 
         switch (type) {
             case 'singletap':
-                this.D();
+                if (isTapEnabled) {
+                    this.D();
+                }
                 break;
             case 'swipeup':
                 this.B();
