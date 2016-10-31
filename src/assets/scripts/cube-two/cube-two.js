@@ -23,12 +23,23 @@ import {
     setupCube8
 } from './cube-two-setup';
 
-import { CUBE_COUNT, CUBE_SIZE, CUBE_SIZE_HALF } from './cube-two-constants';
+import { CUBE_COUNT, CUBE_SIZE } from './cube-two-constants';
 
 import { CubeTwoUi } from './cube-two-ui';
 
 
 import { /*STATES, STATES_ARRAY,*/ KEY, EVENT_NAMES } from '../constants';
+import {
+    handleKeyEventCube1,
+    handleKeyEventCube2,
+    handleKeyEventCube3,
+    handleKeyEventCube4,
+    handleKeyEventCube5,
+    handleKeyEventCube6,
+    handleKeyEventCube7,
+    handleKeyEventCube8,
+    handleGlobalKeyEvent
+} from './cube-two-handle-key-events';
 
 class CubeTwo {
     constructor(config) {
@@ -60,17 +71,9 @@ class CubeTwo {
         });
     }
 
-    _updateEventBindings() {
-        this._handleKeyEventCube1 = this._handleKeyEventCube1.bind(this);
-        this._handleKeyEventCube2 = this._handleKeyEventCube2.bind(this);
-        this._handleKeyEventCube3 = this._handleKeyEventCube3.bind(this);
-        this._handleKeyEventCube4 = this._handleKeyEventCube4.bind(this);
-        this._handleKeyEventCube5 = this._handleKeyEventCube5.bind(this);
-        this._handleKeyEventCube6 = this._handleKeyEventCube6.bind(this);
-        this._handleKeyEventCube7 = this._handleKeyEventCube7.bind(this);
-        this._handleKeyEventCube8 = this._handleKeyEventCube8.bind(this);
-        this.handleGlobalKeyEvent = this.handleGlobalKeyEvent.bind(this);
+    _updateEventBindings() {        
         this._transitionEnd = this._transitionEnd.bind(this);
+        this.handleGlobalKeyEvent = handleGlobalKeyEvent.bind(this);
     }
 
     _initCallbacks() {
@@ -317,367 +320,21 @@ class CubeTwo {
         setupCube8.bind(this)();
 
         this._updateUiFaces();
-
-        this._cubeElements[1].addEventListener('keydown', this._handleKeyEventCube1, false);
-        this._cubeElements[2].addEventListener('keydown', this._handleKeyEventCube2, false);
-        this._cubeElements[3].addEventListener('keydown', this._handleKeyEventCube3, false);
-        this._cubeElements[4].addEventListener('keydown', this._handleKeyEventCube4, false);
-        this._cubeElements[5].addEventListener('keydown', this._handleKeyEventCube5, false);
-        this._cubeElements[6].addEventListener('keydown', this._handleKeyEventCube6, false);
-        this._cubeElements[7].addEventListener('keydown', this._handleKeyEventCube7, false);
-        this._cubeElements[8].addEventListener('keydown', this._handleKeyEventCube8, false);
+        
+        this._cubeElements[1].addEventListener('keydown', handleKeyEventCube1.bind(this), false);
+        this._cubeElements[2].addEventListener('keydown', handleKeyEventCube2.bind(this), false);
+        this._cubeElements[3].addEventListener('keydown', handleKeyEventCube3.bind(this), false);
+        this._cubeElements[4].addEventListener('keydown', handleKeyEventCube4.bind(this), false);
+        this._cubeElements[5].addEventListener('keydown', handleKeyEventCube5.bind(this), false);
+        this._cubeElements[6].addEventListener('keydown', handleKeyEventCube6.bind(this), false);
+        this._cubeElements[7].addEventListener('keydown', handleKeyEventCube7.bind(this), false);
+        this._cubeElements[8].addEventListener('keydown', handleKeyEventCube8.bind(this), false);
 
         this._triggerEvent('init', { state: this.getState() });
     }
 
     _updateUiFaces() {
         // todo update view by state
-    }
-
-    _handleKeyEventCube1(event) {
-        event.stopPropagation();
-
-        switch (event.keyCode) {
-            case KEY.LEFT:
-            case KEY.a:
-                this.U();
-                break;
-            case KEY.UP:
-                event.preventDefault();
-            case KEY.w:
-                this.L_();
-                break;
-            case KEY.RIGHT:
-            case KEY.d:
-                this.U_();
-                break;
-            case KEY.DOWN:
-                event.preventDefault();
-            case KEY.s:
-                this.L();
-                break;
-            case KEY.q:
-                this.F_();
-                break;
-            case KEY.e:
-                this.F();
-                break;
-            case KEY.x:
-                this.x();
-                break;
-            case KEY.y:
-                this.y();
-                break;
-            case KEY.z:
-                this.z();
-                break;
-        }
-    }
-    _handleKeyEventCube2(event) {
-        event.stopPropagation();
-
-        switch (event.keyCode) {
-            case KEY.LEFT:
-            case KEY.a:
-                this.U();
-                break;
-            case KEY.UP:
-                event.preventDefault();
-            case KEY.w:
-                this.R();
-                break;
-            case KEY.RIGHT:
-            case KEY.d:
-                this.U_();
-                break;
-            case KEY.DOWN:
-                event.preventDefault();
-            case KEY.s:
-                this.R_();
-                break;
-            case KEY.q:
-                this.F_();
-                break;
-            case KEY.e:
-                this.F();
-                break;
-            case KEY.x:
-                this.x();
-                break;
-            case KEY.y:
-                this.y();
-                break;
-            case KEY.z:
-                this.z();
-                break;
-        }
-    }
-    _handleKeyEventCube3(event) {
-        event.stopPropagation();
-
-        switch (event.keyCode) {
-            case KEY.LEFT:
-            case KEY.a:
-                this.D_();
-                break;
-            case KEY.UP:
-                event.preventDefault();
-            case KEY.w:
-                this.L_();
-                break;
-            case KEY.RIGHT:
-            case KEY.d:
-                this.D();
-                break;
-            case KEY.DOWN:
-                event.preventDefault();
-            case KEY.s:
-                this.L();
-                break;
-            case KEY.q:
-                this.F_();
-                break;
-            case KEY.e:
-                this.F();
-                break;
-            case KEY.x:
-                this.x();
-                break;
-            case KEY.y:
-                this.y();
-                break;
-            case KEY.z:
-                this.z();
-                break;
-        }
-    }
-    _handleKeyEventCube4(event) {
-        event.stopPropagation();
-
-        switch (event.keyCode) {
-            case KEY.LEFT:
-            case KEY.a:
-                this.D_();
-                break;
-            case KEY.UP:
-                event.preventDefault();
-            case KEY.w:
-                this.R();
-                break;
-            case KEY.RIGHT:
-            case KEY.d:
-                this.D();
-                break;
-            case KEY.DOWN:
-                event.preventDefault();
-            case KEY.s:
-                this.R_();
-                break;
-            case KEY.q:
-                this.F_();
-                break;
-            case KEY.e:
-                this.F();
-                break;
-            case KEY.x:
-                this.x();
-                break;
-            case KEY.y:
-                this.y();
-                break;
-            case KEY.z:
-                this.z();
-                break;
-        }
-    }
-    _handleKeyEventCube5(event) {
-        event.stopPropagation();
-
-        switch (event.keyCode) {
-            case KEY.LEFT:
-            case KEY.a:
-                this.U();
-                break;
-            case KEY.UP:
-                event.preventDefault();
-            case KEY.w:
-                this.L_();
-                break;
-            case KEY.RIGHT:
-            case KEY.d:
-                this.U_();
-                break;
-            case KEY.DOWN:
-                event.preventDefault();
-            case KEY.s:
-                this.L();
-                break;
-            case KEY.q:
-                this.B();
-                break;
-            case KEY.e:
-                this.B_();
-                break;
-            case KEY.x:
-                this.x();
-                break;
-            case KEY.y:
-                this.y();
-                break;
-            case KEY.z:
-                this.z();
-                break;
-        }
-    }
-    _handleKeyEventCube6(event) {
-        event.stopPropagation();
-
-        switch (event.keyCode) {
-            case KEY.LEFT:
-            case KEY.a:
-                this.U();
-                break;
-            case KEY.UP:
-                event.preventDefault();
-            case KEY.w:
-                this.R();
-                break;
-            case KEY.RIGHT:
-            case KEY.d:
-                this.U_();
-                break;
-            case KEY.DOWN:
-                event.preventDefault();
-            case KEY.s:
-                this.R_();
-                break;
-            case KEY.q:
-                this.B();
-                break;
-            case KEY.e:
-                this.B_();
-                break;
-            case KEY.x:
-                this.x();
-                break;
-            case KEY.y:
-                this.y();
-                break;
-            case KEY.z:
-                this.z();
-                break;
-        }
-    }
-    _handleKeyEventCube7(event) {
-        event.stopPropagation();
-
-        switch (event.keyCode) {
-            case KEY.LEFT:
-            case KEY.a:
-                this.D_();
-                break;
-            case KEY.UP:
-                event.preventDefault();
-            case KEY.w:
-                this.L_();
-                break;
-            case KEY.RIGHT:
-            case KEY.d:
-                this.D();
-                break;
-            case KEY.DOWN:
-                event.preventDefault();
-            case KEY.s:
-                this.L();
-                break;
-            case KEY.q:
-                this.B();
-                break;
-            case KEY.e:
-                this.B_();
-                break;
-            case KEY.x:
-                this.x();
-                break;
-            case KEY.y:
-                this.y();
-                break;
-            case KEY.z:
-                this.z();
-                break;
-        }
-    }
-    _handleKeyEventCube8(event) {
-        event.stopPropagation();
-
-        switch (event.keyCode) {
-            case KEY.LEFT:
-            case KEY.a:
-                this.D_();
-                break;
-            case KEY.UP:
-                event.preventDefault();
-            case KEY.w:
-                this.R();
-                break;
-            case KEY.RIGHT:
-            case KEY.d:
-                this.D();
-                break;
-            case KEY.DOWN:
-                event.preventDefault();
-            case KEY.s:
-                this.R_();
-                break;
-            case KEY.q:
-                this.B();
-                break;
-            case KEY.e:
-                this.B_();
-                break;
-            case KEY.x:
-                this.x();
-                break;
-            case KEY.y:
-                this.y();
-                break;
-            case KEY.z:
-                this.z();
-                break;
-        }
-    }
-
-    handleGlobalKeyEvent(event) {
-
-        switch (event.keyCode) {
-            case KEY.LEFT:
-            case KEY.a:
-                this.y_();
-                break;
-            case KEY.UP:
-                event.preventDefault();
-            case KEY.w:
-            case KEY.x:
-                this.x();
-                break;
-            case KEY.RIGHT:
-            case KEY.d:
-            case KEY.y:
-                this.y();
-                break;
-            case KEY.DOWN:
-                event.preventDefault();
-            case KEY.s:
-                this.x_();
-                break;
-            case KEY.q:
-                this.z_();
-                break;
-            case KEY.e:
-            case KEY.z:
-                this.z();
-                break;
-        }
     }
 }
 
