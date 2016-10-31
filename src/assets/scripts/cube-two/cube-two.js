@@ -92,6 +92,9 @@ class CubeTwo {
         if (config.isAnimationLockEnabled !== false)
             config.isAnimationLockEnabled = true;
 
+        config.backgroundImages = config.backgroundImages || {};
+        config.backgroundColors = config.backgroundColors || {};
+
         if (config.transition) {
             qsa('[data-type="cubetwo-display"]', cubeComponentEl).forEach(cube => {
                 cube.style.transition = config.transition;
@@ -346,7 +349,7 @@ class CubeTwo {
     init() {
         this._cubeElements = [''];
         this._touchElements = [''];
-        this._displayElements = [''];
+        this._displayElements = [{}];
         const appConfig = this._config;
 
         for (var i = 1; i <= CUBE_COUNT; i++) {
@@ -354,18 +357,35 @@ class CubeTwo {
                 touch = qs('[data-type="cubetwo-touch"]', cube),
                 display = qs('[data-type="cubetwo-display"]', cube);
 
+            if (!display) error('buuh');
+
+            let f = qs('[data-type="front"] > div', display),
+                b = qs('[data-type="back"] > div', display),
+                u = qs('[data-type="up"] > div', display),
+                d = qs('[data-type="down"] > div', display),
+                r = qs('[data-type="right"] > div', display),
+                l = qs('[data-type="left"] > div', display);
+
             this._cubeElements.push(cube);
-            this._displayElements.push(display);
+            this._displayElements.push({
+                root: display,
+                f,
+                b,
+                u,
+                d,
+                r,
+                l
+            });
             this._touchElements.push(touch);
         }
         deepFreeze(this._cubeElements);
         deepFreeze(this._touchElements);
-        deepFreeze(this._displayElements);
+        //deepFreeze(this._displayElements);
 
-        this._ui = new CubeTwoUi(this._displayElements);
+        this._ui = new CubeTwoUi(this._displayElements.map(display => display.root));
 
         for (var i = 1; i <= CUBE_COUNT; i++) {
-            let cubeDisplay = this._displayElements[i];
+            let cubeDisplay = this._displayElements[i].root;
             if (cubeDisplay) {
                 cubeDisplay.addEventListener('transitionend',
                     this._transitionEnd);
@@ -401,143 +421,88 @@ class CubeTwo {
         const appConfig = this._config;
         const bgColors = appConfig.backgroundColors;
 
-        let imageUrl = ''
-        if (appConfig.backgroundImages && appConfig.backgroundImages.f) {
-            imageUrl = `url("${appConfig.backgroundImages.f}")`;
+        // move this to parse config
+        let imageUrlFront = ''
+        if (appConfig.backgroundImages.f) {
+            imageUrlFront = `url("${appConfig.backgroundImages.f}")`;
         }
 
-        let imageTopLeft = imageUrl ? ` ${imageUrl} 0% 0% / 50vmin 50vmin no-repeat` : '',
-            imageTopRight = imageUrl ? ` ${imageUrl} 100% 0% / 50vmin 50vmin no-repeat` : '',
-            imageBottomLeft = imageUrl ? ` ${imageUrl} 0% 100% / 50vmin 50vmin no-repeat` : '',
-            imageBottomRight = imageUrl ? ` ${imageUrl} 100% 100% / 50vmin 50vmin no-repeat` : '';
+        const imageTopLeftFront = imageUrlFront ? ` ${imageUrlFront} 0% 0% / 50vmin 50vmin no-repeat` : '',
+            imageTopRightFront = imageUrlFront ? ` ${imageUrlFront} 100% 0% / 50vmin 50vmin no-repeat` : '',
+            imageBottomLeftFront = imageUrlFront ? ` ${imageUrlFront} 0% 100% / 50vmin 50vmin no-repeat` : '',
+            imageBottomRightFront = imageUrlFront ? ` ${imageUrlFront} 100% 100% / 50vmin 50vmin no-repeat` : '';
 
         let cube, f, b, u, d, r, l;
 
         const alpha = .9;
 
         cube = this._displayElements[1];
-        f = qs('[data-type="front"] > div', cube);
-        b = qs('[data-type="back"] > div', cube);
-        u = qs('[data-type="up"] > div', cube);
-        d = qs('[data-type="down"] > div', cube);
-        r = qs('[data-type="right"] > div', cube);
-        l = qs('[data-type="left"] > div', cube);
-
-        f.style.background = dictCubeSkins['f'];
-        f.style.background = `${bgColors.f} ${imageTopLeft}`;
-        b.style.background = dictCubeSkins['_'];
-        u.style.background = dictCubeSkins['u'];
-        d.style.background = dictCubeSkins['_'];
-        r.style.background = dictCubeSkins['_'];
-        l.style.background = dictCubeSkins['l'];
+        cube.f.style.background = dictCubeSkins['f'];
+        cube.f.style.background = `${bgColors.f} ${imageTopLeftFront}`;
+        cube.b.style.background = dictCubeSkins['_'];
+        cube.u.style.background = dictCubeSkins['u'];
+        cube.d.style.background = dictCubeSkins['_'];
+        cube.r.style.background = dictCubeSkins['_'];
+        cube.l.style.background = dictCubeSkins['l'];
 
         cube = this._displayElements[2];
-        f = qs('[data-type="front"] > div', cube);
-        b = qs('[data-type="back"] > div', cube);
-        u = qs('[data-type="up"] > div', cube);
-        d = qs('[data-type="down"] > div', cube);
-        r = qs('[data-type="right"] > div', cube);
-        l = qs('[data-type="left"] > div', cube);
-
-        f.style.background = dictCubeSkins['f'];
-        f.style.background = `${bgColors.f} ${imageTopRight}`;
-        b.style.background = dictCubeSkins['_'];
-        u.style.background = dictCubeSkins['u'];
-        d.style.background = dictCubeSkins['_'];
-        r.style.background = dictCubeSkins['r'];
-        l.style.background = dictCubeSkins['_'];
+        cube.f.style.background = dictCubeSkins['f'];
+        cube.f.style.background = `${bgColors.f} ${imageTopRightFront}`;
+        cube.b.style.background = dictCubeSkins['_'];
+        cube.u.style.background = dictCubeSkins['u'];
+        cube.d.style.background = dictCubeSkins['_'];
+        cube.r.style.background = dictCubeSkins['r'];
+        cube.l.style.background = dictCubeSkins['_'];
 
         cube = this._displayElements[3];
-        f = qs('[data-type="front"] > div', cube);
-        b = qs('[data-type="back"] > div', cube);
-        u = qs('[data-type="up"] > div', cube);
-        d = qs('[data-type="down"] > div', cube);
-        r = qs('[data-type="right"] > div', cube);
-        l = qs('[data-type="left"] > div', cube);
-
-        f.style.background = dictCubeSkins['f'];
-        f.style.background = `${bgColors.f} ${imageBottomLeft}`;
-        b.style.background = dictCubeSkins['_'];
-        u.style.background = dictCubeSkins['_'];
-        d.style.background = dictCubeSkins['d'];
-        r.style.background = dictCubeSkins['_'];
-        l.style.background = dictCubeSkins['l'];
+        cube.f.style.background = dictCubeSkins['f'];
+        cube.f.style.background = `${bgColors.f} ${imageBottomLeftFront}`;
+        cube.b.style.background = dictCubeSkins['_'];
+        cube.u.style.background = dictCubeSkins['_'];
+        cube.d.style.background = dictCubeSkins['d'];
+        cube.r.style.background = dictCubeSkins['_'];
+        cube.l.style.background = dictCubeSkins['l'];
 
         cube = this._displayElements[4];
-        f = qs('[data-type="front"] > div', cube);
-        b = qs('[data-type="back"] > div', cube);
-        u = qs('[data-type="up"] > div', cube);
-        d = qs('[data-type="down"] > div', cube);
-        r = qs('[data-type="right"] > div', cube);
-        l = qs('[data-type="left"] > div', cube);
-
-        f.style.background = dictCubeSkins['f'];
-        f.style.background = `${bgColors.f} ${imageBottomRight}`;
-        b.style.background = dictCubeSkins['_'];
-        u.style.background = dictCubeSkins['_'];
-        d.style.background = dictCubeSkins['d'];
-        r.style.background = dictCubeSkins['r'];
-        l.style.background = dictCubeSkins['_'];
+        cube.f.style.background = dictCubeSkins['f'];
+        cube.f.style.background = `${bgColors.f} ${imageBottomRightFront}`;
+        cube.b.style.background = dictCubeSkins['_'];
+        cube.u.style.background = dictCubeSkins['_'];
+        cube.d.style.background = dictCubeSkins['d'];
+        cube.r.style.background = dictCubeSkins['r'];
+        cube.l.style.background = dictCubeSkins['_'];
 
         cube = this._displayElements[5];
-        f = qs('[data-type="front"] > div', cube);
-        b = qs('[data-type="back"] > div', cube);
-        u = qs('[data-type="up"] > div', cube);
-        d = qs('[data-type="down"] > div', cube);
-        r = qs('[data-type="right"] > div', cube);
-        l = qs('[data-type="left"] > div', cube);
-
-        f.style.background = dictCubeSkins['_'];
-        b.style.background = dictCubeSkins['b'];
-        u.style.background = dictCubeSkins['u'];
-        d.style.background = dictCubeSkins['_'];
-        r.style.background = dictCubeSkins['_'];
-        l.style.background = dictCubeSkins['l'];
+        cube.f.style.background = dictCubeSkins['_'];
+        cube.b.style.background = dictCubeSkins['b'];
+        cube.u.style.background = dictCubeSkins['u'];
+        cube.d.style.background = dictCubeSkins['_'];
+        cube.r.style.background = dictCubeSkins['_'];
+        cube.l.style.background = dictCubeSkins['l'];
 
         cube = this._displayElements[6];
-        f = qs('[data-type="front"] > div', cube);
-        b = qs('[data-type="back"] > div', cube);
-        u = qs('[data-type="up"] > div', cube);
-        d = qs('[data-type="down"] > div', cube);
-        r = qs('[data-type="right"] > div', cube);
-        l = qs('[data-type="left"] > div', cube);
-
-        f.style.background = dictCubeSkins['_'];
-        b.style.background = dictCubeSkins['b'];
-        u.style.background = dictCubeSkins['u'];
-        d.style.background = dictCubeSkins['_'];
-        r.style.background = dictCubeSkins['r'];
-        l.style.background = dictCubeSkins['_'];
+        cube.f.style.background = dictCubeSkins['_'];
+        cube.b.style.background = dictCubeSkins['b'];
+        cube.u.style.background = dictCubeSkins['u'];
+        cube.d.style.background = dictCubeSkins['_'];
+        cube.r.style.background = dictCubeSkins['r'];
+        cube.l.style.background = dictCubeSkins['_'];
 
         cube = this._displayElements[7];
-        f = qs('[data-type="front"] > div', cube);
-        b = qs('[data-type="back"] > div', cube);
-        u = qs('[data-type="up"] > div', cube);
-        d = qs('[data-type="down"] > div', cube);
-        r = qs('[data-type="right"] > div', cube);
-        l = qs('[data-type="left"] > div', cube);
-
-        f.style.background = dictCubeSkins['_'];
-        b.style.background = dictCubeSkins['b'];
-        u.style.background = dictCubeSkins['_'];
-        d.style.background = dictCubeSkins['d'];
-        r.style.background = dictCubeSkins['_'];
-        l.style.background = dictCubeSkins['l'];
+        cube.f.style.background = dictCubeSkins['_'];
+        cube.b.style.background = dictCubeSkins['b'];
+        cube.u.style.background = dictCubeSkins['_'];
+        cube.d.style.background = dictCubeSkins['d'];
+        cube.r.style.background = dictCubeSkins['_'];
+        cube.l.style.background = dictCubeSkins['l'];
 
         cube = this._displayElements[8];
-        f = qs('[data-type="front"] > div', cube);
-        b = qs('[data-type="back"] > div', cube);
-        u = qs('[data-type="up"] > div', cube);
-        d = qs('[data-type="down"] > div', cube);
-        r = qs('[data-type="right"] > div', cube);
-        l = qs('[data-type="left"] > div', cube);
-
-        f.style.background = dictCubeSkins['_'];
-        b.style.background = dictCubeSkins['b'];
-        u.style.background = dictCubeSkins['_'];
-        d.style.background = dictCubeSkins['d'];
-        r.style.background = dictCubeSkins['r'];
-        l.style.background = dictCubeSkins['_'];
+        cube.f.style.background = dictCubeSkins['_'];
+        cube.b.style.background = dictCubeSkins['b'];
+        cube.u.style.background = dictCubeSkins['_'];
+        cube.d.style.background = dictCubeSkins['d'];
+        cube.r.style.background = dictCubeSkins['r'];
+        cube.l.style.background = dictCubeSkins['_'];
     }
 }
 

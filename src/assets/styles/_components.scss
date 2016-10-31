@@ -19,8 +19,6 @@ button {
     border-radius: 50%;
     &:focus {
         box-shadow: 2px 2px 1rem $color-focus;
-        //box-shadow: none;
-        //outline: 1px solid $color-focus;
     }
     &.cubetwo-active {
         background: rgba(white, .2);
@@ -41,7 +39,7 @@ button {
     top: 0;
     left: 0;
     width: 100%;
-    //min-height: 25vh;
+    min-height: 25vh;
     border-bottom: 1px solid rgba(white, .2);
     padding: .5em 0 4em;
     color: rgba(white, 1);
@@ -150,8 +148,6 @@ button {
         top: 0;
         left: 0;
         width: 100%;
-        // min-height: 32px;
-        // background: pink;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -220,7 +216,6 @@ button {
 [data-type="cubetwo"] {
     width: $cube-size;
     height: $cube-size;
-    //position: relative;
     transform-style: preserve-3d;
     font-size: 1rem;
     &:focus {
@@ -229,7 +224,6 @@ button {
             >div {
                 border-color: $color-focus;
                 >div {
-                    //color: $color-focus; //box-shadow color
                 }
             }
         }

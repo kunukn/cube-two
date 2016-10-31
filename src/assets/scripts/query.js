@@ -1,11 +1,11 @@
-export function qs(expr, context) {
+export const qs = function(expr, context) {
     return (context || document).querySelector(expr);
 }
 
-export function qsa(expr, context) {
+export const qsa = function(expr, context) {
     return [].slice.call((context || document).querySelectorAll(expr), 0);
 }
 
-export function byId(id) {
+export const byId = function(id) {
     return document.getElementById(id);
 }
