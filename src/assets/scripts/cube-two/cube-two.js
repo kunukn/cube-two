@@ -399,10 +399,18 @@ class CubeTwo {
         // todo update view by state
 
         const appConfig = this._config;
+        const bgColors = appConfig.backgroundColors;
+
         let imageUrl = ''
         if (appConfig.backgroundImages && appConfig.backgroundImages.f) {
             imageUrl = `url("${appConfig.backgroundImages.f}")`;
         }
+
+        let imageTopLeft = imageUrl ? ` ${imageUrl} 0% 0% / 50vmin 50vmin no-repeat` : '',
+            imageTopRight = imageUrl ? ` ${imageUrl} 100% 0% / 50vmin 50vmin no-repeat` : '',
+            imageBottomLeft = imageUrl ? ` ${imageUrl} 0% 100% / 50vmin 50vmin no-repeat` : '',
+            imageBottomRight = imageUrl ? ` ${imageUrl} 100% 100% / 50vmin 50vmin no-repeat` : '';
+
         let cube, f, b, u, d, r, l;
 
         const alpha = .9;
@@ -416,7 +424,7 @@ class CubeTwo {
         l = qs('[data-type="left"] > div', cube);
 
         f.style.background = dictCubeSkins['f'];
-        f.style.background = `rgba(0, 158, 96, ${alpha}) ${imageUrl} 0% 0% / 50vmin 50vmin no-repeat`;
+        f.style.background = `${bgColors.f} ${imageTopLeft}`;
         b.style.background = dictCubeSkins['_'];
         u.style.background = dictCubeSkins['u'];
         d.style.background = dictCubeSkins['_'];
@@ -432,7 +440,7 @@ class CubeTwo {
         l = qs('[data-type="left"] > div', cube);
 
         f.style.background = dictCubeSkins['f'];
-        f.style.background = `rgba(0, 158, 96, ${alpha}) ${imageUrl} 100% 0% / 50vmin 50vmin no-repeat`;
+        f.style.background = `${bgColors.f} ${imageTopRight}`;
         b.style.background = dictCubeSkins['_'];
         u.style.background = dictCubeSkins['u'];
         d.style.background = dictCubeSkins['_'];
@@ -448,7 +456,7 @@ class CubeTwo {
         l = qs('[data-type="left"] > div', cube);
 
         f.style.background = dictCubeSkins['f'];
-        f.style.background = `rgba(0, 158, 96, ${alpha}) ${imageUrl} 0% 100% / 50vmin 50vmin no-repeat`;
+        f.style.background = `${bgColors.f} ${imageBottomLeft}`;
         b.style.background = dictCubeSkins['_'];
         u.style.background = dictCubeSkins['_'];
         d.style.background = dictCubeSkins['d'];
@@ -464,7 +472,7 @@ class CubeTwo {
         l = qs('[data-type="left"] > div', cube);
 
         f.style.background = dictCubeSkins['f'];
-        f.style.background = `rgba(0, 158, 96, ${alpha}) ${imageUrl} 100% 100% / 50vmin 50vmin no-repeat`;
+        f.style.background = `${bgColors.f} ${imageBottomRight}`;
         b.style.background = dictCubeSkins['_'];
         u.style.background = dictCubeSkins['_'];
         d.style.background = dictCubeSkins['d'];
