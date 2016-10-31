@@ -39,15 +39,15 @@ button {
     position: relative;
     //background: rgba(white, .06);
     overflow-x: hidden;
-    > .cubetwo-button-grid {
+    >.cubetwo-button-grid {
         padding: .5rem;
         button {
             display: block;
         }
     }
-    > .cubetwo-button-column {}
-    > .cubetwo-button-column-left,
-    > .cubetwo-button-column-right {
+    >.cubetwo-button-column {}
+    >.cubetwo-button-column-left,
+    >.cubetwo-button-column-right {
         position: absolute;
         top: 0;
         left: 0;
@@ -62,13 +62,13 @@ button {
             }
         }
     }
-    > .cubetwo-button-column-right {
+    >.cubetwo-button-column-right {
         left: auto;
         right: 0;
     }
-    > .cubetwo-button-row {}
-    > .cubetwo-button-row-top,
-    > .cubetwo-button-row-bottom {
+    >.cubetwo-button-row {}
+    >.cubetwo-button-row-top,
+    >.cubetwo-button-row-bottom {
         z-index: 1;
         position: absolute;
         top: 0;
@@ -80,7 +80,7 @@ button {
         justify-content: space-between;
         align-items: center;
     }
-    > .cubetwo-button-row-bottom {
+    >.cubetwo-button-row-bottom {
         top: auto;
         bottom: 0;
     }
@@ -91,7 +91,7 @@ button {
     width: 2 * $cube-size;
     height: 2 * $cube-size;
     max-width: 100%;
-    perspective: 2000px;
+    perspective: 5000px;
     position: relative;
     transform-style: preserve-3d;
     transform: rotateX(-#{$rotate-view-x}deg) rotateY(-#{$rotate-view-y}deg) rotateZ(0deg);
