@@ -53,13 +53,21 @@ cubeTwo.addCallbackForEvent('init', (eventName, payload) => {
     // log(payload);
 });
 cubeTwo.init();
-window.addEventListener('keydown', cubeTwo.handleGlobalKeyEvent, false);
 
-window.cubetwo = cubeTwo;
 
-const cubetwoHelpEl = byId('cubetwo-help');
-byId('btn-cubetwo-help').addEventListener('click', ev => {
-    cubetwoHelpEl.classList.toggle('cubetwo-show-help');
+const cubetwoBtnMenuEl = qs('.cubetwo-js.cubetwo-btn-menu', cubeComponentEl),
+    cubetwoMenuEl = qs('.cubetwo-menu-component');
+
+cubetwoBtnMenuEl.addEventListener('click', ev => {
+    cubetwoMenuEl.classList.toggle('cubetwo-show-dialog');
+    ev.currentTarget.classList.toggle('cubetwo-active');
+});
+
+const cubetwoBtnHelpEl = qs('.cubetwo-js.cubetwo-btn-help', cubeComponentEl),
+    cubetwoHelpEl = qs('.cubetwo-help-component');
+
+cubetwoBtnHelpEl.addEventListener('click', ev => {
+    cubetwoHelpEl.classList.toggle('cubetwo-show-dialog');
     ev.currentTarget.classList.toggle('cubetwo-active');
 });
 
@@ -83,19 +91,20 @@ qs('.cubetwo-btn-top-center', cubeComponentEl).addEventListener('click',
 qs('.cubetwo-btn-bottom-center', cubeComponentEl).addEventListener('click',
     ev => cubeTwo.x_()
 );
-qs('.cubetwo-btn-center-left', cubeComponentEl).addEventListener('click',
+qs('.cubetwo-js.cubetwo-btn-rotate-left', cubeComponentEl).addEventListener('click',
     ev => cubeTwo.y_()
 );
-qs('.cubetwo-btn-center-right', cubeComponentEl).addEventListener('click',
+qs('.cubetwo-js.cubetwo-btn-rotate-left-2x', cubeComponentEl).addEventListener('click',
+    ev => cubeTwo.y2_()
+);
+qs('.cubetwo-js.cubetwo-btn-rotate-right', cubeComponentEl).addEventListener('click',
     ev => cubeTwo.y()
 );
-
-
-//-----
-
-byId('btn-cubetwo-rotate-1').addEventListener('click',
+qs('.cubetwo-js.cubetwo-btn-rotate-right-2x', cubeComponentEl).addEventListener('click',
     ev => cubeTwo.y2()
 );
 
+window.addEventListener('keydown', cubeTwo.handleGlobalKeyEvent, false);
+window.cubetwo = cubeTwo;
 
 log('cubetwo is available in console');

@@ -28,7 +28,9 @@ button {
     &.cubetwo-btn-adjust {}
 }
 
-.cubetwo-help {
+
+.cubetwo-help-component,
+.cubetwo-menu-component {
     z-index: 2;
     pointer-events: none;
     transition: transform 200ms;
@@ -40,14 +42,13 @@ button {
     top: 0;
     left: 0;
     width: 100%;
-    text-align: right;
-    min-height: 50vh;
+    //min-height: 25vh;
     border-bottom: 1px solid rgba(white, .2);
-    padding: .5em 0;
+    padding: .5em 0 4em;
     color: rgba(white, 1);
     background: rgba($color-theme, .96);
     font-size: .8rem;
-    &.cubetwo-show-help {
+    &.cubetwo-show-dialog {
         transform: translateY(0);
     }
     @include device(medium) {
