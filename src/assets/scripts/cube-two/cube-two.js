@@ -80,6 +80,9 @@ class CubeTwo {
         if (config.isTapEnabled !== false)
             config.isTapEnabled = true;
 
+        if (config.isAnimationLockEnabled !== false)
+            config.isAnimationLockEnabled = true;
+
         if (config.transition) {
             qsa('[data-type="cubetwo-display"]', cubeComponentEl).forEach(cube => {
                 cube.style.transition = config.transition;
@@ -265,17 +268,23 @@ class CubeTwo {
     _rotationInvoke({ config, ui }) {
         // todo add animation lock and use queue buffer to enqueue rotation actions
 
-        if (this._config.isRotateAnimationEnabled) {
+        const appConfig = this._config;
+
+        if (appConfig.isRotateAnimationEnabled) {
 
             const state = this.getState();
-            if (!state.isRotateEnabled) {
+            if (appConfig.isAnimationLockEnabled && !state.isRotateEnabled) {
                 debug(`rotate is locked ${new Date()}`);
                 return;
             }
 
             // todo update state by action
-            state.isRotateEnabled = false;
-            this._setState(state);
+
+            if (appConfig.isAnimationLockEnabled) {
+                state.isRotateEnabled = false;
+                this._setState(state);
+            }
+
             ui.bind(this._ui)();
 
         } else {
@@ -295,7 +304,9 @@ class CubeTwo {
     }
 
     _transitionEnd(ev) {
-        let target = ev.currentTarget;
+        const target = ev.currentTarget,
+            appConfig = this._config;
+
         if (target) {
             const backupTransition = target.style.transition;
             target.style.transition = `0s`;
@@ -308,13 +319,15 @@ class CubeTwo {
 
                 rAF(_ => {
                     target.style.transition = backupTransition;
-
-                    const state = this.getState();
-                    state.isRotateEnabled = true;
-                    this._setState(state);                    
+                    
+                    if (appConfig.isAnimationLockEnabled) {
+                        const state = this.getState();                        
+                        state.isRotateEnabled = true;
+                        this._setState(state);
+                    }
 
                     this._triggerEvent('afterrotate', {
-                        state: state,
+                        state: this.getState(),
                     });
                 });
             });

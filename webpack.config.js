@@ -9,7 +9,7 @@ var path = require('path'),
 var ENV = process.env.NODE_ENV = process.env.ENV = 'development';
 
 module.exports = {
-    devtool: 'eval',
+    devtool: 'source-map',
     context: path.resolve('./'),
     entry: {
         //vendors: ['hammerjs/hammer'],

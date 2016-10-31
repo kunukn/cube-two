@@ -50,6 +50,7 @@ const cubeTwo = new CubeTwo({
     isTapEnabled: true, // default: true
     isRotateAnimationEnabled: true, // default: true
     transition: 'transform 200ms', // default: transform 200ms
+    isAnimationLockEnabled: true, // default: true
 });
 cubeTwo.addCallbackForEvent('init', (eventName, payload) => {
     // log('init callback');
