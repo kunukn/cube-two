@@ -4,6 +4,8 @@ import { debug, log, error } from '../logger';
 
 import { qs, qsa, byId } from '../query';
 
+// import { Queue } from '../queue';
+
 import deepFreeze from 'deep-freeze';
 
 import {
@@ -55,6 +57,7 @@ class CubeTwo {
 
         this._appState = {};
         this._ui = null;
+        //this._actionQueue = new Queue();
 
 
         this._config = cloneObject(config);
@@ -71,8 +74,8 @@ class CubeTwo {
     }
 
     _parseConfig(config, cubeComponentEl) {
-        if (config.isTransitionEnabled !== false)
-            config.isTransitionEnabled = true;
+        if (config.isRotateAnimationEnabled !== false)
+            config.isRotateAnimationEnabled = true;
 
         if (config.isTapEnabled !== false)
             config.isTapEnabled = true;
@@ -137,144 +140,148 @@ class CubeTwo {
 
 
     F(config) {
-        this._rotationInvoke(config, this._ui.uiF);
+        this._rotationInvoke({ config, ui: this._ui.uiF });
     }
     F_(config) {
-        this._rotationInvoke(config, this._ui.uiF_);
+        this._rotationInvoke({ config, ui: this._ui.uiF_ });
     }
     F2(config) {
-        this._rotationInvoke(config, this._ui.uiF2);
+        this._rotationInvoke({ config, ui: this._ui.uiF2 });
     }
     F2_(config) {
-        this._rotationInvoke(config, this._ui.uiF2_);
+        this._rotationInvoke({ config, ui: this._ui.uiF2_ });
     }
 
 
     B(config) {
-        this._rotationInvoke(config, this._ui.uiB);
+        this._rotationInvoke({ config, ui: this._ui.uiB });
     }
     B_(config) {
-        this._rotationInvoke(config, this._ui.uiB_);
+        this._rotationInvoke({ config, ui: this._ui.uiB_ });
     }
     B2(config) {
-        this._rotationInvoke(config, this._ui.uiB2);
+        this._rotationInvoke({ config, ui: this._ui.uiB2 });
     }
     B2_(config) {
-        this._rotationInvoke(config, this._ui.uiB2_);
+        this._rotationInvoke({ config, ui: this._ui.uiB2_ });
     }
 
 
     U(config) {
-        this._rotationInvoke(config, this._ui.uiU);
+        this._rotationInvoke({ config, ui: this._ui.uiU });
     }
     U_(config) {
-        this._rotationInvoke(config, this._ui.uiU_);
+        this._rotationInvoke({ config, ui: this._ui.uiU_ });
     }
     U2(config) {
-        this._rotationInvoke(config, this._ui.uiU2);
+        this._rotationInvoke({ config, ui: this._ui.uiU2 });
     }
     U2_(config) {
-        this._rotationInvoke(config, this._ui.uiU2_);
+        this._rotationInvoke({ config, ui: this._ui.uiU2_ });
     }
 
 
     D(config) {
-        this._rotationInvoke(config, this._ui.uiD);
+        this._rotationInvoke({ config, ui: this._ui.uiD });
     }
     D_(config) {
-        this._rotationInvoke(config, this._ui.uiD_);
+        this._rotationInvoke({ config, ui: this._ui.uiD_ });
     }
     D2(config) {
-        this._rotationInvoke(config, this._ui.uiD2);
+        this._rotationInvoke({ config, ui: this._ui.uiD2 });
     }
     D2_(config) {
-        this._rotationInvoke(config, this._ui.uiD2_);
+        this._rotationInvoke({ config, ui: this._ui.uiD2_ });
     }
 
 
     R(config) {
-        this._rotationInvoke(config, this._ui.uiR);
+        this._rotationInvoke({ config, ui: this._ui.uiR });
     }
     R_(config) {
-        this._rotationInvoke(config, this._ui.uiR_);
+        this._rotationInvoke({ config, ui: this._ui.uiR_ });
     }
     R2(config) {
-        this._rotationInvoke(config, this._ui.uiR2);
+        this._rotationInvoke({ config, ui: this._ui.uiR2 });
     }
     R2_(config) {
-        this._rotationInvoke(config, this._ui.uiR2_);
+        this._rotationInvoke({ config, ui: this._ui.uiR2_ });
     }
 
 
     L(config) {
-        this._rotationInvoke(config, this._ui.uiL);
+        this._rotationInvoke({ config, ui: this._ui.uiL });
     }
     L_(config) {
-        this._rotationInvoke(config, this._ui.uiL_);
+        this._rotationInvoke({ config, ui: this._ui.uiL_ });
     }
     L2(config) {
-        this._rotationInvoke(config, this._ui.uiL2);
+        this._rotationInvoke({ config, ui: this._ui.uiL2 });
     }
     L2_(config) {
-        this._rotationInvoke(config, this._ui.uiL2_);
+        this._rotationInvoke({ config, ui: this._ui.uiL2_ });
     }
 
 
     x(config) {
-        this._rotationInvoke(config, this._ui.uix);
+        this._rotationInvoke({ config, ui: this._ui.uix });
     }
     x_(config) {
-        this._rotationInvoke(config, this._ui.uix_);
+        this._rotationInvoke({ config, ui: this._ui.uix_ });
     }
     x2(config) {
-        this._rotationInvoke(config, this._ui.uix2);
+        this._rotationInvoke({ config, ui: this._ui.uix2 });
     }
     x2_(config) {
-        this._rotationInvoke(config, this._ui.uix2_);
+        this._rotationInvoke({ config, ui: this._ui.uix2_ });
     }
 
     y(config) {
-        this._rotationInvoke(config, this._ui.uiy);
+        this._rotationInvoke({ config, ui: this._ui.uiy });
     }
     y_(config) {
-        this._rotationInvoke(config, this._ui.uiy_);
+        this._rotationInvoke({ config, ui: this._ui.uiy_ });
     }
     y2(config) {
-        this._rotationInvoke(config, this._ui.uiy2);
+        this._rotationInvoke({ config, ui: this._ui.uiy2 });
     }
     y2_(config) {
-        this._rotationInvoke(config, this._ui.uiy2_);
+        this._rotationInvoke({ config, ui: this._ui.uiy2_ });
     }
 
     z(config) {
-        this._rotationInvoke(config, this._ui.uiz);
+        this._rotationInvoke({ config, ui: this._ui.uiz });
     }
     z2(config) {
-        this._rotationInvoke(config, this._ui.uiz2);
+        this._rotationInvoke({ config, ui: this._ui.uiz2 });
     }
     z_(config) {
-        this._rotationInvoke(config, this._ui.uiz_);
+        this._rotationInvoke({ config, ui: this._ui.uiz_ });
     }
     z2_(config) {
-        this._rotationInvoke(config, this._ui.uiz2_);
+        this._rotationInvoke({ config, ui: this._ui.uiz2_ });
     }
 
-    _rotationInvoke(config, ui) {
+    _rotationInvoke({ config, ui }) {
         // todo add animation lock and use queue buffer to enqueue rotation actions
 
-        if (!this._config.isTransitionEnabled) {
-            // todo update state
-            this._updateUiFaces();
+        if (this._config.isRotateAnimationEnabled) {
 
-        } else {
             const state = this.getState();
             if (!state.isRotateEnabled) {
                 debug(`rotate is locked ${new Date()}`);
                 return;
             }
+
+            // todo update state by action
             state.isRotateEnabled = false;
             this._setState(state);
             ui.bind(this._ui)();
+
+        } else {
+            debug('isRotateAnimationEnabled is false');
+            // todo update state by action
+            this._updateUiFaces();
         }
     }
 
@@ -289,7 +296,7 @@ class CubeTwo {
 
     _transitionEnd(ev) {
         let target = ev.currentTarget;
-        if (this._config.isTransitionEnabled && target) {
+        if (target) {
             const backupTransition = target.style.transition;
             target.style.transition = `0s`;
 
@@ -304,7 +311,7 @@ class CubeTwo {
 
                     const state = this.getState();
                     state.isRotateEnabled = true;
-                    this._setState(state);
+                    this._setState(state);                    
 
                     this._triggerEvent('afterrotate', {
                         state: state,

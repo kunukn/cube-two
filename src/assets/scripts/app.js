@@ -48,7 +48,7 @@ function checkForComplete() {}
 const cubeTwo = new CubeTwo({
     cubeComponent: cubeComponentEl,
     isTapEnabled: true, // default: true
-    isTransitionEnabled: true, // default: true
+    isRotateAnimationEnabled: true, // default: true
     transition: 'transform 200ms', // default: transform 200ms
 });
 cubeTwo.addCallbackForEvent('init', (eventName, payload) => {
