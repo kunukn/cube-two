@@ -25,7 +25,7 @@ import {
     setupCube8
 } from './cube-two-setup';
 
-import { CUBE_COUNT, CUBE_SIZE } from './cube-two-constants';
+import { CUBE_COUNT, CUBE_SIZE_2X } from './cube-two-constants';
 
 import { CubeTwoUi } from './cube-two-ui';
 
@@ -43,6 +43,8 @@ import {
     handleKeyEventCube8,
     handleGlobalKeyEvent
 } from './cube-two-handle-key-events';
+
+let cubeSkins;
 
 class CubeTwo {
     constructor(config) {
@@ -92,8 +94,6 @@ class CubeTwo {
         if (config.isAnimationLockEnabled !== false)
             config.isAnimationLockEnabled = true;
 
-        config.backgroundImages = config.backgroundImages || {};
-        config.backgroundColors = config.backgroundColors || {};
 
         if (config.transition) {
             qsa('[data-type="cubetwo-display"]', cubeComponentEl).forEach(cube => {
@@ -101,7 +101,55 @@ class CubeTwo {
             });
         }
 
-        deepFreeze(this._config);
+        config.backgroundImages = config.backgroundImages || {};
+        config.backgroundColors = config.backgroundColors || {};
+
+        const bgColors = config.backgroundColors;
+        const cubeColors = {};
+        cubeColors._ = bgColors._ ? bgColors._ : dictCubeSkins['_'];
+        cubeColors.f = bgColors.f ? bgColors.f : dictCubeSkins['f'];
+        cubeColors.b = bgColors.b ? bgColors.b : dictCubeSkins['b'];
+        cubeColors.u = bgColors.u ? bgColors.u : dictCubeSkins['u'];
+        cubeColors.d = bgColors.d ? bgColors.d : dictCubeSkins['d'];
+        cubeColors.r = bgColors.r ? bgColors.r : dictCubeSkins['r'];
+        cubeColors.l = bgColors.l ? bgColors.l : dictCubeSkins['l'];
+        config.backgroundColors = cubeColors;
+
+        const bgImages = config.backgroundImages;
+        const cubeSkins = {};
+        cubeSkins._ = bgImages._ ? `${cubeColors._} url("${bgImages._}")` : `${cubeColors._}`;
+
+        function setFace(bgImage, side) {
+            if (bgImage) {
+                cubeSkins[side] = {
+                    c: cubeColors[side],
+                    c1: `${cubeColors[side]} url("${bgImages[side]}") 0% 0% / ${CUBE_SIZE_2X} ${CUBE_SIZE_2X} no-repeat`,
+                    c2: `${cubeColors[side]} url("${bgImages[side]}") 100% 0% / ${CUBE_SIZE_2X} ${CUBE_SIZE_2X} no-repeat`,
+                    c3: `${cubeColors[side]} url("${bgImages[side]}") 0% 100% / ${CUBE_SIZE_2X} ${CUBE_SIZE_2X} no-repeat`,
+                    c4: `${cubeColors[side]} url("${bgImages[side]}") 100% 100% / ${CUBE_SIZE_2X} ${CUBE_SIZE_2X} no-repeat`,
+                };
+
+            } else {
+                cubeSkins[side] = {
+                    c: cubeColors[side],
+                    c1: cubeColors[side],
+                    c2: cubeColors[side],
+                    c3: cubeColors[side],
+                    c4: cubeColors[side],
+                };
+            }
+        }
+
+        setFace(bgImages.f, 'f');
+        setFace(bgImages.b, 'b');
+        setFace(bgImages.u, 'u');
+        setFace(bgImages.d, 'd');
+        setFace(bgImages.r, 'r');
+        setFace(bgImages.l, 'l');
+
+        config.cubeSkins = cubeSkins;
+
+        deepFreeze(config);
     }
 
     _updateEventBindings() {
@@ -420,54 +468,39 @@ class CubeTwo {
 
         const appConfig = this._config;
         const bgColors = appConfig.backgroundColors;
-
-        // move this to parse config
-        let imageUrlFront = ''
-        if (appConfig.backgroundImages.f) {
-            imageUrlFront = `url("${appConfig.backgroundImages.f}")`;
-        }
-
-        const imageTopLeftFront = imageUrlFront ? ` ${imageUrlFront} 0% 0% / 50vmin 50vmin no-repeat` : '',
-            imageTopRightFront = imageUrlFront ? ` ${imageUrlFront} 100% 0% / 50vmin 50vmin no-repeat` : '',
-            imageBottomLeftFront = imageUrlFront ? ` ${imageUrlFront} 0% 100% / 50vmin 50vmin no-repeat` : '',
-            imageBottomRightFront = imageUrlFront ? ` ${imageUrlFront} 100% 100% / 50vmin 50vmin no-repeat` : '';
+        const skins = appConfig.cubeSkins;
 
         let cube, f, b, u, d, r, l;
 
-        const alpha = .9;
-
         cube = this._displayElements[1];
-        cube.f.style.background = dictCubeSkins['f'];
-        cube.f.style.background = `${bgColors.f} ${imageTopLeftFront}`;
-        cube.b.style.background = dictCubeSkins['_'];
-        cube.u.style.background = dictCubeSkins['u'];
-        cube.d.style.background = dictCubeSkins['_'];
-        cube.r.style.background = dictCubeSkins['_'];
-        cube.l.style.background = dictCubeSkins['l'];
+        cube.f.style.background = skins.f.c1;
+        cube.b.style.background = skins._;
+        cube.u.style.background = skins.u.c3;
+        cube.d.style.background = skins._;
+        cube.r.style.background = skins._;
+        cube.l.style.background = skins.l.c2;
 
         cube = this._displayElements[2];
-        cube.f.style.background = dictCubeSkins['f'];
-        cube.f.style.background = `${bgColors.f} ${imageTopRightFront}`;
-        cube.b.style.background = dictCubeSkins['_'];
-        cube.u.style.background = dictCubeSkins['u'];
-        cube.d.style.background = dictCubeSkins['_'];
-        cube.r.style.background = dictCubeSkins['r'];
-        cube.l.style.background = dictCubeSkins['_'];
+        cube.f.style.background = skins.f.c2;
+        cube.b.style.background = skins._;
+        cube.u.style.background = bgColors.u;
+        cube.d.style.background = skins._;
+        cube.r.style.background = bgColors.r;
+        cube.l.style.background = skins._;
 
         cube = this._displayElements[3];
-        cube.f.style.background = dictCubeSkins['f'];
-        cube.f.style.background = `${bgColors.f} ${imageBottomLeftFront}`;
-        cube.b.style.background = dictCubeSkins['_'];
-        cube.u.style.background = dictCubeSkins['_'];
+        cube.f.style.background = skins.f.c3;
+        cube.b.style.background = skins._;
+        cube.u.style.background = skins._;
         cube.d.style.background = dictCubeSkins['d'];
-        cube.r.style.background = dictCubeSkins['_'];
+        cube.r.style.background = skins._;
         cube.l.style.background = dictCubeSkins['l'];
 
         cube = this._displayElements[4];
-        cube.f.style.background = dictCubeSkins['f'];
-        cube.f.style.background = `${bgColors.f} ${imageBottomRightFront}`;
-        cube.b.style.background = dictCubeSkins['_'];
-        cube.u.style.background = dictCubeSkins['_'];
+        cube.f.style.background = bgColors.f;
+        cube.f.style.background = skins.f.c4;
+        cube.b.style.background = skins._;
+        cube.u.style.background = skins._;
         cube.d.style.background = dictCubeSkins['d'];
         cube.r.style.background = dictCubeSkins['r'];
         cube.l.style.background = dictCubeSkins['_'];
