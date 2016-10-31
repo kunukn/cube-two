@@ -394,16 +394,16 @@ class CubeTwo {
         const appConfig = this._config;
         let cube, f, b, u, d, r, l;
 
-        cube = this._displayElements[1];        
+        cube = this._displayElements[1];
         f = qs('[data-type="front"] > div', cube);
         b = qs('[data-type="back"] > div', cube);
         u = qs('[data-type="up"] > div', cube);
         d = qs('[data-type="down"] > div', cube);
         r = qs('[data-type="right"] > div', cube);
         l = qs('[data-type="left"] > div', cube);
-                                
+
         f.style.backgroundColor = dictCubeSkins['f'];
-        b.style.backgroundColor = dictCubeSkins['_'];        
+        b.style.backgroundColor = dictCubeSkins['_'];
         u.style.backgroundColor = dictCubeSkins['u'];
         d.style.backgroundColor = dictCubeSkins['_'];
         r.style.backgroundColor = dictCubeSkins['_'];
@@ -416,15 +416,44 @@ class CubeTwo {
         d = qs('[data-type="down"] > div', cube);
         r = qs('[data-type="right"] > div', cube);
         l = qs('[data-type="left"] > div', cube);
-        
+
         f.style.backgroundColor = dictCubeSkins['f'];
         b.style.backgroundColor = dictCubeSkins['_'];
         u.style.backgroundColor = dictCubeSkins['u'];
         d.style.backgroundColor = dictCubeSkins['_'];
         r.style.backgroundColor = dictCubeSkins['r'];
         l.style.backgroundColor = dictCubeSkins['_'];
-        
-        
+
+        cube = this._displayElements[3];
+        f = qs('[data-type="front"] > div', cube);
+        b = qs('[data-type="back"] > div', cube);
+        u = qs('[data-type="up"] > div', cube);
+        d = qs('[data-type="down"] > div', cube);
+        r = qs('[data-type="right"] > div', cube);
+        l = qs('[data-type="left"] > div', cube);
+
+        f.style.backgroundColor = dictCubeSkins['f'];
+        b.style.backgroundColor = dictCubeSkins['_'];
+        u.style.backgroundColor = dictCubeSkins['_'];
+        d.style.backgroundColor = dictCubeSkins['d'];
+        r.style.backgroundColor = dictCubeSkins['_'];
+        l.style.backgroundColor = dictCubeSkins['l'];
+
+        cube = this._displayElements[4];
+        f = qs('[data-type="front"] > div', cube);
+        b = qs('[data-type="back"] > div', cube);
+        u = qs('[data-type="up"] > div', cube);
+        d = qs('[data-type="down"] > div', cube);
+        r = qs('[data-type="right"] > div', cube);
+        l = qs('[data-type="left"] > div', cube);
+
+        f.style.backgroundColor = dictCubeSkins['f'];
+        b.style.backgroundColor = dictCubeSkins['_'];
+        u.style.backgroundColor = dictCubeSkins['_'];
+        d.style.backgroundColor = dictCubeSkins['d'];
+        r.style.backgroundColor = dictCubeSkins['r'];
+        l.style.backgroundColor = dictCubeSkins['_'];
+
 
 
 
