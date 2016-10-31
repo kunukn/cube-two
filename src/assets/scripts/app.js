@@ -51,6 +51,17 @@ const cubeTwo = new CubeTwo({
     isRotateAnimationEnabled: true, // default: true
     transition: 'transform cubic-bezier(0.4, 0.0, 0.2, 1) 250ms', // default: transform 200ms
     isAnimationLockEnabled: true, // default: true
+    backgroundImages: { 
+        f: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg' 
+    },
+    backgroundColors: {
+        u: 'rgba(255, 255, 255, .9)',
+        f: 'rgba(0, 158, 96, .9)',
+        r: 'rgba(196, 30, 58, .9)',
+        l: 'rgba(255, 88, 0, .9)',
+        b: 'rgba(0, 81, 186, .9)',
+        d: 'rgba(255, 213, 0, .9)',
+    },
 });
 cubeTwo.addCallbackForEvent('init', (eventName, payload) => {
     // log('init callback');

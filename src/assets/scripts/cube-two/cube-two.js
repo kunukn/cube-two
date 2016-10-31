@@ -399,10 +399,12 @@ class CubeTwo {
         // todo update view by state
 
         const appConfig = this._config;
+        let imageUrl = ''
+        if (appConfig.backgroundImages && appConfig.backgroundImages.f) {
+            imageUrl = `url("${appConfig.backgroundImages.f}")`;
+        }
         let cube, f, b, u, d, r, l;
 
-        const imageUrl = 'url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg)';
-        // `rgba(0, 158, 96, ${alpha}) ${imageUrl} 0% 0% / 50vmin 50vmin no-repeat`
         const alpha = .9;
 
         cube = this._displayElements[1];
