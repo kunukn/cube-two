@@ -43,7 +43,7 @@ class CubeTwo {
         this._appState = {};
         this._ui = null;
         this._config = config;
-        if(this._config.isTransitionEnabled !== false)
+        if (this._config.isTransitionEnabled !== false)
             this._config.isTransitionEnabled = true;
 
         deepFreeze(this._config);
@@ -493,22 +493,158 @@ class CubeTwo {
     _handleKeyEventCube5(event) {
         event.stopPropagation();
 
-        // todo
+        switch (event.keyCode) {
+            case KEY.LEFT:
+            case KEY.a:
+                this.U();
+                break;
+            case KEY.UP:
+                event.preventDefault();
+            case KEY.w:
+                this.L_();
+                break;
+            case KEY.RIGHT:
+            case KEY.d:
+                this.U_();
+                break;
+            case KEY.DOWN:
+                event.preventDefault();
+            case KEY.s:
+                this.L();
+                break;
+            case KEY.q:
+                this.B();
+                break;
+            case KEY.e:
+                this.B_();
+                break;
+            case KEY.x:
+                this.x();
+                break;
+            case KEY.y:
+                this.y();
+                break;
+            case KEY.z:
+                this.z();
+                break;
+        }
     }
     _handleKeyEventCube6(event) {
         event.stopPropagation();
 
-        // todo
+        switch (event.keyCode) {
+            case KEY.LEFT:
+            case KEY.a:
+                this.U();
+                break;
+            case KEY.UP:
+                event.preventDefault();
+            case KEY.w:
+                this.R();
+                break;
+            case KEY.RIGHT:
+            case KEY.d:
+                this.U_();
+                break;
+            case KEY.DOWN:
+                event.preventDefault();
+            case KEY.s:
+                this.R_();
+                break;
+            case KEY.q:
+                this.B();
+                break;
+            case KEY.e:
+                this.B_();
+                break;
+            case KEY.x:
+                this.x();
+                break;
+            case KEY.y:
+                this.y();
+                break;
+            case KEY.z:
+                this.z();
+                break;
+        }
     }
     _handleKeyEventCube7(event) {
         event.stopPropagation();
 
-        // todo
+        switch (event.keyCode) {
+            case KEY.LEFT:
+            case KEY.a:
+                this.D_();
+                break;
+            case KEY.UP:
+                event.preventDefault();
+            case KEY.w:
+                this.L_();
+                break;
+            case KEY.RIGHT:
+            case KEY.d:
+                this.D();
+                break;
+            case KEY.DOWN:
+                event.preventDefault();
+            case KEY.s:
+                this.L();
+                break;
+            case KEY.q:
+                this.B();
+                break;
+            case KEY.e:
+                this.B_();
+                break;
+            case KEY.x:
+                this.x();
+                break;
+            case KEY.y:
+                this.y();
+                break;
+            case KEY.z:
+                this.z();
+                break;
+        }
     }
     _handleKeyEventCube8(event) {
         event.stopPropagation();
 
-        // todo
+        switch (event.keyCode) {
+            case KEY.LEFT:
+            case KEY.a:
+                this.D_();
+                break;
+            case KEY.UP:
+                event.preventDefault();
+            case KEY.w:
+                this.R();
+                break;
+            case KEY.RIGHT:
+            case KEY.d:
+                this.D();
+                break;
+            case KEY.DOWN:
+                event.preventDefault();
+            case KEY.s:
+                this.R_();
+                break;
+            case KEY.q:
+                this.B();
+                break;
+            case KEY.e:
+                this.B_();
+                break;
+            case KEY.x:
+                this.x();
+                break;
+            case KEY.y:
+                this.y();
+                break;
+            case KEY.z:
+                this.z();
+                break;
+        }
     }
 
     handleGlobalKeyEvent(event) {
