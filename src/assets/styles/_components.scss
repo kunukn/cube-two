@@ -28,6 +28,82 @@ button {
     &.cubetwo-btn-adjust {}
 }
 
+.cubetwo-help {
+    z-index: 2;
+    pointer-events: none;
+    transition: transform 200ms;
+    position: fixed;
+    display: flex;
+    transform: translateY(-50vh);
+    justify-content: center;
+    flex-direction: column;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: right;
+    min-height: 50vh;
+    border-bottom: 1px solid rgba(white, .2);
+    padding: .5em 0;
+    color: rgba(white, 1);
+    background: rgba($color-theme, .96);
+    font-size: .8rem;
+    &.cubetwo-show-help {
+        transform: translateY(0);
+    }
+    @include device(medium) {
+        font-size: 1.2rem;
+    }
+    >.cubetwo-github-link {
+        position: absolute;
+        bottom: 1rem;
+        right: 1rem;
+        transition: 200ms;
+        color: rgba(white, .5);
+        &:focus {
+            color: $color-focus;
+        }
+    }
+    .cubetwo-row {
+        padding: .1em 0;
+        margin: 0 auto;
+        max-width: 40rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-grow: 1;
+        width: 100%;
+        transition: 200ms;
+        font-size: .8em;
+        // color: rgba(white, .6);
+        &:hover {
+            //   color: rgba(white, .7);
+        }
+    }
+    .cubetwo-device-info {
+        text-align: center;
+    }
+    .cubetwo-device-info--keyboard {
+        .cubetwo-device-info-groups {
+            display: flex;
+        }
+        .cubetwo-device-info-group {
+            display: flex;
+            flex-direction: column;
+            >div {
+                display: flex;
+                flex-direction: row;
+                span,
+                i {
+                    font-size: inherit;
+                    display: inline-block;
+                    position: relative;
+                    min-width: 1.4em;
+                }
+            }
+        }
+    }
+}
+
 .cubetwo-component {
     display: flex;
     justify-content: center;
