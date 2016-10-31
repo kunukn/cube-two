@@ -29,6 +29,8 @@ import { CUBE_COUNT, CUBE_SIZE } from './cube-two-constants';
 
 import { CubeTwoUi } from './cube-two-ui';
 
+import dictCubeSkins from '../dictionaries/dict-cube-skins';
+
 
 import { /*STATES, STATES_ARRAY,*/ KEY, EVENT_NAMES } from '../constants';
 import {
@@ -319,9 +321,9 @@ class CubeTwo {
 
                 rAF(_ => {
                     target.style.transition = backupTransition;
-                    
+
                     if (appConfig.isAnimationLockEnabled) {
-                        const state = this.getState();                        
+                        const state = this.getState();
                         state.isRotateEnabled = true;
                         this._setState(state);
                     }
@@ -338,6 +340,7 @@ class CubeTwo {
         this._cubeElements = [''];
         this._touchElements = [''];
         this._displayElements = [''];
+        const appConfig = this._config;
 
         for (var i = 1; i <= CUBE_COUNT; i++) {
             let cube = qs(`.cubetwo-cube-${i}`, this._cubeComponentEl),
@@ -362,16 +365,16 @@ class CubeTwo {
             }
         }
 
-        setupCube1.bind(this)(this._config);
-        setupCube2.bind(this)(this._config);
-        setupCube3.bind(this)(this._config);
-        setupCube4.bind(this)(this._config);
-        setupCube5.bind(this)(this._config);
-        setupCube6.bind(this)(this._config);
-        setupCube7.bind(this)(this._config);
-        setupCube8.bind(this)(this._config);
+        setupCube1.bind(this)(appConfig);
+        setupCube2.bind(this)(appConfig);
+        setupCube3.bind(this)(appConfig);
+        setupCube4.bind(this)(appConfig);
+        setupCube5.bind(this)(appConfig);
+        setupCube6.bind(this)(appConfig);
+        setupCube7.bind(this)(appConfig);
+        setupCube8.bind(this)(appConfig);
 
-        this._updateUiFaces(this._config);
+        this._updateUiFaces();
 
         this._cubeElements[1].addEventListener('keydown', handleKeyEventCube1.bind(this), false);
         this._cubeElements[2].addEventListener('keydown', handleKeyEventCube2.bind(this), false);
@@ -385,8 +388,46 @@ class CubeTwo {
         this._triggerEvent('init', { state: this.getState() });
     }
 
-    _updateUiFaces(config) {
+    _updateUiFaces() {
         // todo update view by state
+
+        const appConfig = this._config;
+        let cube, f, b, u, d, r, l;
+
+        cube = this._displayElements[1];        
+        f = qs('[data-type="front"] > div', cube);
+        b = qs('[data-type="back"] > div', cube);
+        u = qs('[data-type="up"] > div', cube);
+        d = qs('[data-type="down"] > div', cube);
+        r = qs('[data-type="right"] > div', cube);
+        l = qs('[data-type="left"] > div', cube);
+                                
+        f.style.backgroundColor = dictCubeSkins['f'];
+        b.style.backgroundColor = dictCubeSkins['_'];        
+        u.style.backgroundColor = dictCubeSkins['u'];
+        d.style.backgroundColor = dictCubeSkins['_'];
+        r.style.backgroundColor = dictCubeSkins['_'];
+        l.style.backgroundColor = dictCubeSkins['l'];
+
+        cube = this._displayElements[2];
+        f = qs('[data-type="front"] > div', cube);
+        b = qs('[data-type="back"] > div', cube);
+        u = qs('[data-type="up"] > div', cube);
+        d = qs('[data-type="down"] > div', cube);
+        r = qs('[data-type="right"] > div', cube);
+        l = qs('[data-type="left"] > div', cube);
+        
+        f.style.backgroundColor = dictCubeSkins['f'];
+        b.style.backgroundColor = dictCubeSkins['_'];
+        u.style.backgroundColor = dictCubeSkins['u'];
+        d.style.backgroundColor = dictCubeSkins['_'];
+        r.style.backgroundColor = dictCubeSkins['r'];
+        l.style.backgroundColor = dictCubeSkins['_'];
+        
+        
+
+
+
     }
 }
 

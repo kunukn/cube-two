@@ -4,6 +4,9 @@ const dictCubeSkins = [];
 
 let alpha = .9;
 
+
+dictCubeSkins['blank'] = `rgba(0, 0, 0, ${alpha})`;
+dictCubeSkins['_'] = `transparent`;
 dictCubeSkins['u'] = `rgba(255, 255, 255, ${alpha})`; // #fff
 dictCubeSkins['f'] = `rgba(0, 158, 96, ${alpha})`; // #009E60
 dictCubeSkins['r'] = `rgba(196, 30, 58, ${alpha})`; // #C41E3A
@@ -13,6 +16,7 @@ dictCubeSkins['d'] = `rgba(255, 213, 0, ${alpha})`; // #FFD500
 
 alpha = .3;
 
+dictCubeSkins['blank-dark'] = `rgba(0, 0, 0, ${alpha})`;
 dictCubeSkins['u-dark'] = `rgba(255, 255, 255, ${alpha})`; // #fff
 dictCubeSkins['f-dark'] = `rgba(0, 158, 96, ${alpha})`; // #009E60
 dictCubeSkins['r-dark'] = `rgba(196, 30, 58, ${alpha})`; // #C41E3A
