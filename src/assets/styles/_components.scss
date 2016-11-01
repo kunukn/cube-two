@@ -257,7 +257,6 @@ button {
             pointer-events: none;
             position: relative;
             >div {
-                transition: opacity $rotate-transition-duration;
                 user-select: none;
                 position: absolute;
                 width: inherit;
@@ -271,9 +270,7 @@ button {
                 color: transparent;
                 //backface-visibility: hidden;
                 //border-radius: 1px;
-                &.tapped {
-                    opacity: .2;
-                }
+                
                 >div {
                     color: $color-theme;
                     //box-shadow: inset 0 0 0 1px, 0 0 0 1px;
@@ -282,9 +279,11 @@ button {
                     height: 100%;
                     left: 0;
                     top: 0;
-                    //background: url(#{$cube-background-image-url}) no-repeat center center / contain;
-                    background-color: rgba(white, 1);
+                    background-color: rgba(white, .9);
                     background-blend-mode: multiply;
+                    background-position: center center;
+                    background-size: contain;
+                    background-repeat: no-repeat;
                 }
             }
         }

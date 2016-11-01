@@ -24,8 +24,7 @@ body {
     align-items: center;
     background-blend-mode: multiply;
     &.with-background-image {
-        background: rgba(white, .5) url($cube-background-image-url) 0% 0% no-repeat;
-        background-size: contain;
+        // background: rgba(white, .5) url($cube-background-image-url) no-repeat 0% 0% / contain;
     }
     animation: page-fade-in 2000ms;
 }
