@@ -191,7 +191,7 @@ class CubeTwo {
             u: temp.u.c1,
             d: backface,
             f: backface,
-            b: temp.b.c4,
+            b: temp.b.c2,
             r: backface,
             l: temp.l.c1,
         }
@@ -199,7 +199,7 @@ class CubeTwo {
             u: temp.u.c2,
             d: backface,
             f: backface,
-            b: temp.b.c3,
+            b: temp.b.c1,
             r: temp.r.c2,
             l: backface,
         }
@@ -207,7 +207,7 @@ class CubeTwo {
             u: backface,
             d: temp.d.c3,
             f: backface,
-            b: temp.b.c2,
+            b: temp.b.c4,
             r: backface,
             l: temp.l.c3,
         }
@@ -215,7 +215,7 @@ class CubeTwo {
             u: backface,
             d: temp.d.c4,
             f: backface,
-            b: temp.b.c1,
+            b: temp.b.c3,
             r: temp.r.c4,
             l: backface,
         }
@@ -622,7 +622,6 @@ class CubeTwo {
     }
 
     _updateUiFaces() {
-        // todo update view by state
 
         const appConfig = this._config;
         const skins = appConfig.cubeSkins.cubes;
