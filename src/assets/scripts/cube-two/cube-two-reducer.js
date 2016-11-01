@@ -16,31 +16,52 @@ import dictCubeTransform from '../dictionaries/dict-cube-transform';
 
 export function reducer({ action, stateCodes }) {
 
-    if (action === 'F') {
-        let cube1 = stateCodes[0];
-        let cube2 = stateCodes[1];
-        let cube3 = stateCodes[2];
-        let cube4 = stateCodes[3];
+    function applyF() {
+        let c1 = stateCodes[0];
+        let c2 = stateCodes[1];
+        let c3 = stateCodes[2];
+        let c4 = stateCodes[3];
+        const actionCode = 'z';
 
-        let actionCode = 'z';
-        let cube1NextCode = dictCube[cube1.code][actionCode];
-        let cube2NextCode = dictCube[cube2.code][actionCode];
-        let cube3NextCode = dictCube[cube3.code][actionCode];
-        let cube4NextCode = dictCube[cube4.code][actionCode];
-        // log(cube1NextCode);
-        // log(cube2NextCode);
-        // log(cube3NextCode);
-        // log(cube4NextCode);
-        cube1.code = cube1NextCode;
-        cube2.code = cube2NextCode;
-        cube3.code = cube3NextCode;
-        cube4.code = cube4NextCode;
-        let temp = cube1.cube;
-        cube1.cube = cube3.cube;
-        cube3.cube = cube4.cube;
-        cube4.cube = cube2.cube;
-        cube2.cube = temp;
+        c1.code = dictCube[c1.code][actionCode];
+        c2.code = dictCube[c2.code][actionCode];
+        c3.code = dictCube[c3.code][actionCode];
+        c4.code = dictCube[c4.code][actionCode];
+
+        let temp = c1.cube;
+        c1.cube = c3.cube;
+        c3.cube = c4.cube;
+        c4.cube = c2.cube;
+        c2.cube = temp;
     }
+
+    function applyF_() {
+        let c1 = stateCodes[0];
+        let c2 = stateCodes[1];
+        let c3 = stateCodes[2];
+        let c4 = stateCodes[3];
+        const actionCode = '-z';
+
+        c1.code = dictCube[c1.code][actionCode];
+        c2.code = dictCube[c2.code][actionCode];
+        c3.code = dictCube[c3.code][actionCode];
+        c4.code = dictCube[c4.code][actionCode];
+
+        let temp = c1.cube;
+        c1.cube = c2.cube;
+        c2.cube = c4.cube;
+        c4.cube = c3.cube;
+        c3.cube = temp;
+    }
+
+
+    if (action === 'F') {
+        applyF();
+    }
+    if (action === 'F_') {
+        applyF_();
+    }
+
 
     //log(JSON.stringify(stateCodes));
     return stateCodes;

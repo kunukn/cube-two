@@ -625,7 +625,6 @@ class CubeTwo {
         // todo update view by state
 
         const appConfig = this._config;
-        //const bgColors = appConfig.backgroundColors;
         const skins = appConfig.cubeSkins.cubes;
         const backface = appConfig.cubeSkins.backface;
 
