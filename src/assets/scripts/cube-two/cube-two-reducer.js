@@ -17,6 +17,7 @@ import dictCubeTransform from '../dictionaries/dict-cube-transform';
 export function reducer({ action, stateCodes }) {
 
     function applyHelper(c1, c2, c3, c4, actionCode) {
+        // Rotate the state of the cubes
         c1.code = dictCube[c1.code][actionCode];
         c2.code = dictCube[c2.code][actionCode];
         c3.code = dictCube[c3.code][actionCode];
@@ -31,11 +32,12 @@ export function reducer({ action, stateCodes }) {
 
         applyHelper(c1, c2, c3, c4, 'z');
 
-        let temp = c1.cube;
-        c1.cube = c3.cube;
-        c3.cube = c4.cube;
-        c4.cube = c2.cube;
-        c2.cube = temp;
+        // Rotate the placement of the cubes
+        let first = cloneObject(c1);
+        stateCodes[0] = stateCodes[2];
+        stateCodes[2] = stateCodes[3];
+        stateCodes[3] = stateCodes[1];
+        stateCodes[1] = first;
     }
 
     function applyF_() {
@@ -46,11 +48,11 @@ export function reducer({ action, stateCodes }) {
 
         applyHelper(c1, c2, c3, c4, '-z');
 
-        let temp = c1.cube;
-        c1.cube = c2.cube;
-        c2.cube = c4.cube;
-        c4.cube = c3.cube;
-        c3.cube = temp;
+        let first = cloneObject(c1);
+        stateCodes[0] = stateCodes[1];
+        stateCodes[1] = stateCodes[3];
+        stateCodes[3] = stateCodes[2];
+        stateCodes[2] = first;
     }
 
     function applyB_() {
@@ -121,11 +123,11 @@ export function reducer({ action, stateCodes }) {
 
         applyHelper(c1, c2, c3, c4, '-x');
 
-        let temp = cloneObject(c1);
+        let first = cloneObject(c1);
         stateCodes[0] = stateCodes[4];
         stateCodes[4] = stateCodes[6];
         stateCodes[6] = stateCodes[2];
-        stateCodes[2] = temp;
+        stateCodes[2] = first;
     }
 
     function applyL_() {
