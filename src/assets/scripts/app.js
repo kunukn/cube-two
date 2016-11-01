@@ -13,22 +13,22 @@ import { CubeTwo } from './cube-two';
 //log('App running');
 
 function statechangeCallback(eventName, payload) {
-    // log('statechangeCallback');
+    // log(eventName);
     // log(payload);
 }
 
 function initCallback(eventName, payload) {
-    // log('initCallback');
+    // log(eventName);
     // log(payload);
 }
 
 function beforerotateCallback(eventName, payload) {
-    // log('beforerotateCallback');
+    // log(eventName);
     // log(payload);
 }
 
 function afterrotateCallback(eventName, payload) {
-    //  log('afterrotateCallback');
+    // log(eventName);
     //  log(payload);
 }
 const bodyWrapperEl = qs('.body-wrapper');

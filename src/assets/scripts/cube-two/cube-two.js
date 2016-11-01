@@ -82,15 +82,7 @@ class CubeTwo {
 
         this._initCallbacks();
 
-        const code = nextState.first;
 
-        this._setState({
-            codes: [
-                { cube: 1, code }, { cube: 2, code }, { cube: 3, code }, { cube: 4, code },
-                { cube: 5, code }, { cube: 6, code }, { cube: 7, code }, { cube: 8, code }
-            ],
-            isRotateEnabled: true,
-        });
     }
 
     _parseConfig(config, cubeComponentEl) {
@@ -267,14 +259,13 @@ class CubeTwo {
 
         const copyState = cloneObject(state);
 
-        const previousStateCode = this._appState.code,
-            currentStateCode = copyState.code;
+        const previousStateCode = JSON.stringify(this._appState.codes),
+            currentStateCode = JSON.stringify(copyState.codes);
 
         this._appState = copyState;
 
-        if (previousStateCode !== currentStateCode) {
+        if (previousStateCode !== currentStateCode) {            
             this._triggerEvent('statechange', {
-                cube: this.cubeComponentEl,
                 previousStateCode,
                 currentStateCode,
                 state: copyState
@@ -488,7 +479,7 @@ class CubeTwo {
 
     _actionInvoke({ action, config, ui }) {
         // todo add animation lock and use queue buffer to enqueue rotation actions
-        
+
         const state = this.getState();
 
         if (!state.isRotateEnabled) {
@@ -553,6 +544,15 @@ class CubeTwo {
     }
 
     init() {
+        const code = nextState.first;
+        this._setState({
+            codes: [
+                { cube: 1, code }, { cube: 2, code }, { cube: 3, code }, { cube: 4, code },
+                { cube: 5, code }, { cube: 6, code }, { cube: 7, code }, { cube: 8, code }
+            ],
+            isRotateEnabled: true,
+        });
+
         this._cubeElements = [''];
         this._touchElements = [''];
         this._displayElements = [{}];
