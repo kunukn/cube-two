@@ -34,9 +34,9 @@ export function reducer({ action, stateCodes }) {
 
         // Rotate the placement of the cubes
         let first = cloneObject(c1);
-        stateCodes[0] = stateCodes[2];
-        stateCodes[2] = stateCodes[3];
-        stateCodes[3] = stateCodes[1];
+        stateCodes[0] = c3;
+        stateCodes[2] = c4;
+        stateCodes[3] = c2;
         stateCodes[1] = first;
     }
 
@@ -49,9 +49,9 @@ export function reducer({ action, stateCodes }) {
         applyHelper(c1, c2, c3, c4, '-z');
 
         let first = cloneObject(c1);
-        stateCodes[0] = stateCodes[1];
-        stateCodes[1] = stateCodes[3];
-        stateCodes[3] = stateCodes[2];
+        stateCodes[0] = c2;
+        stateCodes[1] = c4;
+        stateCodes[3] = c3;
         stateCodes[2] = first;
     }
 
@@ -63,11 +63,11 @@ export function reducer({ action, stateCodes }) {
 
         applyHelper(c1, c2, c3, c4, 'z');
 
-        let temp = c1.cube;
-        c1.cube = c3.cube;
-        c3.cube = c4.cube;
-        c4.cube = c2.cube;
-        c2.cube = temp;
+        let first = cloneObject(c1);
+        stateCodes[4] = c3;
+        stateCodes[6] = c4;
+        stateCodes[7] = c2;
+        stateCodes[5] = first;
     }
 
     function applyB() {
@@ -78,11 +78,11 @@ export function reducer({ action, stateCodes }) {
 
         applyHelper(c1, c2, c3, c4, '-z');
 
-        let temp = c1.cube;
-        c1.cube = c2.cube;
-        c2.cube = c4.cube;
-        c4.cube = c3.cube;
-        c3.cube = temp;
+        let first = cloneObject(c1);
+        stateCodes[4] = c2;
+        stateCodes[5] = c4;
+        stateCodes[7] = c3;
+        stateCodes[6] = first;
     }
 
     function applyR() {
