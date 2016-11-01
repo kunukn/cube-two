@@ -224,7 +224,19 @@ export function reducer({ action, stateCodes }) {
             applyF();
             applyB_();
             break;
+        case 'z2':
+            applyF();
+            applyB_();
+            applyF();
+            applyB_();
+            break;
         case 'z_':
+            applyF_();
+            applyB();
+            break;
+        case 'z2_':
+            applyF_();
+            applyB();
             applyF_();
             applyB();
             break;
@@ -244,7 +256,19 @@ export function reducer({ action, stateCodes }) {
             applyR();
             applyL_();
             break;
+        case 'x2':
+            applyR();
+            applyL_();
+            applyR();
+            applyL_();
+            break;
         case 'x_':
+            applyR_();
+            applyL();
+            break;
+        case 'x2_':
+            applyR_();
+            applyL();
             applyR_();
             applyL();
             break;
@@ -264,7 +288,19 @@ export function reducer({ action, stateCodes }) {
             applyU_();
             applyD();
             break;
+        case 'y2':
+            applyU_();
+            applyD();
+            applyU_();
+            applyD();
+            break;
         case 'y_':
+            applyU();
+            applyD_();
+            break;
+        case 'y2_':
+            applyU();
+            applyD_();
             applyU();
             applyD_();
             break;
