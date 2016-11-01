@@ -41,6 +41,8 @@ import { CUBE_COUNT, CUBE_SIZE_2X } from './cube-two-constants';
 
 import { CubeTwoUi } from './cube-two-ui';
 
+import { reducer } from './cube-two-reducer';
+
 import { /*STATES, STATES_ARRAY,*/ KEY, EVENT_NAMES } from '../constants';
 import {
     handleKeyEventCube1,
@@ -58,6 +60,7 @@ let cubeSkins;
 
 class CubeTwo {
     constructor(config) {
+
         if (!config) {
             error(`config is invalid for CubeTwo`);
             return;
@@ -485,30 +488,28 @@ class CubeTwo {
 
     _actionInvoke({ action, config, ui }) {
         // todo add animation lock and use queue buffer to enqueue rotation actions
+        
+        const state = this.getState();
+
+        if (!state.isRotateEnabled) {
+            debug(`rotate is locked ${new Date()}`);
+            return;
+        }
 
         const appConfig = this._config;
-        const state = this.getState();
+        const nextStateCodes = reducer({ action, stateCodes: state.codes });
+        state.codes = nextStateCodes; // update
 
         if (appConfig.isRotateAnimationEnabled) {
 
-            if (appConfig.isAnimationLockEnabled && !state.isRotateEnabled) {
-                debug(`rotate is locked ${new Date()}`);
-                return;
-            }
-
-            // todo update state by action
-
-            if (appConfig.isAnimationLockEnabled) {
-                state.isRotateEnabled = false;
-                this._setState(state);
-            }
-
+            state.isRotateEnabled = false;
+            this._setState(state);
             ui.bind(this._ui)();
             // _updateUiFaces is called in transitionend
 
         } else {
             debug('isRotateAnimationEnabled is false');
-            // todo update state by action
+            this._setState(state);
             this._updateUiFaces();
         }
     }
