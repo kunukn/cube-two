@@ -264,7 +264,7 @@ class CubeTwo {
 
         this._appState = copyState;
 
-        if (previousStateCode !== currentStateCode) {            
+        if (previousStateCode !== currentStateCode) {
             this._triggerEvent('statechange', {
                 previousStateCode,
                 currentStateCode,
@@ -625,11 +625,14 @@ class CubeTwo {
         // todo update view by state
 
         const appConfig = this._config;
-        const bgColors = appConfig.backgroundColors;
+        //const bgColors = appConfig.backgroundColors;
         const skins = appConfig.cubeSkins.cubes;
         const backface = appConfig.cubeSkins.backface;
 
         const state = this.getState();
+
+        // log(JSON.stringify(state.codes));
+
         let cube, skin, place, f, b, u, d, r, l;
 
         for (var i = 1; i <= CUBE_COUNT; i++) {
@@ -641,7 +644,7 @@ class CubeTwo {
             r = getRight(place.code);
             l = getLeft(place.code);
 
-            cube = this._displayElements[place.cube];
+            cube = this._displayElements[i];
             skin = skins[place.cube];
             cube.u.style.background = skin[u];
             cube.d.style.background = skin[d];
@@ -650,6 +653,28 @@ class CubeTwo {
             cube.r.style.background = skin[r];
             cube.l.style.background = skin[l];
         }
+
+
+        // todo apply rotates
+        /*
+        let t = dictCubeTransform[state.code]['u'];
+        this.upEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+
+        t = dictCubeTransform[state.code]['f'];
+        this.frontEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+
+        t = dictCubeTransform[state.code]['r'];
+        this.rightEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+
+        t = dictCubeTransform[state.code]['l'];
+        this.leftEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+
+        t = dictCubeTransform[state.code]['b'];
+        this.backEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+
+        t = dictCubeTransform[state.code]['d'];
+        this.downEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+        */
     }
 }
 
