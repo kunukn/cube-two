@@ -143,6 +143,67 @@ export function reducer({ action, stateCodes }) {
         c3.cube = temp;
     }
 
+    function applyU() {
+        let c1 = stateCodes[0];
+        let c2 = stateCodes[1];
+        let c3 = stateCodes[4];
+        let c4 = stateCodes[5];
+
+        applyHelper(c1, c2, c3, c4, '-y');
+
+        let temp = c1.cube;
+        c1.cube = c2.cube;
+        c2.cube = c4.cube;
+        c4.cube = c3.cube;
+        c3.cube = temp;
+    }
+
+    function applyU_() {
+        let c1 = stateCodes[0];
+        let c2 = stateCodes[1];
+        let c3 = stateCodes[4];
+        let c4 = stateCodes[5];
+
+        applyHelper(c1, c2, c3, c4, 'y');
+
+        let temp = c1.cube;
+        c1.cube = c3.cube;
+        c3.cube = c4.cube;
+        c4.cube = c2.cube;
+        c2.cube = temp;
+    }
+
+
+    function applyD() {
+        let c1 = stateCodes[2];
+        let c2 = stateCodes[3];
+        let c3 = stateCodes[6];
+        let c4 = stateCodes[7];
+
+        applyHelper(c1, c2, c3, c4, 'y');
+
+        let temp = c1.cube;
+        c1.cube = c3.cube;
+        c3.cube = c4.cube;
+        c4.cube = c2.cube;
+        c2.cube = temp;
+    }
+
+    function applyD_() {
+        let c1 = stateCodes[2];
+        let c2 = stateCodes[3];
+        let c3 = stateCodes[6];
+        let c4 = stateCodes[7];
+
+        applyHelper(c1, c2, c3, c4, '-y');
+
+        let temp = c1.cube;
+        c1.cube = c2.cube;
+        c2.cube = c4.cube;
+        c4.cube = c3.cube;
+        c3.cube = temp;
+    }
+
 
     switch (action) {
         case 'F':
@@ -184,6 +245,26 @@ export function reducer({ action, stateCodes }) {
         case 'x_':
             applyR_();
             applyL();
+            break;
+        case 'U':
+            applyU();
+            break;
+        case 'U_':
+            applyU_();
+            break;
+        case 'D':
+            applyD();
+            break;
+        case 'D_':
+            applyD_();
+            break;
+        case 'y':
+            applyU_();
+            applyD();
+            break;
+        case 'y_':
+            applyU();
+            applyD_();
             break;
     }
 
