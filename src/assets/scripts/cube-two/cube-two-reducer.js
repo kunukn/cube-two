@@ -113,6 +113,36 @@ export function reducer({ action, stateCodes }) {
         c2.cube = temp;
     }
 
+    function applyL() {
+        let c1 = stateCodes[0];
+        let c2 = stateCodes[2];
+        let c3 = stateCodes[4];
+        let c4 = stateCodes[6];
+
+        applyHelper(c1, c2, c3, c4, '-x');
+
+        let temp = c1.cube;
+        c1.cube = c3.cube;
+        c3.cube = c4.cube;
+        c4.cube = c2.cube;
+        c2.cube = temp;
+    }
+
+    function applyL_() {
+        let c1 = stateCodes[0];
+        let c2 = stateCodes[2];
+        let c3 = stateCodes[4];
+        let c4 = stateCodes[6];
+
+        applyHelper(c1, c2, c3, c4, 'x');
+
+        let temp = c1.cube;
+        c1.cube = c2.cube;
+        c2.cube = c4.cube;
+        c4.cube = c3.cube;
+        c3.cube = temp;
+    }
+
 
     switch (action) {
         case 'F':
@@ -140,6 +170,20 @@ export function reducer({ action, stateCodes }) {
             break;
         case 'R_':
             applyR_();
+            break;
+        case 'L':
+            applyL();
+            break;
+        case 'L_':
+            applyL_();
+            break;
+        case 'x':
+            applyR();
+            applyL_();
+            break;
+        case 'x_':
+            applyR_();
+            applyL();
             break;
     }
 
