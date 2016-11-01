@@ -268,6 +268,6 @@ export function reducer({ action, stateCodes }) {
             break;
     }
 
-    //log(JSON.stringify(stateCodes));
+    log(JSON.stringify(stateCodes));
     return stateCodes;
 }
