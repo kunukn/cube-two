@@ -652,23 +652,23 @@ class CubeTwo {
             cube.r.style.background = skin[r];
             cube.l.style.background = skin[l];
 
-            // t = dictCubeTransform[place.code]['u'];
-            // cube.u.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+            t = dictCubeTransform[place.code]['u'];
+            cube.u.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
 
-            // t = dictCubeTransform[place.code]['f'];
-            // cube.f.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+            t = dictCubeTransform[place.code]['f'];
+            cube.f.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
 
-            // t = dictCubeTransform[place.code]['r'];
-            // cube.r.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+            t = dictCubeTransform[place.code]['r'];
+            cube.r.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
 
-            // t = dictCubeTransform[place.code]['l'];
-            // cube.l.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+            t = dictCubeTransform[place.code]['l'];
+            cube.l.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
 
-            // t = dictCubeTransform[place.code]['b'];
-            // cube.b.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+            t = dictCubeTransform[place.code]['b'];
+            cube.b.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
 
-            // t = dictCubeTransform[place.code]['d'];
-            // cube.d.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+            t = dictCubeTransform[place.code]['d'];
+            cube.d.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
         }
     }
 }

@@ -24,7 +24,7 @@ function initCallback(eventName, payload) {
 
 function beforerotateCallback(eventName, payload) {
     // log(eventName);
-    log(payload.action);
+    // log(payload.action);
 }
 
 function afterrotateCallback(eventName, payload) {
@@ -46,10 +46,14 @@ const cubeTwo = new CubeTwo({
     cubeComponent: cubeComponentEl,
     isTapEnabled: true, // default: true
     isRotateAnimationEnabled: true, // default: true
-    transition: 'transform cubic-bezier(0.4, 0.0, 0.2, 1) 250ms', // default: transform 200ms    
+    transition: 'transform cubic-bezier(0.4, 0.0, 0.2, 1) 200ms', // default: transform 200ms    
     backgroundImages: {
-        // u: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg',
-        // f: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg'
+        u: '/src/assets/images/fox.svg',
+        d: '/src/assets/images/fox.svg',
+        f: '/src/assets/images/fox.svg',
+        b: '/src/assets/images/fox.svg',
+        r: '/src/assets/images/fox.svg',
+        l: '/src/assets/images/fox.svg',
     },
     backgroundColors: {
         u: 'rgba(255, 255, 255, .9)',

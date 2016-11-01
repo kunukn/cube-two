@@ -16,8 +16,7 @@ import dictCubeTransform from '../dictionaries/dict-cube-transform';
 
 export function reducer({ action, stateCodes }) {
 
-    function applyHelper(c1, c2, c3, c4, actionCode) {
-        // Rotate the state of the cubes
+    function rotateCubeStates(c1, c2, c3, c4, actionCode) {
         c1.code = dictCube[c1.code][actionCode];
         c2.code = dictCube[c2.code][actionCode];
         c3.code = dictCube[c3.code][actionCode];
@@ -30,7 +29,8 @@ export function reducer({ action, stateCodes }) {
         let c3 = stateCodes[2];
         let c4 = stateCodes[3];
 
-        applyHelper(c1, c2, c3, c4, 'z');
+        // Rotate the state of the cubes
+        rotateCubeStates(c1, c2, c3, c4, 'z');
 
         // Rotate the placement of the cubes
         let first = cloneObject(c1);
@@ -46,7 +46,7 @@ export function reducer({ action, stateCodes }) {
         let c3 = stateCodes[2];
         let c4 = stateCodes[3];
 
-        applyHelper(c1, c2, c3, c4, '-z');
+        rotateCubeStates(c1, c2, c3, c4, '-z');
 
         let first = cloneObject(c1);
         stateCodes[0] = c2;
@@ -61,7 +61,7 @@ export function reducer({ action, stateCodes }) {
         let c3 = stateCodes[6];
         let c4 = stateCodes[7];
 
-        applyHelper(c1, c2, c3, c4, 'z');
+        rotateCubeStates(c1, c2, c3, c4, 'z');
 
         let first = cloneObject(c1);
         stateCodes[4] = c3;
@@ -76,7 +76,7 @@ export function reducer({ action, stateCodes }) {
         let c3 = stateCodes[6];
         let c4 = stateCodes[7];
 
-        applyHelper(c1, c2, c3, c4, '-z');
+        rotateCubeStates(c1, c2, c3, c4, '-z');
 
         let first = cloneObject(c1);
         stateCodes[4] = c2;
@@ -91,7 +91,7 @@ export function reducer({ action, stateCodes }) {
         let c3 = stateCodes[5];
         let c4 = stateCodes[7];
 
-        applyHelper(c1, c2, c3, c4, 'x');
+        rotateCubeStates(c1, c2, c3, c4, 'x');
 
         let first = cloneObject(c1);
         stateCodes[1] = c2;
@@ -106,7 +106,7 @@ export function reducer({ action, stateCodes }) {
         let c3 = stateCodes[5];
         let c4 = stateCodes[7];
 
-        applyHelper(c1, c2, c3, c4, '-x');
+        rotateCubeStates(c1, c2, c3, c4, '-x');
 
         let first = cloneObject(c1);
         stateCodes[1] = c3;
@@ -121,7 +121,7 @@ export function reducer({ action, stateCodes }) {
         let c3 = stateCodes[4];
         let c4 = stateCodes[6];
 
-        applyHelper(c1, c2, c3, c4, '-x');
+        rotateCubeStates(c1, c2, c3, c4, '-x');
 
         let first = cloneObject(c1);
         stateCodes[0] = c3;
@@ -136,7 +136,7 @@ export function reducer({ action, stateCodes }) {
         let c3 = stateCodes[4];
         let c4 = stateCodes[6];
 
-        applyHelper(c1, c2, c3, c4, 'x');
+        rotateCubeStates(c1, c2, c3, c4, 'x');
 
         let first = cloneObject(c1);
         stateCodes[0] = c2;
@@ -151,7 +151,7 @@ export function reducer({ action, stateCodes }) {
         let c3 = stateCodes[4];
         let c4 = stateCodes[5];
 
-        applyHelper(c1, c2, c3, c4, '-y');
+        rotateCubeStates(c1, c2, c3, c4, '-y');
 
         let first = cloneObject(c1);
         stateCodes[0] = c2;
@@ -166,7 +166,7 @@ export function reducer({ action, stateCodes }) {
         let c3 = stateCodes[4];
         let c4 = stateCodes[5];
 
-        applyHelper(c1, c2, c3, c4, 'y');
+        rotateCubeStates(c1, c2, c3, c4, 'y');
 
         let first = cloneObject(c1);
         stateCodes[0] = c3;
@@ -182,7 +182,7 @@ export function reducer({ action, stateCodes }) {
         let c3 = stateCodes[6];
         let c4 = stateCodes[7];
 
-        applyHelper(c1, c2, c3, c4, 'y');
+        rotateCubeStates(c1, c2, c3, c4, 'y');
 
         let first = cloneObject(c1);
         stateCodes[2] = c3;
@@ -197,7 +197,7 @@ export function reducer({ action, stateCodes }) {
         let c3 = stateCodes[6];
         let c4 = stateCodes[7];
 
-        applyHelper(c1, c2, c3, c4, '-y');
+        rotateCubeStates(c1, c2, c3, c4, '-y');
 
         let first = cloneObject(c1);
         stateCodes[2] = c2;
@@ -270,6 +270,6 @@ export function reducer({ action, stateCodes }) {
             break;
     }
 
-    log(JSON.stringify(stateCodes));
+    //log(JSON.stringify(stateCodes));
     return stateCodes;
 }
