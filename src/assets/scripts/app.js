@@ -65,7 +65,7 @@ const cubeTwo = new CubeTwo({
         l: 'rgba(255, 88, 0, .9)',
         b: 'rgba(0, 81, 186, .9)',
         d: 'rgba(255, 213, 0, .9)',
-        _: 'transparent',
+        backface: 'transparent',
     },
 });
 cubeTwo.addCallbackForEvent('init', initCallback);

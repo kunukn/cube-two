@@ -108,7 +108,7 @@ class CubeTwo {
         // Set background colors from config, if not defined use default from dictionary
         const bgColors = config.backgroundColors;
         const cubeColors = {};
-        cubeColors._ = bgColors._ ? bgColors._ : dictCubeSkins['_'];
+        cubeColors.backface = bgColors._ ? bgColors._ : dictCubeSkins['backface'];
         cubeColors.f = bgColors.f ? bgColors.f : dictCubeSkins['f'];
         cubeColors.b = bgColors.b ? bgColors.b : dictCubeSkins['b'];
         cubeColors.u = bgColors.u ? bgColors.u : dictCubeSkins['u'];
@@ -117,7 +117,7 @@ class CubeTwo {
         cubeColors.l = bgColors.l ? bgColors.l : dictCubeSkins['l'];
         config.backgroundColors = cubeColors;
 
-        const backface = cubeColors._;
+        const backface = cubeColors.backface;
         const bgImages = config.backgroundImages;
         const cubeSkins = {
             cubes: [null, null, null, null, null, null, null, null, null],
@@ -127,8 +127,8 @@ class CubeTwo {
 
         function setFace(bgImage, side) {
             if (bgImage) {
+                // Slice image on a cube face
                 temp[side] = {
-                    c: cubeColors[side],
                     c1: `${cubeColors[side]} url("${bgImages[side]}") 0% 0% / ${CUBE_SIZE_2X} ${CUBE_SIZE_2X} no-repeat`,
                     c2: `${cubeColors[side]} url("${bgImages[side]}") 100% 0% / ${CUBE_SIZE_2X} ${CUBE_SIZE_2X} no-repeat`,
                     c3: `${cubeColors[side]} url("${bgImages[side]}") 0% 100% / ${CUBE_SIZE_2X} ${CUBE_SIZE_2X} no-repeat`,
@@ -137,7 +137,6 @@ class CubeTwo {
 
             } else {
                 temp[side] = {
-                    c: cubeColors[side],
                     c1: cubeColors[side],
                     c2: cubeColors[side],
                     c3: cubeColors[side],
@@ -478,11 +477,20 @@ class CubeTwo {
     }
 
     _actionInvoke({ action, config, ui }) {
-        // todo add animation lock and use queue buffer to enqueue rotation actions
+
+        config = config || {};
 
         const state = this.getState();
 
+        if (config.noVisualUpdate) {
+            const nextStateCodes = reducer({ action, stateCodes: state.codes });
+            state.codes = nextStateCodes; // update
+            this._setState(state);
+            return;
+        }
+
         if (!state.isRotateEnabled) {
+            // todo add animation lock and use queue buffer to enqueue rotation actions            
             debug(`rotate is locked ${new Date()}`);
             return;
         }
@@ -499,7 +507,6 @@ class CubeTwo {
             // _updateUiFaces is called in transitionend
 
         } else {
-            debug('isRotateAnimationEnabled is false');
             this._setState(state);
             this._updateUiFaces();
         }
@@ -669,6 +676,35 @@ class CubeTwo {
             t = dictCubeTransform[place.code]['d'];
             cube.d.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
         }
+    }
+
+    solve() {
+        const code = nextState.first;
+        this._setState({
+            codes: [
+                { cube: 1, code: code }, { cube: 2, code }, { cube: 3, code }, { cube: 4, code },
+                { cube: 5, code }, { cube: 6, code }, { cube: 7, code }, { cube: 8, code }
+            ],
+            isRotateEnabled: true,
+        });
+        this._updateUiFaces();
+    }
+
+    scramble() {
+        const actions = [this.F, this.F_, this.B, this.B_, this.U, this.U_, this.D, this.D_, this.R, this.R_, this.L, this.L_, this.x, this.y, this.z, this.x_, this.y_, this.z_];
+        const length = actions.length;
+        let action, rand;
+        for (var i = 0; i < 20; i++) {
+            rand = (Math.random() * length) | 0;
+            action = actions[rand].bind(this);
+            action({ noVisualUpdate: true });
+        }
+
+        const state = this.getState();
+        state.isRotateEnabled = true;
+        this._setState(state);
+
+        this._updateUiFaces();
     }
 }
 
