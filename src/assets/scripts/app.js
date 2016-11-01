@@ -53,7 +53,7 @@ const cubeTwo = new CubeTwo({
     isAnimationLockEnabled: true, // default: true
     backgroundImages: {
         // u: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg',
-        // f: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg'
+         f: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg'
     },
     backgroundColors: {
         u: 'rgba(255, 255, 255, .9)',

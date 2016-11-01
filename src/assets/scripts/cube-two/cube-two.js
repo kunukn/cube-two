@@ -550,26 +550,25 @@ class CubeTwo {
         const backface = appConfig.cubeSkins.backface;
 
         const state = this.getState();
-        let cube, skin, f, b, u, d, r, l;
-
-        const place1 = state.codes[0];
-
-        u = getUp(place1.code);
-        d = getDown(place1.code);
-        f = getFront(place1.code);
-        b = getBack(place1.code);
-        r = getRight(place1.code);
-        l = getLeft(place1.code);
+        let cube, skin, place, f, b, u, d, r, l;
 
         for (var i = 1; i <= CUBE_COUNT; i++) {
-            cube = this._displayElements[i];
-            skin = skins[i];
-            cube.u.style.background = skin.u;
-            cube.d.style.background = skin.d;
-            cube.f.style.background = skin.f;
-            cube.b.style.background = skin.b;
-            cube.r.style.background = skin.r;
-            cube.l.style.background = skin.l;
+            place = state.codes[i - 1];
+            u = getUp(place.code);
+            d = getDown(place.code);
+            f = getFront(place.code);
+            b = getBack(place.code);
+            r = getRight(place.code);
+            l = getLeft(place.code);
+
+            cube = this._displayElements[place.cube];
+            skin = skins[place.cube];
+            cube.u.style.background = skin[u];
+            cube.d.style.background = skin[d];
+            cube.f.style.background = skin[f];
+            cube.b.style.background = skin[b];
+            cube.r.style.background = skin[r];
+            cube.l.style.background = skin[l];
         }
     }
 }
