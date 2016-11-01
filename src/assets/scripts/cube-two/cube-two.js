@@ -633,7 +633,7 @@ class CubeTwo {
 
         // log(JSON.stringify(state.codes));
 
-        let cube, skin, place, f, b, u, d, r, l;
+        let cube, skin, place, f, b, u, d, r, l, t;
 
         for (var i = 1; i <= CUBE_COUNT; i++) {
             place = state.codes[i - 1];
@@ -652,29 +652,25 @@ class CubeTwo {
             cube.b.style.background = skin[b];
             cube.r.style.background = skin[r];
             cube.l.style.background = skin[l];
+
+            t = dictCubeTransform[place.code]['u'];
+            cube.u.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+
+            t = dictCubeTransform[place.code]['f'];
+            cube.f.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+
+            t = dictCubeTransform[place.code]['r'];
+            cube.r.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+
+            t = dictCubeTransform[place.code]['l'];
+            cube.l.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+
+            t = dictCubeTransform[place.code]['b'];
+            cube.b.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
+
+            t = dictCubeTransform[place.code]['d'];
+            cube.d.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
         }
-
-
-        // todo apply rotates
-        /*
-        let t = dictCubeTransform[state.code]['u'];
-        this.upEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-
-        t = dictCubeTransform[state.code]['f'];
-        this.frontEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-
-        t = dictCubeTransform[state.code]['r'];
-        this.rightEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-
-        t = dictCubeTransform[state.code]['l'];
-        this.leftEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-
-        t = dictCubeTransform[state.code]['b'];
-        this.backEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-
-        t = dictCubeTransform[state.code]['d'];
-        this.downEl.style.transform = t ? `rotate${t.dir}(${t.angle}deg)` : '';
-        */
     }
 }
 
