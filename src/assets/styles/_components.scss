@@ -101,6 +101,19 @@ button {
     }
 }
 
+.cubetwo-menu-component {
+    .cubetwo-row {
+        justify-content: center;
+        align-items: center;
+    }
+    .cubetwo-btn {
+        font-size: 1rem;
+        border-radius: 0;
+        border: 1px solid $color-focus;
+        margin: 0 1rem;
+    }
+}
+
 .cubetwo-component {
     display: flex;
     justify-content: center;
