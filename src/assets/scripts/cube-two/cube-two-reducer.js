@@ -121,11 +121,11 @@ export function reducer({ action, stateCodes }) {
 
         applyHelper(c1, c2, c3, c4, '-x');
 
-        let temp = c1.cube;
-        c1.cube = c3.cube;
-        c3.cube = c4.cube;
-        c4.cube = c2.cube;
-        c2.cube = temp;
+        let temp = cloneObject(c1);
+        stateCodes[0] = stateCodes[4];
+        stateCodes[4] = stateCodes[6];
+        stateCodes[6] = stateCodes[2];
+        stateCodes[2] = temp;
     }
 
     function applyL_() {
@@ -136,11 +136,11 @@ export function reducer({ action, stateCodes }) {
 
         applyHelper(c1, c2, c3, c4, 'x');
 
-        let temp = c1.cube;
-        c1.cube = c2.cube;
-        c2.cube = c4.cube;
-        c4.cube = c3.cube;
-        c3.cube = temp;
+        let first = cloneObject(c1);
+        stateCodes[0] = stateCodes[2];
+        stateCodes[2] = stateCodes[6];
+        stateCodes[6] = stateCodes[4];
+        stateCodes[4] = first;
     }
 
     function applyU() {

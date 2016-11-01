@@ -547,7 +547,7 @@ class CubeTwo {
         const code = nextState.first;
         this._setState({
             codes: [
-                { cube: 1, code }, { cube: 2, code }, { cube: 3, code }, { cube: 4, code },
+                { cube: 1, code: 'lf' }, { cube: 2, code }, { cube: 3, code }, { cube: 4, code },
                 { cube: 5, code }, { cube: 6, code }, { cube: 7, code }, { cube: 8, code }
             ],
             isRotateEnabled: true,
