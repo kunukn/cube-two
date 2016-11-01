@@ -26,6 +26,7 @@ function beforerotateCallback(eventName, payload) {
     // log('beforerotateCallback');
     // log(payload);
 }
+
 function afterrotateCallback(eventName, payload) {
     //  log('afterrotateCallback');
     //  log(payload);

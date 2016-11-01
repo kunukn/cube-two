@@ -279,7 +279,7 @@ class CubeTwo {
         }
     }
 
-    _beforeRotateTriggerHelper({action, config}) {
+    _beforeRotateTriggerHelper({ action, config }) {
         if (!config || !config.skipTriggerEvent) {
             this._triggerEvent('beforerotate', {
                 action,
@@ -290,196 +290,196 @@ class CubeTwo {
 
     F(config) {
         const action = 'F';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiF });
     }
     F_(config) {
         const action = 'F_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiF_ });
     }
     F2(config) {
         const action = 'F2';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiF2 });
     }
     F2_(config) {
         const action = 'F2_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiF2_ });
     }
 
 
     B(config) {
         const action = 'B';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiB });
     }
     B_(config) {
         const action = 'B_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiB_ });
     }
     B2(config) {
         const action = 'B2';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiB2 });
     }
     B2_(config) {
         const action = 'B2_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiB2_ });
     }
 
 
     U(config) {
         const action = 'U';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiU });
     }
     U_(config) {
         const action = 'U_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiU_ });
     }
     U2(config) {
         const action = 'U2';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiU2 });
     }
     U2_(config) {
         const action = 'U2_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiU2_ });
     }
 
 
     D(config) {
         const action = 'D';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiD });
     }
     D_(config) {
         const action = 'D_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiD_ });
     }
     D2(config) {
         const action = 'D2';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiD2 });
     }
     D2_(config) {
         const action = 'D2_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiD2_ });
     }
 
 
     R(config) {
         const action = 'R';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiR });
     }
     R_(config) {
         const action = 'R_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiR_ });
     }
     R2(config) {
         const action = 'R2';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiR2 });
     }
     R2_(config) {
         const action = 'R2_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiR2_ });
     }
 
 
     L(config) {
         const action = 'L';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiL });
     }
     L_(config) {
         const action = 'L_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiL_ });
     }
     L2(config) {
         const action = 'L2';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiL2 });
     }
     L2_(config) {
         const action = 'L2_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiL2_ });
     }
 
 
     x(config) {
         const action = 'x';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uix });
     }
     x_(config) {
         const action = 'x_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uix_ });
     }
     x2(config) {
         const action = 'x2';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uix2 });
     }
     x2_(config) {
         const action = 'x2_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uix2_ });
     }
 
     y(config) {
         const action = 'y';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiy });
     }
     y_(config) {
         const action = 'y_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiy_ });
     }
     y2(config) {
         const action = 'y2';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiy2 });
     }
     y2_(config) {
         const action = 'y2_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiy2_ });
     }
 
     z(config) {
         const action = 'z';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiz });
     }
     z2(config) {
         const action = 'z2';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiz2 });
     }
     z_(config) {
         const action = 'z_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiz_ });
     }
     z2_(config) {
         const action = 'z2_';
-        this._beforeRotateTriggerHelper({action, config});
+        this._beforeRotateTriggerHelper({ action, config });
         this._actionInvoke({ action, config, ui: this._ui.uiz2_ });
     }
 
@@ -541,8 +541,10 @@ class CubeTwo {
                         this._setState(state);
                     }
 
+
                     this._triggerEvent('afterrotate', {
-                        state: this.getState(),
+                        index: target.dataset.index,
+                        //state: this.getState(),
                     });
                 });
             });
