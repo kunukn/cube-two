@@ -12,39 +12,35 @@ import { CubeTwo } from './cube-two';
 
 //log('App running');
 
-const states = {};
-const infos = {
-    // 'cubetwo-component-1': byId('cubetwo-state-info-1'),
-    // 'cubetwo-component-2': byId('cubetwo-state-info-2'),
-    // 'cubetwo-component-3': byId('cubetwo-state-info-3'),
-    // 'cubetwo-component-4': byId('cubetwo-state-info-4'),
-    // 'cubetwo-component-5': byId('cubetwo-state-info-5'),
-    // 'cubetwo-component-6': byId('cubetwo-state-info-6'),
-    // 'cubetwo-component-7': byId('cubetwo-state-info-7'),
-    // 'cubetwo-component-8': byId('cubetwo-state-info-8'),
-}
-
 function statechangeCallback(eventName, payload) {
-    // states[payload.cube.id] = payload.currentStateCode;
-    // checkForComplete();
-
-    // let info = infos[payload.cube.id];
-    // if (info)
-    //     info.innerHTML = `${payload.currentStateCode}`;
+    // log('statechangeCallback');
+    // log(payload);
 }
 
 function initCallback(eventName, payload) {
-    // let info = infos[payload.cube.id];
-    // if (info)
-    //     info.innerHTML = `${payload.state.code}`;
+    // log('initCallback');
+    // log(payload);
 }
 
+function beforerotateCallback(eventName, payload) {
+    // log('beforerotateCallback');
+    // log(payload);
+}
+function afterrotateCallback(eventName, payload) {
+    //  log('afterrotateCallback');
+    //  log(payload);
+}
 const bodyWrapperEl = qs('.body-wrapper');
 const cubeComponentEl = byId('cubetwo-component-1');
 const cubetwoRotationViewEl = qs('.cubetwo-rotation-view', cubeComponentEl);
 
-function checkForComplete() {}
+function checkForComplete() {
+    // todo
+}
 
+/*
+    Create and configure CubeTwo
+*/
 const cubeTwo = new CubeTwo({
     cubeComponent: cubeComponentEl,
     isTapEnabled: true, // default: true
@@ -53,7 +49,7 @@ const cubeTwo = new CubeTwo({
     isAnimationLockEnabled: true, // default: true
     backgroundImages: {
         // u: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg',
-         f: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg'
+        f: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg'
     },
     backgroundColors: {
         u: 'rgba(255, 255, 255, .9)',
@@ -65,13 +61,16 @@ const cubeTwo = new CubeTwo({
         _: 'transparent',
     },
 });
-cubeTwo.addCallbackForEvent('init', (eventName, payload) => {
-    // log('init callback');
-    // log(payload);
-});
+cubeTwo.addCallbackForEvent('init', initCallback);
+cubeTwo.addCallbackForEvent('statechange', statechangeCallback);
+cubeTwo.addCallbackForEvent('beforerotate', beforerotateCallback);
+cubeTwo.addCallbackForEvent('afterrotate', afterrotateCallback);
 cubeTwo.init();
 
 
+/*
+    Setup UI buttons
+*/
 const cubetwoBtnMenuEl = qs('.cubetwo-js.cubetwo-btn-menu', cubeComponentEl),
     cubetwoMenuEl = qs('.cubetwo-menu-component');
 
@@ -100,8 +99,6 @@ qs('.cubetwo-btn-bottom-left', cubeComponentEl).addEventListener('click',
 qs('.cubetwo-btn-bottom-right', cubeComponentEl).addEventListener('click',
     ev => cubetwoRotationViewEl.style.transform = `rotateX(-${ROTATION_VIEW.X}deg) rotateY(${ROTATION_VIEW.Y}deg) rotateZ(0deg)`
 );
-
-//-----
 qs('.cubetwo-btn-top-center', cubeComponentEl).addEventListener('click',
     ev => cubeTwo.x()
 );
@@ -120,8 +117,11 @@ qs('.cubetwo-js.cubetwo-btn-rotate-right', cubeComponentEl).addEventListener('cl
 qs('.cubetwo-js.cubetwo-btn-rotate-right-2x', cubeComponentEl).addEventListener('click',
     ev => cubeTwo.y2()
 );
-
 window.addEventListener('keydown', cubeTwo.handleGlobalKeyEvent, false);
+
+/*
+    Expose as Library to window object
+*/
 window.cubetwo = cubeTwo;
 
 log('cubetwo is available in console');
