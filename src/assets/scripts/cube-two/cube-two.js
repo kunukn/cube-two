@@ -548,90 +548,29 @@ class CubeTwo {
         const bgColors = appConfig.backgroundColors;
         const skins = appConfig.cubeSkins.cubes;
         const backface = appConfig.cubeSkins.backface;
-        
+
         const state = this.getState();
-        let cube, f, b, u, d, r, l;
+        let cube, skin, f, b, u, d, r, l;
 
         const place1 = state.codes[0];
 
         u = getUp(place1.code);
+        d = getDown(place1.code);
         f = getFront(place1.code);
+        b = getBack(place1.code);
         r = getRight(place1.code);
         l = getLeft(place1.code);
-        b = getBack(place1.code);
-        d = getDown(place1.code);
 
-        cube = this._displayElements[1];
-        let skin = skins[1];
-        cube.f.style.background = skin.f;
-        cube.b.style.background = skin.b;
-        cube.u.style.background = skin.u;
-        cube.d.style.background = skin.d;
-        cube.r.style.background = skin.r;
-        cube.l.style.background = skin.l;
-
-        cube = this._displayElements[2];
-        skin = skins[2];
-        cube.f.style.background = skin.f;
-        cube.b.style.background = skin.b;
-        cube.u.style.background = skin.u;
-        cube.d.style.background = skin.d;
-        cube.r.style.background = skin.r;
-        cube.l.style.background = skin.l;
-
-        cube = this._displayElements[3];
-        skin = skins[3];
-        cube.f.style.background = skin.f;
-        cube.b.style.background = skin.b;
-        cube.u.style.background = skin.u;
-        cube.d.style.background = skin.d;
-        cube.r.style.background = skin.r;
-        cube.l.style.background = skin.l;
-
-        cube = this._displayElements[4];
-        skin = skins[4];
-        cube.f.style.background = skin.f;
-        cube.b.style.background = skin.b;
-        cube.u.style.background = skin.u;
-        cube.d.style.background = skin.d;
-        cube.r.style.background = skin.r;
-        cube.l.style.background = skin.l;
-
-        cube = this._displayElements[5];
-        skin = skins[5];
-        cube.f.style.background = skin.f;
-        cube.b.style.background = skin.b;
-        cube.u.style.background = skin.u;
-        cube.d.style.background = skin.d;
-        cube.r.style.background = skin.r;
-        cube.l.style.background = skin.l;
-
-        cube = this._displayElements[6];
-        skin = skins[6];
-        cube.f.style.background = skin.f;
-        cube.b.style.background = skin.b;
-        cube.u.style.background = skin.u;
-        cube.d.style.background = skin.d;
-        cube.r.style.background = skin.r;
-        cube.l.style.background = skin.l;
-
-        cube = this._displayElements[7];
-        skin = skins[7];
-        cube.f.style.background = skin.f;
-        cube.b.style.background = skin.b;
-        cube.u.style.background = skin.u;
-        cube.d.style.background = skin.d;
-        cube.r.style.background = skin.r;
-        cube.l.style.background = skin.l;
-
-        cube = this._displayElements[8];
-        skin = skins[8];
-        cube.f.style.background = skin.f;
-        cube.b.style.background = skin.b;
-        cube.u.style.background = skin.u;
-        cube.d.style.background = skin.d;
-        cube.r.style.background = skin.r;
-        cube.l.style.background = skin.l;
+        for (var i = 1; i <= CUBE_COUNT; i++) {
+            cube = this._displayElements[i];
+            skin = skins[i];
+            cube.u.style.background = skin.u;
+            cube.d.style.background = skin.d;
+            cube.f.style.background = skin.f;
+            cube.b.style.background = skin.b;
+            cube.r.style.background = skin.r;
+            cube.l.style.background = skin.l;
+        }
     }
 }
 

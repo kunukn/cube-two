@@ -52,8 +52,8 @@ const cubeTwo = new CubeTwo({
     transition: 'transform cubic-bezier(0.4, 0.0, 0.2, 1) 250ms', // default: transform 200ms
     isAnimationLockEnabled: true, // default: true
     backgroundImages: {
-        u: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg',
-        f: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg'
+        // u: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg',
+        // f: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg'
     },
     backgroundColors: {
         u: 'rgba(255, 255, 255, .9)',
