@@ -83,6 +83,36 @@ export function reducer({ action, stateCodes }) {
         c3.cube = temp;
     }
 
+    function applyR() {
+        let c1 = stateCodes[1];
+        let c2 = stateCodes[3];
+        let c3 = stateCodes[5];
+        let c4 = stateCodes[7];
+
+        applyHelper(c1, c2, c3, c4, 'x');
+
+        let temp = c1.cube;
+        c1.cube = c2.cube;
+        c2.cube = c4.cube;
+        c4.cube = c3.cube;
+        c3.cube = temp;
+    }
+
+    function applyR_() {
+        let c1 = stateCodes[1];
+        let c2 = stateCodes[3];
+        let c3 = stateCodes[5];
+        let c4 = stateCodes[7];
+
+        applyHelper(c1, c2, c3, c4, '-x');
+
+        let temp = c1.cube;
+        c1.cube = c3.cube;
+        c3.cube = c4.cube;
+        c4.cube = c2.cube;
+        c2.cube = temp;
+    }
+
 
     switch (action) {
         case 'F':
@@ -97,8 +127,22 @@ export function reducer({ action, stateCodes }) {
         case 'B_':
             applyB_();
             break;
+        case 'z':
+            applyF();
+            applyB_();
+            break;
+        case 'z_':
+            applyF_();
+            applyB();
+            break;
+        case 'R':
+            applyR();
+            break;
+        case 'R_':
+            applyR_();
+            break;
     }
-    
+
     //log(JSON.stringify(stateCodes));
     return stateCodes;
 }
