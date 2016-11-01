@@ -49,9 +49,10 @@ const cubeTwo = new CubeTwo({
     cubeComponent: cubeComponentEl,
     isTapEnabled: true, // default: true
     isRotateAnimationEnabled: true, // default: true
-    transition: 'transform cubic-bezier(0.4, 0.0, 0.2, 1) 200ms', // default: transform 200ms
+    transition: 'transform cubic-bezier(0.4, 0.0, 0.2, 1) 250ms', // default: transform 200ms
     isAnimationLockEnabled: true, // default: true
     backgroundImages: {
+        u: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg',
         f: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg'
     },
     backgroundColors: {

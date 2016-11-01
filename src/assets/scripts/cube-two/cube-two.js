@@ -8,10 +8,18 @@ import { qs, qsa, byId } from '../query';
 
 import deepFreeze from 'deep-freeze';
 
+
 import {
     rAF,
     nextFrame,
     cloneObject,
+    nextState,
+    getLeft,
+    getRight,
+    getDown,
+    getBack,
+    getUp,
+    getFront,
 } from '../cube-util';
 
 import {
@@ -25,11 +33,13 @@ import {
     setupCube8
 } from './cube-two-setup';
 
+import dictCube from '../dictionaries/dict-cube';
+import dictCubeTransform from '../dictionaries/dict-cube-transform';
+import dictCubeSkins from '../dictionaries/dict-cube-skins';
+
 import { CUBE_COUNT, CUBE_SIZE_2X } from './cube-two-constants';
 
 import { CubeTwoUi } from './cube-two-ui';
-
-import dictCubeSkins from '../dictionaries/dict-cube-skins';
 
 import { /*STATES, STATES_ARRAY,*/ KEY, EVENT_NAMES } from '../constants';
 import {
@@ -69,17 +79,13 @@ class CubeTwo {
 
         this._initCallbacks();
 
+        const code = nextState.first;
+
         this._setState({
-            code: {
-                c1: 'uf',
-                c2: 'uf',
-                c3: 'uf',
-                c4: 'uf',
-                c5: 'uf',
-                c6: 'uf',
-                c7: 'uf',
-                c8: 'uf',
-            },
+            codes: [
+                { cube: 1, code }, { cube: 2, code }, { cube: 3, code }, { cube: 4, code },
+                { cube: 5, code }, { cube: 6, code }, { cube: 7, code }, { cube: 8, code }
+            ],
             isRotateEnabled: true,
         });
     }
@@ -104,6 +110,7 @@ class CubeTwo {
         config.backgroundImages = config.backgroundImages || {};
         config.backgroundColors = config.backgroundColors || {};
 
+        // Set background colors from config, if not defined use default from dictionary
         const bgColors = config.backgroundColors;
         const cubeColors = {};
         cubeColors._ = bgColors._ ? bgColors._ : dictCubeSkins['_'];
@@ -115,13 +122,17 @@ class CubeTwo {
         cubeColors.l = bgColors.l ? bgColors.l : dictCubeSkins['l'];
         config.backgroundColors = cubeColors;
 
+        const backface = cubeColors._;
         const bgImages = config.backgroundImages;
-        const cubeSkins = {};
-        cubeSkins._ = bgImages._ ? `${cubeColors._} url("${bgImages._}")` : `${cubeColors._}`;
+        const cubeSkins = {
+            cubes: [null, null, null, null, null, null, null, null, null],
+            backface,
+        };
+        const temp = {};
 
         function setFace(bgImage, side) {
             if (bgImage) {
-                cubeSkins[side] = {
+                temp[side] = {
                     c: cubeColors[side],
                     c1: `${cubeColors[side]} url("${bgImages[side]}") 0% 0% / ${CUBE_SIZE_2X} ${CUBE_SIZE_2X} no-repeat`,
                     c2: `${cubeColors[side]} url("${bgImages[side]}") 100% 0% / ${CUBE_SIZE_2X} ${CUBE_SIZE_2X} no-repeat`,
@@ -130,7 +141,7 @@ class CubeTwo {
                 };
 
             } else {
-                cubeSkins[side] = {
+                temp[side] = {
                     c: cubeColors[side],
                     c1: cubeColors[side],
                     c2: cubeColors[side],
@@ -140,12 +151,79 @@ class CubeTwo {
             }
         }
 
+        // Update temp work
         setFace(bgImages.f, 'f');
         setFace(bgImages.b, 'b');
         setFace(bgImages.u, 'u');
         setFace(bgImages.d, 'd');
         setFace(bgImages.r, 'r');
         setFace(bgImages.l, 'l');
+
+        // Use temp work
+        cubeSkins.cubes[1] = {
+            u: temp.u.c3,
+            d: backface,
+            f: temp.f.c1,
+            b: backface,
+            r: backface,
+            l: temp.l.c2,
+        }
+        cubeSkins.cubes[2] = {
+            u: temp.u.c4,
+            d: backface,
+            f: temp.f.c2,
+            b: backface,
+            r: temp.r.c1,
+            l: backface,
+        }
+        cubeSkins.cubes[3] = {
+            u: backface,
+            d: temp.d.c1,
+            f: temp.f.c3,
+            b: backface,
+            r: backface,
+            l: temp.l.c4,
+        }
+        cubeSkins.cubes[4] = {
+            u: backface,
+            d: temp.d.c2,
+            f: temp.f.c4,
+            b: backface,
+            r: temp.r.c3,
+            l: backface,
+        }
+        cubeSkins.cubes[5] = {
+            u: temp.u.c1,
+            d: backface,
+            f: backface,
+            b: temp.b.c4,
+            r: backface,
+            l: temp.l.c1,
+        }
+        cubeSkins.cubes[6] = {
+            u: temp.u.c2,
+            d: backface,
+            f: backface,
+            b: temp.b.c3,
+            r: temp.r.c2,
+            l: backface,
+        }
+        cubeSkins.cubes[7] = {
+            u: backface,
+            d: temp.d.c3,
+            f: backface,
+            b: temp.b.c2,
+            r: backface,
+            l: temp.l.c3,
+        }
+        cubeSkins.cubes[8] = {
+            u: backface,
+            d: temp.d.c4,
+            f: backface,
+            b: temp.b.c1,
+            r: temp.r.c4,
+            l: backface,
+        }
 
         config.cubeSkins = cubeSkins;
 
@@ -468,74 +546,92 @@ class CubeTwo {
 
         const appConfig = this._config;
         const bgColors = appConfig.backgroundColors;
-        const skins = appConfig.cubeSkins;
-
+        const skins = appConfig.cubeSkins.cubes;
+        const backface = appConfig.cubeSkins.backface;
+        
+        const state = this.getState();
         let cube, f, b, u, d, r, l;
 
+        const place1 = state.codes[0];
+
+        u = getUp(place1.code);
+        f = getFront(place1.code);
+        r = getRight(place1.code);
+        l = getLeft(place1.code);
+        b = getBack(place1.code);
+        d = getDown(place1.code);
+
         cube = this._displayElements[1];
-        cube.f.style.background = skins.f.c1;
-        cube.b.style.background = skins._;
-        cube.u.style.background = skins.u.c3;
-        cube.d.style.background = skins._;
-        cube.r.style.background = skins._;
-        cube.l.style.background = skins.l.c2;
+        let skin = skins[1];
+        cube.f.style.background = skin.f;
+        cube.b.style.background = skin.b;
+        cube.u.style.background = skin.u;
+        cube.d.style.background = skin.d;
+        cube.r.style.background = skin.r;
+        cube.l.style.background = skin.l;
 
         cube = this._displayElements[2];
-        cube.f.style.background = skins.f.c2;
-        cube.b.style.background = skins._;
-        cube.u.style.background = bgColors.u;
-        cube.d.style.background = skins._;
-        cube.r.style.background = bgColors.r;
-        cube.l.style.background = skins._;
+        skin = skins[2];
+        cube.f.style.background = skin.f;
+        cube.b.style.background = skin.b;
+        cube.u.style.background = skin.u;
+        cube.d.style.background = skin.d;
+        cube.r.style.background = skin.r;
+        cube.l.style.background = skin.l;
 
         cube = this._displayElements[3];
-        cube.f.style.background = skins.f.c3;
-        cube.b.style.background = skins._;
-        cube.u.style.background = skins._;
-        cube.d.style.background = dictCubeSkins['d'];
-        cube.r.style.background = skins._;
-        cube.l.style.background = dictCubeSkins['l'];
+        skin = skins[3];
+        cube.f.style.background = skin.f;
+        cube.b.style.background = skin.b;
+        cube.u.style.background = skin.u;
+        cube.d.style.background = skin.d;
+        cube.r.style.background = skin.r;
+        cube.l.style.background = skin.l;
 
         cube = this._displayElements[4];
-        cube.f.style.background = bgColors.f;
-        cube.f.style.background = skins.f.c4;
-        cube.b.style.background = skins._;
-        cube.u.style.background = skins._;
-        cube.d.style.background = dictCubeSkins['d'];
-        cube.r.style.background = dictCubeSkins['r'];
-        cube.l.style.background = dictCubeSkins['_'];
+        skin = skins[4];
+        cube.f.style.background = skin.f;
+        cube.b.style.background = skin.b;
+        cube.u.style.background = skin.u;
+        cube.d.style.background = skin.d;
+        cube.r.style.background = skin.r;
+        cube.l.style.background = skin.l;
 
         cube = this._displayElements[5];
-        cube.f.style.background = dictCubeSkins['_'];
-        cube.b.style.background = dictCubeSkins['b'];
-        cube.u.style.background = dictCubeSkins['u'];
-        cube.d.style.background = dictCubeSkins['_'];
-        cube.r.style.background = dictCubeSkins['_'];
-        cube.l.style.background = dictCubeSkins['l'];
+        skin = skins[5];
+        cube.f.style.background = skin.f;
+        cube.b.style.background = skin.b;
+        cube.u.style.background = skin.u;
+        cube.d.style.background = skin.d;
+        cube.r.style.background = skin.r;
+        cube.l.style.background = skin.l;
 
         cube = this._displayElements[6];
-        cube.f.style.background = dictCubeSkins['_'];
-        cube.b.style.background = dictCubeSkins['b'];
-        cube.u.style.background = dictCubeSkins['u'];
-        cube.d.style.background = dictCubeSkins['_'];
-        cube.r.style.background = dictCubeSkins['r'];
-        cube.l.style.background = dictCubeSkins['_'];
+        skin = skins[6];
+        cube.f.style.background = skin.f;
+        cube.b.style.background = skin.b;
+        cube.u.style.background = skin.u;
+        cube.d.style.background = skin.d;
+        cube.r.style.background = skin.r;
+        cube.l.style.background = skin.l;
 
         cube = this._displayElements[7];
-        cube.f.style.background = dictCubeSkins['_'];
-        cube.b.style.background = dictCubeSkins['b'];
-        cube.u.style.background = dictCubeSkins['_'];
-        cube.d.style.background = dictCubeSkins['d'];
-        cube.r.style.background = dictCubeSkins['_'];
-        cube.l.style.background = dictCubeSkins['l'];
+        skin = skins[7];
+        cube.f.style.background = skin.f;
+        cube.b.style.background = skin.b;
+        cube.u.style.background = skin.u;
+        cube.d.style.background = skin.d;
+        cube.r.style.background = skin.r;
+        cube.l.style.background = skin.l;
 
         cube = this._displayElements[8];
-        cube.f.style.background = dictCubeSkins['_'];
-        cube.b.style.background = dictCubeSkins['b'];
-        cube.u.style.background = dictCubeSkins['_'];
-        cube.d.style.background = dictCubeSkins['d'];
-        cube.r.style.background = dictCubeSkins['r'];
-        cube.l.style.background = dictCubeSkins['_'];
+        skin = skins[8];
+        cube.f.style.background = skin.f;
+        cube.b.style.background = skin.b;
+        cube.u.style.background = skin.u;
+        cube.d.style.background = skin.d;
+        cube.r.style.background = skin.r;
+        cube.l.style.background = skin.l;
     }
 }
 
