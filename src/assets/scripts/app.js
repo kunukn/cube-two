@@ -4,9 +4,11 @@ import './app-ui';
 
 (function() {
 
-    const imgPathFox = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg';
+    var log = console.log.bind(console);
 
-    const cubetwo = new window.CubeTwo({
+    var imgPathFox = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg';
+
+    var cubetwo = new window.CubeTwo({
         cubeComponent: document.getElementById('cubetwo-component-1'),
         /* required */
         isTapEnabled: true,
@@ -72,5 +74,5 @@ import './app-ui';
     */
     window.cubetwo = cubetwo;
 
-    console.log('cubetwo is available in console');
+    log('cubetwo is available in console');
 })();
