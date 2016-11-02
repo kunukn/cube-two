@@ -175,7 +175,7 @@ button {
     width: 2 * $cube-size;
     height: 2 * $cube-size;
     max-width: 100%;
-    perspective: 3000px;
+    perspective: 5000px;
     position: relative;
     transform-style: preserve-3d;
     transform: rotateX(-#{$rotate-view-x}deg) rotateY(-#{$rotate-view-y}deg) rotateZ(0deg);
@@ -265,7 +265,7 @@ button {
         }
         &[data-type="cubetwo-display"] {
             // display: none;
-            transition: transform cubic-bezier(0.4, 0.0, 0.2, 1) $rotate-transition-duration;            
+            transition: transform cubic-bezier(0.4, 0.0, 0.2, 1) $rotate-transition-duration;
             user-select: none;
             pointer-events: none;
             position: relative;
