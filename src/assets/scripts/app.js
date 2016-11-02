@@ -52,8 +52,8 @@ const cubetwo = new CubeTwo({
     /* default: true */
     isRotateAnimationEnabled: true,
     /* default: true */
-    transition: 'transform cubic-bezier(0.4, 0.0, 0.2, 1) 200ms',
-    /* default: transform 200ms */
+    transition: 'transform cubic-bezier(0.4, 0.0, 0.2, 1) 190ms',
+    /* default: transform 190ms */
     backgroundImages: { /* optional */
         u: imgPathFox,
         d: imgPathFox,
@@ -85,7 +85,8 @@ cubetwo.init();
 const cubetwoBtnMenuEl = qs('.cubetwo-js.cubetwo-btn-menu', cubeComponentEl),
     cubetwoMenuEl = qs('.cubetwo-menu-component'),
     cubetwoSolve = qs('.cubetwo-btn-solve', cubetwoMenuEl),
-    cubetwoScramble = qs('.cubetwo-btn-scramble', cubetwoMenuEl);
+    cubetwoScramble = qs('.cubetwo-btn-scramble', cubetwoMenuEl),
+    cubetwoSpin = qs('.cubetwo-btn-spin', cubetwoMenuEl);
 
 cubetwoBtnMenuEl.addEventListener('click', ev => {
     cubetwoMenuEl.classList.toggle('cubetwo-show-dialog');
@@ -94,6 +95,10 @@ cubetwoBtnMenuEl.addEventListener('click', ev => {
 
 cubetwoSolve.addEventListener('click', _ => cubetwo.solve());
 cubetwoScramble.addEventListener('click', _ => cubetwo.scramble());
+cubetwoSpin.addEventListener('click', _ => {
+    cubetwoSpin.classList.toggle('cubetwo-active');
+    cubetwoRotationViewEl.classList.toggle('spin');
+});
 
 
 const cubetwoBtnHelpEl = qs('.cubetwo-js.cubetwo-btn-help', cubeComponentEl),
@@ -125,9 +130,9 @@ qs('.cubetwo-btn-bottom-center', cubeComponentEl).addEventListener('click',
 qs('.cubetwo-js.cubetwo-btn-rotate-left', cubeComponentEl).addEventListener('click',
     ev => cubetwo.y_()
 );
-qs('.cubetwo-js.cubetwo-btn-rotate-left-2x', cubeComponentEl).addEventListener('click',
-    ev => cubetwo.y2_()
-);
+// qs('.cubetwo-js.cubetwo-btn-rotate-left-2x', cubeComponentEl).addEventListener('click',
+//     ev => cubetwo.y2_()
+// );
 qs('.cubetwo-js.cubetwo-btn-rotate-right', cubeComponentEl).addEventListener('click',
     ev => cubetwo.y()
 );

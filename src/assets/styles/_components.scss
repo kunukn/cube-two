@@ -1,8 +1,5 @@
 @charset "UTF-8";
 button {
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
     margin: 0;
     padding: 4px;
     background: $color-theme;
@@ -71,10 +68,6 @@ button {
         width: 100%;
         transition: 200ms;
         font-size: .8em;
-        // color: rgba(white, .6);
-        &:hover {
-            //   color: rgba(white, .7);
-        }
     }
     .cubetwo-device-info {
         text-align: center;
@@ -130,10 +123,17 @@ button {
         button {
             display: block;
         }
+        .cubetwo-button-space {
+            min-height: $btn-size;
+            margin-bottom: 1rem;
+        }
+        .cubetwo-btn-toggle {
+            // color: lightgreen;
+        }
     }
-    >.cubetwo-button-column {}
-    >.cubetwo-button-column-left,
-    >.cubetwo-button-column-right {
+    >.cubetwo-column {}
+    >.cubetwo-column-left,
+    >.cubetwo-column-right {
         position: absolute;
         top: 0;
         left: 0;
@@ -148,13 +148,13 @@ button {
             }
         }
     }
-    >.cubetwo-button-column-right {
+    >.cubetwo-column-right {
         left: auto;
         right: 0;
     }
-    >.cubetwo-button-row {}
-    >.cubetwo-button-row-top,
-    >.cubetwo-button-row-bottom {
+    >.cubetwo-row {}
+    >.cubetwo-row-top,
+    >.cubetwo-row-bottom {
         z-index: 1;
         position: absolute;
         top: 0;
@@ -164,23 +164,23 @@ button {
         justify-content: space-between;
         align-items: center;
     }
-    >.cubetwo-button-row-bottom {
+    >.cubetwo-row-bottom {
         top: auto;
         bottom: 0;
     }
 }
 
 .cubetwo-rotation-view {
-    transition: transform 200ms;
+    transition: transform cubic-bezier(0.4, 0.0, 0.2, 1) $rotate-transition-duration;
     width: 2 * $cube-size;
     height: 2 * $cube-size;
     max-width: 100%;
-    perspective: 5000px;
+    perspective: 3000px;
     position: relative;
     transform-style: preserve-3d;
     transform: rotateX(-#{$rotate-view-x}deg) rotateY(-#{$rotate-view-y}deg) rotateZ(0deg);
     &.spin {
-        animation: spin-animation 20s linear infinite;
+        animation: spin-animation 16s linear infinite;
     }
     .cubetwo-cube-group {
         width: 2 * $cube-size;
@@ -265,7 +265,7 @@ button {
         }
         &[data-type="cubetwo-display"] {
             // display: none;
-            transition: transform $rotate-transition-duration;
+            transition: transform cubic-bezier(0.4, 0.0, 0.2, 1) $rotate-transition-duration;            
             user-select: none;
             pointer-events: none;
             position: relative;
@@ -360,10 +360,10 @@ button {
 
 @keyframes spin-animation {
     from {
-        transform: rotateY(0turn) rotateX(0turn);
+        transform: rotateY(0turn) rotateX(0turn) rotateZ(0);
     }
     to {
-        transform: rotateY(3turn) rotateX(2turn);
+        transform: rotateY(3turn) rotateX(2turn) rotateZ(0);
     }
 }
 
