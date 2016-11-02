@@ -118,6 +118,15 @@ button {
     position: relative;
     //background: rgba(white, .06);
     overflow-x: hidden;
+    &.cubetwo-no-border-on-display-cubes {
+        [data-type="cubetwo"] {
+            .cubetwo-cube[data-type="cubetwo-display"] {
+                >div {
+                    border: none;
+                }
+            }
+        }
+    }
     >.cubetwo-button-grid {
         padding: .5rem;
         button {
@@ -278,7 +287,8 @@ button {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                border: 2px solid $color-theme;
+                border: 1px solid $color-theme;
+                // border: 0;
                 font-size: 0;
                 color: transparent;
                 //backface-visibility: hidden;
@@ -306,7 +316,7 @@ button {
             top: 0;
             left: 0;
             >div {
-                border: 2px solid;
+                //border: 1px solid transparent;
                 position: absolute;
                 top: 0;
                 left: 0;

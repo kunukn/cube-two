@@ -565,13 +565,15 @@ class CubeTwo {
         this._displayElements = [{}];
         const appConfig = this._config;
 
+        if(appConfig.noBorderOnTheCube){
+            this._cubeComponentEl.classList.add('cubetwo-no-border-on-display-cubes');
+        }
+
         for (var i = 1; i <= CUBE_COUNT; i++) {
             let cube = qs(`.cubetwo-cube-${i}`, this._cubeComponentEl),
                 touch = qs('[data-type="cubetwo-touch"]', cube),
                 display = qs('[data-type="cubetwo-display"]', cube);
-
-            if (!display) error('buuh');
-
+            
             let f = qs('[data-type="front"] > div', display),
                 b = qs('[data-type="back"] > div', display),
                 u = qs('[data-type="up"] > div', display),

@@ -6,7 +6,7 @@ import './app-ui';
 
     var log = console.log.bind(console);
 
-    //var imgPath = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg';
+    var imgPath = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg';
     var imgPath = '/src/assets/images/fox.svg';
 
     var cubetwo = new window.CubeTwo({
@@ -16,6 +16,8 @@ import './app-ui';
         /* default: true */
         isRotateAnimationEnabled: true,
         /* default: true */
+        noBorderOnTheCube: false,
+        /* default: false */
         transition: 'transform cubic-bezier(0.4, 0.0, 0.2, 1) 190ms',
         /* default: transform 190ms */
         backgroundImages: { /* optional */
