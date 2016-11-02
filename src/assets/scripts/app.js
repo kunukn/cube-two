@@ -66,7 +66,7 @@ import './app-ui';
     window.addEventListener('keydown', cubetwo.handleGlobalKeyEvent, false);
 
     /*
-        Expose as Library to window object
+        Expose to the window object
     */
     window.cubetwo = cubetwo;
 
