@@ -41,10 +41,6 @@ import './app-ui';
     cubetwo.addCallbackForEvent('afterrotate', afterrotateCallback);
     cubetwo.init();
 
-
-
-    //log('App running');
-
     function statechangeCallback(eventName, payload) {
         // log(eventName);
         // log(payload);
@@ -64,7 +60,6 @@ import './app-ui';
         // log(eventName);
         // log(payload);
     }
-
 
 
     window.addEventListener('keydown', cubetwo.handleGlobalKeyEvent, false);
