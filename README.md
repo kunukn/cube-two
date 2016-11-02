@@ -6,6 +6,7 @@ demo
 
 http://codepen.io/kunukn/full/EgzJdR/
 
+![demo](/demo/pocket-cube.gif?raw=true)
 
 ## Browser support
 
