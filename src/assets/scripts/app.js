@@ -6,7 +6,8 @@ import './app-ui';
 
     var log = console.log.bind(console);
 
-    var imgPathFox = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg';
+    //var imgPath = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg';
+    var imgPath = '/src/assets/images/fox.svg';
 
     var cubetwo = new window.CubeTwo({
         cubeComponent: document.getElementById('cubetwo-component-1'),
@@ -18,12 +19,12 @@ import './app-ui';
         transition: 'transform cubic-bezier(0.4, 0.0, 0.2, 1) 190ms',
         /* default: transform 190ms */
         backgroundImages: { /* optional */
-            u: imgPathFox,
-            d: imgPathFox,
-            f: imgPathFox,
-            b: imgPathFox,
-            r: imgPathFox,
-            l: imgPathFox,
+            u: imgPath,
+            d: imgPath,
+            f: imgPath,
+            b: imgPath,
+            r: imgPath,
+            l: imgPath,
         },
         backgroundColors: { /* optional */
             u: 'rgba(255, 255, 255, .9)',
