@@ -4,7 +4,7 @@
 
 demo
 
-http://codepen.io/kunukn/full/EgzJdR/
+http://codepen.io/kunukn/pen/EgzJdR/
 
 ![demo](/demo/pocket-cube.gif?raw=true)
 
