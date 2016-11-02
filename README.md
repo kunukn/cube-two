@@ -1,6 +1,6 @@
 # Cube Two
 
-## Rubiks Cube 2x2 on web platform
+## Pocket Cube - Rubiks Cube 2x2x2 on web platform
 
 demo
 
