@@ -3,8 +3,7 @@
 (function() {
 
     var log = console.log.bind(console);
-
-    var imgPath = 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/157670/fox.svg';
+    
     var imgPath = '/src/assets/images/fox.svg';
 
     var cubetwo = new window.CubeTwo({
@@ -28,11 +27,11 @@
         },
         backgroundColors: { /* optional */
             u: 'rgba(255, 255, 255, .9)',
+            d: 'rgba(255, 213, 0, .9)',
             f: 'rgba(0, 158, 96, .9)',
+            b: 'rgba(0, 81, 186, .9)',
             r: 'rgba(196, 30, 58, .9)',
             l: 'rgba(255, 88, 0, .9)',
-            b: 'rgba(0, 81, 186, .9)',
-            d: 'rgba(255, 213, 0, .9)',
             backface: 'transparent',
         },
     });
