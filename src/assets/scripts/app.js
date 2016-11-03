@@ -15,7 +15,7 @@
         /* default: true */
         borderOnTheCube: true,
         /* default: true */
-        backgroundBlendModeOnTheCube: true,
+        backgroundBlendModeOnTheCube: true, // possible other values: multiply, screen
         /* default: true */
         backfaceVisibilityHiddenOnTheCube: false,
         /* default: false */

@@ -84,19 +84,19 @@ class CubeTwo {
     }
 
     _parseConfig(config, cubeComponentEl) {
-        if (config.isRotateAnimationEnabled !== false)
+        if (config.isRotateAnimationEnabled === undefined)
             config.isRotateAnimationEnabled = true;
 
-        if (config.isTapEnabled !== false)
+        if (config.isTapEnabled === undefined)
             config.isTapEnabled = true;
 
-        if (config.isAnimationLockEnabled !== false)
+        if (config.isAnimationLockEnabled === undefined)
             config.isAnimationLockEnabled = true;
 
-        if (config.borderOnTheCube !== false)
+        if (config.borderOnTheCube === undefined)
             config.borderOnTheCube = true;
 
-        if (config.backgroundBlendModeOnTheCube !== false)
+        if (config.backgroundBlendModeOnTheCube === undefined)
             config.backgroundBlendModeOnTheCube = true;
 
         if (config.transition) {
@@ -571,13 +571,22 @@ class CubeTwo {
         if (appConfig.borderOnTheCube) {
             this._cubeComponentEl.classList.add('cubetwo-border-on-display-cubes');
         }
-        if (appConfig.backgroundBlendModeOnTheCube) {
-            this._cubeComponentEl.classList.add('cubetwo-background-blend-mode-on-display-cubes');
-        }
+
         if (appConfig.backfaceVisibilityHiddenOnTheCube) {
             this._cubeComponentEl.classList.add('cubetwo-backface-visibility-hidden-on-display-cubes');
         }
 
+        if (appConfig.backgroundBlendModeOnTheCube) {
+            if (appConfig.backgroundBlendModeOnTheCube === true) {
+                this._cubeComponentEl.classList.add('cubetwo-background-blend-mode-on-display-cubes');
+            } else {
+                log(appConfig.backgroundBlendModeOnTheCube);
+                qsa('[data-type="cubetwo-display"] > div > div').forEach(face => {
+                    face.style.backgroundBlendMode = appConfig.backgroundBlendModeOnTheCube;
+                });
+            }
+
+        }
         for (var i = 1; i <= CUBE_COUNT; i++) {
             let cube = qs(`.cubetwo-cube-${i}`, this._cubeComponentEl),
                 touch = qs('[data-type="cubetwo-touch"]', cube),
