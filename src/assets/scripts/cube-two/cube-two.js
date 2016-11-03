@@ -577,7 +577,7 @@ class CubeTwo {
         }
 
         if (appConfig.backgroundBlendModeOnTheCube) {
-            if (appConfig.backgroundBlendModeOnTheCube === true) {
+            if (appConfig.backgroundBlendModeOnTheCube === true || appConfig.backgroundBlendModeOnTheCube === 'multiply') {
                 this._cubeComponentEl.classList.add('cubetwo-background-blend-mode-on-display-cubes');
             } else {
                 log(appConfig.backgroundBlendModeOnTheCube);
