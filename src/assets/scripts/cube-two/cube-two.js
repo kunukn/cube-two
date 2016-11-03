@@ -580,12 +580,10 @@ class CubeTwo {
             if (appConfig.backgroundBlendModeOnTheCube === true || appConfig.backgroundBlendModeOnTheCube === 'multiply') {
                 this._cubeComponentEl.classList.add('cubetwo-background-blend-mode-on-display-cubes');
             } else {
-                log(appConfig.backgroundBlendModeOnTheCube);
-                qsa('[data-type="cubetwo-display"] > div > div').forEach(face => {
+                qsa('[data-type="cubetwo-display"] > div > div', this._cubeComponentEl).forEach(face => {
                     face.style.backgroundBlendMode = appConfig.backgroundBlendModeOnTheCube;
                 });
             }
-
         }
         for (var i = 1; i <= CUBE_COUNT; i++) {
             let cube = qs(`.cubetwo-cube-${i}`, this._cubeComponentEl),
