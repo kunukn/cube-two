@@ -12,8 +12,9 @@ module.exports = {
     context: path.resolve('./'),
     devtool: '',
     entry: {
-        //  vendors: ['hammerjs/hammer'],
-        app: ['./src/assets/scripts/app']
+        //  vendors: ['hammerjs/hammer'],        
+        appUi: ['./src/assets/scripts/app-ui'],
+        app: ['./src/assets/scripts'],
     },
     output: {
         path: path.resolve('dist'),

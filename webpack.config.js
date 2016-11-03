@@ -13,8 +13,9 @@ module.exports = {
     context: path.resolve('./'),
     entry: {
         //vendors: ['hammerjs/hammer'],
+        appUi: ['./src/assets/scripts/app-ui'],
         app: ['./src/assets/scripts'],
-        //app: ['webpack-dev-server/client?http://localhost:8080/', './src/assets/scripts/app'],
+        //app: ['webpack-dev-server/client?http://localhost:8080/', './src/assets/scripts'],
     },
     output: {
         path: path.resolve('dist'),

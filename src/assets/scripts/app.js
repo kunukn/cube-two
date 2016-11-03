@@ -1,7 +1,5 @@
 'use strict';
 
-import './app-ui';
-
 (function() {
 
     var log = console.log.bind(console);
