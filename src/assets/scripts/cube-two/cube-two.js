@@ -257,6 +257,17 @@ class CubeTwo {
         return cloneObject(this._appState);
     }
 
+    getStateCode() {
+        return JSON.stringify(this.getState().codes);
+    }
+
+    isSolved() {
+        const codes = this.getState().codes;
+        return !!codes.reduce((a, b) =>
+            a.code === b.code ? a : NaN
+        );
+    }
+
     _setState(state) {
 
         const copyState = cloneObject(state);
