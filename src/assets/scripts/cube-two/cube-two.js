@@ -566,6 +566,9 @@ class CubeTwo {
         if (appConfig.noBorderOnTheCube) {
             this._cubeComponentEl.classList.add('cubetwo-no-border-on-display-cubes');
         }
+        if(appConfig.noBackgroundBlendModeOnTheCube){
+            this._cubeComponentEl.classList.add('cubetwo-no-background-blend-mode-on-display-cubes');
+        }
 
         for (var i = 1; i <= CUBE_COUNT; i++) {
             let cube = qs(`.cubetwo-cube-${i}`, this._cubeComponentEl),

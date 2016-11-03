@@ -3,7 +3,7 @@
 (function() {
 
     var log = console.log.bind(console);
-    
+
     var imgPath = '/src/assets/images/fox.svg';
 
     var cubetwo = new window.CubeTwo({
@@ -14,6 +14,8 @@
         isRotateAnimationEnabled: true,
         /* default: true */
         noBorderOnTheCube: false,
+        /* default: false */
+        noBackgroundBlendModeOnTheCube: false,
         /* default: false */
         transition: 'transform cubic-bezier(0.4, 0.0, 0.2, 1) 190ms',
         /* default: transform 190ms */

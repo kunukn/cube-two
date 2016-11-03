@@ -116,13 +116,23 @@ button {
     max-width: 100%;
     margin: 0 auto;
     position: relative;
-    //background: rgba(white, .06);
     overflow-x: hidden;
     &.cubetwo-no-border-on-display-cubes {
         [data-type="cubetwo"] {
             .cubetwo-cube[data-type="cubetwo-display"] {
                 >div {
                     border: none;
+                }
+            }
+        }
+    }
+    &.cubetwo-no-background-blend-mode-on-display-cubes {
+        [data-type="cubetwo"] {
+            .cubetwo-cube[data-type="cubetwo-display"] {
+                >div {
+                    >div{
+                        background-blend-mode: normal;
+                    }
                 }
             }
         }
