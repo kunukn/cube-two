@@ -117,21 +117,30 @@ button {
     margin: 0 auto;
     position: relative;
     overflow-x: hidden;
-    &.cubetwo-no-border-on-display-cubes {
+    &.cubetwo-border-on-display-cubes {
         [data-type="cubetwo"] {
             .cubetwo-cube[data-type="cubetwo-display"] {
                 >div {
-                    border: none;
+                    border: 1px solid $color-theme;
                 }
             }
         }
     }
-    &.cubetwo-no-background-blend-mode-on-display-cubes {
+    &.cubetwo-backface-visibility-hidden-on-display-cubes {
         [data-type="cubetwo"] {
             .cubetwo-cube[data-type="cubetwo-display"] {
                 >div {
-                    >div{
-                        background-blend-mode: normal;
+                    backface-visibility: hidden;
+                }
+            }
+        }
+    }
+    &.cubetwo-background-blend-mode-on-display-cubes {
+        [data-type="cubetwo"] {
+            .cubetwo-cube[data-type="cubetwo-display"] {
+                >div {
+                    >div {
+                        background-blend-mode: multiply;
                     }
                 }
             }
@@ -283,7 +292,6 @@ button {
             transform-origin: center left;
         }
         &[data-type="cubetwo-display"] {
-            // display: none;
             transition: transform cubic-bezier(0.4, 0.0, 0.2, 1) $rotate-transition-duration;
             user-select: none;
             pointer-events: none;
@@ -297,21 +305,17 @@ button {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                border: 1px solid $color-theme;
                 font-size: 0;
                 color: transparent;
                 //backface-visibility: hidden;
-                //border-radius: 1px;
                 >div {
                     color: $color-theme;
-                    //box-shadow: inset 0 0 0 1px, 0 0 0 1px;
                     position: absolute;
                     width: 100%;
                     height: 100%;
                     left: 0;
                     top: 0;
                     background-color: rgba(white, .9);
-                    background-blend-mode: multiply;
                     background-position: center center;
                     background-size: contain;
                     background-repeat: no-repeat;

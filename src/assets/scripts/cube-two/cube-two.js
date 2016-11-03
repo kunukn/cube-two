@@ -93,6 +93,11 @@ class CubeTwo {
         if (config.isAnimationLockEnabled !== false)
             config.isAnimationLockEnabled = true;
 
+        if (config.borderOnTheCube !== false)
+            config.borderOnTheCube = true;
+
+        if (config.backgroundBlendModeOnTheCube !== false)
+            config.backgroundBlendModeOnTheCube = true;
 
         if (config.transition) {
             qsa('[data-type="cubetwo-display"]', cubeComponentEl).forEach(cube => {
@@ -106,13 +111,13 @@ class CubeTwo {
         // Set background colors from config, if not defined use default from dictionary
         const bgColors = config.backgroundColors;
         const cubeColors = {};
-        cubeColors.backface = bgColors.backface ? bgColors.backface : dictCubeSkins['backface'];
-        cubeColors.f = bgColors.f ? bgColors.f : dictCubeSkins['f'];
-        cubeColors.b = bgColors.b ? bgColors.b : dictCubeSkins['b'];
-        cubeColors.u = bgColors.u ? bgColors.u : dictCubeSkins['u'];
-        cubeColors.d = bgColors.d ? bgColors.d : dictCubeSkins['d'];
-        cubeColors.r = bgColors.r ? bgColors.r : dictCubeSkins['r'];
-        cubeColors.l = bgColors.l ? bgColors.l : dictCubeSkins['l'];
+        cubeColors.backface = bgColors.backface || bgColors._ || dictCubeSkins['backface'];
+        cubeColors.f = bgColors.f || dictCubeSkins['f'];
+        cubeColors.b = bgColors.b || dictCubeSkins['b'];
+        cubeColors.u = bgColors.u || dictCubeSkins['u'];
+        cubeColors.d = bgColors.d || dictCubeSkins['d'];
+        cubeColors.r = bgColors.r || dictCubeSkins['r'];
+        cubeColors.l = bgColors.l || dictCubeSkins['l'];
         config.backgroundColors = cubeColors;
 
         const backface = cubeColors.backface;
@@ -563,11 +568,14 @@ class CubeTwo {
         this._displayElements = [{}];
         const appConfig = this._config;
 
-        if (appConfig.noBorderOnTheCube) {
-            this._cubeComponentEl.classList.add('cubetwo-no-border-on-display-cubes');
+        if (appConfig.borderOnTheCube) {
+            this._cubeComponentEl.classList.add('cubetwo-border-on-display-cubes');
         }
-        if(appConfig.noBackgroundBlendModeOnTheCube){
-            this._cubeComponentEl.classList.add('cubetwo-no-background-blend-mode-on-display-cubes');
+        if (appConfig.backgroundBlendModeOnTheCube) {
+            this._cubeComponentEl.classList.add('cubetwo-background-blend-mode-on-display-cubes');
+        }
+        if (appConfig.backfaceVisibilityHiddenOnTheCube) {
+            this._cubeComponentEl.classList.add('cubetwo-backface-visibility-hidden-on-display-cubes');
         }
 
         for (var i = 1; i <= CUBE_COUNT; i++) {

@@ -13,9 +13,11 @@
         /* default: true */
         isRotateAnimationEnabled: true,
         /* default: true */
-        noBorderOnTheCube: false,
-        /* default: false */
-        noBackgroundBlendModeOnTheCube: false,
+        borderOnTheCube: true,
+        /* default: true */
+        backgroundBlendModeOnTheCube: true,
+        /* default: true */
+        backfaceVisibilityHiddenOnTheCube: false,
         /* default: false */
         transition: 'transform cubic-bezier(0.4, 0.0, 0.2, 1) 190ms',
         /* default: transform 190ms */
