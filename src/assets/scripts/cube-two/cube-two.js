@@ -43,7 +43,7 @@ import { CubeTwoUi } from './cube-two-ui';
 
 import { reducer } from './cube-two-reducer';
 
-import { /*STATES, STATES_ARRAY,*/ KEY, EVENT_NAMES } from '../constants';
+import { KEY, EVENT_NAMES } from '../constants';
 import {
     handleKeyEventCube1,
     handleKeyEventCube2,
@@ -62,7 +62,7 @@ class CubeTwo {
     constructor(config) {
 
         if (!config) {
-            error(`config is invalid for CubeTwo`);
+            error(`config is invalid for CubeTwo, did you forgot to provide one?`);
             return;
         }
         if (!config.cubeComponent) {
@@ -81,8 +81,6 @@ class CubeTwo {
         this._updateEventBindings();
 
         this._initCallbacks();
-
-
     }
 
     _parseConfig(config, cubeComponentEl) {
@@ -108,7 +106,7 @@ class CubeTwo {
         // Set background colors from config, if not defined use default from dictionary
         const bgColors = config.backgroundColors;
         const cubeColors = {};
-        cubeColors.backface = bgColors._ ? bgColors._ : dictCubeSkins['backface'];
+        cubeColors.backface = bgColors.backface ? bgColors.backface : dictCubeSkins['backface'];
         cubeColors.f = bgColors.f ? bgColors.f : dictCubeSkins['f'];
         cubeColors.b = bgColors.b ? bgColors.b : dictCubeSkins['b'];
         cubeColors.u = bgColors.u ? bgColors.u : dictCubeSkins['u'];
