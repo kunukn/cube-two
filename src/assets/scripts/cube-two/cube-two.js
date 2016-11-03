@@ -253,8 +253,13 @@ class CubeTwo {
         }
     }
 
+
     getState() {
-        return cloneObject(this._appState);
+        const codes = this._appState.codes.map(item => cloneObject(item));
+        return {
+            codes: codes,
+            isRotateEnabled: !!this._appState.isRotateEnabled,
+        };
     }
 
     getStateCode() {
@@ -262,27 +267,37 @@ class CubeTwo {
     }
 
     isSolved() {
-        const codes = this.getState().codes;
+        return this._isSolved(this.getState().codes);
+    }
+    _isSolved(codes) {
         return !!codes.reduce((a, b) =>
-            a.code === b.code ? a : NaN
+            (a.code === b.code) ? a : NaN
         );
     }
 
+
     _setState(state) {
 
-        const copyState = cloneObject(state);
+        const previousStateCode = JSON.stringify(this._appState.codes);
 
-        const previousStateCode = JSON.stringify(this._appState.codes),
-            currentStateCode = JSON.stringify(copyState.codes);
+        const currentStateCode = JSON.stringify(state.codes);
 
-        this._appState = copyState;
+        this._appState = state;
 
         if (previousStateCode !== currentStateCode) {
+
             this._triggerEvent('statechange', {
                 previousStateCode,
                 currentStateCode,
-                state: copyState
+                state
             });
+
+
+            if (this._isSolved(state.codes)) {
+                this._triggerEvent('issolved', {
+                    state
+                });
+            }
         }
     }
 

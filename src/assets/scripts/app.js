@@ -43,10 +43,11 @@
     cubetwo.addCallbackForEvent('statechange', statechangeCallback);
     cubetwo.addCallbackForEvent('beforerotate', beforerotateCallback);
     cubetwo.addCallbackForEvent('afterrotate', afterrotateCallback);
+    cubetwo.addCallbackForEvent('issolved', issolvedCallback);
     cubetwo.init();
 
     function statechangeCallback(eventName, payload) {
-        // log(eventName);
+        //log(eventName);
         // log(payload);
     }
 
@@ -63,6 +64,11 @@
     function afterrotateCallback(eventName, payload) {
         // log(eventName);
         // log(payload);
+    }
+
+    function issolvedCallback(eventName, payload) {
+        //log(eventName);
+        //log(payload);
     }
 
 

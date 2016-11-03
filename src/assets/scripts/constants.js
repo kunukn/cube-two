@@ -64,6 +64,7 @@ const EVENT_NAMES = {
     statechange: 'statechange',
     beforerotate: 'beforerotate',
     afterrotate: 'afterrotate',
+    issolved: 'issolved',
 };
 deepFreeze(EVENT_NAMES);
 
