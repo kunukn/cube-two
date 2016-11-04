@@ -15,8 +15,8 @@
         /* default: true */
         borderOnTheCube: true,
         /* default: true */
-        backgroundBlendModeOnTheCube: 'multiply', // e.g. screen, difference, normal
-        /* default: multiply */
+        backgroundBlendModeOnTheCube: 'multiply',
+        /* e.g. screen, difference, normal, default: multiply */
         backfaceVisibilityHiddenOnTheCube: false,
         /* default: false */
         transition: 'transform cubic-bezier(0.4, 0.0, 0.2, 1) 190ms',
