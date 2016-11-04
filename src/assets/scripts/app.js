@@ -47,7 +47,7 @@
     cubetwo.init();
 
     function statechangeCallback(eventName, payload) {
-        //log(eventName);
+        // log(eventName);
         // log(payload);
     }
 
@@ -67,8 +67,8 @@
     }
 
     function issolvedCallback(eventName, payload) {
-        //log(eventName);
-        //log(payload);
+        // log(eventName);
+        // log(payload);
     }
 
 

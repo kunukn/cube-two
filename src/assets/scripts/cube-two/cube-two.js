@@ -8,7 +8,6 @@ import { qs, qsa, byId } from '../query';
 
 import deepFreeze from 'deep-freeze';
 
-
 import {
     rAF,
     nextFrame,
@@ -282,6 +281,10 @@ class CubeTwo {
 
         const currentStateCode = JSON.stringify(state.codes);
 
+        if (state.isRotateEnabled === undefined) {
+            // ensure not locking by accident
+            state.isRotateEnabled = true;
+        }
         this._appState = state;
 
         if (previousStateCode !== currentStateCode) {
@@ -291,7 +294,6 @@ class CubeTwo {
                 currentStateCode,
                 state
             });
-
 
             if (this._isSolved(state.codes)) {
                 this._triggerEvent('issolved', {
@@ -738,7 +740,7 @@ class CubeTwo {
         const actions = [this.F, this.F_, this.B, this.B_, this.U, this.U_, this.D, this.D_, this.R, this.R_, this.L, this.L_, this.x, this.y, this.z, this.x_, this.y_, this.z_];
         const length = actions.length;
         let action, rand;
-        for (var i = 0; i < 20; i++) {
+        for (var i = 0; i < 10; i++) {
             rand = (Math.random() * length) | 0;
             action = actions[rand].bind(this);
             action({ noVisualUpdate: true });
