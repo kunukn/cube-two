@@ -50,7 +50,7 @@ module.exports = {
             "Hammer": "hammerjs/hammer"
         }),
 
-        new webpack.optimize.CommonsChunkPlugin({ name: ['vendors'].reverse(), minChunks: Infinity }),
+        //        new webpack.optimize.CommonsChunkPlugin({ name: ['vendors'].reverse(), minChunks: Infinity }),
 
         new HtmlWebpackPlugin({
             template: 'src/index.html',

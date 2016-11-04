@@ -43,7 +43,7 @@ module.exports = {
         }),
 
         /* https://github.com/webpack/webpack/issues/368 */
-        new webpack.optimize.CommonsChunkPlugin({ name: ['vendors'].reverse(), minChunks: Infinity }),
+        //    new webpack.optimize.CommonsChunkPlugin({ name: ['vendors'].reverse(), minChunks: Infinity }),
 
         new webpack.optimize.UglifyJsPlugin({
             compress: { warnings: false, },
