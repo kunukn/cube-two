@@ -4,13 +4,13 @@ button {
     padding: 4px;
     background: $color-theme;
     border: 1px solid $color-focus;
+    border: 0;
     color: $color-focus;
     box-shadow: 2px 2px 4px gray;
     outline: none;
     transition: background 200ms;
     border-radius: 0;
     font-size: 0; // trick to remove spaces from inner element display inline-block
-    border: 0;
     box-shadow: none;
     background: transparent;
     border-radius: 50%;
@@ -104,6 +104,8 @@ button {
         border-radius: 0;
         border: 1px solid $color-focus;
         margin: 0 1rem;
+        padding: .5rem;
+        border-radius: 2px;
     }
 }
 
