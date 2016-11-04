@@ -65,14 +65,14 @@ qs('.cubetwo-btn-bottom-center', cubeComponentEl).addEventListener('click',
 qs('.cubetwo-js.cubetwo-btn-rotate-left', cubeComponentEl).addEventListener('click',
     ev => cubetwo.y_()
 );
-// qs('.cubetwo-js.cubetwo-btn-rotate-left-2x', cubeComponentEl).addEventListener('click',
-//     ev => cubetwo.y2_()
-// );
+qs('.cubetwo-js.cubetwo-btn-rotate-left-2x', cubeComponentEl).addEventListener('click',
+    ev => cubetwo.z_()
+);
 qs('.cubetwo-js.cubetwo-btn-rotate-right', cubeComponentEl).addEventListener('click',
     ev => cubetwo.y()
 );
 qs('.cubetwo-js.cubetwo-btn-rotate-right-2x', cubeComponentEl).addEventListener('click',
-    ev => cubetwo.y2()
+    ev => cubetwo.z()
 );
 
 window.CubeTwo = CubeTwo;
