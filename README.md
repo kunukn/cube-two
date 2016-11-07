@@ -2,23 +2,23 @@
 
 ## Pocket Cube - Rubiks Cube 2x2x2 on web platform
 
-demo
-
-http://codepen.io/kunukn/pen/EgzJdR/
-
-![demo](/demo/pocket-cube.gif?raw=true)
 
 ## Browser support
-
-* Chrome
-* Safari
 
 | <img src="https://github.com/alrra/browser-logos/blob/master/chrome/chrome_128x128.png?raw=true" width="48px" height="48px" alt="Chrome logo"> | <img src="https://github.com/alrra/browser-logos/blob/master/opera/opera_128x128.png?raw=true" width="48px" height="48px" alt="Opera logo"> | <img src="https://github.com/alrra/browser-logos/blob/master/safari/safari_128x128.png?raw=true" width="48px" height="48px" alt="Safari logo"> 
 |:---:|:---:|:---:|
 | 43+ ✅ | ⛔ | 10+✅ |
 
 
-Bugs
+## Demo
+
+http://codepen.io/kunukn/pen/EgzJdR/
+
+![demo](/demo/pocket-cube.gif?raw=true)
+
+
+
+## Bugs
 
 * Safari - transform-origin in z axis seems buggy, this has been avoided by not using it.
 * Firefox - glitchy cube display
