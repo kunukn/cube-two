@@ -7,7 +7,7 @@
 
 | <img src="https://github.com/alrra/browser-logos/blob/master/chrome/chrome_128x128.png?raw=true" width="48px" height="48px" alt="Chrome logo"> | <img src="https://github.com/alrra/browser-logos/blob/master/opera/opera_128x128.png?raw=true" width="48px" height="48px" alt="Opera logo"> | <img src="https://github.com/alrra/browser-logos/blob/master/safari/safari_128x128.png?raw=true" width="48px" height="48px" alt="Safari logo"> 
 |:---:|:---:|:---:|
-| 43+ ✅ | 10+✅ | 10+✅ |
+| 50+ ✅ | 40+✅ | 9+✅ |
 
 
 ## Demo
