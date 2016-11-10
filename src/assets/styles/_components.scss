@@ -215,8 +215,8 @@ button {
         animation: spin-animation 16s linear infinite;
     }
     .cubetwo-cube-group {
-        width: 2 * $cube-size;
-        height: 2 * $cube-size;
+        width: 100%;
+        height: 100%;
         position: absolute;
         top: 0;
         left: 0;
@@ -270,31 +270,9 @@ button {
         }
     }
     .cubetwo-cube {
-        width: inherit;
-        height: inherit;
+        width: 100%;
+        height: 100%;
         transform-style: preserve-3d;
-        [data-type=front] {
-            transform: translateZ($cube-size);
-        }
-        [data-type=up] {
-            transform: rotateX(-90deg) rotateY(180deg) rotateZ(180deg);
-            transform-origin: top center;
-        }
-        [data-type=right] {
-            transform: rotateY(-270deg);
-            transform-origin: top right;
-        }
-        [data-type=back] {
-            transform: rotateY(180deg);
-        }
-        [data-type=down] {
-            transform: rotateX(90deg) rotateY(180deg) rotateZ(180deg);
-            transform-origin: bottom center;
-        }
-        [data-type=left] {
-            transform: rotateY(270deg);
-            transform-origin: center left;
-        }
         &[data-type="cubetwo-display"] {
             transition: transform cubic-bezier(0.4, 0.0, 0.2, 1) $rotate-transition-duration;
             user-select: none;
@@ -303,8 +281,8 @@ button {
             >div {
                 user-select: none;
                 position: absolute;
-                width: inherit;
-                height: inherit;
+                width: 100%;
+                height: 100%;
                 text-transform: uppercase;
                 display: flex;
                 justify-content: center;
@@ -327,8 +305,8 @@ button {
             }
         }
         &[data-type="cubetwo-touch"] {
-            width: inherit;
-            height: inherit;
+            width: 100%;
+            height: 100%;
             position: absolute;
             top: 0;
             left: 0;
@@ -337,8 +315,8 @@ button {
                 position: absolute;
                 top: 0;
                 left: 0;
-                width: inherit;
-                height: inherit;
+                width: 100%;
+                height: 100%;
                 backface-visibility: hidden;
                 z-index: 1;
                 display: flex;
@@ -348,40 +326,61 @@ button {
                 color: transparent;
                 cursor: pointer;
                 background: transparent;
-                //background: rgba(red, .5);
+                //background: rgba(red, .5); // debug
                 font-size: 0;
                 user-select: none;
             }
         }
     }
-    &.cubetwo-cube-5,
-    &.cubetwo-cube-6,
-    &.cubetwo-cube-7,
-    &.cubetwo-cube-8 {
-        .cubetwo-cube {
-            [data-type=front] {
-                transform: translateZ(0); // override
-            }
-            [data-type=up] {
-                transform: translateZ(-$cube-size) rotateX(-90deg) rotateY(180deg) rotateZ(180deg);
-                transform-origin: top center;
-            }
-            [data-type=right] {
-                transform: translateZ(-$cube-size) rotateY(-270deg);
-                transform-origin: top right;
-            }
-            [data-type=back] {
-                transform: translateZ(-$cube-size) rotateY(180deg);
-            }
-            [data-type=down] {
-                transform: translateZ(-$cube-size) rotateX(90deg) rotateY(180deg) rotateZ(180deg);
-                transform-origin: bottom center;
-            }
-            [data-type=left] {
-                transform: translateZ(-$cube-size) rotateY(270deg);
-                transform-origin: center left;
-            }
-        }
+}
+
+.cubetwo-cube-group--1 {
+    [data-type=front] {
+        transform: translateZ($cube-size);
+    }
+    [data-type=up] {
+        transform: rotateX(-90deg) rotateY(180deg) rotateZ(180deg);
+        transform-origin: top center;
+    }
+    [data-type=right] {
+        transform: rotateY(-270deg);
+        transform-origin: top right;
+    }
+    [data-type=back] {
+        transform: rotateY(180deg);
+    }
+    [data-type=down] {
+        transform: rotateX(90deg) rotateY(180deg) rotateZ(180deg);
+        transform-origin: bottom center;
+    }
+    [data-type=left] {
+        transform: rotateY(270deg);
+        transform-origin: center left;
+    }
+}
+
+.cubetwo-cube-group--2 {
+    [data-type=front] {
+        transform: translateZ(0);
+    }
+    [data-type=up] {
+        transform: translateZ(-$cube-size) rotateX(-90deg) rotateY(180deg) rotateZ(180deg);
+        transform-origin: top center;
+    }
+    [data-type=right] {
+        transform: translateZ(-$cube-size) rotateY(-270deg);
+        transform-origin: top right;
+    }
+    [data-type=back] {
+        transform: translateZ(-$cube-size) rotateY(180deg);
+    }
+    [data-type=down] {
+        transform: translateZ(-$cube-size) rotateX(90deg) rotateY(180deg) rotateZ(180deg);
+        transform-origin: bottom center;
+    }
+    [data-type=left] {
+        transform: translateZ(-$cube-size) rotateY(270deg);
+        transform-origin: center left;
     }
 }
 

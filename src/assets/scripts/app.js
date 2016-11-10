@@ -38,6 +38,10 @@
             l: 'rgba(255, 88, 0, .9)',
             backface: 'transparent',
         },
+        cubeSize: { /* optional */
+            // value: 80,
+            // unit: 'px',
+        }
     });
     cubetwo.addCallbackForEvent('init', initCallback);
     cubetwo.addCallbackForEvent('statechange', statechangeCallback);
