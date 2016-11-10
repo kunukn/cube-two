@@ -32,3 +32,54 @@ npm start
 
 start a browser and go to http://localhost:3456/
 ```
+## Configuration
+```
+    var imgPath = 'http://your-cdn-url/image.svg';
+
+    var cubetwo = new window.CubeTwo({
+        cubeComponent: document.getElementById('cubetwo-component-1'), /* required */
+        isTapEnabled: true, /* default: true */
+        isRotateAnimationEnabled: true, /* default: true */
+        borderOnTheCube: true, /* default: true */
+        backgroundBlendModeOnTheCube: 'multiply', 
+        /* e.g. screen, difference, normal, default: multiply */
+        backfaceVisibilityHiddenOnTheCube: false, /* default: false */
+        transition: 'transform cubic-bezier(0.4, 0.0, 0.2, 1) 190ms', /* optional */
+        backgroundImages: { /* optional */
+            u: imgPath,
+            d: imgPath,
+            f: imgPath,
+            b: imgPath,
+            r: imgPath,
+            l: imgPath,
+        },
+        backgroundColors: { /* optional */
+            u: 'rgba(255, 255, 255, .9)',
+            d: 'rgba(255, 213, 0, .9)',
+            f: 'rgba(0, 158, 96, .9)',
+            b: 'rgba(0, 81, 186, .9)',
+            r: 'rgba(196, 30, 58, .9)',
+            l: 'rgba(255, 88, 0, .9)',
+            backface: 'transparent',
+        },
+        cubeSize: { /* optional */
+            value: 25,
+            unit: 'vmin',
+        }
+    });
+```
+
+## Edge support
+
+To support Edge browser you must set a specific cube size, e.g..
+
+```
+var cubetwo = new window.CubeTwo({
+        cubeComponent: document.getElementById('cubetwo-component-1'),        
+        cubeSize: {
+            value: 80,
+            unit: 'px',
+        }
+});
+```
+
