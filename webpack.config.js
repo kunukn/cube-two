@@ -12,7 +12,7 @@ module.exports = {
     devtool: 'source-map',
     context: path.resolve('./'),
     entry: {
-        //vendors: ['hammerjs/hammer'],
+        vendors: ['hammerjs/hammer'],
         appUi: ['./src/assets/scripts/app-ui'],
         app: ['./src/assets/scripts'],
         //app: ['webpack-dev-server/client?http://localhost:8080/', './src/assets/scripts'],
@@ -50,7 +50,7 @@ module.exports = {
             "Hammer": "hammerjs/hammer"
         }),
 
-        //        new webpack.optimize.CommonsChunkPlugin({ name: ['vendors'].reverse(), minChunks: Infinity }),
+        //new webpack.optimize.CommonsChunkPlugin({ name: ['vendors'].reverse(), minChunks: Infinity }),
 
         new HtmlWebpackPlugin({
             template: 'src/index.html',
@@ -98,7 +98,7 @@ module.exports = {
         extensions: ['', '.js']
     },
     externals: {
-        "hammerjs/hammer": "Hammer"
+        //"hammerjs/hammer": "Hammer"
     },
 };
 

@@ -39,7 +39,7 @@
             backface: 'transparent',
         },
         cubeSize: { /* optional */
-            // value: 80,
+            // value: 100,
             // unit: 'px',
         }
     });

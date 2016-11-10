@@ -21,9 +21,7 @@ button {
     &.cubetwo-active {
         background: rgba(white, .2);
     }
-    &.cubetwo-btn-adjust {
-        opacity: .2;
-    }
+    &.cubetwo-btn-adjust {}
 }
 
 .cubetwo-help-component,
@@ -85,6 +83,7 @@ button {
             >div {
                 display: flex;
                 flex-direction: row;
+                svg,
                 span,
                 i {
                     font-size: inherit;

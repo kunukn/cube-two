@@ -1,0 +1,13 @@
+.cubetwo-icon {
+    //outline: 1px solid red;
+    font-size: 24px;
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    color: $color-focus;
+    fill: currentColor;
+    stroke: transparent;
+    &--adjust {
+        opacity: .3;
+    }
+}
