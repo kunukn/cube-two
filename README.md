@@ -17,13 +17,6 @@ http://codepen.io/kunukn/pen/EgzJdR/
 ![demo](/demo/pocket-cube.gif?raw=true)
 
 
-
-## Bugs
-
-* Safari - transform-origin in z axis seems buggy, this has been avoided by not using it.
-* Firefox - glitchy cube display, it has 3D order issue
-* Edge - vmin and 3d doesn't work properly.
-
 ## Getting started
 ```
 npm install
@@ -95,3 +88,9 @@ var cubetwo = new window.CubeTwo({
 });
 ```
 
+
+## Bugs
+
+* Safari - transform-origin in z axis seems buggy, this has been avoided by not using it.
+* Firefox - glitchy cube display, it has 3D order issue
+* Edge - vmin and 3d doesn't work properly.
