@@ -33,7 +33,7 @@ npm start
 start a browser and go to http://localhost:3456/
 ```
 ## Configuration
-```
+```javascript
     var imgPath = 'http://your-cdn-url/image.svg';
 
     var cubetwo = new window.CubeTwo({
@@ -84,7 +84,7 @@ start a browser and go to http://localhost:3456/
 
 To support Edge browser you must set a specific cube size, e.g..
 
-```
+```javascript
 var cubetwo = new window.CubeTwo({
         cubeComponent: document.getElementById('cubetwo-component-1'),        
         
