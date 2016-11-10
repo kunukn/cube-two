@@ -72,8 +72,8 @@ module.exports = {
         }, {
             test: /\.scss$/,
             include: getPath('src/assets/styles'),
-            //loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader?browsers=last 1 versions!sass-loader'),
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader'),
+            loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader?browsers=last 1 versions!sass-loader'),
+            //loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader'),
 
         }, {
             test: /\.css$/,
