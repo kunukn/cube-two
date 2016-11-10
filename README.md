@@ -80,9 +80,9 @@ start a browser and go to http://localhost:3456/
     });
 ```
 
-## Edge support
+## Edge browser support
 
-To support Edge browser you must set a specific cube size, e.g..
+To support Edge browser you must set a specific cube size, e.g.
 
 ```javascript
 var cubetwo = new window.CubeTwo({
