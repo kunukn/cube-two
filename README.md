@@ -6,7 +6,7 @@
 ## Browser support
 
 | <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/37.2.0/archive/chrome-android_18-36/chrome-android_18-36_128x128.png" width="48px" height="48px" alt="Chrome logo"> | <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/37.2.0/archive/opera_10-14/opera_10-14_128x128.png" width="48px" height="48px" alt="Opera logo"> | <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/37.2.0/archive/safari_1-7/safari_1-7_128x128.png" width="48px" height="48px" alt="Safari logo"> |  <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/37.2.0/edge/edge_128x128.png" width="48px" height="48px" alt="Edge logo"> | 
-<img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/37.2.0/archive/firefox_1.5-3/firefox_1.5-3_128x128.png" width="48px" height="48px" alt="Firefox logo">
+<img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/37.2.0/archive/firefox_1.5-3/firefox_1.5-3_128x128.png" width="48px" height="48px" alt="Firefox logo"> |
 |:---:|:---:|:---:|:---:|:---:|
 | 50+ ✅ | 40+ ✅ | 9+ ✅ |12+ ✅ |49+ ✅ |
 
