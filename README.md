@@ -2,14 +2,6 @@
 
 ## Pocket Cube - Rubiks Cube 2x2x2 on web platform
 
-
-## Browser support
-
-| <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/37.2.0/archive/chrome-android_18-36/chrome-android_18-36_48x48.png" width="48px" height="48px" alt="Chrome logo"> | <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/37.2.0/archive/opera_10-14/opera_10-14_48x48.png" width="48px" height="48px" alt="Opera logo"> | <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/37.2.0/archive/safari_1-7/safari_1-7_48x48.png" width="48px" height="48px" alt="Safari logo"> | <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/37.2.0/edge/edge_48x48.png" width="48px" height="48px" alt="Edge logo"> | <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/37.2.0/archive/firefox_1.5-3/firefox_1.5-3_48x48.png" width="48px" height="48px" alt="Firefox logo"> 
-|:---:|:---:|:---:|:---:|:---:|
-| 50+ ✅ | 40+ ✅ | 9+ ✅ |12+ ✅ |49+ ✅ |
-
-
 ## Demo
 
 http://codepen.io/kunukn/pen/EgzJdR/
@@ -17,8 +9,17 @@ http://codepen.io/kunukn/pen/EgzJdR/
 ![demo](/demo/pocket-cube.gif?raw=true)
 
 
+## Browser support
+
+| <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/37.2.0/archive/chrome-android_18-36/chrome-android_18-36_48x48.png" width="48px" height="48px" alt="Chrome logo"> | <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/37.2.0/archive/opera_10-14/opera_10-14_48x48.png" width="48px" height="48px" alt="Opera logo"> | <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/37.2.0/archive/safari_1-7/safari_1-7_48x48.png" width="48px" height="48px" alt="Safari logo"> |<img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/37.2.0/archive/firefox_1.5-3/firefox_1.5-3_48x48.png" width="48px" height="48px" alt="Firefox logo"> |<img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/37.2.0/edge/edge_48x48.png" width="48px" height="48px" alt="Edge logo"> | <img src="https://cdnjs.cloudflare.com/ajax/libs/browser-logos/37.2.0/internet-explorer/internet-explorer_48x48.png" width="48px" height="48px" alt="IE logo"> |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| 50+ ✅ | 40+ ✅ | 9+ ✅ | 40+ ✅ | 12+ ✅ | ⛔ |
+
+
 ## Getting started
 ```
+You need nodejs
+
 npm install
 
 npm start
