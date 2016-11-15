@@ -74,11 +74,11 @@ start a browser and go to http://localhost:3456/
     });
     
     /* optional callbacks */
-    cubetwo.addCallbackForEvent('init', (eventname, payload) => {});
-    cubetwo.addCallbackForEvent('statechange', (eventname, payload) => {});
-    cubetwo.addCallbackForEvent('beforerotate', (eventname, payload) => {});
-    cubetwo.addCallbackForEvent('afterrotate', (eventname, payload) => {});
-    cubetwo.addCallbackForEvent('issolved', (eventname, payload) => {});
+    cubetwo.addCallbackForEvent('init', function(eventname, payload){});
+    cubetwo.addCallbackForEvent('statechange', function(eventname, payload){});
+    cubetwo.addCallbackForEvent('beforerotate', function(eventname, payload){});
+    cubetwo.addCallbackForEvent('afterrotate', function(eventname, payload){});
+    cubetwo.addCallbackForEvent('issolved', function(eventname, payload){});
    
     /* required */
     cubetwo.init();
