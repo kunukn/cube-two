@@ -26,6 +26,7 @@ npm start
 
 start a browser and go to http://localhost:3456/
 ```
+
 ## Configuration
 ```javascript
     var imgPath = 'http://your-cdn-url/image.svg';
@@ -83,6 +84,12 @@ start a browser and go to http://localhost:3456/
     /* required */
     cubetwo.init();
 ```
+
+## Progressive Web App
+
+I made a PWA example of this. 
+You can try it here https://kunuk.dk/pocket-cube
+
 
 ## Edge browser support
 
