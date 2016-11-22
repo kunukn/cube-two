@@ -1,1 +1,570 @@
-<!DOCTYPE html> <html lang=en> <head> <meta charset=UTF-8 /> <meta http-equiv=X-UA-Compatible content="IE=edge"/> <title>Cube Two</title> <meta name=viewport content="width=device-width,initial-scale=1"> <base href=/ > <link href="appUi.97d22cd1190e7b98489c.css" rel="stylesheet"></head> <body> <!-- SVG sprite, this can be refactored to a svg file --> <svg xmlns=http://www.w3.org/2000/svg xmlns:xlink=http://www.w3.org/1999/xlink version=1.1 style=height:0;position:absolute> <defs> <symbol id=arrow-up width=24 height=24 viewBox="0 0 24 24"> <path d=M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z /> </symbol> <symbol id=arrow-down width=24 height=24 viewBox="0 0 24 24"> <path d=M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z /> </symbol> <symbol id=arrow-left width=24 height=24 viewBox="0 0 24 24"> <path d=M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z /> </symbol> <symbol id=arrow-right width=24 height=24 viewBox="0 0 24 24"> <path d=M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z /> </symbol> <symbol id=adjust width=24 height=24 viewBox="0 0 24 24"> <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/> <path d="M0 0h24v24H0z" fill=none /> </symbol> <symbol id=menu width=24 height=24 viewBox="0 0 24 24"> <path d="M0 0h24v24H0z" fill=none /> <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/> </symbol> <symbol id=help width=24 height=24 viewBox="0 0 24 24"> <path d="M0 0h24v24H0z" fill=none /> <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/> </symbol> <symbol id=rotate-right width=24 height=24 viewBox="0 0 24 24"> <path d="M0 0h24v24H0z" fill=none /> <path d="M15.55 5.55L11 1v3.07C7.06 4.56 4 7.92 4 12s3.05 7.44 7 7.93v-2.02c-2.84-.48-5-2.94-5-5.91s2.16-5.43 5-5.91V10l4.55-4.45zM19.93 11c-.17-1.39-.72-2.73-1.62-3.89l-1.42 1.42c.54.75.88 1.6 1.02 2.47h2.02zM13 17.9v2.02c1.39-.17 2.74-.71 3.9-1.61l-1.44-1.44c-.75.54-1.59.89-2.46 1.03zm3.89-2.42l1.42 1.41c.9-1.16 1.45-2.5 1.62-3.89h-2.02c-.14.87-.48 1.72-1.02 2.48z"/> </symbol> <symbol id=rotate-left width=24 height=24 viewBox="0 0 24 24"> <path d="M0 0h24v24H0z" fill=none /> <path d="M7.11 8.53L5.7 7.11C4.8 8.27 4.24 9.61 4.07 11h2.02c.14-.87.49-1.72 1.02-2.47zM6.09 13H4.07c.17 1.39.72 2.73 1.62 3.89l1.41-1.42c-.52-.75-.87-1.59-1.01-2.47zm1.01 5.32c1.16.9 2.51 1.44 3.9 1.61V17.9c-.87-.15-1.71-.49-2.46-1.03L7.1 18.32zM13 4.07V1L8.45 5.55 13 10V6.09c2.84.48 5 2.94 5 5.91s-2.16 5.43-5 5.91v2.02c3.95-.49 7-3.85 7-7.93s-3.05-7.44-7-7.93z"/> </symbol> <symbol id=keyboard-tab width=24 height=24 viewBox="0 0 24 24"> <path d="M0 0h24v24H0z" fill=none /> <path d="M11.59 7.41L15.17 11H1v2h14.17l-3.59 3.59L13 18l6-6-6-6-1.41 1.41zM20 6v12h2V6h-2z"/> </symbol> <symbol id=keyboard-arrow-up width=24 height=24 viewBox="0 0 24 24"> <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/> <path d="M0 0h24v24H0z" fill=none /> </symbol> <symbol id=keyboard-arrow-down width=24 height=24 viewBox="0 0 24 24"> <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/> <path d=M0-.75h24v24H0z fill=none /> </symbol> <symbol id=keyboard-arrow-left width=24 height=24 viewBox="0 0 24 24"> <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/> <path d=M0-.5h24v24H0z fill=none /> </symbol> <symbol id=keyboard-arrow-right width=24 height=24 viewBox="0 0 24 24"> <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/> <path d=M0-.25h24v24H0z fill=none /> </symbol> <symbol id=touch-app width=24 height=24 viewBox="0 0 24 24"> <defs> <path d="M0 0h24v24H0V0z" id=touch-app-defs /> </defs> <clipPath id=touch-app-clip> <use overflow=visible xlink:href=#touch-app-defs /> </clipPath> <path clip-path=url(#touch-app-clip) d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z"/> </symbol></defs>  <symbol id=mouse width=24 height=24 viewBox="0 0 24 24"> <path d="M0 0h24v24H0z" fill=none /> <path d="M13 1.07V9h7c0-4.08-3.05-7.44-7-7.93zM4 15c0 4.42 3.58 8 8 8s8-3.58 8-8v-4H4v4zm7-13.93C7.05 1.56 4 4.92 4 9h7V1.07z"/> </symbol> <symbol id=keyboard width=24 height=24 viewBox="0 0 24 24"> <path d="M20 5H4c-1.1 0-1.99.9-1.99 2L2 17c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-9 3h2v2h-2V8zm0 3h2v2h-2v-2zM8 8h2v2H8V8zm0 3h2v2H8v-2zm-1 2H5v-2h2v2zm0-3H5V8h2v2zm9 7H8v-2h8v2zm0-4h-2v-2h2v2zm0-3h-2V8h2v2zm3 3h-2v-2h2v2zm0-3h-2V8h2v2z"/> <path d="M0 0h24v24H0zm0 0h24v24H0z" fill=none /> </symbol> </svg> <div class=body-wrapper> <div class=cubetwo-help-component> <div class=cubetwo-row> <div class=cubetwo-device-info> <svg class="cubetwo-icon u-color-white" aria-hidden=true><use xlink:href=#touch-app></use></svg> <div>tap or swipe with fingers</div> </div> <div class=cubetwo-device-info> <svg class="cubetwo-icon u-color-white" aria-hidden=true><use xlink:href=#mouse></use></svg> <div>click or swipe with mouse</div> </div> <div class="cubetwo-device-info cubetwo-device-info--keyboard"> <svg class="cubetwo-icon u-color-white" aria-hidden=true><use xlink:href=#keyboard></use></svg> <div>keyboard keys</div> <div class=cubetwo-device-info-groups> <div class=cubetwo-device-info-group> <div> <svg class="cubetwo-icon u-color-white" aria-hidden=true><use xlink:href=#keyboard-tab></use></svg> <svg class="cubetwo-icon u-color-white" aria-hidden=true><use xlink:href=#keyboard-arrow-up></use></svg> </div> <div> <svg class="cubetwo-icon u-color-white" aria-hidden=true><use xlink:href=#keyboard-arrow-left></use></svg> <svg class="cubetwo-icon u-color-white" aria-hidden=true><use xlink:href=#keyboard-arrow-down></use></svg> <svg class="cubetwo-icon u-color-white" aria-hidden=true><use xlink:href=#keyboard-arrow-right></use></svg> </div> </div> <div class=cubetwo-device-info-group> <div> <span>q</span> <span>w</span> <span>e</span> </div> <div> <span>a</span> <span>s</span> <span>d</span> </div> <div> <span>x</span> <span>y</span> <span>z</span> </div> </div> </div> </div> </div> <a href=https://github.com/kunukn/cube-two target=_blank class=cubetwo-github-link>github project</a> </div> <div class=cubetwo-menu-component> <div class=cubetwo-row> <button class="cubetwo-js cubetwo-btn cubetwo-btn-scramble">scramble</button> <button class="cubetwo-js cubetwo-btn cubetwo-btn-spin">spin</button> <button class="cubetwo-js cubetwo-btn cubetwo-btn-solve">solve</button> </div> </div> <div class=cubetwo-component id=cubetwo-component-1> <div class=cubetwo-rotation-view> <div class="cubetwo-cube-group cubetwo-cube-group--1"> <div class=cubetwo-cube-1 tabindex=0 data-type=cubetwo> <div class=cubetwo-cube data-type=cubetwo-display data-index=1> <div data-type=front> <div>front</div> </div> <div data-type=up> <div>up</div> </div> <div data-type=right> <div>right</div> </div> <div data-type=back> <div>back</div> </div> <div data-type=down> <div>down</div> </div> <div data-type=left> <div>left</div> </div> </div> <div class=cubetwo-cube data-type=cubetwo-touch> <div data-type=front>touch front</div> <div data-type=up>touch up</div> <div data-type=left>touch left</div> </div> </div> <div class=cubetwo-cube-2 tabindex=0 data-type=cubetwo> <div class=cubetwo-cube data-type=cubetwo-display data-index=2> <div data-type=front> <div>front</div> </div> <div data-type=up> <div>up</div> </div> <div data-type=right> <div>right</div> </div> <div data-type=back> <div>back</div> </div> <div data-type=down> <div>down</div> </div> <div data-type=left> <div>left</div> </div> </div> <div class=cubetwo-cube data-type=cubetwo-touch> <div data-type=front>touch front</div> <div data-type=up>touch up</div> <div data-type=right>touch right</div> </div> </div> <div class=cubetwo-cube-3 tabindex=0 data-type=cubetwo> <div class=cubetwo-cube data-type=cubetwo-display data-index=3> <div data-type=front> <div>front</div> </div> <div data-type=up> <div>up</div> </div> <div data-type=right> <div>right</div> </div> <div data-type=back> <div>back</div> </div> <div data-type=down> <div>down</div> </div> <div data-type=left> <div>left</div> </div> </div> <div class=cubetwo-cube data-type=cubetwo-touch> <div data-type=front>touch front</div> <div data-type=left>touch left</div> <div data-type=down>touch down</div> </div> </div> <div class=cubetwo-cube-4 tabindex=0 data-type=cubetwo> <div class=cubetwo-cube data-type=cubetwo-display data-index=4> <div data-type=front> <div>front</div> </div> <div data-type=up> <div>up</div> </div> <div data-type=right> <div>right</div> </div> <div data-type=back> <div>back</div> </div> <div data-type=down> <div>down</div> </div> <div data-type=left> <div>left</div> </div> </div> <div class=cubetwo-cube data-type=cubetwo-touch> <div data-type=front>touch front</div> <div data-type=right>touch right</div> <div data-type=down>touch down</div> </div> </div> </div> <div class="cubetwo-cube-group cubetwo-cube-group--2"> <div class=cubetwo-cube-5 tabindex=0 data-type=cubetwo> <div class=cubetwo-cube data-type=cubetwo-display data-index=5> <div data-type=front> <div>front</div> </div> <div data-type=up> <div>up</div> </div> <div data-type=right> <div>right</div> </div> <div data-type=back> <div>back</div> </div> <div data-type=down> <div>down</div> </div> <div data-type=left> <div>left</div> </div> </div> <div class=cubetwo-cube data-type=cubetwo-touch> <div data-type=up>touch up</div> <div data-type=left>touch left</div> <div data-type=back>touch back</div> </div> </div> <div class=cubetwo-cube-6 tabindex=0 data-type=cubetwo> <div class=cubetwo-cube data-type=cubetwo-display data-index=6> <div data-type=front> <div>front</div> </div> <div data-type=up> <div>up</div> </div> <div data-type=right> <div>right</div> </div> <div data-type=back> <div>back</div> </div> <div data-type=down> <div>down</div> </div> <div data-type=left> <div>left</div> </div> </div> <div class=cubetwo-cube data-type=cubetwo-touch> <div data-type=up>touch up</div> <div data-type=right>touch right</div> <div data-type=back>touch back</div> </div> </div> <div class=cubetwo-cube-7 tabindex=0 data-type=cubetwo> <div class=cubetwo-cube data-type=cubetwo-display data-index=7> <div data-type=front> <div>front</div> </div> <div data-type=up> <div>up</div> </div> <div data-type=right> <div>right</div> </div> <div data-type=back> <div>back</div> </div> <div data-type=down> <div>down</div> </div> <div data-type=left> <div>left</div> </div> </div> <div class=cubetwo-cube data-type=cubetwo-touch> <div data-type=left>touch left</div> <div data-type=back>touch back</div> <div data-type=down>touch down</div> </div> </div> <div class=cubetwo-cube-8 tabindex=0 data-type=cubetwo> <div class=cubetwo-cube data-type=cubetwo-display data-index=8> <div data-type=front> <div>front</div> </div> <div data-type=up> <div>up</div> </div> <div data-type=right> <div>right</div> </div> <div data-type=back> <div>back</div> </div> <div data-type=down> <div>down</div> </div> <div data-type=left> <div>left</div> </div> </div> <div class=cubetwo-cube data-type=cubetwo-touch> <div data-type=right>touch right</div> <div data-type=back>touch back</div> <div data-type=down>touch down</div> </div> </div> </div> </div> <div class="cubetwo-button-grid cubetwo-row-top"> <button class="cubetwo-js cubetwo-btn-top-left cubetwo-btn-adjust"> <svg class="cubetwo-icon cubetwo-icon--adjust" aria-hidden=true><use xlink:href=#adjust></use></svg> </button> <button class="cubetwo-js cubetwo-btn-top-center" aria-label="rotate up"> <svg class=cubetwo-icon aria-hidden=true><use xlink:href=#arrow-up></use></svg> </button> <button class="cubetwo-js cubetwo-btn-top-right cubetwo-btn-adjust"> <svg class="cubetwo-icon cubetwo-icon--adjust" aria-hidden=true><use xlink:href=#adjust></use></svg> </button> </div> <div class="cubetwo-button-grid cubetwo-column-left"> <div></div> <div> <button class="cubetwo-js cubetwo-btn-rotate-left-2x" aria-label="rotate left 2"> <svg class=cubetwo-icon aria-hidden=true><use xlink:href=#rotate-left></use></svg> </button> <button class="cubetwo-js cubetwo-btn-rotate-left" aria-label="rotate left"> <svg class=cubetwo-icon aria-hidden=true><use xlink:href=#arrow-left></use></svg> </button> <button class="cubetwo-js cubetwo-btn-toggle cubetwo-btn-help"> <svg class=cubetwo-icon aria-hidden=true><use xlink:href=#help></use></svg> </button> </div> <div></div> </div> <div class="cubetwo-button-grid cubetwo-column-right"> <div></div> <div> <button class="cubetwo-js cubetwo-btn-rotate-right-2x" aria-label="rotate right 2"> <svg class=cubetwo-icon aria-hidden=true><use xlink:href=#rotate-right></use></svg> </button> <button class="cubetwo-js cubetwo-btn-rotate-right" aria-label="rotate right"> <svg class=cubetwo-icon aria-hidden=true><use xlink:href=#arrow-right></use></svg> </button> <button class="cubetwo-js cubetwo-btn-toggle cubetwo-btn-menu" aria-label=menu> <svg class=cubetwo-icon aria-hidden=true><use xlink:href=#menu></use></svg> </button> </div> <div></div> </div> <div class="cubetwo-button-grid cubetwo-row-bottom"> <button class="cubetwo-js cubetwo-btn-bottom-left cubetwo-btn-adjust"> <svg class="cubetwo-icon cubetwo-icon--adjust" aria-hidden=true><use xlink:href=#adjust></use></svg> </button> <button class="cubetwo-js cubetwo-btn-bottom-center" aria-label="rotate down"> <svg class=cubetwo-icon aria-hidden=true><use xlink:href=#arrow-down></use></svg> </button> <button class="cubetwo-js cubetwo-btn-bottom-right cubetwo-btn-adjust"> <svg class="cubetwo-icon cubetwo-icon--adjust" aria-hidden=true><use xlink:href=#adjust></use></svg> </button> </div> </div> <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>--> </div><script type="text/javascript" src="vendors.97d22cd1190e7b98489c.js"></script><script type="text/javascript" src="app.97d22cd1190e7b98489c.js"></script><script type="text/javascript" src="appUi.97d22cd1190e7b98489c.js"></script></body> </html>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Cube Two</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="manifest" href="./manifest.json">
+    <link href="appUi.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- SVG sprite, this can be refactored to a svg file -->
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" style="height: 0; position: absolute">
+            <defs>
+                <symbol id="arrow-up" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M13,20H11V8L5.5,13.5L4.08,12.08L12,4.16L19.92,12.08L18.5,13.5L13,8V20Z" />
+                </symbol>
+                <symbol id="arrow-down" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M11,4H13V16L18.5,10.5L19.92,11.92L12,19.84L4.08,11.92L5.5,10.5L11,16V4Z" />
+                </symbol>
+                <symbol id="arrow-left" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" />
+                </symbol>
+                <symbol id="arrow-right" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+                </symbol>          
+                <symbol id="adjust" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3-8c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/>
+                    <path d="M0 0h24v24H0z" fill="none"/>   
+                </symbol>
+                <symbol id="menu" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>   
+                </symbol>
+                <symbol id="help" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/>       
+                </symbol>              
+                <symbol id="rotate-right" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M15.55 5.55L11 1v3.07C7.06 4.56 4 7.92 4 12s3.05 7.44 7 7.93v-2.02c-2.84-.48-5-2.94-5-5.91s2.16-5.43 5-5.91V10l4.55-4.45zM19.93 11c-.17-1.39-.72-2.73-1.62-3.89l-1.42 1.42c.54.75.88 1.6 1.02 2.47h2.02zM13 17.9v2.02c1.39-.17 2.74-.71 3.9-1.61l-1.44-1.44c-.75.54-1.59.89-2.46 1.03zm3.89-2.42l1.42 1.41c.9-1.16 1.45-2.5 1.62-3.89h-2.02c-.14.87-.48 1.72-1.02 2.48z"/>           
+                </symbol>                                                                                                                    
+                <symbol id="rotate-left" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M7.11 8.53L5.7 7.11C4.8 8.27 4.24 9.61 4.07 11h2.02c.14-.87.49-1.72 1.02-2.47zM6.09 13H4.07c.17 1.39.72 2.73 1.62 3.89l1.41-1.42c-.52-.75-.87-1.59-1.01-2.47zm1.01 5.32c1.16.9 2.51 1.44 3.9 1.61V17.9c-.87-.15-1.71-.49-2.46-1.03L7.1 18.32zM13 4.07V1L8.45 5.55 13 10V6.09c2.84.48 5 2.94 5 5.91s-2.16 5.43-5 5.91v2.02c3.95-.49 7-3.85 7-7.93s-3.05-7.44-7-7.93z"/>               
+                </symbol>       
+                <symbol id="keyboard-tab" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M11.59 7.41L15.17 11H1v2h14.17l-3.59 3.59L13 18l6-6-6-6-1.41 1.41zM20 6v12h2V6h-2z"/>                   
+                </symbol>
+
+                <symbol id="keyboard-arrow-up" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+                    <path d="M0 0h24v24H0z" fill="none"/>                       
+                </symbol>
+
+                <symbol id="keyboard-arrow-down" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"/>
+                    <path d="M0-.75h24v24H0z" fill="none"/>         
+                </symbol>
+
+                <symbol id="keyboard-arrow-left" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"/>
+                    <path d="M0-.5h24v24H0z" fill="none"/>    
+                </symbol>
+
+                <symbol id="keyboard-arrow-right" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"/>
+                    <path d="M0-.25h24v24H0z" fill="none"/>
+                </symbol>
+                <symbol id="touch-app" width="24" height="24" viewBox="0 0 24 24">
+                      <defs>
+                        <path d="M0 0h24v24H0V0z" id="touch-app-defs"/>
+                    </defs>
+                    <clipPath id="touch-app-clip">
+                        <use overflow="visible" xlink:href="#touch-app-defs"/>
+                    </clipPath>
+                    <path clip-path="url(#touch-app-clip)" d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z"/>                        
+                    </defs>  
+                </symbol>
+                <symbol id="mouse" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M13 1.07V9h7c0-4.08-3.05-7.44-7-7.93zM4 15c0 4.42 3.58 8 8 8s8-3.58 8-8v-4H4v4zm7-13.93C7.05 1.56 4 4.92 4 9h7V1.07z"/>
+                </symbol>
+                <symbol id="keyboard" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M20 5H4c-1.1 0-1.99.9-1.99 2L2 17c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-9 3h2v2h-2V8zm0 3h2v2h-2v-2zM8 8h2v2H8V8zm0 3h2v2H8v-2zm-1 2H5v-2h2v2zm0-3H5V8h2v2zm9 7H8v-2h8v2zm0-4h-2v-2h2v2zm0-3h-2V8h2v2zm3 3h-2v-2h2v2zm0-3h-2V8h2v2z"/>
+                    <path d="M0 0h24v24H0zm0 0h24v24H0z" fill="none"/>
+                </symbol>                                                         
+        </svg>
+
+
+
+
+    <div class="body-wrapper">
+
+        <div class="cubetwo-help-component">
+            <div class="cubetwo-row">
+                <div class="cubetwo-device-info">
+                    <svg class="cubetwo-icon u-color-white" aria-hidden="true"><use xlink:href="#touch-app"></use></svg>
+                    <div>tap or swipe with fingers</div>
+                </div>
+
+                <div class="cubetwo-device-info">
+                    <svg class="cubetwo-icon u-color-white" aria-hidden="true"><use xlink:href="#mouse"></use></svg>
+                    <div>click or swipe with mouse</div>
+                </div>
+
+                <div class="cubetwo-device-info cubetwo-device-info--keyboard">
+                    <svg class="cubetwo-icon u-color-white" aria-hidden="true"><use xlink:href="#keyboard"></use></svg>
+
+                    <div>keyboard keys</div>
+                    <div class="cubetwo-device-info-groups">
+                        <div class="cubetwo-device-info-group">
+                            <div>
+                                <svg class="cubetwo-icon u-color-white" aria-hidden="true"><use xlink:href="#keyboard-tab"></use></svg>
+                                <svg class="cubetwo-icon u-color-white" aria-hidden="true"><use xlink:href="#keyboard-arrow-up"></use></svg>
+                            </div>
+                            <div>
+                                <svg class="cubetwo-icon u-color-white" aria-hidden="true"><use xlink:href="#keyboard-arrow-left"></use></svg>
+                                <svg class="cubetwo-icon u-color-white" aria-hidden="true"><use xlink:href="#keyboard-arrow-down"></use></svg>
+                                <svg class="cubetwo-icon u-color-white" aria-hidden="true"><use xlink:href="#keyboard-arrow-right"></use></svg>
+                            </div>
+                        </div>
+
+                        <div class="cubetwo-device-info-group">
+                            <div>
+                                <span>q</span>
+                                <span>w</span>
+                                <span>e</span>
+                            </div>
+                            <div>
+                                <span>a</span>
+                                <span>s</span>
+                                <span>d</span>
+                            </div>
+                            <div>
+                                <span>x</span>
+                                <span>y</span>
+                                <span>z</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <a href="https://github.com/kunukn/cube-two" target="_blank" class="cubetwo-github-link">github project</a>
+        </div>
+
+        <div class="cubetwo-menu-component">
+            <div class="cubetwo-row">
+                <button class="cubetwo-js cubetwo-btn cubetwo-btn-scramble">scramble</button>
+                <button class="cubetwo-js cubetwo-btn cubetwo-btn-spin">spin</button>
+                <button class="cubetwo-js cubetwo-btn cubetwo-btn-solve">solve</button>
+            </div>
+        </div>
+
+
+        <div class="cubetwo-component" id="cubetwo-component-1">
+
+            <div class="cubetwo-rotation-view">
+
+                <div class="cubetwo-cube-group cubetwo-cube-group--1">
+
+                    <div class="cubetwo-cube-1" tabindex="0" data-type="cubetwo">
+
+                        <div class="cubetwo-cube" data-type="cubetwo-display" data-index="1">
+                            <div data-type="front">
+                                <div>front</div>
+                            </div>
+                            <div data-type="up">
+                                <div>up</div>
+                            </div>
+                            <div data-type="right">
+                                <div>right</div>
+                            </div>
+                            <div data-type="back">
+                                <div>back</div>
+                            </div>
+                            <div data-type="down">
+                                <div>down</div>
+                            </div>
+                            <div data-type="left">
+                                <div>left</div>
+                            </div>
+                        </div>
+                        <div class="cubetwo-cube" data-type="cubetwo-touch">
+                            <div data-type="front">touch front</div>
+                            <div data-type="up">touch up</div>
+                            <div data-type="left">touch left</div>
+                        </div>
+                    </div>
+
+                    <div class="cubetwo-cube-2" tabindex="0" data-type="cubetwo">
+
+                        <div class="cubetwo-cube" data-type="cubetwo-display" data-index="2">
+                            <div data-type="front">
+                                <div>front</div>
+                            </div>
+                            <div data-type="up">
+                                <div>up</div>
+                            </div>
+                            <div data-type="right">
+                                <div>right</div>
+                            </div>
+                            <div data-type="back">
+                                <div>back</div>
+                            </div>
+                            <div data-type="down">
+                                <div>down</div>
+                            </div>
+                            <div data-type="left">
+                                <div>left</div>
+                            </div>
+                        </div>
+                        <div class="cubetwo-cube" data-type="cubetwo-touch">
+                            <div data-type="front">touch front</div>
+                            <div data-type="up">touch up</div>
+                            <div data-type="right">touch right</div>
+                        </div>
+                    </div>
+
+                    <div class="cubetwo-cube-3" tabindex="0" data-type="cubetwo">
+
+                        <div class="cubetwo-cube" data-type="cubetwo-display" data-index="3">
+                            <div data-type="front">
+                                <div>front</div>
+                            </div>
+                            <div data-type="up">
+                                <div>up</div>
+                            </div>
+                            <div data-type="right">
+                                <div>right</div>
+                            </div>
+                            <div data-type="back">
+                                <div>back</div>
+                            </div>
+                            <div data-type="down">
+                                <div>down</div>
+                            </div>
+                            <div data-type="left">
+                                <div>left</div>
+                            </div>
+                        </div>
+                        <div class="cubetwo-cube" data-type="cubetwo-touch">
+                            <div data-type="front">touch front</div>
+                            <div data-type="left">touch left</div>
+                            <div data-type="down">touch down</div>
+                        </div>
+                    </div>
+
+                    <div class="cubetwo-cube-4" tabindex="0" data-type="cubetwo">
+
+                        <div class="cubetwo-cube" data-type="cubetwo-display" data-index="4">
+                            <div data-type="front">
+                                <div>front</div>
+                            </div>
+                            <div data-type="up">
+                                <div>up</div>
+                            </div>
+                            <div data-type="right">
+                                <div>right</div>
+                            </div>
+                            <div data-type="back">
+                                <div>back</div>
+                            </div>
+                            <div data-type="down">
+                                <div>down</div>
+                            </div>
+                            <div data-type="left">
+                                <div>left</div>
+                            </div>
+                        </div>
+                        <div class="cubetwo-cube" data-type="cubetwo-touch">
+                            <div data-type="front">touch front</div>
+                            <div data-type="right">touch right</div>
+                            <div data-type="down">touch down</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="cubetwo-cube-group cubetwo-cube-group--2">
+
+                    <div class="cubetwo-cube-5" tabindex="0" data-type="cubetwo">
+
+                        <div class="cubetwo-cube" data-type="cubetwo-display" data-index="5">
+                            <div data-type="front">
+                                <div>front</div>
+                            </div>
+                            <div data-type="up">
+                                <div>up</div>
+                            </div>
+                            <div data-type="right">
+                                <div>right</div>
+                            </div>
+                            <div data-type="back">
+                                <div>back</div>
+                            </div>
+                            <div data-type="down">
+                                <div>down</div>
+                            </div>
+                            <div data-type="left">
+                                <div>left</div>
+                            </div>
+                        </div>
+                        <div class="cubetwo-cube" data-type="cubetwo-touch">
+                            <div data-type="up">touch up</div>
+                            <div data-type="left">touch left</div>
+                            <div data-type="back">touch back</div>
+                        </div>
+                    </div>
+
+
+                    <div class="cubetwo-cube-6" tabindex="0" data-type="cubetwo">
+
+                        <div class="cubetwo-cube" data-type="cubetwo-display" data-index="6">
+                            <div data-type="front">
+                                <div>front</div>
+                            </div>
+                            <div data-type="up">
+                                <div>up</div>
+                            </div>
+                            <div data-type="right">
+                                <div>right</div>
+                            </div>
+                            <div data-type="back">
+                                <div>back</div>
+                            </div>
+                            <div data-type="down">
+                                <div>down</div>
+                            </div>
+                            <div data-type="left">
+                                <div>left</div>
+                            </div>
+                        </div>
+                        <div class="cubetwo-cube" data-type="cubetwo-touch">
+                            <div data-type="up">touch up</div>
+                            <div data-type="right">touch right</div>
+                            <div data-type="back">touch back</div>
+                        </div>
+                    </div>
+
+
+                    <div class="cubetwo-cube-7" tabindex="0" data-type="cubetwo">
+
+                        <div class="cubetwo-cube" data-type="cubetwo-display" data-index="7">
+                            <div data-type="front">
+                                <div>front</div>
+                            </div>
+                            <div data-type="up">
+                                <div>up</div>
+                            </div>
+                            <div data-type="right">
+                                <div>right</div>
+                            </div>
+                            <div data-type="back">
+                                <div>back</div>
+                            </div>
+                            <div data-type="down">
+                                <div>down</div>
+                            </div>
+                            <div data-type="left">
+                                <div>left</div>
+                            </div>
+                        </div>
+                        <div class="cubetwo-cube" data-type="cubetwo-touch">
+                            <div data-type="left">touch left</div>
+                            <div data-type="back">touch back</div>
+                            <div data-type="down">touch down</div>
+                        </div>
+                    </div>
+
+
+                    <div class="cubetwo-cube-8" tabindex="0" data-type="cubetwo">
+
+                        <div class="cubetwo-cube" data-type="cubetwo-display" data-index="8">
+                            <div data-type="front">
+                                <div>front</div>
+                            </div>
+                            <div data-type="up">
+                                <div>up</div>
+                            </div>
+                            <div data-type="right">
+                                <div>right</div>
+                            </div>
+                            <div data-type="back">
+                                <div>back</div>
+                            </div>
+                            <div data-type="down">
+                                <div>down</div>
+                            </div>
+                            <div data-type="left">
+                                <div>left</div>
+                            </div>
+                        </div>
+                        <div class="cubetwo-cube" data-type="cubetwo-touch">
+                            <div data-type="right">touch right</div>
+                            <div data-type="back">touch back</div>
+                            <div data-type="down">touch down</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="cubetwo-button-grid cubetwo-row-top">
+                <button class="cubetwo-js cubetwo-btn-top-left cubetwo-btn-adjust">
+                    <svg class="cubetwo-icon cubetwo-icon--adjust" aria-hidden="true"><use xlink:href="#adjust"></use></svg>
+                </button>
+                <button class="cubetwo-js cubetwo-btn-top-center" aria-label="rotate up">
+                    <svg class="cubetwo-icon " aria-hidden="true"><use xlink:href="#arrow-up"></use></svg>
+                </button>
+                <button class="cubetwo-js cubetwo-btn-top-right cubetwo-btn-adjust">
+                    <svg class="cubetwo-icon cubetwo-icon--adjust" aria-hidden="true"><use xlink:href="#adjust"></use></svg>
+                </button>
+            </div>
+            <div class="cubetwo-button-grid cubetwo-column-left">
+                <div></div>
+                <div>
+                    <button class="cubetwo-js cubetwo-btn-rotate-left-2x" aria-label="rotate left 2">
+                        <svg class="cubetwo-icon " aria-hidden="true"><use xlink:href="#rotate-left"></use></svg>
+                    </button>
+                    <button class="cubetwo-js cubetwo-btn-rotate-left" aria-label="rotate left">
+                        <svg class="cubetwo-icon " aria-hidden="true"><use xlink:href="#arrow-left"></use></svg>
+                    </button>
+                    <button class="cubetwo-js cubetwo-btn-toggle cubetwo-btn-help">
+                        <svg class="cubetwo-icon " aria-hidden="true"><use xlink:href="#help"></use></svg>
+                    </button>
+                </div>
+                <div></div>
+            </div>
+            <div class="cubetwo-button-grid cubetwo-column-right">
+                <div></div>
+                <div>
+                    <button class="cubetwo-js cubetwo-btn-rotate-right-2x" aria-label="rotate right 2">                        
+                        <svg class="cubetwo-icon " aria-hidden="true"><use xlink:href="#rotate-right"></use></svg>                        
+                    </button>
+                    <button class="cubetwo-js cubetwo-btn-rotate-right" aria-label="rotate right">
+                        <svg class="cubetwo-icon " aria-hidden="true"><use xlink:href="#arrow-right"></use></svg>
+                    </button>
+                    <button class="cubetwo-js cubetwo-btn-toggle cubetwo-btn-menu" aria-label="menu">
+                        <svg class="cubetwo-icon " aria-hidden="true"><use xlink:href="#menu"></use></svg>
+                    </button>
+                </div>
+                <div></div>
+            </div>
+
+
+            <div class="cubetwo-button-grid cubetwo-row-bottom">
+                <button class="cubetwo-js cubetwo-btn-bottom-left cubetwo-btn-adjust">
+                    <svg class="cubetwo-icon cubetwo-icon--adjust" aria-hidden="true"><use xlink:href="#adjust"></use></svg>
+                </button>
+                <button class="cubetwo-js cubetwo-btn-bottom-center" aria-label="rotate down">
+                    <svg class="cubetwo-icon " aria-hidden="true"><use xlink:href="#arrow-down"></use></svg>
+                </button>
+                <button class="cubetwo-js cubetwo-btn-bottom-right cubetwo-btn-adjust">
+                    <svg class="cubetwo-icon cubetwo-icon--adjust" aria-hidden="true"><use xlink:href="#adjust"></use></svg>
+                </button>
+            </div>
+
+        </div>
+
+        <script type="text/javascript" src="vendors.js"></script>
+        </script>
+        <script type="text/javascript" src="appUi.js"></script>
+
+        <script>
+            'use strict';
+
+            (function() {
+
+                var log = console.log.bind(console);
+
+                var imgPath = '/src/assets/images/fox.svg'; // webpack dev server
+                var imgPath = 'fox.svg'; // dist folder
+
+                if (!window.CubeTwo) {
+                    log('error - make sure this file is loaded last in the html page');
+                }
+
+                var cubetwo = new window.CubeTwo({
+                    cubeComponent: document.getElementById('cubetwo-component-1'),
+                    /* required */
+                    isTapEnabled: true,
+                    /* default: true */
+                    isRotateAnimationEnabled: true,
+                    /* default: true */
+                    borderOnTheCube: true,
+                    /* default: true */
+                    backgroundBlendModeOnTheCube: 'multiply',
+                    /* e.g. screen, difference, normal, default: multiply */
+                    backfaceVisibilityHiddenOnTheCube: false,
+                    /* default: false */
+                    transition: 'transform cubic-bezier(0.4, 0.0, 0.2, 1) 190ms',
+                    /* default: transform 190ms */
+                    backgroundImages: { /* optional */
+                        u: imgPath,
+                        d: imgPath,
+                        f: imgPath,
+                        b: imgPath,
+                        r: imgPath,
+                        l: imgPath,
+                    },
+                    backgroundColors: { /* optional */
+                        u: 'rgba(255, 255, 255, .9)',
+                        d: 'rgba(255, 213, 0, .9)',
+                        f: 'rgba(0, 158, 96, .9)',
+                        b: 'rgba(0, 81, 186, .9)',
+                        r: 'rgba(196, 30, 58, .9)',
+                        l: 'rgba(255, 88, 0, .9)',
+                        backface: 'transparent',
+                    },
+                    cubeSize: { /* optional */
+                        // value: 100,
+                        // unit: 'px',
+                    }
+                });
+                cubetwo.addCallbackForEvent('init', initCallback);
+                cubetwo.addCallbackForEvent('statechange', statechangeCallback);
+                cubetwo.addCallbackForEvent('beforerotate', beforerotateCallback);
+                cubetwo.addCallbackForEvent('afterrotate', afterrotateCallback);
+                cubetwo.addCallbackForEvent('issolved', issolvedCallback);
+                cubetwo.init();
+
+                function statechangeCallback(eventName, payload) {
+                    // log(eventName);
+                    // log(payload);
+                }
+
+                function initCallback(eventName, payload) {
+                    // log(eventName);
+                    // log(payload);
+                }
+
+                function beforerotateCallback(eventName, payload) {
+                    // log(eventName);
+                    // log(payload.action);
+                }
+
+                function afterrotateCallback(eventName, payload) {
+                    // log(eventName);
+                    // log(payload);
+                }
+
+                function issolvedCallback(eventName, payload) {
+                    // log(eventName);
+                    // log(payload);
+                }
+
+
+                window.addEventListener('keydown', cubetwo.handleGlobalKeyEvent, false);
+
+                /*
+                    Expose to the window object
+                */
+                window.cubetwo = cubetwo;
+
+                log('cubetwo is available in console');
+            })();
+        </script>
+
+</body>
+
+</html>

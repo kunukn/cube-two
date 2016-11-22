@@ -4,7 +4,12 @@
 
     var log = console.log.bind(console);
 
-    var imgPath = '/src/assets/images/fox.svg';
+    var imgPath = '/src/assets/images/fox.svg'; // webpack dev server
+    //var imgPath = 'fox.svg'; // dist folder
+
+    if (!window.CubeTwo) {
+        log('error - make sure this file is loaded last in the html page');
+    }
 
     var cubetwo = new window.CubeTwo({
         cubeComponent: document.getElementById('cubetwo-component-1'),

@@ -7,9 +7,9 @@
         "build:dev": "webpack --progress --config webpack.config.js",
         "build:prod": "webpack --progress --config webpack.config.prod.js",
         "clean-dist": "rimraf dist/*.*",
-        "copy-files": "cpy src/assets/images/fox.svg dist",
-        "deploy": "npm run clean-dist && npm run build:prod",
-        "deploy:dev": "npm run clean-dist && npm run build:dev"
+        "copy-files": "cpy src/manifest.json src/assets/scripts/sw.js src/assets/images/fox.svg src/assets/images/icons/pwa-icon.png dist",
+        "deploy": "npm run clean-dist && npm run build:prod && npm run copy-files",
+        "deploy:dev": "npm run clean-dist && npm run build:dev && npm run copy-files"
     },
     "keywords": [],
     "author": "",

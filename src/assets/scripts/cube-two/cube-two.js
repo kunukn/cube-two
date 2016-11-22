@@ -4,7 +4,7 @@ import { debug, log, error } from '../logger';
 
 import { qs, qsa, byId } from '../query';
 
-// import { Queue } from '../queue';
+// import { Queue } from '../queue'; // possible to be used in a future implementation to enable queued rotates, not sure
 
 import deepFreeze from 'deep-freeze';
 
@@ -799,8 +799,14 @@ class CubeTwo {
         const code = nextState.first;
         this._setState({
             codes: [
-                { cube: 1, code: code }, { cube: 2, code }, { cube: 3, code }, { cube: 4, code },
-                { cube: 5, code }, { cube: 6, code }, { cube: 7, code }, { cube: 8, code }
+                { cube: 1, code },
+                { cube: 2, code },
+                { cube: 3, code },
+                { cube: 4, code },
+                { cube: 5, code },
+                { cube: 6, code },
+                { cube: 7, code },
+                { cube: 8, code }
             ],
             isRotateEnabled: true,
         });
@@ -823,6 +829,10 @@ class CubeTwo {
 
         this._updateUiFaces();
     }
+}
+
+if (window && !window.CubeTwo) {
+    window.CubeTwo = CubeTwo; // dirty I guess
 }
 
 export { CubeTwo };

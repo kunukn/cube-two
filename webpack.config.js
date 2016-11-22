@@ -14,7 +14,7 @@ module.exports = {
     entry: {
         vendors: ['hammerjs/hammer'],
         appUi: ['./src/assets/scripts/app-ui'],
-        app: ['./src/assets/scripts'],
+        app: ['./src/assets/scripts/app'],
         //app: ['webpack-dev-server/client?http://localhost:8080/', './src/assets/scripts'],
     },
     output: {

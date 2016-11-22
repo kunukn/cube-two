@@ -14,13 +14,13 @@ module.exports = {
     entry: {
         vendors: ['hammerjs/hammer'],
         appUi: ['./src/assets/scripts/app-ui'],
-        app: ['./src/assets/scripts'],
+        app: ['./src/assets/scripts/app'],
     },
     output: {
         path: path.resolve('dist'),
         publicPath: '',
-        filename: '[name].[hash].js',
-        chunkFilename: '[id].[hash].chunk.js'
+        filename: '[name].js', //filename: '[name].[hash].js',
+        chunkFilename: '[id].chunk.js' // chunkFilename: '[id].[hash].chunk.js'
     },
     /*
      htmlLoader: {
@@ -30,7 +30,7 @@ module.exports = {
     plugins: [
         new webpack.NoErrorsPlugin(),
 
-        new ExtractTextPlugin('[name].[hash].css'),
+        new ExtractTextPlugin('[name].css'), //new ExtractTextPlugin('[name].[hash].css'),
 
         new webpack.DefinePlugin({
             "process.env": {
@@ -53,7 +53,7 @@ module.exports = {
             },
             sourceMap: false /* OBS! */
         }),
-        new webpack.optimize.OccurenceOrderPlugin(),
+        //new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.optimize.DedupePlugin(),
         new HtmlWebpackPlugin({
             template: 'src/index.html',
@@ -61,34 +61,37 @@ module.exports = {
         })
     ],
     module: {
-        loaders: [{
-            test: /\.html$/,
-            exclude: /node_modules/,
-            loader: "html-loader?minimize=true&removeComments=false&conservativeCollapse=true&collapseWhitespace=true"
-        }, {
-            test: /\.js$/,
-            exclude: /node_modules/,
-            loaders: [WebpackStrip.loader('console.debug', 'console.log', 'debug', 'log'), 'babel-loader']
-        }, {
-            test: /\.scss$/,
-            include: getPath('src/assets/styles'),
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader?browsers=last 1 versions!sass-loader'),
-            //loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader'),
+        loaders: [
+            // {
+            //     test: /\.html$/,
+            //     exclude: /node_modules/,
+            //     loader: "html-loader?minimize=true&removeComments=false&conservativeCollapse=true&collapseWhitespace=true"
+            // }, 
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loaders: [WebpackStrip.loader('console.debug', 'console.log', 'debug', 'log'), 'babel-loader']
+            }, {
+                test: /\.scss$/,
+                include: getPath('src/assets/styles'),
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader!autoprefixer-loader?browsers=last 1 versions!sass-loader'),
+                //loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader'),
 
-        }, {
-            test: /\.css$/,
-            include: getPath('node_modules/normalize.css'),
-            loader: ExtractTextPlugin.extract('style-loader', 'css-loader'),
-        }, {
-            test: /\.ico$/,
-            include: getPath('src/assets/images'),
-            loader: 'file-loader?name=favicon.ico&context=/',
-        }, {
-            test: /\.(jpg|png|svg)$/,
-            exclude: /node_modules/,
-            //include: getPath('src/assets/images'),
-            loader: 'url-loader?limit=10000',
-        }]
+            }, {
+                test: /\.css$/,
+                include: getPath('node_modules/normalize.css'),
+                loader: ExtractTextPlugin.extract('style-loader', 'css-loader'),
+            }, {
+                test: /\.ico$/,
+                include: getPath('src/assets/images'),
+                loader: 'file-loader?name=favicon.ico&context=/',
+            }, {
+                test: /\.(jpg|png|svg)$/,
+                exclude: /node_modules/,
+                //include: getPath('src/assets/images'),
+                loader: 'url-loader?limit=10000',
+            }
+        ]
     },
     resolve: {
         extensions: ['', '.js']

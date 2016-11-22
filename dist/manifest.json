@@ -1,0 +1,15 @@
+{
+    "short_name": "cubetwo",
+    "name": "cubetwo",
+    "description": "pocket cube",
+    "icons": [{
+        "src": "pwa-icon.png",
+        "sizes": "144x144",
+        "type": "image/png"
+    }],
+    "display": "standalone",
+    "orientation": "portrait",
+    "theme_color": "#ADD8E6",
+    "background_color": "#222222",
+    "start_url": "index.html"
+}

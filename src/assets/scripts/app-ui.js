@@ -2,7 +2,7 @@
 
 import '../styles/app.scss';
 
-import { log } from './logger';
+import { log, error } from './logger';
 
 import { qs, qsa, byId } from './query';
 
@@ -75,4 +75,14 @@ qs('.cubetwo-js.cubetwo-btn-rotate-right-2x', cubeComponentEl).addEventListener(
     ev => cubetwo.z()
 );
 
-window.CubeTwo = CubeTwo;
+
+
+// Register the service worker if available.
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').then(function(reg) {
+        log('sw.js success');
+    }).catch(function(err) {
+        error('sw.js error, probably not found, it is ok because I didnt set it up to work in webpack-dev-server');
+        error(err);
+    });
+}
