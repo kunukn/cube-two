@@ -1,7 +1,7 @@
 {
-    "short_name": "cubetwo",
-    "name": "cubetwo",
-    "description": "pocket cube",
+    "short_name": "pocket cube",
+    "name": "pocket cube",
+    "description": "pocket cube on the web platform",
     "icons": [{
         "src": "pwa-icon.png",
         "sizes": "144x144",
