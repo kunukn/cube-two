@@ -6,12 +6,14 @@ self.addEventListener('install', function(e) {
         caches.open(cacheName).then(function(cache) {
             return cache.addAll([
                 './',
+                './index.html',
                 './app.js',
                 './appUi.js',
                 './appUi.css',
                 './fox.svg',
                 './vendors.js',
                 './pwa-icon.png',
+                './sw.js',
             ]).then(function() {
                 self.skipWaiting();
             });
